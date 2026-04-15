@@ -1,0 +1,10 @@
+# Ignorar arquivos de dados pesados e originais
+*.pdf
+*.json
+!amostras_teste/*.pdf
+!amostras_teste/*.json
+
+# Ignorar pastas virtuais do Python e caches
+__pycache__/
+venv/
+.env

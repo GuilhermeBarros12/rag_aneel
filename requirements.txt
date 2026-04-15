@@ -1,0 +1,2 @@
+PyMuPDF==1.24.4
+pymupdf4llm==1.27.2
