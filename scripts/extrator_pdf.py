@@ -1,16 +1,8 @@
 import pymupdf4llm
 
-nome_do_pdf = "dsp20214137ti.pdf" 
+# muda o nome para um dos PDFs que você baixou
+nome_do_pdf = "../dados/pdfs/dsp20163399ti.pdf"
 
-print(f"Lendo {nome_do_pdf} com foco em LLMs (Markdown)...")
-print("=" * 50)
+texto_markdown = pymupdf4llm.to_markdown(nome_do_pdf)
+print(texto_markdown[:2000])  # mostra os primeiros 2000 caracteres
 
-try:
-    # A mágica acontece em uma linha só. Ele já lê tudo e converte as tabelas!
-    texto_markdown = pymupdf4llm.to_markdown(nome_do_pdf)
-    
-    # Vamos imprimir os primeiros 15 00 caracteres para ver a diferença
-    print(texto_markdown[:1500])
-
-except Exception as erro:
-    print(f"Erro ao processar: {erro}")
