@@ -1,4 +1,6 @@
-# ── Extração de documentos ─────────────────────────────────────
+# ── Extração e chunking de documentos ──────────────────────────
+# langchain-text-splitters: fornece o RecursiveCharacterTextSplitter usado no chunking
+langchain-text-splitters
 # PyMuPDF: engine de leitura de PDFs (dependência do pymupdf4llm)
 PyMuPDF
 # pymupdf4llm: converte PDF → Markdown preservando tabelas e formatação
