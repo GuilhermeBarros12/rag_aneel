@@ -1,2 +1,37 @@
+# ── Extração de documentos ─────────────────────────────────────
+# PyMuPDF: engine de leitura de PDFs (dependência do pymupdf4llm)
 PyMuPDF
+# pymupdf4llm: converte PDF → Markdown preservando tabelas e formatação
 pymupdf4llm
+# beautifulsoup4: extrai texto limpo de arquivos HTML
+beautifulsoup4
+# lxml: parser HTML rápido, usado internamente pelo BeautifulSoup
+lxml
+
+# ── Download e automação web ────────────────────────────────────
+# selenium: automação do Chrome para downloads de PDF com redirect
+selenium
+# webdriver-manager: instala e gerencia o ChromeDriver automaticamente
+webdriver-manager
+# requests: download HTTP direto para arquivos .html e .xlsx
+requests
+
+# ── Embeddings e busca vetorial ─────────────────────────────────
+# sentence-transformers: modelo paraphrase-multilingual-mpnet-base-v2 (embeddings em PT)
+sentence-transformers
+# chromadb: banco vetorial com persistência em disco, sem servidor
+chromadb
+
+# ── LLM (geração de respostas) ──────────────────────────────────
+# groq: cliente oficial da Groq API — llama3-70b, free tier
+groq
+
+# ── Avaliação ───────────────────────────────────────────────────
+# ragas: calcula faithfulness, context_recall, answer_relevancy, etc.
+ragas
+
+# ── Utilitários ─────────────────────────────────────────────────
+# tqdm: barra de progresso nos loops de download e indexação
+tqdm
+# python-dotenv: carrega GROQ_API_KEY do arquivo .env sem expor no código
+python-dotenv

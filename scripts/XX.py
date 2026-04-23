@@ -1,20 +1,20 @@
-import os
-import fitz  # pymupdf — para verificar se os PDFs são válidos
+import requests
 
-PASTA_PDFS = "../dados/pdfs"
+HEADERS = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+    "Referer": "https://www2.aneel.gov.br/cedoc/",
+    "Accept": "*/*",
+}
 
-arquivos = [f for f in os.listdir(PASTA_PDFS) if f.endswith(".pdf")]
+urls_teste = [
+    "https://www2.aneel.gov.br/cedoc/aren2016731_2.xlsx",
+    "https://www2.aneel.gov.br/cedoc/aprt20163936_2.xlsx",
+    "https://www2.aneel.gov.br/cedoc/areh20162014_2.xlsm",
+]
 
-print(f"Total de PDFs na pasta: {len(arquivos)}\n")
-
-for nome in arquivos:
-    caminho = os.path.join(PASTA_PDFS, nome)
-    tamanho = os.path.getsize(caminho) / 1024  # tamanho em KB
-
+for url in urls_teste:
     try:
-        doc    = fitz.open(caminho)             # tenta abrir o PDF
-        paginas = doc.page_count                # conta as páginas
-        doc.close()
-        print(f"✅ {nome} | {tamanho:.1f} KB | {paginas} página(s)")
+        r = requests.get(url, headers=HEADERS, timeout=30, allow_redirects=True)
+        print(f"Status: {r.status_code} | Content-Type: {r.headers.get('Content-Type')} | {url}")
     except Exception as e:
-        print(f"❌ CORROMPIDO: {nome} | {tamanho:.1f} KB | Erro: {e}")
+        print(f"Erro: {e} | {url}")

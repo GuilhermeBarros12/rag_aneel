@@ -1,10 +1,36 @@
-# Ignorar arquivos de dados pesados e originais
-*.pdf
-*.json
-!amostras_teste/*.pdf
-!amostras_teste/*.json
+# ── Dados brutos — muito pesados para o GitHub ─────────────────
+dados/pdfs/
+dados/jsons/
+dados/html, xlsm, etc/
+chunks_md/
+vectorstore/
 
-# Ignorar pastas virtuais do Python e caches
-__pycache__/
-venv/
+# ── Arquivos de log gerados pelos scripts ───────────────────────
+scripts/erros_download.txt
+scripts/erros_extras.txt
+
+# ── Credenciais — NUNCA subir para o repositório ───────────────
 .env
+
+# ── Ambiente virtual Python ─────────────────────────────────────
+.venv/
+venv/
+env/
+
+# ── Cache do Python ─────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+
+# ── Cache do ChromeDriver (webdriver-manager) ───────────────────
+.wdm/
+
+# ── Arquivos temporários do sistema ─────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── IDEs ─────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.code-workspace

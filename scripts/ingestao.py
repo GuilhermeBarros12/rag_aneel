@@ -1,184 +1,200 @@
-import os           # biblioteca para interagir com o sistema de arquivos (pastas, caminhos)
-import json         # biblioteca para ler arquivos .json
-import pymupdf4llm  # biblioteca que converte PDFs em Markdown preservando tabelas
+import os
+import json
+import pymupdf4llm
+from bs4 import BeautifulSoup  # extrai texto limpo de arquivos HTML
 
 # ============================================================
-# CONFIGURAÇÕES — ajuste esses caminhos se necessário
+# CONFIGURAÇÕES
+# ============================================================
+PASTA_JSONS  = "../dados/jsons"          # onde estão os 3 arquivos .json
+PASTA_PDFS   = "../dados/pdfs"           # onde estão os PDFs baixados
+PASTA_EXTRAS = "../dados/html, xlsm, etc"  # onde estão os HTMLs baixados
+PASTA_SAIDA  = "../chunks_md"            # onde os markdowns serão salvos
 # ============================================================
 
-PASTA_JSONS = "."          # "." significa "a pasta atual onde o script está"
-PASTA_PDFS  = "."          # pasta onde os PDFs já baixados estão armazenados
-PASTA_SAIDA = "chunks_md"  # nome da pasta que será criada para guardar os markdowns
-
-# ============================================================
-
-os.makedirs(PASTA_SAIDA, exist_ok=True)  # cria a pasta de saída se ela não existir ainda
-                                          # exist_ok=True evita erro se a pasta já existir
+os.makedirs(PASTA_SAIDA, exist_ok=True)  # cria a pasta de saída se não existir
 
 # ------------------------------------------------------------
 
-def corrigir_encoding(texto):
-    # função que conserta o problema de caracteres corrompidos (ex: "SituaÃ§Ã£o" → "Situação")
-    # isso acontece porque o arquivo foi salvo em latin-1 mas lido como utf-8
-
-    if texto is None:       # se o campo for vazio/nulo no JSON, não tenta corrigir
-        return None         # retorna None diretamente
-
+def extrair_pdf_para_markdown(caminho):
+    """Converte PDF para Markdown preservando tabelas."""
     try:
-        return texto.encode("latin-1").decode("utf-8")  
-        # encode("latin-1"): transforma o texto corrompido de volta em bytes "crus"
-        # decode("utf-8"): lê esses bytes agora com o encoding correto
-    except:
-        return texto  # se a correção falhar (texto já estava certo), retorna como está
+        return pymupdf4llm.to_markdown(caminho)
+    except Exception as e:
+        print(f"   ⚠️  Erro ao extrair PDF {caminho}: {e}")
+        return None
+
+# ------------------------------------------------------------
+
+def extrair_html_para_markdown(caminho):
+    """
+    Extrai texto limpo de um arquivo HTML.
+    Remove tags, scripts, estilos e retorna texto simples formatado.
+    """
+    try:
+        with open(caminho, "r", encoding="utf-8", errors="ignore") as f:
+            conteudo = f.read()
+
+        soup = BeautifulSoup(conteudo, "html.parser")
+
+        # remove scripts e estilos — não são conteúdo útil
+        for tag in soup(["script", "style", "nav", "footer", "header"]):
+            tag.decompose()  # remove a tag e todo seu conteúdo
+
+        # extrai o texto limpo, separando parágrafos com quebra de linha
+        texto = soup.get_text(separator="\n", strip=True)
+
+        # remove linhas vazias excessivas (mais de 2 seguidas)
+        linhas = texto.split("\n")
+        linhas_limpas = []
+        vazias_seguidas = 0
+        for linha in linhas:
+            if linha.strip() == "":
+                vazias_seguidas += 1
+                if vazias_seguidas <= 1:  # permite no máximo 1 linha vazia seguida
+                    linhas_limpas.append(linha)
+            else:
+                vazias_seguidas = 0
+                linhas_limpas.append(linha)
+
+        return "\n".join(linhas_limpas)
+
+    except Exception as e:
+        print(f"   ⚠️  Erro ao extrair HTML {caminho}: {e}")
+        return None
 
 # ------------------------------------------------------------
 
 def carregar_todos_documentos(pasta_jsons):
-    # função que lê TODOS os arquivos .json da pasta e junta tudo numa lista única
+    """Lê todos os JSONs e retorna lista unificada de documentos."""
+    todos = []
 
-    todos = []  # lista vazia que vai acumular todos os documentos encontrados
+    arquivos = [
+        f for f in os.listdir(pasta_jsons)
+        if f.endswith(".json") and f != "testes.json"
+    ]
 
-    arquivos = [f for f in os.listdir(pasta_jsons) if f.endswith(".json")]
-    # os.listdir: lista todos os arquivos da pasta
-    # o "if f.endswith('.json')" filtra só os arquivos que terminam com .json
-
-    for arquivo in arquivos:  # percorre cada arquivo .json encontrado
-        caminho = os.path.join(pasta_jsons, arquivo)  
-        # os.path.join monta o caminho completo, ex: "./biblioteca_aneel.json"
-
+    for arquivo in arquivos:
+        caminho = os.path.join(pasta_jsons, arquivo)
         try:
-            with open(caminho, "r", encoding="utf-8") as f:  
-                # abre o arquivo em modo leitura ("r") com encoding utf-8
-                dados = json.load(f)  # carrega o conteúdo JSON como uma lista Python
+            with open(caminho, "r", encoding="utf-8") as f:
+                dados = json.load(f)
 
-            if isinstance(dados, list):  # verifica se o JSON é uma lista de documentos
-                todos.extend(dados)      # adiciona todos os documentos à nossa lista total
-                print(f"✅ {arquivo}: {len(dados)} documentos carregados")  # feedback visual
+            # estrutura real: dicionário com chave=data → registros
+            for data, conteudo in dados.items():
+                registros = conteudo.get("registros", [])
+                todos.extend(registros)  # adiciona os documentos do dia à lista
 
-        except Exception as e:               # se qualquer erro acontecer ao ler o arquivo
-            print(f"❌ Erro ao ler {arquivo}: {e}")  # mostra o erro mas não para o programa
+            print(f"✅ {arquivo} carregado")
 
-    return todos  # retorna a lista completa com todos os documentos de todos os JSONs
+        except Exception as e:
+            print(f"❌ Erro ao ler {arquivo}: {e}")
+
+    print(f"\nTotal de documentos: {len(todos)}")
+    return todos
 
 # ------------------------------------------------------------
 
-def extrair_pdf_para_markdown(caminho_pdf):
-    # função que recebe o caminho de um PDF e retorna seu conteúdo em formato Markdown
+def montar_metadata(doc, nome_arquivo, tipo_pdf):
+    """
+    Monta o cabeçalho YAML que vai no topo de cada .md.
+    Esse cabeçalho permite filtrar por situação, autor, data no retrieval.
+    """
+    return f"""---
+titulo: {doc.get('titulo', '')}
+autor: {doc.get('autor', '')}
+situacao: {doc.get('situacao', '')}
+assunto: {doc.get('assunto', '')}
+assinatura: {doc.get('assinatura', '')}
+publicacao: {doc.get('publicacao', '')}
+tipo_pdf: {tipo_pdf}
+arquivo_original: {nome_arquivo}
+ementa: {doc.get('ementa', '')}
+---
 
-    try:
-        return pymupdf4llm.to_markdown(caminho_pdf)  
-        # to_markdown: lê o PDF e converte para Markdown
-        # tabelas viram tabelas Markdown, títulos viram #, etc.
-
-    except Exception as e:                                      # se o PDF estiver corrompido ou ilegível
-        print(f"   ⚠️  Erro ao extrair {caminho_pdf}: {e}")    # avisa mas não para o programa
-        return None  # retorna None para sinalizar que a extração falhou
+"""
 
 # ------------------------------------------------------------
 
 def processar_documentos(documentos):
-    # função principal: percorre todos os documentos e gera um .md para cada PDF
+    """
+    Para cada documento:
+    - Encontra o arquivo correspondente (PDF ou HTML) no disco
+    - Extrai o conteúdo para Markdown
+    - Adiciona metadata no topo
+    - Salva na pasta de saída
+    """
+    total       = len(documentos)
+    processados = 0
+    ignorados   = 0
 
-    total      = len(documentos)  # total de documentos para mostrar progresso
-    processados = 0               # contador de PDFs convertidos com sucesso
-    ignorados   = 0               # contador de PDFs pulados (não encontrados ou com erro)
+    for i, doc in enumerate(documentos):
+        pdfs = doc.get("pdfs", [])
 
-    for i, doc in enumerate(documentos):  
-        # enumerate dá o índice (i) e o item (doc) a cada iteração
-        # doc é um dicionário com titulo, situacao, ementa, pdfs, etc.
+        for pdf_info in pdfs:
+            nome_arquivo = pdf_info.get("arquivo", "").strip()
+            tipo_pdf     = pdf_info.get("tipo", "")
 
-        # extrai e corrige cada campo de metadata do documento
-        titulo   = corrigir_encoding(doc.get("titulo",    "sem_titulo"))
-        situacao = corrigir_encoding(doc.get("situacao",  ""))
-        ementa   = corrigir_encoding(doc.get("ementa",    ""))
-        autor    = corrigir_encoding(doc.get("autor",     ""))
-        assunto  = corrigir_encoding(doc.get("assunto",   ""))
-        # .get("campo", "valor_padrão"): busca o campo no dicionário
-        # se o campo não existir, retorna o valor padrão (string vazia ou "sem_titulo")
+            if not nome_arquivo:
+                continue
 
-        pdfs = doc.get("pdfs", [])  
-        # pega a lista de PDFs do documento
-        # se não tiver o campo "pdfs", retorna lista vazia []
+            _, ext = os.path.splitext(nome_arquivo.lower())
 
-        for pdf_info in pdfs:  # percorre cada PDF dentro do documento
-                               # um documento pode ter Texto Integral + Nota Técnica, por exemplo
+            # ── define onde procurar o arquivo e como extrair ────────────
+            if ext == ".pdf":
+                caminho = os.path.join(PASTA_PDFS, nome_arquivo)
+                extrator = extrair_pdf_para_markdown
 
-            if not pdf_info.get("baixado", False):  
-                # verifica se o campo "baixado" é True
-                # se for False ou não existir, pula esse PDF
-                continue  # "continue" pula para a próxima iteração do loop
+            elif ext in {".html", ".htm"}:
+                caminho = os.path.join(PASTA_EXTRAS, nome_arquivo)
+                extrator = extrair_html_para_markdown
 
-            nome_arquivo = pdf_info.get("arquivo", "")       # ex: "dsp20223683ti.pdf"
-            tipo_pdf     = corrigir_encoding(pdf_info.get("tipo", ""))  
-            # ex: "Texto Integral", "Nota Técnica" — será salvo na metadata
+            else:
+                continue  # ignora .zip, .xlsx, .rar, etc.
 
-            caminho_pdf = os.path.join(PASTA_PDFS, nome_arquivo)  
-            # monta o caminho completo do PDF, ex: "./dsp20223683ti.pdf"
+            # ── verifica se o arquivo existe no disco ────────────────────
+            if not os.path.exists(caminho):
+                ignorados += 1
+                continue
 
-            if not os.path.exists(caminho_pdf):  
-                # verifica se o arquivo realmente existe no disco
-                # se não existir (não foi baixado localmente), pula
-                print(f"[{i+1}/{total}] ⚠️  PDF não encontrado: {nome_arquivo}")
-                ignorados += 1  # incrementa o contador de ignorados
-                continue        # pula para o próximo PDF
+            # ── define o nome do arquivo de saída ────────────────────────
+            nome_saida    = nome_arquivo.replace(ext, ".md")  # ex: dsp20163284.md
+            caminho_saida = os.path.join(PASTA_SAIDA, nome_saida)
 
-            print(f"[{i+1}/{total}] Processando: {nome_arquivo}")  # mostra progresso no terminal
+            # pula se o markdown já foi gerado (permite retomar se interrompido)
+            if os.path.exists(caminho_saida):
+                processados += 1
+                continue
 
-            markdown = extrair_pdf_para_markdown(caminho_pdf)  
-            # chama a função que converte o PDF em Markdown
-            # retorna o texto completo do documento em formato Markdown
+            print(f"[{i+1}/{total}] Processando: {nome_arquivo}")
 
-            if markdown is None:    # se a extração falhou (PDF corrompido, etc.)
-                ignorados += 1      # conta como ignorado
-                continue            # pula para o próximo
+            # ── extrai o conteúdo ─────────────────────────────────────────
+            conteudo = extrator(caminho)
+            if conteudo is None:
+                ignorados += 1
+                continue
 
-            # monta o cabeçalho de metadata que vai no TOPO de cada arquivo .md
-            # isso é o que vai permitir filtrar por situação, autor, data, etc. no retrieval
-            metadata_header = f"""---
-titulo: {titulo}
-autor: {autor}
-situacao: {situacao}
-assunto: {assunto}
-assinatura: {doc.get('assinatura', '')}
-publicacao: {doc.get('publicacao', '')}
-tipo_pdf: {tipo_pdf}
-arquivo_pdf: {nome_arquivo}
-ementa: {ementa}
----
+            # ── monta e salva o arquivo final ─────────────────────────────
+            metadata       = montar_metadata(doc, nome_arquivo, tipo_pdf)
+            conteudo_final = metadata + conteudo
 
-"""
-            # f"""...""": string multilinha com f-string (substitui as variáveis pelo valor real)
-            # o bloco entre --- é chamado de "frontmatter YAML", padrão para metadata em .md
+            with open(caminho_saida, "w", encoding="utf-8") as f:
+                f.write(conteudo_final)
 
-            conteudo_final = metadata_header + markdown  
-            # junta o cabeçalho de metadata com o conteúdo extraído do PDF
+            processados += 1
 
-            nome_saida    = nome_arquivo.replace(".pdf", ".md")  
-            # transforma "dsp20223683ti.pdf" em "dsp20223683ti.md"
+            # mostra progresso a cada 100 arquivos
+            if processados % 100 == 0:
+                print(f"   ✅ {processados} processados até agora...")
 
-            caminho_saida = os.path.join(PASTA_SAIDA, nome_saida)  
-            # monta o caminho completo de saída, ex: "chunks_md/dsp20223683ti.md"
-
-            with open(caminho_saida, "w", encoding="utf-8") as f:  
-                # abre (ou cria) o arquivo de saída em modo escrita ("w")
-                f.write(conteudo_final)  # escreve o conteúdo final no arquivo
-
-            processados += 1  # incrementa o contador de sucessos
-
-    # após processar tudo, imprime o resumo final
     print("\n" + "=" * 50)
-    print(f"✅ Processados: {processados}")   # quantos PDFs viraram .md com sucesso
-    print(f"⚠️  Ignorados:  {ignorados}")    # quantos foram pulados
-    print(f"📁 Markdowns salvos em: {PASTA_SAIDA}/")  # onde encontrar os arquivos gerados
+    print(f"✅ Processados: {processados}")
+    print(f"⚠️  Ignorados:  {ignorados}")
+    print(f"📁 Markdowns salvos em: {PASTA_SAIDA}/")
 
 # ============================================================
-# EXECUÇÃO — esse bloco só roda quando você executa o arquivo diretamente
-# (não roda se outro script importar esse arquivo como biblioteca)
-# ============================================================
-
 if __name__ == "__main__":
-    print("Carregando documentos dos JSONs...")
-    documentos = carregar_todos_documentos(PASTA_JSONS)  # carrega todos os JSONs
-    print(f"\nTotal de documentos encontrados: {len(documentos)}\n")
-    print("Iniciando extração dos PDFs...\n")
-    processar_documentos(documentos)  # processa e gera os markdowns
+    print("Carregando documentos dos JSONs...\n")
+    documentos = carregar_todos_documentos(PASTA_JSONS)
+    print("\nIniciando extração...\n")
+    processar_documentos(documentos)

@@ -13,7 +13,7 @@ PASTA_PDFS      = "../dados/pdfs"
 DELAY_DOWNLOAD  = 1     # segundos entre downloads
 MAX_ESPERA      = 30    # segundos máximos esperando cada download
 MAX_TENTATIVAS  = 3     # máximo de vezes que tenta reiniciar o Chrome
-EXTENSOES_VALIDAS = {".pdf"}  # apenas PDFs serão baixados
+EXTENSOES_VALIDAS = {".pdf", ".html", ".zip", ".doc", ".docx", ".xls", ".xlsx"}  # extensões válidas para download
 # ============================================================
 
 os.makedirs(PASTA_PDFS, exist_ok=True)
