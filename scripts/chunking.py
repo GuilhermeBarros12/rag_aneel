@@ -258,7 +258,7 @@ def processar_markdowns(pasta_entrada, pasta_saida):
             with open(caminho_entrada, "r", encoding="utf-8") as f:
                 conteudo = f.read()   # lê todo o conteúdo do arquivo como string
         except Exception as e:
-            print(f"❌ Erro ao ler {nome_arquivo}: {e}")
+            print(f"[ERRO] Falha ao ler {nome_arquivo}: {e}")
             ignorados += 1
             continue   # erro de leitura não para o script, só pula esse arquivo
 
@@ -274,7 +274,7 @@ def processar_markdowns(pasta_entrada, pasta_saida):
         try:
             chunks = chunkar_documento(texto)   # lista de strings (os pedaços)
         except Exception as e:
-            print(f"❌ Erro ao chunkar {nome_arquivo}: {e}")
+            print(f"[ERRO] Falha ao chunkar {nome_arquivo}: {e}")
             ignorados += 1
             continue   # erro no chunking não para o script
 
@@ -305,15 +305,15 @@ def processar_markdowns(pasta_entrada, pasta_saida):
 
         # ── mostra progresso a cada 200 documentos ───────────────────────────
         if processados % 200 == 0:
-            print(f"   ✅ {processados}/{total_docs} documentos processados "
-                  f"| {total_chunks} chunks gerados até agora...")
+            print(f"   [OK] {processados}/{total_docs} documentos processados "
+                  f"| {total_chunks} chunks gerados ate agora...")
 
     # ── resumo final ─────────────────────────────────────────────────────────
     print("\n" + "=" * 50)
-    print(f"✅ Documentos processados: {processados}")
-    print(f"⏭️  Ignorados (já prontos ou erro): {ignorados}")
-    print(f"📄 Total de chunks gerados: {total_chunks}")
-    print(f"📁 Chunks salvos em: {pasta_saida}/")
+    print(f"[OK]  Documentos processados: {processados}")
+    print(f"[--]  Ignorados (ja prontos ou erro): {ignorados}")
+    print(f"[DOC] Total de chunks gerados: {total_chunks}")
+    print(f"[DIR] Chunks salvos em: {pasta_saida}/")
 
 # ============================================================
 # EXECUÇÃO

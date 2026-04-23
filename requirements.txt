@@ -25,7 +25,9 @@ sentence-transformers
 chromadb
 
 # ── LLM (geração de respostas) ──────────────────────────────────
-# groq: cliente oficial da Groq API — llama3-70b, free tier
+# google-generativeai: cliente oficial da API Gemini (primário)
+google-generativeai
+# groq: cliente oficial da Groq API — fallback gratuito
 groq
 
 # ── Avaliação ───────────────────────────────────────────────────
@@ -35,5 +37,7 @@ ragas
 # ── Utilitários ─────────────────────────────────────────────────
 # tqdm: barra de progresso nos loops de download e indexação
 tqdm
-# python-dotenv: carrega GROQ_API_KEY do arquivo .env sem expor no código
+# python-dotenv: carrega variáveis do .env sem expor no código
 python-dotenv
+# huggingface_hub: download automático do vectorstore pré-construído
+huggingface_hub

@@ -1,0 +1,43 @@
+version: "3.9"
+
+services:
+  rag:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: rag-aneel:latest
+    container_name: rag_aneel
+
+    # Carrega variáveis de ambiente do .env (GROQ_API_KEY, etc.)
+    env_file:
+      - .env
+
+    # Volumes: montam as pastas locais dentro do container.
+    # Isso permite que os dados baixados localmente fiquem acessíveis
+    # ao container sem precisar copiá-los para a imagem.
+    volumes:
+      - ./dados:/app/dados               # dados brutos (PDFs, HTMLs, etc.)
+      - ./chunks_md:/app/chunks_md       # markdowns gerados pela ingestão
+      - ./chunks:/app/chunks             # chunks .txt gerados pelo chunking
+      - ./vectorstore:/app/vectorstore   # índice ChromaDB persistido
+
+    # Mantém o container ativo para execuções interativas
+    stdin_open: true
+    tty: true
+
+    # Diretório de trabalho padrão para os scripts
+    working_dir: /app
+
+# ── Como usar ────────────────────────────────────────────────
+# Build da imagem:
+#   docker-compose build
+#
+# Rodar um script específico:
+#   docker-compose run rag python scripts/ingestao.py
+#   docker-compose run rag python scripts/chunking.py
+#   docker-compose run rag python scripts/indexar.py
+#   docker-compose run rag python scripts/pipeline.py
+#   docker-compose run rag python scripts/avaliacao.py
+#
+# Shell interativo:
+#   docker-compose run rag bash

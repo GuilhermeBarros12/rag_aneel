@@ -1,5 +1,8 @@
 import os                          # para navegar no sistema de arquivos
 import re                          # para extrair o bloco YAML dos chunks com regex
+import argparse                    # para receber argumentos via linha de comando
+from typing import Dict, List, Set, Tuple
+
 from tqdm import tqdm              # barra de progresso visual no terminal
 
 import chromadb                    # banco vetorial — persiste os embeddings em disco
@@ -7,15 +10,16 @@ from sentence_transformers import SentenceTransformer
 # SentenceTransformer: carrega e roda o modelo de embeddings multilingual
 
 # ============================================================
-# CONFIGURAÇÕES
+# CONFIGURAÇÕES PADRÃO
 # ============================================================
 
-PASTA_CHUNKS     = "../chunks"       # onde estão os .txt gerados pelo chunking.py
-PASTA_VECTORSTORE = "../vectorstore" # onde o ChromaDB vai salvar os dados em disco
+PASTA_CHUNKS      = "../chunks"       # onde estão os .txt gerados pelo chunking.py
+PASTA_VECTORSTORE = "../vectorstore"  # onde o ChromaDB vai salvar os dados em disco
 
-NOME_COLECAO = "aneel_docs"          # nome da coleção dentro do ChromaDB
+NOME_COLECAO = "aneel_docs"           # nome da coleção dentro do ChromaDB
 
 # modelo multilingual treinado para similaridade semântica em português
+# NÃO trocar por all-MiniLM-L6-v2: esse é English-only (384 dims), muito inferior para PT-BR
 MODELO_EMBEDDING = "sentence-transformers/paraphrase-multilingual-mpnet-base-v2"
 
 BATCH_SIZE = 64   # quantos chunks processa por vez
@@ -23,12 +27,10 @@ BATCH_SIZE = 64   # quantos chunks processa por vez
                   # 64 é seguro para ~8 GB de RAM; reduza para 32 se travar
 
 # ============================================================
+# FUNÇÕES UTILITÁRIAS
+# ============================================================
 
-os.makedirs(PASTA_VECTORSTORE, exist_ok=True)   # cria a pasta do vectorstore se não existir
-
-# ------------------------------------------------------------
-
-def extrair_metadata_e_texto(conteudo):
+def extrair_metadata_e_texto(conteudo: str) -> Tuple[Dict[str, str], str]:
     """
     Recebe o conteúdo completo de um arquivo .txt de chunk.
     Retorna (dicionário de metadata, texto do corpo).
@@ -42,7 +44,7 @@ def extrair_metadata_e_texto(conteudo):
         <texto do chunk>
     """
 
-    metadata = {}   # vai guardar os campos do cabeçalho
+    metadata: Dict[str, str] = {}
 
     # busca o bloco entre os dois "---"
     match = re.search(r"^---\s*\n(.*?)\n---", conteudo, re.DOTALL)
@@ -57,80 +59,119 @@ def extrair_metadata_e_texto(conteudo):
     # remove o cabeçalho YAML e retorna só o corpo do chunk
     texto = re.sub(r"^---\s*\n.*?\n---\s*\n", "", conteudo, flags=re.DOTALL)
 
-    return metadata, texto.strip()   # retorna os dois valores
+    return metadata, texto.strip()
 
-# ------------------------------------------------------------
 
-def limpar_metadata_para_chroma(metadata):
+def limpar_metadata_para_chroma(metadata: Dict[str, str]) -> Dict[str, str]:
     """
     ChromaDB só aceita valores de metadata dos tipos: str, int, float, bool.
     Nenhum campo pode ser None ou outro tipo.
     Esta função converte tudo para string e remove Nones.
 
-    Parâmetro:
+    Parametro:
         metadata — dicionário com os campos do cabeçalho YAML
     Retorna:
         dicionário seguro para passar ao ChromaDB
     """
 
-    metadata_limpa = {}
+    metadata_limpa: Dict[str, str] = {}
     for chave, valor in metadata.items():
-        if valor is None:
-            metadata_limpa[chave] = ""          # None vira string vazia
-        else:
-            metadata_limpa[chave] = str(valor)  # garante que tudo é string
+        metadata_limpa[chave] = "" if valor is None else str(valor)
     return metadata_limpa
 
-# ------------------------------------------------------------
 
-def carregar_ids_existentes(colecao):
+def listar_chunks(pasta_chunks: str) -> List[str]:
+    """
+    Lista arquivos .txt da pasta de chunks em ordem alfabética.
+    A ordem alfabética garante consistência entre execuções (facilita retomada).
+    """
+
+    if not os.path.exists(pasta_chunks):
+        return []
+    return sorted([f for f in os.listdir(pasta_chunks) if f.endswith(".txt")])
+
+
+def carregar_ids_existentes(colecao) -> Set[str]:
     """
     Retorna um conjunto (set) com todos os IDs já indexados no ChromaDB.
     Usado para não re-indexar chunks que já estão no banco (retomada).
 
-    Busca em páginas de 5000 para não sobrecarregar a memória.
+    Busca em paginas de 5000 para não sobrecarregar a memória.
     """
 
-    ids_existentes = set()   # conjunto — busca por pertencimento é O(1)
-    offset = 0               # posição de início de cada página
-    pagina = 5000            # quantos IDs busca por vez
+    ids_existentes: Set[str] = set()   # conjunto — busca por pertencimento é O(1)
+    offset = 0                          # posição de início de cada pagina
+    pagina = 5000                       # quantos IDs busca por vez
 
     while True:
         # include=[] → retorna só os IDs, sem embeddings/documentos (mais rápido)
         resultado = colecao.get(limit=pagina, offset=offset, include=[])
-        ids_pagina = resultado["ids"]   # lista de IDs desta página
+        ids_pagina: List[str] = resultado["ids"]
 
-        if not ids_pagina:              # página vazia → chegou ao fim
+        if not ids_pagina:              # pagina vazia → chegou ao fim
             break
 
         ids_existentes.update(ids_pagina)   # adiciona ao conjunto total
-        offset += pagina                    # avança para a próxima página
+        offset += pagina                     # avança para a próxima pagina
 
-    return ids_existentes   # ex: {"ndsp20163386_chunk1", "ndsp20163386_chunk2", ...}
+    return ids_existentes
 
-# ------------------------------------------------------------
 
-def processar_em_batches(arquivos, ids_existentes, colecao, modelo):
+# ============================================================
+# INDEXAÇÃO
+# ============================================================
+
+def indexar_chunks(
+    arquivos: List[str],
+    pasta_chunks: str,
+    ids_existentes: Set[str],
+    colecao,
+    modelo: SentenceTransformer,
+) -> None:
     """
     Função principal de indexação.
     Percorre os arquivos de chunk, gera embeddings em lotes e salva no ChromaDB.
 
-    Parâmetros:
-        arquivos        — lista de nomes de arquivo .txt na PASTA_CHUNKS
+    Parametros:
+        arquivos        — lista de nomes de arquivo .txt na pasta de chunks
+        pasta_chunks    — caminho da pasta onde estão os .txt
         ids_existentes  — set com IDs já no ChromaDB (para pular)
         colecao         — objeto de coleção do ChromaDB
         modelo          — modelo SentenceTransformer carregado
     """
 
     # acumuladores do lote atual
-    batch_ids        = []   # IDs únicos de cada chunk
-    batch_textos     = []   # textos dos chunks (para o ChromaDB armazenar e para embedding)
-    batch_metadatas  = []   # metadatas dos chunks
-    batch_embeddings = []   # vetores gerados pelo modelo
+    batch_ids:       List[str]            = []
+    batch_textos:    List[str]            = []
+    batch_metadatas: List[Dict[str, str]] = []
 
     total_indexados = 0    # chunks novos indexados nesta execução
     total_pulados   = 0    # chunks já existentes, pulados
-    total_erros     = 0    # arquivos com erro de leitura
+    total_erros     = 0    # arquivos com erro de leitura ou texto vazio
+
+    def _flush_batch() -> None:
+        """Envia o lote acumulado para o ChromaDB e limpa os acumuladores."""
+        nonlocal total_indexados
+
+        embeddings = modelo.encode(
+            batch_textos,
+            show_progress_bar=False,
+            convert_to_numpy=True,    # ChromaDB espera numpy arrays ou listas
+        ).tolist()                    # converte para lista de listas Python
+
+        # upsert: insere se não existe, atualiza se já existe
+        # mais seguro que add() para reexecuções parciais
+        colecao.upsert(
+            ids       = batch_ids,
+            documents = batch_textos,
+            embeddings= embeddings,
+            metadatas = batch_metadatas,
+        )
+
+        total_indexados += len(batch_ids)
+        batch_ids.clear()
+        batch_textos.clear()
+        batch_metadatas.clear()
 
     # tqdm cria a barra de progresso — desc é o texto que aparece ao lado
     for nome_arquivo in tqdm(arquivos, desc="Indexando chunks", unit="chunk"):
@@ -142,18 +183,18 @@ def processar_em_batches(arquivos, ids_existentes, colecao, modelo):
         # ── pula se já foi indexado ────────────────────────────────────────
         if chunk_id in ids_existentes:
             total_pulados += 1
-            continue   # vai direto para o próximo arquivo
+            continue
 
         # ── lê o arquivo ──────────────────────────────────────────────────
-        caminho = os.path.join(PASTA_CHUNKS, nome_arquivo)   # caminho completo
+        caminho = os.path.join(pasta_chunks, nome_arquivo)
 
         try:
             with open(caminho, "r", encoding="utf-8") as f:
-                conteudo = f.read()   # lê o arquivo inteiro como string
+                conteudo = f.read()
         except Exception as e:
-            print(f"\n❌ Erro ao ler {nome_arquivo}: {e}")
+            print(f"\n[ERRO] Falha ao ler {nome_arquivo}: {e}")
             total_erros += 1
-            continue   # erro não para o script, só pula esse arquivo
+            continue
 
         # ── extrai metadata e corpo do chunk ──────────────────────────────
         metadata, texto = extrair_metadata_e_texto(conteudo)
@@ -162,111 +203,109 @@ def processar_em_batches(arquivos, ids_existentes, colecao, modelo):
             total_erros += 1
             continue
 
-        metadata_limpa = limpar_metadata_para_chroma(metadata)   # garante tipos corretos
+        metadata_limpa = limpar_metadata_para_chroma(metadata)
 
         # ── adiciona ao lote atual ─────────────────────────────────────────
-        batch_ids.append(chunk_id)              # ID único
-        batch_textos.append(texto)              # texto que será armazenado
-        batch_metadatas.append(metadata_limpa)  # campos para filtro no retrieval
+        batch_ids.append(chunk_id)
+        batch_textos.append(texto)
+        batch_metadatas.append(metadata_limpa)
 
         # ── envia o lote quando atinge BATCH_SIZE ─────────────────────────
         if len(batch_ids) >= BATCH_SIZE:
-            # encode() gera os embeddings para todos os textos do lote de uma vez
-            # show_progress_bar=False porque o tqdm externo já mostra o progresso
-            embeddings = modelo.encode(
-                batch_textos,
-                show_progress_bar=False,
-                convert_to_numpy=True    # ChromaDB espera numpy arrays ou listas
-            ).tolist()                   # converte para lista de listas Python
-
-            # upsert: insere se não existe, atualiza se já existe
-            # mais seguro que add() para reexecuções parciais
-            colecao.upsert(
-                ids        = batch_ids,
-                documents  = batch_textos,
-                embeddings = embeddings,
-                metadatas  = batch_metadatas,
-            )
-
-            total_indexados += len(batch_ids)   # conta quantos foram indexados
-
-            # limpa os acumuladores para o próximo lote
-            batch_ids        = []
-            batch_textos     = []
-            batch_metadatas  = []
-            batch_embeddings = []
+            _flush_batch()
 
     # ── envia o lote final (pode ter menos que BATCH_SIZE) ────────────────
     if batch_ids:
-        embeddings = modelo.encode(
-            batch_textos,
-            show_progress_bar=False,
-            convert_to_numpy=True
-        ).tolist()
-
-        colecao.upsert(
-            ids        = batch_ids,
-            documents  = batch_textos,
-            embeddings = embeddings,
-            metadatas  = batch_metadatas,
-        )
-
-        total_indexados += len(batch_ids)   # conta o último lote
+        _flush_batch()
 
     # ── resumo final ──────────────────────────────────────────────────────
     print("\n" + "=" * 50)
-    print(f"✅ Chunks indexados agora:  {total_indexados}")
-    print(f"⏭️  Já existiam (pulados):  {total_pulados}")
-    print(f"❌ Erros:                   {total_erros}")
-    print(f"📦 Total na coleção:        {colecao.count()}")
-    print(f"💾 Vectorstore salvo em:    {PASTA_VECTORSTORE}/")
+    print(f"[OK]  Chunks indexados agora:  {total_indexados}")
+    print(f"[--]  Ja existiam (pulados):   {total_pulados}")
+    print(f"[ERR] Erros:                   {total_erros}")
+    print(f"[DB]  Total na colecao:        {colecao.count()}")
+    print(f"[DIR] Vectorstore salvo em:    {PASTA_VECTORSTORE}/")
+
 
 # ============================================================
 # EXECUÇÃO
 # ============================================================
 
-if __name__ == "__main__":
+def main() -> None:
 
-    # ── 1. carrega o modelo de embeddings ─────────────────────────────────
-    print(f"Carregando modelo de embeddings: {MODELO_EMBEDDING}")
-    print("(Na primeira vez, fará download de ~1 GB — aguarde)\n")
+    parser = argparse.ArgumentParser(
+        description="Gera embeddings dos chunks e indexa no ChromaDB."
+    )
+    parser.add_argument(
+        "--chunks-dir",
+        default=PASTA_CHUNKS,
+        help=f"Pasta com os .txt dos chunks. Padrao: {PASTA_CHUNKS}",
+    )
+    parser.add_argument(
+        "--vectorstore-dir",
+        default=PASTA_VECTORSTORE,
+        help=f"Pasta onde o ChromaDB persiste os dados. Padrao: {PASTA_VECTORSTORE}",
+    )
+    parser.add_argument(
+        "--colecao",
+        default=NOME_COLECAO,
+        help=f"Nome da colecao no ChromaDB. Padrao: {NOME_COLECAO}",
+    )
+    parser.add_argument(
+        "--batch-size",
+        type=int,
+        default=BATCH_SIZE,
+        help=f"Chunks por lote de embedding. Padrao: {BATCH_SIZE}",
+    )
+    args = parser.parse_args()
+
+    os.makedirs(args.vectorstore_dir, exist_ok=True)
+
+    # ── 1. lista todos os chunks disponíveis ──────────────────────────────
+    arquivos = listar_chunks(args.chunks_dir)
+    print(f"Total de chunks encontrados: {len(arquivos)}")
+
+    if not arquivos:
+        print(f"[AVISO] Nenhum .txt encontrado em: {args.chunks_dir}")
+        print("        Execute o chunking.py antes deste script.")
+        return
+
+    # ── 2. carrega o modelo de embeddings ─────────────────────────────────
+    print(f"\nCarregando modelo de embeddings: {MODELO_EMBEDDING}")
+    print("(Na primeira vez, fara download de ~1 GB — aguarde)\n")
     modelo = SentenceTransformer(MODELO_EMBEDDING)
     # o modelo fica em cache local após o primeiro download
     # nas próximas execuções carrega do cache em segundos
 
-    # ── 2. conecta ao ChromaDB (cria ou abre o banco existente) ───────────
-    print(f"Conectando ao ChromaDB em: {PASTA_VECTORSTORE}/")
-    client = chromadb.PersistentClient(path=PASTA_VECTORSTORE)
+    # ── 3. conecta ao ChromaDB (cria ou abre o banco existente) ───────────
+    print(f"Conectando ao ChromaDB em: {args.vectorstore_dir}/")
+    client = chromadb.PersistentClient(path=args.vectorstore_dir)
     # PersistentClient: salva tudo em disco automaticamente
     # se a pasta já tiver dados de uma execução anterior, eles são preservados
 
-    # get_or_create_collection: abre a coleção se já existe, cria se não existe
-    # hnsw:space=cosine → usa similaridade de cosseno (melhor para embeddings de texto)
+    # hnsw:space=cosine → similaridade de cosseno (melhor para embeddings de texto)
     colecao = client.get_or_create_collection(
-        name     = NOME_COLECAO,
-        metadata = {"hnsw:space": "cosine"}
+        name     = args.colecao,
+        metadata = {"hnsw:space": "cosine"},
     )
 
-    print(f"Coleção '{NOME_COLECAO}' carregada. Chunks já indexados: {colecao.count()}\n")
-
-    # ── 3. lista todos os chunks disponíveis ──────────────────────────────
-    arquivos = sorted([
-        f for f in os.listdir(PASTA_CHUNKS) if f.endswith(".txt")
-    ])
-    # sorted() garante ordem alfabética — facilita depuração e retomada consistente
-
-    print(f"Total de chunks encontrados na pasta: {len(arquivos)}\n")
-
-    if not arquivos:
-        print("⚠️  Nenhum arquivo .txt encontrado em", PASTA_CHUNKS)
-        print("   Execute o chunking.py primeiro.")
-        exit(0)   # encerra o script sem erro
+    print(f"Colecao '{args.colecao}' carregada. Chunks ja indexados: {colecao.count()}\n")
 
     # ── 4. carrega IDs já indexados para evitar retrabalho ────────────────
-    print("Verificando chunks já indexados...")
+    print("Verificando chunks ja indexados...")
     ids_existentes = carregar_ids_existentes(colecao)
     novos = len(arquivos) - len(ids_existentes)
-    print(f"  Já indexados: {len(ids_existentes)} | A indexar: {novos}\n")
+    print(f"  Ja indexados: {len(ids_existentes)} | A indexar: {novos}\n")
 
     # ── 5. indexa os chunks novos ─────────────────────────────────────────
-    processar_em_batches(arquivos, ids_existentes, colecao, modelo)
+    indexar_chunks(
+        arquivos       = arquivos,
+        pasta_chunks   = args.chunks_dir,
+        ids_existentes = ids_existentes,
+        colecao        = colecao,
+        modelo         = modelo,
+    )
+
+
+if __name__ == "__main__":
+    main()

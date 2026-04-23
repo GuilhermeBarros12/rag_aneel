@@ -1,8 +1,9 @@
-# ── Dados brutos — muito pesados para o GitHub ─────────────────
+# ── Dados brutos e gerados — muito pesados para o GitHub ───────
 dados/pdfs/
 dados/jsons/
 dados/html, xlsm, etc/
 chunks_md/
+chunks/
 vectorstore/
 
 # ── Arquivos de log gerados pelos scripts ───────────────────────
