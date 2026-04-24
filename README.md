@@ -2,61 +2,37 @@
 
 Sistema de **Retrieval-Augmented Generation (RAG)** desenvolvido para responder perguntas sobre o corpus regulatório da ANEEL (Agência Nacional de Energia Elétrica), composto por mais de **26.000 documentos** — resoluções normativas, despachos, notas técnicas e portarias.
 
----
-
-## Arquitetura do Pipeline
-
-```
-Documentos ANEEL (PDFs, HTMLs, XLSXs)
-          │
-          ▼
-   [1] downloads.py          → baixa os arquivos da ANEEL
-          │
-          ▼
-   [2] ingestao.py           → converte PDF/HTML → Markdown (.md)
-          │                     preservando tabelas e metadados
-          ▼
-   [3] chunking.py           → divide os .md em chunks de 512 chars
-          │                     com sobreposição de 80 chars
-          ▼
-   [4] indexar.py            → gera embeddings multilinguais e
-          │                     persiste no ChromaDB (HNSW cosine)
-          ▼
-   [5] pipeline.py           → recebe query → recupera chunks →
-          │                     gera resposta com LLM (Groq/Gemini)
-          ▼
-   [6] avaliacao.py          → avalia com RAGAS (faithfulness,
-                               context_recall, answer_relevancy)
-```
-
 **Modelo de embeddings:** `paraphrase-multilingual-mpnet-base-v2` (768 dims, PT-BR nativo)  
 **Banco vetorial:** ChromaDB com índice HNSW e similaridade de cosseno  
-**LLM:** Groq (llama-3.1-70b) ou Gemini 1.5 Flash — ambos gratuitos
+**LLM:** Gemini 1.5 Flash (primário) ou Groq / Llama 3.3 70B (fallback) — ambos gratuitos
 
 ---
 
-## Pré-requisitos
+## Quick Start — Usar o sistema (recomendado)
 
-| Requisito | Versão mínima | Observação |
-|-----------|--------------|------------|
-| Python | 3.10+ | [Download](https://www.python.org/downloads/) |
-| Google Chrome | Qualquer | Necessário para o download (Selenium) |
-| Docker + Docker Compose | 24+ | Opcional — para rodar em container |
-| RAM | 8 GB | Recomendado para indexação dos 168K chunks |
-| Espaço em disco | ~15 GB | Dados brutos + chunks + vectorstore |
+> O vectorstore com todos os documentos da ANEEL já está pré-construído e hospedado no Hugging Face.
+> Ele é baixado automaticamente na primeira execução. Você **não precisa** baixar PDFs nem gerar embeddings.
 
----
+### Pré-requisitos
 
-## Quick Start (sem Docker)
+| Requisito | Detalhe |
+|-----------|---------|
+| Python 3.10+ | [Download](https://www.python.org/downloads/) |
+| Chave de API Gemini | Gratuita em [aistudio.google.com](https://aistudio.google.com/app/apikey) |
+| Chave de API Groq | Gratuita em [console.groq.com](https://console.groq.com) — usado como fallback |
+| Espaço em disco | ~3 GB (vectorstore baixado automaticamente) |
+| RAM | 2 GB |
 
-### 1. Clone o repositório
+### Passo 1 — Clone o repositório
 
 ```bash
 git clone https://github.com/<seu-usuario>/projeto_rag.git
 cd projeto_rag
 ```
 
-### 2. Execute o script de setup
+### Passo 2 — Execute o setup
+
+O script cria o ambiente virtual, instala todas as dependências e prepara o `.env`.
 
 **Windows:**
 ```bat
@@ -68,19 +44,18 @@ setup.bat
 chmod +x setup.sh && ./setup.sh
 ```
 
-O script cria o `.venv`, instala todas as dependências e cria as pastas necessárias.
+### Passo 3 — Configure suas chaves de API
 
-### 3. Configure as chaves de API
+Abra o arquivo `.env` criado pelo setup e preencha:
 
-Edite o arquivo `.env` criado pelo setup:
-
-```bash
-# Abra o .env e preencha suas chaves:
-GROQ_API_KEY=sua_chave_aqui       # https://console.groq.com (gratuito)
-GEMINI_API_KEY=sua_chave_aqui     # https://aistudio.google.com (gratuito)
+```env
+GEMINI_API_KEY=sua_chave_aqui    # https://aistudio.google.com/app/apikey (gratuito)
+GROQ_API_KEY=sua_chave_aqui      # https://console.groq.com (gratuito, fallback)
+HF_REPO_ID=GuilhermeBarros12/rag-aneel-vectorstore  # já preenchido
+HF_TOKEN=seu_token_aqui          # https://huggingface.co/settings/tokens (tipo: Read)
 ```
 
-### 4. Ative o ambiente virtual
+### Passo 4 — Ative o ambiente virtual
 
 **Windows:**
 ```bat
@@ -92,73 +67,153 @@ GEMINI_API_KEY=sua_chave_aqui     # https://aistudio.google.com (gratuito)
 source .venv/bin/activate
 ```
 
-### 5. Execute o pipeline (ordem obrigatória)
+### Passo 5 — Inicie o pipeline
 
 ```bash
-# Passo 1 — Download dos documentos (~26.000 arquivos)
-# Tempo estimado: várias horas (depende da conexão)
-python scripts/downloads.py
-python scripts/download_extras.py
-
-# Passo 2 — Conversão PDF → Markdown
-python scripts/ingestao.py
-
-# Passo 3 — Chunking dos documentos
-python scripts/chunking.py
-
-# Passo 4 — Geração de embeddings e indexação no ChromaDB
-# Tempo estimado: 2-4 horas (508K chunks, modelo ~1 GB)
-python scripts/indexar.py
-
-# Passo 5 — Pipeline RAG interativo
 python scripts/pipeline.py
-
-# Passo 6 — Avaliação com RAGAS
-python scripts/avaliacao.py
 ```
 
-Todos os scripts possuem **retomada automática** — se interrompidos, continuam de onde pararam.
+Na **primeira execução**, o vectorstore (~3 GB) será baixado automaticamente do Hugging Face.
+Nas execuções seguintes, ele já estará em disco e o sistema inicia em segundos.
+
+**Modo direto (uma pergunta):**
+```bash
+python scripts/pipeline.py --query "Qual o prazo para reclamações na ANEEL?"
+```
+
+**Modo interativo (loop de perguntas):**
+```bash
+python scripts/pipeline.py
+# Digite suas perguntas e pressione Enter. Digite 'sair' para encerrar.
+```
 
 ---
 
-## Quick Start (com Docker)
+## Arquitetura do Pipeline
 
-> O Docker cobre os passos 2 a 6 do pipeline.
-> O download dos dados (passo 1) deve ser feito localmente antes,
-> pois requer o Google Chrome (Selenium).
-
-### 1. Clone, configure o .env e baixe os dados
-
-```bash
-git clone https://github.com/<seu-usuario>/projeto_rag.git
-cd projeto_rag
-cp .env.example .env
-# Edite .env com suas chaves de API
-
-# Download local (requer Chrome instalado):
-python -m venv .venv && source .venv/bin/activate  # ou setup.bat no Windows
-pip install -r requirements.txt
-cd scripts && python downloads.py && python download_extras.py && cd ..
+```
+Documentos ANEEL (PDFs, HTMLs, XLSXs)
+          │
+          ▼
+   [1] downloads.py          → baixa os arquivos da ANEEL (~26.000 docs)
+          │
+          ▼
+   [2] ingestao.py           → converte PDF/HTML → Markdown (.md)
+          │                     preservando tabelas e metadados
+          ▼
+   [3] chunking.py           → divide os .md em chunks de 512 chars
+          │                     com sobreposição de 80 chars → 508K chunks
+          ▼
+   [4] indexar.py            → gera embeddings multilinguais e
+          │                     persiste no ChromaDB (HNSW cosine)
+          ▼
+   [5] pipeline.py           → recebe query → recupera chunks →
+          │                     gera resposta com LLM (Gemini → Groq)
+          ▼
+   [6] avaliacao.py          → avalia com RAGAS (faithfulness,
+                                context_recall, answer_relevancy)
 ```
 
-### 2. Build e execução
+---
+
+## Reconstruir o pipeline do zero (avançado / opcional)
+
+> Esta seção é necessária **apenas** para quem quiser reprocessar todos os documentos
+> da ANEEL desde o início — por exemplo, para atualizar o corpus ou reproduzir o experimento completo.
+> Para uso normal, siga o Quick Start acima.
+
+### Pré-requisitos adicionais
+
+| Requisito | Detalhe |
+|-----------|---------|
+| Google Chrome | Para download automatizado via Selenium |
+| RAM | 8 GB recomendado (indexação de 508K chunks) |
+| Espaço em disco | ~15 GB (PDFs brutos + chunks + vectorstore) |
+| Tempo estimado | ~6-10 horas no total |
+
+### Passo 1 — Download dos documentos (~26.000 arquivos)
+
+O `downloads.py` usa o Selenium para navegar no portal da ANEEL e baixar todos os PDFs.
+O `download_extras.py` baixa os arquivos complementares (HTML, XLSX, XLSM).
+
+**Tempo estimado:** várias horas (depende da conexão). Ambos os scripts têm **retomada automática** — se interrompidos, continuam de onde pararam.
+
+```bash
+python scripts/downloads.py        # baixa os PDFs principais → dados/pdfs/
+python scripts/download_extras.py  # baixa HTMLs e planilhas  → dados/extras/
+```
+
+> Requer o Google Chrome instalado. O ChromeDriver é gerenciado automaticamente pelo `webdriver-manager`.
+
+### Passo 2 — Conversão PDF/HTML → Markdown
+
+Converte cada arquivo baixado para Markdown, preservando tabelas e adicionando metadados
+(título, autor, situação, assunto) no cabeçalho de cada arquivo.
+
+**Tempo estimado:** 1-2 horas. Tem retomada automática.
+
+```bash
+python scripts/ingestao.py   # gera .md em chunks_md/
+```
+
+### Passo 3 — Chunking dos documentos
+
+Divide cada Markdown em chunks de 512 caracteres com sobreposição de 80 caracteres,
+preservando tabelas inteiras e descartando trechos com menos de 50 caracteres (ruído).
+
+**Resultado:** ~508.000 arquivos `.txt` em `chunks/`
+
+```bash
+python scripts/chunking.py   # gera .txt em chunks/
+```
+
+### Passo 4 — Geração de embeddings e indexação
+
+Gera embeddings com o modelo `paraphrase-multilingual-mpnet-base-v2` (768 dimensões)
+e persiste tudo no ChromaDB com índice HNSW e similaridade de cosseno.
+
+**Tempo estimado:** 4-8 horas (508K chunks). Tem retomada automática — chunks já indexados são pulados.
+
+```bash
+python scripts/indexar.py    # popula vectorstore/
+```
+
+> Para máquinas com menos de 8 GB de RAM, use `--batch-size 32`.
+
+### Passo 5 — Upload do vectorstore para o Hugging Face
+
+Após a indexação, envie o vectorstore para o Hugging Face Hub para que outros
+possam usar o sistema sem precisar repetir o processo.
+
+```bash
+python scripts/upload_vectorstore.py
+```
+
+> Requer `HF_TOKEN` (tipo Write) e `HF_REPO_ID` configurados no `.env`.
+
+---
+
+## Rodar com Docker (avançado)
+
+> O Docker cobre os passos 2 a 6 do pipeline (ingestão, chunking, indexação, pipeline e avaliação).
+> O download dos dados (passo 1) deve ser feito localmente antes, pois requer o Google Chrome.
 
 ```bash
 # Build da imagem
 docker-compose build
 
-# Rodar cada etapa do pipeline
+# Rodar cada etapa
 docker-compose run rag python scripts/ingestao.py
 docker-compose run rag python scripts/chunking.py
 docker-compose run rag python scripts/indexar.py
 docker-compose run rag python scripts/pipeline.py
 docker-compose run rag python scripts/avaliacao.py
 
-# Ou shell interativo
+# Shell interativo
 docker-compose run rag bash
 ```
 
-Os dados são montados como volumes — nada é copiado para dentro da imagem.
+Os dados são montados como volumes — nenhum arquivo de dados é copiado para dentro da imagem.
 
 ---
 
@@ -198,31 +253,6 @@ projeto_rag/
 
 ---
 
-## Configuração Avançada
-
-### Parâmetros do indexar.py
-
-```bash
-# Customizar pasta de chunks ou batch size
-python indexar.py --chunks-dir ../chunks --batch-size 32
-
-# Ver todas as opções
-python indexar.py --help
-```
-
-### Parâmetros relevantes em cada script
-
-| Script | Parâmetro | Padrão | Descrição |
-|--------|-----------|--------|-----------|
-| `chunking.py` | `CHUNK_SIZE` | 512 | Tamanho máximo do chunk em caracteres |
-| `chunking.py` | `CHUNK_OVERLAP` | 80 | Sobreposição entre chunks consecutivos |
-| `indexar.py` | `BATCH_SIZE` | 64 | Chunks por lote de embedding |
-| `pipeline.py` | `TOP_K` | 5 | Chunks retornados por query |
-
-> Para máquinas com menos de 8 GB de RAM, reduza `BATCH_SIZE` para 32.
-
----
-
 ## Avaliação com RAGAS
 
 O pipeline é avaliado usando a biblioteca [RAGAS](https://docs.ragas.io/) com as seguintes métricas:
@@ -236,30 +266,27 @@ O pipeline é avaliado usando a biblioteca [RAGAS](https://docs.ragas.io/) com a
 
 ---
 
-## Dependências principais
+## Parâmetros configuráveis
 
-| Biblioteca | Versão | Finalidade |
-|-----------|--------|-----------|
-| `pymupdf4llm` | latest | Extração de PDF → Markdown |
-| `langchain-text-splitters` | latest | Chunking com RecursiveCharacterTextSplitter |
-| `sentence-transformers` | latest | Modelo de embeddings multilingual |
-| `chromadb` | latest | Banco vetorial com HNSW |
-| `groq` | latest | Cliente da API Groq (LLM gratuito) |
-| `ragas` | latest | Framework de avaliação RAG |
-| `selenium` | latest | Download automatizado da ANEEL |
+| Script | Parâmetro | Padrão | Descrição |
+|--------|-----------|--------|-----------|
+| `chunking.py` | `CHUNK_SIZE` | 512 | Tamanho máximo do chunk em caracteres |
+| `chunking.py` | `CHUNK_OVERLAP` | 80 | Sobreposição entre chunks consecutivos |
+| `indexar.py` | `BATCH_SIZE` | 64 | Chunks por lote de embedding |
+| `pipeline.py` | `TOP_K` | 5 | Chunks retornados por query |
 
 ---
 
 ## Troubleshooting
 
+**Download lento ou interrompido:**  
+Os scripts `downloads.py` e `download_extras.py` têm retomada automática. Basta rodar novamente — arquivos já baixados são pulados.
+
+**Indexação interrompida:**  
+O `indexar.py` verifica os IDs já presentes no ChromaDB antes de começar. Basta rodar novamente para continuar de onde parou.
+
 **`UnicodeEncodeError` no Windows:**  
-Os scripts foram escritos com saída ASCII pura para evitar esse erro. Se aparecer, certifique-se de rodar com o Python do `.venv`.
-
-**`FileNotFoundError: ../chunks_md`:**  
-Os scripts usam caminhos relativos e devem ser executados **de dentro da pasta `scripts/`**.
-
-**Download lento ou com erro:**  
-Os scripts de download possuem retomada automática. Rode novamente para continuar.
+Certifique-se de estar usando o Python do `.venv` (`.venv\Scripts\activate`).
 
 **Pouca RAM durante o `indexar.py`:**  
-Reduza `BATCH_SIZE` de 64 para 32 editando o arquivo ou usando `--batch-size 32`.
+Reduza o batch size: `python scripts/indexar.py --batch-size 32`
