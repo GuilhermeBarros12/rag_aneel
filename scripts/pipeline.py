@@ -119,6 +119,27 @@ def recuperar_chunks(
     return chunks
 
 
+def get_chunks_utilizados(
+    query: str,
+    colecao,
+    modelo: SentenceTransformer,
+    top_k: int = TOP_K,
+    filtro: Optional[dict] = None,
+) -> List[str]:
+    """Retorna os chunks recuperados pelo ChromaDB para uma query."""
+
+    return recuperar_chunks(query, colecao, modelo, top_k=top_k, filtro=filtro)
+
+
+def formatar_referencias(chunks: List[str]) -> str:
+    """Formata a lista de chunks para exibição de auditabilidade."""
+
+    if not chunks:
+        return "Nenhuma referência disponível."
+
+    return "\n\n".join(f"[Trecho {i+1}] {chunk}" for i, chunk in enumerate(chunks))
+
+
 # ============================================================
 # GERADOR — monta o prompt e chama o LLM
 # ============================================================
@@ -126,7 +147,7 @@ def recuperar_chunks(
 PROMPT_TEMPLATE = """Você é um assistente especializado em regulação do setor elétrico brasileiro.
 Responda à pergunta usando APENAS as informações dos trechos regulatórios abaixo.
 Se a resposta não estiver nos trechos, responda: "Não encontrei informação suficiente nos documentos disponíveis."
-Seja objetivo e cite o trecho relevante quando possível.
+Seja objetivo e sempre cite a fonte da sua resposta usando a marcação fornecida (ex: 'De acordo com o [Trecho 1]...').
 
 --- TRECHOS RECUPERADOS ---
 {contexto}
@@ -147,20 +168,23 @@ def montar_prompt(query: str, chunks: List[str]) -> str:
 
 
 def gerar_com_gemini(prompt: str) -> str:
-    """
-    Chama a API do Gemini 1.5 Flash (LLM primário, gratuito).
-    Lança exceção se a key não estiver configurada ou o limite for atingido.
-    """
-
-    import google.generativeai as genai
+    # Mudança no import (agora vem de google)
+    from google import genai 
+    import os
 
     api_key = os.getenv("GEMINI_API_KEY", "")
     if not api_key:
         raise ValueError("GEMINI_API_KEY nao configurada no .env")
 
-    genai.configure(api_key=api_key)
-    model = genai.GenerativeModel("gemini-1.5-flash")
-    response = model.generate_content(prompt)
+    # O NOVO JEITO: Criamos um cliente em vez de usar .configure
+    client = genai.Client(api_key=api_key)
+    
+    # A chamada também muda levemente para client.models...
+    response = client.models.generate_content(
+        model="gemini-2.0-flash", # Use a versão estável mais recente
+        contents=prompt
+    )
+    
     return response.text.strip()
 
 
@@ -178,6 +202,7 @@ def gerar_com_groq(prompt: str) -> str:
 
     client = Groq(api_key=api_key)
     response = client.chat.completions.create(
+        temperature=0.0,
         model    = "llama-3.3-70b-versatile",
         messages = [{"role": "user", "content": prompt}],
     )
@@ -216,7 +241,7 @@ def gerar_resposta(prompt: str) -> str:
 # PIPELINE COMPLETO
 # ============================================================
 
-def responder(query: str, colecao, modelo: SentenceTransformer) -> str:
+def responder(query: str, colecao, modelo: SentenceTransformer) -> tuple[str, List[str]]:
     """
     Pipeline RAG completo: query → retrieve → generate → resposta.
 
@@ -229,15 +254,19 @@ def responder(query: str, colecao, modelo: SentenceTransformer) -> str:
     """
 
     # 1. Recupera os chunks mais relevantes
-    chunks = recuperar_chunks(query, colecao, modelo)
+    # filtra documentos revogados — evita retornar legislação obsoleta
+    chunks = get_chunks_utilizados(
+        query, colecao, modelo,
+        filtro={"situacao": {"$ne": "Situação:REVOGADA"}}
+    )
 
     # 2. Monta o prompt com os chunks como contexto
     prompt = montar_prompt(query, chunks)
 
-    # 3. Gera a resposta via LLM (Gemini → Groq)
+    # 3. Gera a resposta via LLM (Gemini → Groq) 
     resposta = gerar_resposta(prompt)
 
-    return resposta
+    return resposta, chunks
 
 
 # ============================================================
@@ -281,8 +310,11 @@ def main() -> None:
         # Modo direto: responde uma pergunta e encerra
         print(f"Pergunta: {args.query}\n")
         print("=" * 60)
-        resposta = responder(args.query, colecao, modelo)
+        resposta, chunks = responder(args.query, colecao, modelo)
         print(resposta)
+        print("\n" + "-" * 60)
+        print("Referências usadas:")
+        print(formatar_referencias(chunks))
 
     else:
         # Modo interativo: loop de perguntas até o usuário sair
@@ -306,10 +338,12 @@ def main() -> None:
                 break
 
             print()
-            resposta = responder(query, colecao, modelo)
+            resposta, chunks = responder(query, colecao, modelo)
             print("-" * 60)
             print(resposta)
             print("-" * 60)
+            print("Referências usadas:")
+            print(formatar_referencias(chunks))
 
 
 if __name__ == "__main__":

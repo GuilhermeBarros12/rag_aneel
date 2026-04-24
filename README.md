@@ -15,38 +15,41 @@ Sistema de **Retrieval-Augmented Generation (RAG)** desenvolvido para responder 
 
 ### Pré-requisitos
 
-| Requisito | Detalhe |
-|-----------|---------|
-| Python 3.10+ | [Download](https://www.python.org/downloads/) |
-| Chave de API Gemini | Gratuita em [aistudio.google.com](https://aistudio.google.com/app/apikey) |
-| Chave de API Groq | Gratuita em [console.groq.com](https://console.groq.com) — usado como fallback |
-| Espaço em disco | ~3 GB (vectorstore baixado automaticamente) |
-| RAM | 2 GB |
+| Requisito           | Detalhe                                                                        |
+| ------------------- | ------------------------------------------------------------------------------ |
+| Python 3.10+        | [Download](https://www.python.org/downloads/)                                  |
+| Chave de API Gemini | Gratuita em [aistudio.google.com](https://aistudio.google.com/app/apikey)      |
+| Chave de API Groq   | Gratuita em [console.groq.com](https://console.groq.com) — usado como fallback |
+| Espaço em disco     | ~3 GB (vectorstore baixado automaticamente)                                    |
+| RAM                 | 2 GB                                                                           |
 
 ### Passo 1 — Clone o repositório
 
 ```bash
-git clone https://github.com/<seu-usuario>/projeto_rag.git
+git clone https://github.com/GuilhermeBarros12/rag_aneel.git
 cd projeto_rag
 ```
 
 ### Passo 2 — Execute o setup
 
 O script cria o ambiente virtual, instala todas as dependências e prepara o `.env`.
+Nota: Se o script de setup falhar, você pode criar o ambiente manualmente: python -m venv .venv e depois pip install -r requirements.txt.
 
 **Windows:**
+
 ```bat
 setup.bat
 ```
 
 **Linux/Mac:**
+
 ```bash
 chmod +x setup.sh && ./setup.sh
 ```
 
 ### Passo 3 — Configure suas chaves de API
 
-Abra o arquivo `.env` criado pelo setup e preencha:
+Abra o arquivo `.env` criado pelo setup e preencha(OBS: Caso tenha feito o processo manual, copie o arquivo .env.example para um novo arquivo chamado .env e preencha com suas chaves: )
 
 ```env
 GEMINI_API_KEY=sua_chave_aqui    # https://aistudio.google.com/app/apikey (gratuito)
@@ -58,11 +61,13 @@ HF_TOKEN=seu_token_aqui          # https://huggingface.co/settings/tokens (tipo:
 ### Passo 4 — Ative o ambiente virtual
 
 **Windows:**
+
 ```bat
 .venv\Scripts\activate
 ```
 
 **Linux/Mac:**
+
 ```bash
 source .venv/bin/activate
 ```
@@ -77,11 +82,13 @@ Na **primeira execução**, o vectorstore (~3 GB) será baixado automaticamente 
 Nas execuções seguintes, ele já estará em disco e o sistema inicia em segundos.
 
 **Modo direto (uma pergunta):**
+
 ```bash
 python scripts/pipeline.py --query "Qual o prazo para reclamações na ANEEL?"
 ```
 
 **Modo interativo (loop de perguntas):**
+
 ```bash
 python scripts/pipeline.py
 # Digite suas perguntas e pressione Enter. Digite 'sair' para encerrar.
@@ -124,12 +131,12 @@ Documentos ANEEL (PDFs, HTMLs, XLSXs)
 
 ### Pré-requisitos adicionais
 
-| Requisito | Detalhe |
-|-----------|---------|
-| Google Chrome | Para download automatizado via Selenium |
-| RAM | 8 GB recomendado (indexação de 508K chunks) |
+| Requisito       | Detalhe                                     |
+| --------------- | ------------------------------------------- |
+| Google Chrome   | Para download automatizado via Selenium     |
+| RAM             | 8 GB recomendado (indexação de 508K chunks) |
 | Espaço em disco | ~15 GB (PDFs brutos + chunks + vectorstore) |
-| Tempo estimado | ~6-10 horas no total |
+| Tempo estimado  | ~6-10 horas no total                        |
 
 ### Passo 1 — Download dos documentos (~26.000 arquivos)
 
@@ -257,23 +264,23 @@ projeto_rag/
 
 O pipeline é avaliado usando a biblioteca [RAGAS](https://docs.ragas.io/) com as seguintes métricas:
 
-| Métrica | O que mede |
-|---------|-----------|
-| **Faithfulness** | A resposta está ancorada nos chunks recuperados? |
-| **Answer Relevancy** | A resposta responde de fato à pergunta? |
-| **Context Precision** | Os chunks retornados são relevantes para a query? |
-| **Context Recall** | Os chunks cobrem completamente a resposta esperada? |
+| Métrica               | O que mede                                          |
+| --------------------- | --------------------------------------------------- |
+| **Faithfulness**      | A resposta está ancorada nos chunks recuperados?    |
+| **Answer Relevancy**  | A resposta responde de fato à pergunta?             |
+| **Context Precision** | Os chunks retornados são relevantes para a query?   |
+| **Context Recall**    | Os chunks cobrem completamente a resposta esperada? |
 
 ---
 
 ## Parâmetros configuráveis
 
-| Script | Parâmetro | Padrão | Descrição |
-|--------|-----------|--------|-----------|
-| `chunking.py` | `CHUNK_SIZE` | 512 | Tamanho máximo do chunk em caracteres |
-| `chunking.py` | `CHUNK_OVERLAP` | 80 | Sobreposição entre chunks consecutivos |
-| `indexar.py` | `BATCH_SIZE` | 64 | Chunks por lote de embedding |
-| `pipeline.py` | `TOP_K` | 5 | Chunks retornados por query |
+| Script        | Parâmetro       | Padrão | Descrição                              |
+| ------------- | --------------- | ------ | -------------------------------------- |
+| `chunking.py` | `CHUNK_SIZE`    | 512    | Tamanho máximo do chunk em caracteres  |
+| `chunking.py` | `CHUNK_OVERLAP` | 80     | Sobreposição entre chunks consecutivos |
+| `indexar.py`  | `BATCH_SIZE`    | 64     | Chunks por lote de embedding           |
+| `pipeline.py` | `TOP_K`         | 5      | Chunks retornados por query            |
 
 ---
 
@@ -290,3 +297,14 @@ Certifique-se de estar usando o Python do `.venv` (`.venv\Scripts\activate`).
 
 **Pouca RAM durante o `indexar.py`:**  
 Reduza o batch size: `python scripts/indexar.py --batch-size 32`
+
+**Erro "Microsoft Visual C++ 14.0 is required" no Windows:**
+Esse erro ocorre ao instalar a biblioteca ragas para avaliação. Baixe o Microsoft C++ Build Tools, instale a carga de trabalho "Desenvolvimento para desktop com C++" e tente novamente.
+
+## Contato
+
+Desenvolvido por Guilherme Barros - [\[LinkedIn\]](https://www.linkedin.com/in/guilherme-barros-61861a368/)
+
+## Licença
+
+Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.

@@ -35,3 +35,6 @@ desktop.ini
 .vscode/
 .idea/
 *.code-workspace
+
+#--avaliar.py--
+avaliacao/

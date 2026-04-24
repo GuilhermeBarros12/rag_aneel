@@ -25,13 +25,17 @@ sentence-transformers
 chromadb
 
 # ── LLM (geração de respostas) ──────────────────────────────────
-# google-generativeai: cliente oficial da API Gemini (primário)
-google-generativeai
+# google-genai: cliente oficial da API Gemini (primário)
+google-genai
 # groq: cliente oficial da Groq API — fallback gratuito
 groq
 
-# ── Avaliação ───────────────────────────────────────────────────
-# ragas: calcula faithfulness, context_recall, answer_relevancy, etc.
+# --- AVALIAÇÃO DO RAG ---
+# AVISO PARA USUÁRIOS DE WINDOWS: 
+# A instalação do 'ragas' pode falhar pedindo o "Microsoft C++ Build Tools".
+# Se isso acontecer, baixe a ferramenta no site da Microsoft e marque a opção:
+# "Desenvolvimento para desktop com C++" durante a instalação.
+datasets
 ragas
 
 # ── Utilitários ─────────────────────────────────────────────────
