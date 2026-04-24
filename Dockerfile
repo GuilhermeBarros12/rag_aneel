@@ -37,7 +37,7 @@ COPY scripts/ ./scripts/
 
 # Cria as pastas de dados esperadas pelo pipeline
 # (serão sobrescritas pelos volumes do docker-compose)
-RUN mkdir -p dados chunks_md chunks vectorstore
+RUN mkdir -p dados/pdfs dados/jsons dados/extras chunks_md chunks vectorstore
 
 # Por padrão, exibe ajuda de uso
 CMD ["python", "-c", "print('RAG ANEEL container pronto. Use docker-compose run rag python scripts/<script>.py')"]

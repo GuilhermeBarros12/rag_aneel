@@ -41,6 +41,7 @@ echo       Pronto.
 echo [4/4] Criando pastas do pipeline ...
 if not exist "dados\pdfs"           mkdir dados\pdfs
 if not exist "dados\jsons"          mkdir dados\jsons
+if not exist "dados\extras"         mkdir dados\extras
 if not exist "chunks_md"            mkdir chunks_md
 if not exist "chunks"               mkdir chunks
 if not exist "vectorstore"          mkdir vectorstore

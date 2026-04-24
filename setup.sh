@@ -46,7 +46,7 @@ echo "      Pronto."
 
 # Cria pastas necessárias
 echo "[4/4] Criando pastas do pipeline ..."
-mkdir -p dados/pdfs dados/jsons chunks_md chunks vectorstore
+mkdir -p dados/pdfs dados/jsons dados/extras chunks_md chunks vectorstore
 echo "      Pronto."
 
 # Cria .env a partir do .env.example se ainda não existir

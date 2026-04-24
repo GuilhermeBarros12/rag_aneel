@@ -1,6 +1,7 @@
 import os                          # para navegar no sistema de arquivos
 import re                          # para extrair o bloco YAML dos chunks com regex
 import argparse                    # para receber argumentos via linha de comando
+from pathlib import Path
 from typing import Dict, List, Set, Tuple
 
 from tqdm import tqdm              # barra de progresso visual no terminal
@@ -13,8 +14,11 @@ from sentence_transformers import SentenceTransformer
 # CONFIGURAÇÕES PADRÃO
 # ============================================================
 
-PASTA_CHUNKS      = "../chunks"       # onde estão os .txt gerados pelo chunking.py
-PASTA_VECTORSTORE = "../vectorstore"  # onde o ChromaDB vai salvar os dados em disco
+# Caminhos resolvidos a partir da raiz do projeto (funciona de qualquer CWD)
+ROOT = Path(__file__).resolve().parent.parent
+
+PASTA_CHUNKS      = str(ROOT / "chunks")       # onde estão os .txt gerados pelo chunking.py
+PASTA_VECTORSTORE = str(ROOT / "vectorstore")  # onde o ChromaDB vai salvar os dados em disco
 
 NOME_COLECAO = "aneel_docs"           # nome da coleção dentro do ChromaDB
 

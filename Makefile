@@ -4,7 +4,6 @@
 # ============================================================
 
 PYTHON = .venv/bin/python
-SCRIPTS = scripts
 
 .PHONY: help setup download ingestao chunking indexar pipeline avaliar docker-build docker-run
 
@@ -12,33 +11,33 @@ help:  ## Exibe esta ajuda
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | \
 		awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[36m%-15s\033[0m %s\n", $$1, $$2}'
 
-# ── Setup ─────────────────────────────────────────────────────
+# ── Setup ────────────────────────────────────────────────────────
 
 setup:  ## Cria .venv e instala dependências
 	bash setup.sh
 
-# ── Pipeline (ordem de execução) ──────────────────────────────
+# ── Pipeline (ordem de execução) ───────────────────────────────────────
 
 download:  ## [Passo 1] Baixa os documentos da ANEEL
-	cd $(SCRIPTS) && $(PYTHON) downloads.py
-	cd $(SCRIPTS) && $(PYTHON) download_extras.py
+	$(PYTHON) scripts/downloads.py
+	$(PYTHON) scripts/download_extras.py
 
 ingestao:  ## [Passo 2] Converte PDFs em Markdown
-	cd $(SCRIPTS) && $(PYTHON) ingestao.py
+	$(PYTHON) scripts/ingestao.py
 
 chunking:  ## [Passo 3] Divide os Markdowns em chunks
-	cd $(SCRIPTS) && $(PYTHON) chunking.py
+	$(PYTHON) scripts/chunking.py
 
 indexar:  ## [Passo 4] Gera embeddings e indexa no ChromaDB
-	cd $(SCRIPTS) && $(PYTHON) indexar.py
+	$(PYTHON) scripts/indexar.py
 
 pipeline:  ## [Passo 5] Inicia o pipeline RAG interativo
-	cd $(SCRIPTS) && $(PYTHON) pipeline.py
+	$(PYTHON) scripts/pipeline.py
 
 avaliar:  ## [Passo 6] Avalia com RAGAS nas 400 perguntas
-	cd $(SCRIPTS) && $(PYTHON) avaliacao.py
+	$(PYTHON) scripts/avaliacao.py
 
-# ── Docker ────────────────────────────────────────────────────
+# ── Docker ────────────────────────────────────────────────────────
 
 docker-build:  ## Build da imagem Docker
 	docker-compose build

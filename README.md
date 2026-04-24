@@ -94,32 +94,27 @@ source .venv/bin/activate
 
 ### 5. Execute o pipeline (ordem obrigatória)
 
-> **Importante:** todos os scripts devem ser rodados **de dentro da pasta `scripts/`**,
-> pois usam caminhos relativos.
-
 ```bash
-cd scripts
-
 # Passo 1 — Download dos documentos (~26.000 arquivos)
 # Tempo estimado: várias horas (depende da conexão)
-python downloads.py
-python download_extras.py
+python scripts/downloads.py
+python scripts/download_extras.py
 
 # Passo 2 — Conversão PDF → Markdown
-python ingestao.py
+python scripts/ingestao.py
 
 # Passo 3 — Chunking dos documentos
-python chunking.py
+python scripts/chunking.py
 
 # Passo 4 — Geração de embeddings e indexação no ChromaDB
-# Tempo estimado: 2-4 horas (168K chunks, modelo ~1 GB)
-python indexar.py
+# Tempo estimado: 2-4 horas (508K chunks, modelo ~1 GB)
+python scripts/indexar.py
 
 # Passo 5 — Pipeline RAG interativo
-python pipeline.py
+python scripts/pipeline.py
 
 # Passo 6 — Avaliação com RAGAS
-python avaliacao.py
+python scripts/avaliacao.py
 ```
 
 Todos os scripts possuem **retomada automática** — se interrompidos, continuam de onde pararam.
@@ -179,12 +174,13 @@ projeto_rag/
 │   ├── chunking.py             # [Passo 3] Markdown → chunks .txt
 │   ├── indexar.py              # [Passo 4] Chunks → embeddings → ChromaDB
 │   ├── pipeline.py             # [Passo 5] Pipeline RAG (query → resposta)
+│   ├── upload_vectorstore.py   # Sobe o vectorstore para o Hugging Face
 │   └── avaliacao.py            # [Passo 6] Avaliação RAGAS
 │
 ├── dados/                      # Dados brutos (não versionados)
 │   ├── pdfs/                   # PDFs originais da ANEEL
 │   ├── jsons/                  # Metadados dos documentos
-│   └── html, xlsm, etc/        # Formatos alternativos
+│   └── extras/                 # HTMLs e planilhas (.xlsx, .xlsm)
 │
 ├── chunks_md/                  # Markdowns gerados (não versionados)
 ├── chunks/                     # Chunks .txt gerados (não versionados)

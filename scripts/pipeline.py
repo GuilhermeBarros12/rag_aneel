@@ -1,12 +1,14 @@
 import os
 import sys
 import argparse
+from pathlib import Path
 from typing import List, Optional
 
 from dotenv import load_dotenv
 
 # Carrega as variáveis do .env (GEMINI_API_KEY, GROQ_API_KEY, etc.)
-load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), "..", ".env"))
+ROOT = Path(__file__).resolve().parent.parent
+load_dotenv(dotenv_path=ROOT / ".env")
 
 import chromadb
 from sentence_transformers import SentenceTransformer
@@ -15,7 +17,7 @@ from sentence_transformers import SentenceTransformer
 # CONFIGURAÇÕES
 # ============================================================
 
-PASTA_VECTORSTORE = "../vectorstore"
+PASTA_VECTORSTORE = str(ROOT / "vectorstore")
 
 # Mesmo modelo usado na indexação — NUNCA trocar, senão os vetores ficam incompatíveis
 MODELO_EMBEDDING = "sentence-transformers/paraphrase-multilingual-mpnet-base-v2"
@@ -153,7 +155,7 @@ def gerar_com_gemini(prompt: str) -> str:
     import google.generativeai as genai
 
     api_key = os.getenv("GEMINI_API_KEY", "")
-    if not api_key or api_key == "sua_chave_gemini_aqui":
+    if not api_key:
         raise ValueError("GEMINI_API_KEY nao configurada no .env")
 
     genai.configure(api_key=api_key)
@@ -176,7 +178,7 @@ def gerar_com_groq(prompt: str) -> str:
 
     client = Groq(api_key=api_key)
     response = client.chat.completions.create(
-        model    = "llama-3.1-70b-versatile",
+        model    = "llama-3.3-70b-versatile",
         messages = [{"role": "user", "content": prompt}],
     )
     return response.choices[0].message.content.strip()

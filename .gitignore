@@ -1,7 +1,7 @@
 # ── Dados brutos e gerados — muito pesados para o GitHub ───────
 dados/pdfs/
 dados/jsons/
-dados/html, xlsm, etc/
+dados/extras/
 chunks_md/
 chunks/
 vectorstore/
