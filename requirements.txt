@@ -40,7 +40,7 @@ groq
 # Se isso acontecer, baixe a ferramenta no site da Microsoft e marque a opção:
 # "Desenvolvimento para desktop com C++" durante a instalação.
 datasets
-ragas
+ragas==0.1.21
 
 # ── Utilitários ─────────────────────────────────────────────────
 # tqdm: barra de progresso nos loops de download e indexação
