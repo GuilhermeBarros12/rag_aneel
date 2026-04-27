@@ -10,13 +10,33 @@ echo  RAG ANEEL - Setup do Ambiente (Windows)
 echo ============================================================
 echo.
 
-:: Verifica se Python está instalado
+:: Verifica se Python está instalado e se é versão 3.10+
 python --version >nul 2>&1
 if errorlevel 1 (
     echo [ERRO] Python nao encontrado. Instale em: https://www.python.org/downloads/
     pause
     exit /b 1
 )
+
+:: Verifica versão mínima (3.10)
+for /f "tokens=2 delims= " %%v in ('python --version 2^>^&1') do set PYVER=%%v
+for /f "tokens=1,2 delims=." %%a in ("%PYVER%") do (
+    set PYMAJOR=%%a
+    set PYMINOR=%%b
+)
+if %PYMAJOR% LSS 3 (
+    echo [ERRO] Python 3.10 ou superior necessario. Versao encontrada: %PYVER%
+    echo Baixe em: https://www.python.org/downloads/
+    pause
+    exit /b 1
+)
+if %PYMAJOR% EQU 3 if %PYMINOR% LSS 10 (
+    echo [ERRO] Python 3.10 ou superior necessario. Versao encontrada: %PYVER%
+    echo Baixe em: https://www.python.org/downloads/
+    pause
+    exit /b 1
+)
+echo [OK] Python %PYVER% detectado.
 
 :: Cria o ambiente virtual se não existir
 if not exist ".venv" (
