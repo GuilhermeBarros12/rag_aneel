@@ -27,7 +27,7 @@ Sistema de **Retrieval-Augmented Generation (RAG)** desenvolvido para responder 
 
 ```bash
 git clone https://github.com/GuilhermeBarros12/rag_aneel.git
-cd projeto_rag
+cd rag_aneel
 ```
 
 ### Passo 2 — Execute o setup
