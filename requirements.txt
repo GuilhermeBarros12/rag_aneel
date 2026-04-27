@@ -1,3 +1,7 @@
+# ── Versão mínima do Python ─────────────────────────────────────
+# Este projeto requer Python 3.10 ou superior.
+# Verifique sua versão com: python --version
+
 # ── Extração e chunking de documentos ──────────────────────────
 # langchain-text-splitters: fornece o RecursiveCharacterTextSplitter usado no chunking
 langchain-text-splitters
