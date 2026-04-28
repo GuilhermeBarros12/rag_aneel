@@ -37,7 +37,7 @@ services:
 #   docker-compose run rag python scripts/chunking.py
 #   docker-compose run rag python scripts/indexar.py
 #   docker-compose run rag python scripts/pipeline.py
-#   docker-compose run rag python scripts/avaliacao.py
+#   docker-compose run rag python scripts/avaliar.py
 #
 # Shell interativo:
 #   docker-compose run rag bash

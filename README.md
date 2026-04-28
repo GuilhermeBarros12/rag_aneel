@@ -17,18 +17,23 @@ Sistema de **Retrieval-Augmented Generation (RAG)** desenvolvido para responder 
 
 | Requisito           | Detalhe                                                                        |
 | ------------------- | ------------------------------------------------------------------------------ |
+| Git                 | [Download](https://git-scm.com/downloads) (ou baixe o repositório como .ZIP)   |
 | Python 3.10+        | [Download](https://www.python.org/downloads/)                                  |
 | Chave de API Gemini | Gratuita em [aistudio.google.com](https://aistudio.google.com/app/apikey)      |
 | Chave de API Groq   | Gratuita em [console.groq.com](https://console.groq.com) — usado como fallback |
 | Espaço em disco     | ~3 GB (vectorstore baixado automaticamente)                                    |
 | RAM                 | 2 GB                                                                           |
 
-### Passo 1 — Clone o repositório
+### Passo 1 — Obtenha o código do repositório
 
+**Opção A: Usando o Git (Recomendado)**
 ```bash
 git clone https://github.com/GuilhermeBarros12/rag_aneel.git
 cd rag_aneel
 ```
+
+**Opção B: Sem usar o Git (Download via ZIP)**
+Caso não tenha o Git instalado, acesse a página do repositório no GitHub, clique no botão verde **"<> Code"** e selecione **"Download ZIP"**. Extraia a pasta e abra o terminal dentro dela.
 
 ### Passo 2 — Execute o setup
 
@@ -38,7 +43,7 @@ Nota: Se o script de setup falhar, você pode criar o ambiente manualmente: pyth
 **Windows:**
 
 ```bat
-setup.bat
+.\setup.bat
 ```
 
 **Linux/Mac:**
@@ -117,7 +122,7 @@ Documentos ANEEL (PDFs, HTMLs, XLSXs)
    [5] pipeline.py           → recebe query → recupera chunks →
           │                     gera resposta com LLM (Gemini → Groq)
           ▼
-   [6] avaliacao.py          → avalia com RAGAS (faithfulness,
+   [6] avaliar.py            → avalia com RAGAS (faithfulness,
                                 context_recall, answer_relevancy)
 ```
 
@@ -214,7 +219,7 @@ docker-compose run rag python scripts/ingestao.py
 docker-compose run rag python scripts/chunking.py
 docker-compose run rag python scripts/indexar.py
 docker-compose run rag python scripts/pipeline.py
-docker-compose run rag python scripts/avaliacao.py
+docker-compose run rag python scripts/avaliar.py
 
 # Shell interativo
 docker-compose run rag bash
@@ -237,7 +242,7 @@ projeto_rag/
 │   ├── indexar.py              # [Passo 4] Chunks → embeddings → ChromaDB
 │   ├── pipeline.py             # [Passo 5] Pipeline RAG (query → resposta)
 │   ├── upload_vectorstore.py   # Sobe o vectorstore para o Hugging Face
-│   └── avaliacao.py            # [Passo 6] Avaliação RAGAS
+│   └── avaliar.py              # [Passo 6] Avaliação RAGAS
 │
 ├── dados/                      # Dados brutos (não versionados)
 │   ├── pdfs/                   # PDFs originais da ANEEL

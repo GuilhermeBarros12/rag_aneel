@@ -35,7 +35,7 @@ pipeline:  ## [Passo 5] Inicia o pipeline RAG interativo
 	$(PYTHON) scripts/pipeline.py
 
 avaliar:  ## [Passo 6] Avalia com RAGAS nas 400 perguntas
-	$(PYTHON) scripts/avaliacao.py
+	$(PYTHON) scripts/avaliar.py
 
 # ── Docker ────────────────────────────────────────────────────────
 

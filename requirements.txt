@@ -29,8 +29,10 @@ sentence-transformers
 chromadb
 
 # ── LLM (geração de respostas) ──────────────────────────────────
-# google-genai: cliente oficial da API Gemini (primário)
+# google-genai: cliente oficial da API Gemini (novo SDK)
 google-genai
+# google-generativeai: cliente oficial da API Gemini (SDK legado usado no avaliar.py)
+google-generativeai
 # groq: cliente oficial da Groq API — fallback gratuito
 groq
 
