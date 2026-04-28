@@ -318,6 +318,13 @@ Isso significa que as dependências do projeto não foram instaladas no seu ambi
 pip install -r requirements.txt
 ```
 
+**Erro gigantesco com tela vermelha sobre `numpy`, `metadata-generation-failed` ou `invalid register` (Ninja/C++):**  
+Isso acontece quando o Windows tenta compilar bibliotecas na unha por não encontrar uma versão pré-pronta. Motivos mais comuns:
+1. **Você está usando o Python 3.13** (muito novo, incompatível com muitas libs de IA). Solução: instale o **Python 3.11 ou 3.12** e recrie o ambiente virtual.
+2. **Você instalou o Python versão 32-bits.** Solução: Baixe a versão 64-bits no site oficial.
+3. **O seu instalador `pip` está velho.** Tente rodar `python -m pip install --upgrade pip` antes de instalar as dependências.
+*Dica rápida:* Se você só quer rodar o projeto e não vai avaliar as respostas com o script `avaliar.py`, comente a linha `ragas==0.1.21` no `requirements.txt` com um `#`. Ele costuma ser o culpado dessas falhas no Windows.
+
 ## Contato
 
 Desenvolvido por Guilherme Barros - [\[LinkedIn\]](https://www.linkedin.com/in/guilherme-barros-61861a368/)
