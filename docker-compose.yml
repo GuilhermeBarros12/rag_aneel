@@ -16,10 +16,10 @@ services:
     # Isso permite que os dados baixados localmente fiquem acessíveis
     # ao container sem precisar copiá-los para a imagem.
     volumes:
-      - ./dados:/app/dados               # dados brutos (PDFs, HTMLs, etc.)
-      - ./chunks_md:/app/chunks_md       # markdowns gerados pela ingestão
-      - ./chunks:/app/chunks             # chunks .txt gerados pelo chunking
-      - ./vectorstore:/app/vectorstore   # índice ChromaDB persistido
+      - ./dados:/app/dados # dados brutos (PDFs, HTMLs, etc.)
+      - ./chunks_md:/app/chunks_md # markdowns gerados pela ingestão
+      - ./chunks:/app/chunks # chunks .txt gerados pelo chunking
+      - ./vectorstore:/app/vectorstore # índice ChromaDB persistido
 
     # Mantém o container ativo para execuções interativas
     stdin_open: true

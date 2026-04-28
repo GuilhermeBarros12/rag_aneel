@@ -59,7 +59,7 @@ Abra o arquivo `.env` criado pelo setup e preencha(OBS: Caso tenha feito o proce
 ```env
 GEMINI_API_KEY=sua_chave_aqui    # https://aistudio.google.com/app/apikey (gratuito)
 GROQ_API_KEY=sua_chave_aqui      # https://console.groq.com (gratuito, fallback)
-HF_REPO_ID=GuilhermeBarros12/rag-aneel-vectorstore  # já preenchido
+HF_REPO_ID=guilhermebarros/rag-aneel-vectorstore  # já preenchido
 HF_TOKEN=seu_token_aqui          # https://huggingface.co/settings/tokens (tipo: Read)
 ```
 
