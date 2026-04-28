@@ -312,6 +312,12 @@ Isso acontece por causa da política de segurança padrão do PowerShell. Para r
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 ```
 
+**Erro `ModuleNotFoundError: No module named 'dotenv'` (ou qualquer outro módulo):**  
+Isso significa que as dependências do projeto não foram instaladas no seu ambiente virtual (o que geralmente acontece se o `setup.bat` falhar). Com o ambiente ativado (mostrando `(.venv)` no terminal), instale tudo manualmente rodando:
+```bash
+pip install -r requirements.txt
+```
+
 ## Contato
 
 Desenvolvido por Guilherme Barros - [\[LinkedIn\]](https://www.linkedin.com/in/guilherme-barros-61861a368/)
