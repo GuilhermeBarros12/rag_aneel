@@ -323,7 +323,7 @@ Isso acontece quando o Windows tenta compilar bibliotecas na unha por não encon
 1. **Você está usando o Python 3.13** (muito novo, incompatível com muitas libs de IA). Solução: instale o **Python 3.11 ou 3.12** e recrie o ambiente virtual.
 2. **Você instalou o Python versão 32-bits.** Solução: Baixe a versão 64-bits no site oficial.
 3. **O seu instalador `pip` está velho.** Tente rodar `python -m pip install --upgrade pip` antes de instalar as dependências.
-*Dica rápida:* Se você só quer rodar o projeto e não vai avaliar as respostas com o script `avaliar.py`, comente a linha `ragas==0.1.21` no `requirements.txt` com um `#`. Ele costuma ser o culpado dessas falhas no Windows.
+*Dica rápida:* A biblioteca `ragas` já vem comentada com um `#` no `requirements.txt` por padrão justamente para evitar essa falha no Windows. Se você precisar rodar a avaliação (`avaliar.py`), terá que descomentá-la, mas esteja ciente das restrições de versão do Python acima.
 
 ## Contato
 

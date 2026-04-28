@@ -40,8 +40,8 @@ source .venv/bin/activate
 
 # Instala dependências
 echo "[3/4] Instalando dependências (requirements.txt) ..."
-pip install --upgrade pip --quiet
-pip install -r requirements.txt --quiet
+pip install --upgrade pip
+pip install -r requirements.txt
 echo "      Pronto."
 
 # Cria pastas necessárias

@@ -53,8 +53,8 @@ call .venv\Scripts\activate.bat
 
 :: Instala dependências
 echo [3/4] Instalando dependencias (requirements.txt) ...
-python -m pip install --upgrade pip --quiet
-pip install -r requirements.txt --quiet
+python -m pip install --upgrade pip
+pip install -r requirements.txt
 echo       Pronto.
 
 :: Cria pastas necessárias para o pipeline
