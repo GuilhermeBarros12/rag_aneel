@@ -306,6 +306,12 @@ Reduza o batch size: `python scripts/indexar.py --batch-size 32`
 **Erro "Microsoft Visual C++ 14.0 is required" no Windows:**
 Esse erro ocorre ao instalar a biblioteca ragas para avaliação. Baixe o Microsoft C++ Build Tools, instale a carga de trabalho "Desenvolvimento para desktop com C++" e tente novamente.
 
+**Erro `O arquivo .venv\Scripts\Activate.ps1 não pode ser carregado` no Windows:**  
+Isso acontece por causa da política de segurança padrão do PowerShell. Para resolver, rode este comando no terminal para liberar a execução de scripts para o seu usuário (confirme com `S` ou `Y` se perguntar):
+```powershell
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+```
+
 ## Contato
 
 Desenvolvido por Guilherme Barros - [\[LinkedIn\]](https://www.linkedin.com/in/guilherme-barros-61861a368/)
