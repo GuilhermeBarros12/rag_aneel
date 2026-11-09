@@ -210,16 +210,20 @@ def gerar_com_groq(prompt: str) -> str:
     return response.choices[0].message.content
 
 
-def gerar_resposta(prompt: str) -> Geracao:
-    """Tenta o Gemini e, se falhar, o Groq. Guarda os erros de quem falhou."""
+def gerar_resposta(prompt: str, provedores: Optional[List[str]] = None) -> Geracao:
+    """
+    Tenta os provedores em ordem e guarda os erros de quem falhou.
+    Sem a lista, usa Gemini e depois Groq.
+    """
 
-    provedores = (
-        (f"gemini/{config.GEMINI_MODELO}", gerar_com_gemini),
-        (f"groq/{config.GROQ_MODELO}", gerar_com_groq),
-    )
+    disponiveis = {
+        "gemini": (f"gemini/{config.GEMINI_MODELO}", gerar_com_gemini),
+        "groq": (f"groq/{config.GROQ_MODELO}", gerar_com_groq),
+    }
 
     erros: List[str] = []
-    for nome, gerar in provedores:
+    for chave in provedores or ["gemini", "groq"]:
+        nome, gerar = disponiveis[chave]
         try:
             texto = (gerar(prompt) or "").strip()
             if not texto:
@@ -236,13 +240,19 @@ def gerar_resposta(prompt: str) -> Geracao:
 # ============================================================
 
 
-def responder(query: str, colecao, modelo, top_k: int = config.TOP_K) -> RespostaRAG:
+def responder(
+    query: str,
+    colecao,
+    modelo,
+    top_k: int = config.TOP_K,
+    provedores: Optional[List[str]] = None,
+) -> RespostaRAG:
     """Pipeline RAG completo: pergunta, recuperação, prompt e geração."""
 
     trechos = recuperar_trechos(
         query, colecao, modelo, top_k=top_k, filtro=config.FILTRO_PADRAO
     )
-    geracao = gerar_resposta(montar_prompt(query, trechos))
+    geracao = gerar_resposta(montar_prompt(query, trechos), provedores=provedores)
 
     resposta = geracao.texto
     if resposta is None:

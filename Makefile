@@ -37,6 +37,9 @@ pipeline:  ## [Passo 5] Inicia o pipeline RAG interativo
 avaliar:  ## [Passo 6] Roda o benchmark de 100 perguntas
 	$(PYTHON) scripts/avaliar.py
 
+medir:  ## Mede o sistema no conjunto de ouro (com LLM, consome cota)
+	$(PYTHON) scripts/avaliar_ouro.py --com-llm
+
 # ── Docker ────────────────────────────────────────────────────────
 
 docker-build:  ## Build da imagem Docker

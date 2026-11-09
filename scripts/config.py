@@ -26,6 +26,7 @@ PASTA_CHUNKS      = str(ROOT / "chunks")
 # Podem apontar para uma cópia, para testar sem tocar no índice original
 PASTA_VECTORSTORE = os.getenv("VECTORSTORE_DIR", str(ROOT / "vectorstore"))
 PASTA_RESULTADOS  = os.getenv("RESULTADOS_DIR", str(ROOT / "avaliacao"))
+PASTA_DOCS_AVALIACAO = str(ROOT / "docs" / "avaliacao")  # resultados versionados
 
 # ============================================================
 # CHUNKING
@@ -66,6 +67,9 @@ GEMINI_MODELO = os.getenv("GEMINI_MODEL", "gemini-3.8-flash")
 GROQ_MODELO   = os.getenv("GROQ_MODEL", "openai/gpt-oss-120b")
 TEMPERATURA   = 0.0  # respostas o mais repetíveis possível, nos dois LLMs
 TIMEOUT_LLM_S = 60   # espera máxima por LLM antes de seguir para o fallback
+
+# A medição usa um único LLM, sem fallback, para os números não misturarem modelos
+LLM_AVALIACAO = os.getenv("LLM_AVALIACAO", "groq")
 
 PROMPT_TEMPLATE = """Você é um assistente especializado em regulação do setor elétrico brasileiro.
 Responda à pergunta usando APENAS as informações dos trechos regulatórios abaixo.
