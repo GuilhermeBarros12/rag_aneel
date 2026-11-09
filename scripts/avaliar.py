@@ -1,35 +1,23 @@
-import os
+"""
+Benchmark de 100 perguntas: roda o mesmo código do pipeline (nucleo.py) e salva,
+para cada pergunta, a resposta, o LLM que respondeu e os documentos usados.
+
+As métricas ainda não fazem parte deste script. Para elas é preciso um conjunto
+de perguntas com documento e resposta esperados.
+"""
+
+import argparse
+import collections
 import json
+import os
 import time
-from pathlib import Path
-from typing import List, Dict
-from dotenv import load_dotenv
+from datetime import datetime, timezone
+from typing import Dict, List
 
-import chromadb
-from sentence_transformers import SentenceTransformer
-from datasets import Dataset      # formato que o RAGAS espera
-from ragas import evaluate
-from ragas.metrics import (
-    faithfulness,
-    answer_relevancy,
-    context_precision,
-)
+import config
+from nucleo import carregar_recursos, responder
 
-# ============================================================
-# CONFIGURAÇÕES
-# ============================================================
-
-ROOT              = Path(__file__).resolve().parent.parent
-PASTA_VECTORSTORE = str(ROOT / "vectorstore")
-PASTA_RESULTADOS  = str(ROOT / "avaliacao")       # onde salvar os resultados
-NOME_COLECAO      = "aneel_docs"
-MODELO_EMBEDDING  = "sentence-transformers/paraphrase-multilingual-mpnet-base-v2"
-TOP_K             = 5             # chunks recuperados por pergunta
-DELAY_ENTRE_PERGUNTAS = 2         # segundos entre chamadas à API — evita rate limit
-
-load_dotenv(dotenv_path=ROOT / ".env")   # carrega GEMINI_API_KEY e GROQ_API_KEY
-
-os.makedirs(PASTA_RESULTADOS, exist_ok=True)  # cria pasta de resultados se não existir
+DELAY_ENTRE_PERGUNTAS = 2  # segundos entre chamadas à API, para evitar rate limit
 
 # ============================================================
 # PERGUNTAS DO BENCHMARK
@@ -164,240 +152,90 @@ PERGUNTAS = [
 ]
 
 # ============================================================
-# RETRIEVAL
+# BENCHMARK
 # ============================================================
 
-def recuperar_chunks(
-    query: str,
-    colecao,
-    modelo: SentenceTransformer,
-    top_k: int = TOP_K,
-) -> List[str]:
+
+def salvar_json(caminho: str, dados) -> None:
+    with open(caminho, "w", encoding="utf-8") as f:
+        json.dump(dados, f, ensure_ascii=False, indent=2)
+
+
+def rodar_benchmark(colecao, modelo, limite: int) -> List[Dict]:
     """
-    Embeda a query e busca os top_k chunks mais similares.
-    Filtra documentos revogados automaticamente.
+    Roda as perguntas e salva o progresso a cada 10, permitindo retomar.
+    Para na primeira pergunta em que nenhum LLM responder, para que erro
+    de API nunca seja salvo como se fosse resposta do sistema.
     """
-    embedding = modelo.encode(query, convert_to_numpy=True).tolist()
 
-    resultado = colecao.query(
-        query_embeddings = [embedding],
-        n_results        = top_k,
-        include          = ["documents", "metadatas", "distances"],
-        where            = {"situacao": {"$ne": "Situação:REVOGADA"}},
-        # filtra documentos revogados — não retorna legislação obsoleta
-    )
+    os.makedirs(config.PASTA_RESULTADOS, exist_ok=True)
+    arquivo_parcial = os.path.join(config.PASTA_RESULTADOS, "resultados_parciais.json")
 
-    return resultado["documents"][0]   # lista de textos dos chunks
-
-# ============================================================
-# GERAÇÃO
-# ============================================================
-
-PROMPT_TEMPLATE = """Você é um assistente especializado em regulação do setor elétrico brasileiro.
-Responda à pergunta usando APENAS as informações dos trechos regulatórios abaixo.
-Se a resposta não estiver nos trechos, responda exatamente: "Não encontrei informação suficiente nos documentos disponíveis."
-Seja objetivo e cite o documento relevante quando possível.
-
---- TRECHOS RECUPERADOS ---
-{contexto}
---- FIM DOS TRECHOS ---
-
-Pergunta: {query}
-Resposta:"""
-
-def montar_prompt(query: str, chunks: List[str]) -> str:
-    """Monta o prompt com os chunks como contexto."""
-    contexto = "\n\n---\n\n".join(
-        f"[Trecho {i+1}]\n{chunk}" for i, chunk in enumerate(chunks)
-    )
-    return PROMPT_TEMPLATE.format(contexto=contexto, query=query)
-
-def gerar_com_gemini(prompt: str) -> str:
-    """Chama o Gemini 1.5 Flash como LLM primário."""
-    import google.generativeai as genai
-    api_key = os.getenv("GEMINI_API_KEY", "")
-    if not api_key:
-        raise ValueError("GEMINI_API_KEY não configurada no .env")
-    genai.configure(api_key=api_key)
-    model    = genai.GenerativeModel("gemini-1.5-flash")
-    response = model.generate_content(prompt)
-    return response.text.strip()
-
-def gerar_com_groq(prompt: str) -> str:
-    """Chama o Groq Llama 3.3 70B como fallback."""
-    from groq import Groq
-    api_key = os.getenv("GROQ_API_KEY", "")
-    if not api_key:
-        raise ValueError("GROQ_API_KEY não configurada no .env")
-    client   = Groq(api_key=api_key)
-    response = client.chat.completions.create(
-        model    = "llama-3.3-70b-versatile",
-        messages = [{"role": "user", "content": prompt}],
-    )
-    return response.choices[0].message.content.strip()
-
-def gerar_resposta(prompt: str) -> str:
-    """Tenta Gemini primeiro, usa Groq como fallback."""
-    try:
-        return gerar_com_gemini(prompt)
-    except Exception as e_gemini:
-        print(f"   [AVISO] Gemini falhou ({e_gemini}). Usando Groq...")
-        try:
-            return gerar_com_groq(prompt)
-        except Exception as e_groq:
-            return f"[ERRO] Nenhum LLM disponível. Gemini: {e_gemini} | Groq: {e_groq}"
-
-# ============================================================
-# PIPELINE DE AVALIAÇÃO
-# ============================================================
-
-def rodar_benchmark(colecao, modelo: SentenceTransformer) -> List[Dict]:
-    """
-    Roda todas as 100 perguntas e coleta:
-    - pergunta
-    - chunks recuperados
-    - resposta gerada
-    Salva progresso em disco a cada 10 perguntas (retomada se travar).
-    """
-    resultados    = []
-    arquivo_parcial = os.path.join(PASTA_RESULTADOS, "resultados_parciais.json")
-
-    # carrega resultados parciais se existirem (retomada)
-    perguntas_feitas = set()
+    resultados: List[Dict] = []
     if os.path.exists(arquivo_parcial):
         with open(arquivo_parcial, "r", encoding="utf-8") as f:
             resultados = json.load(f)
-        perguntas_feitas = {r["pergunta"] for r in resultados}
-        print(f"[RETOMADA] {len(perguntas_feitas)} perguntas já respondidas — continuando...\n")
+        print(f"[RETOMADA] {len(resultados)} perguntas ja respondidas.\n")
+    feitas = {r["pergunta"] for r in resultados}
 
-    total = len(PERGUNTAS)
-
-    for i, pergunta in enumerate(PERGUNTAS):
-
-        # pula perguntas já respondidas (retomada)
-        if pergunta in perguntas_feitas:
+    perguntas = PERGUNTAS[:limite]
+    for i, pergunta in enumerate(perguntas, 1):
+        if pergunta in feitas:
             continue
 
-        print(f"[{i+1}/{total}] {pergunta[:70]}...")
+        print(f"[{i}/{len(perguntas)}] {pergunta[:70]}")
+        r = responder(pergunta, colecao, modelo)
 
-        # 1. recupera chunks relevantes
-        chunks = recuperar_chunks(pergunta, colecao, modelo)
+        if r.llm is None:
+            salvar_json(arquivo_parcial, resultados)
+            print(r.resposta)
+            raise SystemExit("[ERRO] Benchmark interrompido; progresso salvo.")
 
-        # 2. monta o prompt e gera a resposta
-        prompt   = montar_prompt(pergunta, chunks)
-        resposta = gerar_resposta(prompt)
+        print(f"   [{r.llm}] {r.resposta[:100]}")
+        resultados.append(r.para_dict())
 
-        print(f"   → {resposta[:100]}...")
-
-        # 3. salva o resultado
-        resultados.append({
-            "pergunta":  pergunta,
-            "contextos": chunks,       # lista de chunks recuperados
-            "resposta":  resposta,     # resposta gerada pelo LLM
-        })
-
-        # salva progresso a cada 10 perguntas
         if len(resultados) % 10 == 0:
-            with open(arquivo_parcial, "w", encoding="utf-8") as f:
-                json.dump(resultados, f, ensure_ascii=False, indent=2)
-            print(f"   [SALVO] Progresso salvo ({len(resultados)}/{total})\n")
+            salvar_json(arquivo_parcial, resultados)
+            print(f"   [SALVO] {len(resultados)}/{len(perguntas)}\n")
 
-        time.sleep(DELAY_ENTRE_PERGUNTAS)   # pausa entre perguntas — evita rate limit
+        time.sleep(DELAY_ENTRE_PERGUNTAS)
 
-    # salva o arquivo final completo
-    arquivo_final = os.path.join(PASTA_RESULTADOS, "resultados_completos.json")
-    with open(arquivo_final, "w", encoding="utf-8") as f:
-        json.dump(resultados, f, ensure_ascii=False, indent=2)
-
-    print(f"\n✅ {len(resultados)} perguntas respondidas.")
-    print(f"📁 Resultados salvos em: {arquivo_final}")
-
+    salvar_json(arquivo_parcial, resultados)
     return resultados
 
-# ============================================================
-# AVALIAÇÃO COM RAGAS
-# ============================================================
-
-def avaliar_com_ragas(resultados: List[Dict]) -> None:
-    """
-    Roda o RAGAS nas respostas coletadas e imprime os scores.
-    Salva o relatório em JSON para análise posterior.
-    """
-    print("\n" + "=" * 50)
-    print("Iniciando avaliação com RAGAS...")
-    print("=" * 50 + "\n")
-
-    # monta o dataset no formato que o RAGAS espera
-    dataset = Dataset.from_dict({
-        "question": [r["pergunta"]  for r in resultados],
-        "answer":   [r["resposta"]  for r in resultados],
-        "contexts": [r["contextos"] for r in resultados],
-        # ground_truth não é obrigatório para as métricas que usamos
-    })
-
-    # roda a avaliação — pode demorar alguns minutos
-    resultado_ragas = evaluate(
-        dataset,
-        metrics=[
-            faithfulness,      # resposta é fiel aos chunks?
-            answer_relevancy,  # resposta é relevante para a pergunta?
-            context_precision, # chunks recuperados são precisos?
-        ],
-    )
-
-    # converte para dicionário para salvar
-    scores = {
-        "faithfulness":      resultado_ragas["faithfulness"],
-        "answer_relevancy":  resultado_ragas["answer_relevancy"],
-        "context_precision": resultado_ragas["context_precision"],
-    }
-
-    # imprime os scores
-    print("\n📊 SCORES RAGAS:")
-    print(f"   Faithfulness:      {scores['faithfulness']:.3f}  (fidelidade ao contexto)")
-    print(f"   Answer Relevancy:  {scores['answer_relevancy']:.3f}  (relevância da resposta)")
-    print(f"   Context Precision: {scores['context_precision']:.3f}  (precisão dos chunks)")
-
-    # interpretação automática dos scores
-    print("\n📋 DIAGNÓSTICO:")
-    if scores["faithfulness"] < 0.7:
-        print("   ⚠️  Faithfulness baixo → LLM está inventando além do contexto. Reforçar o prompt.")
-    if scores["answer_relevancy"] < 0.7:
-        print("   ⚠️  Answer Relevancy baixo → Respostas não estão respondendo a pergunta. Revisar o prompt.")
-    if scores["context_precision"] < 0.7:
-        print("   ⚠️  Context Precision baixo → Chunks errados sendo recuperados. Ajustar chunk_size ou embedding.")
-    if all(v >= 0.7 for v in scores.values()):
-        print("   ✅ Todos os scores acima de 0.7 — pipeline funcionando bem!")
-
-    # salva o relatório
-    arquivo_ragas = os.path.join(PASTA_RESULTADOS, "scores_ragas.json")
-    with open(arquivo_ragas, "w", encoding="utf-8") as f:
-        json.dump(scores, f, ensure_ascii=False, indent=2)
-
-    print(f"\n📁 Scores salvos em: {arquivo_ragas}")
-
-# ============================================================
-# EXECUÇÃO
-# ============================================================
 
 def main() -> None:
 
-    # 1. carrega o modelo de embeddings
-    print(f"Carregando modelo de embeddings: {MODELO_EMBEDDING}")
-    modelo = SentenceTransformer(MODELO_EMBEDDING)
-    print("[OK] Modelo carregado.\n")
+    parser = argparse.ArgumentParser(description="Roda o benchmark de perguntas do RAG ANEEL.")
+    parser.add_argument(
+        "--limite",
+        type=int,
+        default=len(PERGUNTAS),
+        help=f"Quantas perguntas rodar. Padrao: todas ({len(PERGUNTAS)})",
+    )
+    args = parser.parse_args()
 
-    # 2. conecta ao ChromaDB
-    print(f"Conectando ao ChromaDB em: {PASTA_VECTORSTORE}")
-    client  = chromadb.PersistentClient(path=PASTA_VECTORSTORE)
-    colecao = client.get_collection(name=NOME_COLECAO)
-    print(f"[OK] ChromaDB conectado. {colecao.count()} chunks indexados.\n")
+    colecao, modelo = carregar_recursos()
+    resultados = rodar_benchmark(colecao, modelo, args.limite)
 
-    # 3. roda o benchmark e coleta respostas
-    resultados = rodar_benchmark(colecao, modelo)
+    arquivo_final = os.path.join(config.PASTA_RESULTADOS, "resultados_completos.json")
+    salvar_json(arquivo_final, {
+        "configuracao": {
+            "executado_em": datetime.now(timezone.utc).isoformat(),
+            "modelo_embedding": config.MODELO_EMBEDDING,
+            "gemini": config.GEMINI_MODELO,
+            "groq": config.GROQ_MODELO,
+            "temperatura": config.TEMPERATURA,
+            "top_k": config.TOP_K,
+            "filtro": config.FILTRO_PADRAO,
+        },
+        "resultados": resultados,
+    })
 
-    # 4. avalia com RAGAS
-    avaliar_com_ragas(resultados)
+    print(f"\n{len(resultados)} perguntas respondidas.")
+    print("Respostas por LLM:", dict(collections.Counter(r["llm"] for r in resultados)))
+    print(f"Resultados salvos em: {arquivo_final}")
+
 
 if __name__ == "__main__":
-    main() 
+    main()
