@@ -25,7 +25,8 @@ def exibir(r: RespostaRAG) -> None:
 
     print("\nReferências:")
     for i, t in enumerate(r.trechos, 1):
-        print(f"\n[Trecho {i}] {t.titulo} | {t.arquivo} | distancia {t.distancia:.3f}")
+        distancia = "busca lexica" if t.distancia is None else f"distancia {t.distancia:.3f}"
+        print(f"\n[Trecho {i}] {t.titulo} | {t.arquivo} | {distancia}")
         print(t.texto)
 
 

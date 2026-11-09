@@ -24,7 +24,7 @@ class Trecho:
 
     id: str
     texto: str
-    distancia: float
+    distancia: Optional[float]  # None se o trecho veio só da busca léxica
     metadata: Dict[str, str]
 
     @property
@@ -121,6 +121,13 @@ def carregar_recursos() -> Tuple[object, object]:
     colecao = client.get_collection(name=config.NOME_COLECAO)
     print(f"[OK] ChromaDB conectado. {colecao.count()} chunks indexados.\n")
 
+    if config.MODO_BUSCA != "densa":
+        import lexico
+
+        if not lexico.existe():
+            print("Criando o indice lexico (so na primeira execucao)...")
+            lexico.construir()
+
     return colecao, modelo
 
 
@@ -129,11 +136,59 @@ def carregar_recursos() -> Tuple[object, object]:
 # ============================================================
 
 
+def fundir_rrf(listas: List[List[str]], pesos: List[float], k: int = config.RRF_K) -> List[str]:
+    """Reciprocal Rank Fusion com pesos: soma peso/(k + posição) de cada lista e ordena."""
+
+    pontos: Dict[str, float] = {}
+    for lista, peso in zip(listas, pesos):
+        for posicao, item in enumerate(lista, 1):
+            pontos[item] = pontos.get(item, 0.0) + peso / (k + posicao)
+    return sorted(pontos, key=lambda item: pontos[item], reverse=True)
+
+
 def recuperar_trechos(
     query: str,
     colecao,
     modelo,
     top_k: int = config.TOP_K,
+    filtro: Optional[dict] = None,
+) -> List[Trecho]:
+    """Recupera os top_k trechos segundo config.MODO_BUSCA."""
+
+    if config.MODO_BUSCA == "densa":
+        return busca_densa(query, colecao, modelo, top_k, filtro)
+
+    import lexico
+
+    candidatos = max(top_k, config.CANDIDATOS_FUSAO)
+    excluir = filtro["situacao"]["$ne"] if filtro else None
+    lexicos = lexico.buscar(query, candidatos, excluir_situacao=excluir)
+
+    if config.MODO_BUSCA == "lexica":
+        return carregar_trechos(lexicos[:top_k], colecao, {})
+
+    densos = busca_densa(query, colecao, modelo, candidatos, filtro)
+    ids = fundir_rrf([[t.id for t in densos], lexicos], [1.0, config.PESO_LEXICO])[:top_k]
+    return carregar_trechos(ids, colecao, {t.id: t for t in densos})
+
+
+def carregar_trechos(ids: List[str], colecao, conhecidos: Dict[str, Trecho]) -> List[Trecho]:
+    """Monta os trechos na ordem de ids, buscando no índice os que faltam."""
+
+    faltam = [i for i in ids if i not in conhecidos]
+    trechos = dict(conhecidos)
+    if faltam:
+        r = colecao.get(ids=faltam, include=["documents", "metadatas"])
+        for i, d, m in zip(r["ids"], r["documents"], r["metadatas"]):
+            trechos[i] = Trecho(id=i, texto=d, distancia=None, metadata=m or {})
+    return [trechos[i] for i in ids]
+
+
+def busca_densa(
+    query: str,
+    colecao,
+    modelo,
+    top_k: int,
     filtro: Optional[dict] = None,
 ) -> List[Trecho]:
     """Embeda a pergunta e devolve os top_k chunks mais próximos, com metadata."""
@@ -165,10 +220,13 @@ def recuperar_trechos(
 
 
 def montar_prompt(query: str, trechos: List[Trecho]) -> str:
-    """Monta o prompt com os trechos numerados como contexto."""
+    """Monta o prompt com cada trecho identificado pelo documento de origem."""
 
     contexto = "\n\n---\n\n".join(
-        f"[Trecho {i + 1}]\n{t.texto}" for i, t in enumerate(trechos)
+        f"[Trecho {i + 1}] {t.titulo} | {t.metadata.get('publicacao', '')} | "
+        f"{t.metadata.get('situacao', '')} | Arquivo: {t.arquivo}\n"
+        f"{t.texto[:config.MAX_CHARS_TRECHO]}"
+        for i, t in enumerate(trechos)
     )
     return config.PROMPT_TEMPLATE.format(contexto=contexto, query=query)
 

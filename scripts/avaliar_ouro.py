@@ -136,9 +136,10 @@ def escrever_relatorio(caminho: str, dados: dict) -> None:
     sep = "|---|---|" + "---|" * (len(KS) + 1)
     m = [f"# Resultados: {dados['rotulo']}", "",
          f"Executado em {dados['executado_em']}. Conjunto: `{dados['conjunto']}`.",
-         f"Embedding: `{config.MODELO_EMBEDDING}`. Chunks recuperados pelo sistema: {config.TOP_K}.", ""]
-    for chave, titulo in (("com_filtro", "Recuperação do sistema entregue (exclui revogados)"),
-                          ("sem_filtro", "Recuperação sem o filtro de revogados")):
+         f"Busca: `{config.MODO_BUSCA}`. Embedding: `{config.MODELO_EMBEDDING}`. "
+         f"Chunks recuperados pelo sistema: {config.TOP_K}. Inclui revogados: {config.INCLUIR_REVOGADOS}.", ""]
+    for chave, titulo in (("com_filtro", "Recuperação excluindo revogados"),
+                          ("sem_filtro", "Recuperação incluindo revogados")):
         bloco = dados["recuperacao"][chave]
         m += [f"## {titulo}", "", cab, sep, linha_tabela("Todas com documento esperado", bloco["geral"])]
         m += [linha_tabela(c, v) for c, v in bloco["categorias"].items()] + [""]
@@ -173,7 +174,7 @@ def main() -> None:
         "conjunto": os.path.basename(args.conjunto),
         "recuperacao": {},
     }
-    for nome, filtro in (("com_filtro", config.FILTRO_PADRAO), ("sem_filtro", None)):
+    for nome, filtro in (("com_filtro", config.FILTRO_SEM_REVOGADOS), ("sem_filtro", None)):
         linhas = medir_recuperacao(com_alvo, colecao, modelo, filtro)
         dados["recuperacao"][nome] = {
             "geral": resumir_posicoes([l["posicao"] for l in linhas]),

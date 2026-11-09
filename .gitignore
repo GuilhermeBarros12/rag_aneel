@@ -5,6 +5,7 @@ dados/extras/
 chunks_md/
 chunks/
 vectorstore/
+vectorstore_lexico/
 
 # ── Arquivos de log gerados pelos scripts ───────────────────────
 scripts/erros_download.txt
