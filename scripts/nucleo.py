@@ -181,7 +181,12 @@ def gerar_com_gemini(prompt: str) -> str:
     if not api_key:
         raise ValueError("GEMINI_API_KEY nao configurada no .env")
 
-    response = genai.Client(api_key=api_key).models.generate_content(
+    # O cliente precisa ficar em uma variável: sem isso ele é fechado antes da chamada
+    client = genai.Client(
+        api_key=api_key,
+        http_options=types.HttpOptions(timeout=config.TIMEOUT_LLM_S * 1000),  # em ms
+    )
+    response = client.models.generate_content(
         model=config.GEMINI_MODELO,
         contents=prompt,
         config=types.GenerateContentConfig(temperature=config.TEMPERATURA),
@@ -196,7 +201,8 @@ def gerar_com_groq(prompt: str) -> str:
     if not api_key or api_key == "sua_chave_groq_aqui":
         raise ValueError("GROQ_API_KEY nao configurada no .env")
 
-    response = Groq(api_key=api_key).chat.completions.create(
+    client = Groq(api_key=api_key, timeout=config.TIMEOUT_LLM_S)
+    response = client.chat.completions.create(
         model=config.GROQ_MODELO,
         temperature=config.TEMPERATURA,
         messages=[{"role": "user", "content": prompt}],
