@@ -3,7 +3,8 @@
 Sistema de **Retrieval-Augmented Generation (RAG)** desenvolvido para responder perguntas sobre o corpus regulatório da ANEEL (Agência Nacional de Energia Elétrica), com **18.688 atos de 2016, 2021 e 2022**, que somam **26.747 arquivos indexados** (textos integrais, votos, notas técnicas e anexos) e **508.156 chunks**.
 
 **Modelo de embeddings:** `paraphrase-multilingual-mpnet-base-v2` (768 dims, PT-BR nativo)  
-**Banco vetorial:** ChromaDB com índice HNSW e similaridade de cosseno  
+**Busca padrão:** léxica, com BM25 em SQLite FTS5  
+**Banco vetorial:** ChromaDB com índice HNSW e similaridade de cosseno, usado nos modos vetorial e híbrido  
 **LLM:** `gemini-3.8-flash` (primário) ou Groq / `openai/gpt-oss-120b` (fallback). Os modelos ficam em [`scripts/config.py`](scripts/config.py)
 
 ---
@@ -22,7 +23,7 @@ Sistema de **Retrieval-Augmented Generation (RAG)** desenvolvido para responder 
 | Chave de API Gemini | Crie em [aistudio.google.com](https://aistudio.google.com/app/apikey)          |
 | Chave de API Groq   | Crie em [console.groq.com](https://console.groq.com) — usado como fallback     |
 | Espaço em disco     | ~6 GB (índice de 4,4 GB e modelo de embeddings de 1,1 GB)                      |
-| RAM                 | 4 GB livres (pico medido de 3,2 GB em uma consulta)                            |
+| RAM                 | 4 GB livres (pico medido de 3,2 GB em uma consulta com busca vetorial)         |
 
 ### Passo 1 — Obtenha o código do repositório
 
@@ -83,7 +84,7 @@ source .venv/bin/activate
 python scripts/pipeline.py
 ```
 
-Na **primeira execução**, o vectorstore (~4,4 GB) será baixado automaticamente do Hugging Face.
+Na **primeira execução**, o vectorstore (~4,4 GB) será baixado automaticamente do Hugging Face, e o índice léxico será criado a partir dele (cerca de 1 minuto e 290 MB).
 Nas execuções seguintes, ele já estará em disco e o sistema inicia em segundos.
 
 **Modo direto (uma pergunta):**
@@ -118,6 +119,9 @@ Documentos ANEEL (PDFs, HTMLs, XLSXs)
           ▼
    [4] indexar.py            → gera embeddings multilinguais e
           │                     persiste no ChromaDB (HNSW cosine)
+          ▼
+   [4b] lexico.py            → cria o índice BM25 (SQLite FTS5)
+          │                     a partir dos chunks do ChromaDB
           ▼
    [5] pipeline.py           → recebe query → recupera chunks →
           │                     gera resposta com LLM (Gemini → Groq)
@@ -243,6 +247,7 @@ projeto_rag/
 │   ├── ingestao.py             # [Passo 2] PDF/HTML → Markdown
 │   ├── chunking.py             # [Passo 3] Markdown → chunks .txt
 │   ├── indexar.py              # [Passo 4] Chunks → embeddings → ChromaDB
+│   ├── lexico.py               # Índice e busca BM25 (SQLite FTS5)
 │   ├── pipeline.py             # [Passo 5] Linha de comando do RAG (query → resposta)
 │   ├── upload_vectorstore.py   # Sobe o vectorstore para o Hugging Face
 │   ├── avaliar.py              # [Passo 6] Benchmark de 100 perguntas
@@ -256,6 +261,8 @@ projeto_rag/
 ├── chunks_md/                  # Markdowns gerados (não versionados)
 ├── chunks/                     # Chunks .txt gerados (não versionados)
 ├── vectorstore/                # Índice ChromaDB (não versionado)
+├── vectorstore_lexico/         # Índice BM25 gerado localmente (não versionado)
+├── docs/avaliacao/             # Conjunto de ouro e resultados medidos
 │
 ├── Dockerfile                  # Imagem Docker do pipeline
 ├── docker-compose.yml          # Orquestração dos containers
@@ -273,15 +280,16 @@ projeto_rag/
 
 `scripts/avaliar.py` roda 100 perguntas com o mesmo código do pipeline e salva em `avaliacao/` a resposta, o LLM que respondeu e os documentos usados. Para testar com poucas perguntas, use `--limite`.
 
-Esse benchmark não tem gabarito, então coleta respostas sem dar nota. As métricas vêm de `scripts/avaliar_ouro.py`, em um conjunto de 56 perguntas com documento e resposta esperados. Veja a metodologia e o baseline em [docs/avaliacao/RESULTADOS.md](docs/avaliacao/RESULTADOS.md).
+Esse benchmark não tem gabarito, então coleta respostas sem dar nota. As métricas vêm de `scripts/avaliar_ouro.py`, em um conjunto de 56 perguntas com documento e resposta esperados. Veja a metodologia e os resultados em [docs/avaliacao/RESULTADOS.md](docs/avaliacao/RESULTADOS.md).
 
 ## Limitações conhecidas
 
 - O corpus cobre apenas atos de 2016, 2021 e 2022.
 - 153 dos 155 arquivos de texto de Resoluções Normativas (prefixo `ren`) foram baixados como página de bloqueio do Cloudflare, sem o conteúdo da norma. Votos e notas técnicas dessas resoluções continuam indexados.
-- Atos com situação REVOGADA não são recuperados, então perguntas sobre eles ficam sem resposta. Outras situações, como ANULADA e SUSPENSA, continuam sendo recuperadas.
-- A busca é só vetorial e o texto indexado não inclui título nem número do ato. No baseline, o documento esperado veio entre os 5 primeiros resultados em 13% das perguntas, e em nenhuma das 10 que pedem o conteúdo de um ato pelo número.
-- O modelo de embeddings considera até 128 tokens. Em uma amostra de 5.000 chunks, 30,2% passam disso e têm o final ignorado na busca.
+- Por padrão, atos com situação REVOGADA não são recuperados, então perguntas sobre eles tendem a ficar sem resposta. Outras situações, como ANULADA e SUSPENSA, continuam sendo recuperadas, e o prompt pede para o modelo avisar a perda de vigência.
+- A busca padrão é léxica porque a vetorial e a híbrida mediram pior no conjunto de ouro. Esse conjunto favorece perguntas com nomes e números específicos, e perguntas conceituais não foram medidas.
+- Os embeddings não incluem título nem número do ato. Na busca vetorial, o documento esperado veio entre os 5 primeiros resultados em 13% das perguntas, contra 87% na busca léxica.
+- O modelo de embeddings considera até 128 tokens. Em uma amostra de 5.000 chunks, 30,2% passam disso e têm o final ignorado na busca vetorial.
 - 34,4% dos chunks são cópias exatas de outros, como cláusulas padrão repetidas entre atos.
 
 ---
@@ -298,6 +306,8 @@ Todos ficam em [`scripts/config.py`](scripts/config.py).
 | `TOP_K`         | 5                     | Chunks retornados por pergunta         |
 | `GEMINI_MODELO` | `gemini-3.8-flash`    | LLM primário                           |
 | `GROQ_MODELO`   | `openai/gpt-oss-120b` | LLM de fallback                        |
+| `MODO_BUSCA`    | `lexica`              | `lexica`, `densa` ou `hibrida`         |
+| `INCLUIR_REVOGADOS` | `0`               | Com `1`, recupera atos revogados       |
 
 ---
 
