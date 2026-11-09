@@ -1,7 +1,7 @@
-# Conjunto de ouro: rascunho para revisão
+# Conjunto de ouro
 
 Atos sorteados com a semente 2027, entre os que têm Texto Integral. Cada resposta foi conferida no texto indexado.
-Marque o que deve sair ou mudar antes de congelar.
+Revisado e congelado em 09/11/2026. Não altere: os resultados só são comparáveis nesta versão.
 
 ## Ato citado pelo número
 

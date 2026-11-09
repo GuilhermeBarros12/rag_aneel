@@ -1,5 +1,5 @@
 {
- "status": "rascunho",
+ "status": "congelado",
  "semente_sorteio": 2027,
  "perguntas": [
   {
@@ -965,5 +965,6 @@
    "situacao": null,
    "documentos_esperados": []
   }
- ]
+ ],
+ "congelado_em": "2026-11-09"
 }
