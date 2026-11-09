@@ -277,6 +277,7 @@ projeto_rag/
 ## Limitações conhecidas
 
 - O corpus cobre apenas atos de 2016, 2021 e 2022.
+- 153 dos 155 arquivos de texto de Resoluções Normativas (prefixo `ren`) foram baixados como página de bloqueio do Cloudflare, sem o conteúdo da norma. Votos e notas técnicas dessas resoluções continuam indexados.
 - Atos com situação REVOGADA não são recuperados, então perguntas sobre eles ficam sem resposta. Outras situações, como ANULADA e SUSPENSA, continuam sendo recuperadas.
 - A busca é só vetorial e o texto indexado não inclui título nem número do ato. Em um diagnóstico com 10 perguntas que citavam um ato específico, o documento esperado não apareceu entre os 5 primeiros resultados em nenhuma.
 - O modelo de embeddings considera até 128 tokens. Em uma amostra de 5.000 chunks, 30,2% passam disso e têm o final ignorado na busca.
