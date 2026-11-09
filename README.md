@@ -1,16 +1,16 @@
 # RAG ANEEL — Sistema de Perguntas e Respostas sobre Documentos Regulatórios
 
-Sistema de **Retrieval-Augmented Generation (RAG)** desenvolvido para responder perguntas sobre o corpus regulatório da ANEEL (Agência Nacional de Energia Elétrica), composto por mais de **26.000 documentos** — resoluções normativas, despachos, notas técnicas e portarias.
+Sistema de **Retrieval-Augmented Generation (RAG)** desenvolvido para responder perguntas sobre o corpus regulatório da ANEEL (Agência Nacional de Energia Elétrica), com **18.688 atos de 2016, 2021 e 2022**, que somam **26.747 arquivos indexados** (textos integrais, votos, notas técnicas e anexos) e **508.156 chunks**.
 
 **Modelo de embeddings:** `paraphrase-multilingual-mpnet-base-v2` (768 dims, PT-BR nativo)  
 **Banco vetorial:** ChromaDB com índice HNSW e similaridade de cosseno  
-**LLM:** Gemini 1.5 Flash (primário) ou Groq / Llama 3.3 70B (fallback) — ambos gratuitos
+**LLM:** `gemini-3.8-flash` (primário) ou Groq / `openai/gpt-oss-120b` (fallback). Os modelos ficam em [`scripts/config.py`](scripts/config.py)
 
 ---
 
 ## Quick Start — Usar o sistema (recomendado)
 
-> O vectorstore com todos os documentos da ANEEL já está pré-construído e hospedado no Hugging Face.
+> O vectorstore com o corpus de 2016, 2021 e 2022 já está pré-construído e hospedado no Hugging Face.
 > Ele é baixado automaticamente na primeira execução. Você **não precisa** baixar PDFs nem gerar embeddings.
 
 ### Pré-requisitos
@@ -18,11 +18,11 @@ Sistema de **Retrieval-Augmented Generation (RAG)** desenvolvido para responder 
 | Requisito           | Detalhe                                                                        |
 | ------------------- | ------------------------------------------------------------------------------ |
 | Git                 | [Download](https://git-scm.com/downloads) (ou baixe o repositório como .ZIP)   |
-| Python 3.10+        | [Download](https://www.python.org/downloads/)                                  |
-| Chave de API Gemini | Gratuita em [aistudio.google.com](https://aistudio.google.com/app/apikey)      |
-| Chave de API Groq   | Gratuita em [console.groq.com](https://console.groq.com) — usado como fallback |
-| Espaço em disco     | ~3 GB (vectorstore baixado automaticamente)                                    |
-| RAM                 | 2 GB                                                                           |
+| Python 3.10+        | Testado em 3.14.3. [Download](https://www.python.org/downloads/)               |
+| Chave de API Gemini | Crie em [aistudio.google.com](https://aistudio.google.com/app/apikey)          |
+| Chave de API Groq   | Crie em [console.groq.com](https://console.groq.com) — usado como fallback     |
+| Espaço em disco     | ~6 GB (índice de 4,4 GB e modelo de embeddings de 1,1 GB)                      |
+| RAM                 | 4 GB livres (pico medido de 3,2 GB em uma consulta)                            |
 
 ### Passo 1 — Obtenha o código do repositório
 
@@ -57,10 +57,10 @@ chmod +x setup.sh && ./setup.sh
 Abra o arquivo `.env` criado pelo setup e preencha(OBS: Caso tenha feito o processo manual, copie o arquivo .env.example para um novo arquivo chamado .env e preencha com suas chaves: )
 
 ```env
-GEMINI_API_KEY=sua_chave_aqui    # https://aistudio.google.com/app/apikey (gratuito)
-GROQ_API_KEY=sua_chave_aqui      # https://console.groq.com (gratuito, fallback)
+GEMINI_API_KEY=sua_chave_aqui    # https://aistudio.google.com/app/apikey
+GROQ_API_KEY=sua_chave_aqui      # https://console.groq.com (fallback)
 HF_REPO_ID=guilhermebarros/rag-aneel-vectorstore  # já preenchido
-HF_TOKEN=seu_token_aqui          # https://huggingface.co/settings/tokens (tipo: Read)
+HF_TOKEN=                        # deixe vazio: só é necessário para enviar o índice
 ```
 
 ### Passo 4 — Ative o ambiente virtual
@@ -83,13 +83,13 @@ source .venv/bin/activate
 python scripts/pipeline.py
 ```
 
-Na **primeira execução**, o vectorstore (~3 GB) será baixado automaticamente do Hugging Face.
+Na **primeira execução**, o vectorstore (~4,4 GB) será baixado automaticamente do Hugging Face.
 Nas execuções seguintes, ele já estará em disco e o sistema inicia em segundos.
 
 **Modo direto (uma pergunta):**
 
 ```bash
-python scripts/pipeline.py --query "Qual o prazo para reclamações na ANEEL?"
+python scripts/pipeline.py --query "O que é o registro de intenção à outorga de autorização de PCH?"
 ```
 
 **Modo interativo (loop de perguntas):**
@@ -107,14 +107,14 @@ python scripts/pipeline.py
 Documentos ANEEL (PDFs, HTMLs, XLSXs)
           │
           ▼
-   [1] downloads.py          → baixa os arquivos da ANEEL (~26.000 docs)
+   [1] downloads.py          → baixa os arquivos da ANEEL (2016, 2021, 2022)
           │
           ▼
    [2] ingestao.py           → converte PDF/HTML → Markdown (.md)
           │                     preservando tabelas e metadados
           ▼
    [3] chunking.py           → divide os .md em chunks de 512 chars
-          │                     com sobreposição de 80 chars → 508K chunks
+          │                     com sobreposição de 80 chars → 508.156 chunks
           ▼
    [4] indexar.py            → gera embeddings multilinguais e
           │                     persiste no ChromaDB (HNSW cosine)
@@ -122,8 +122,8 @@ Documentos ANEEL (PDFs, HTMLs, XLSXs)
    [5] pipeline.py           → recebe query → recupera chunks →
           │                     gera resposta com LLM (Gemini → Groq)
           ▼
-   [6] avaliar.py            → avalia com RAGAS (faithfulness,
-                                context_recall, answer_relevancy)
+   [6] avaliar.py            → roda 100 perguntas com o mesmo código
+                                do pipeline e salva as respostas
 ```
 
 ---
@@ -139,11 +139,11 @@ Documentos ANEEL (PDFs, HTMLs, XLSXs)
 | Requisito       | Detalhe                                     |
 | --------------- | ------------------------------------------- |
 | Google Chrome   | Para download automatizado via Selenium     |
-| RAM             | 8 GB recomendado (indexação de 508K chunks) |
-| Espaço em disco | ~15 GB (PDFs brutos + chunks + vectorstore) |
-| Tempo estimado  | ~6-10 horas no total                        |
+| RAM             | 8 GB recomendado (estimativa, não medido)   |
+| Espaço em disco | ~10 GB (PDFs, índice e modelo), mais chunks |
+| Tempo estimado  | ~6-10 horas (estimativa, não medido)        |
 
-### Passo 1 — Download dos documentos (~26.000 arquivos)
+### Passo 1 — Download dos documentos (~26.900 arquivos)
 
 O `downloads.py` usa o Selenium para navegar no portal da ANEEL e baixar todos os PDFs.
 O `download_extras.py` baixa os arquivos complementares (HTML, XLSX, XLSM).
@@ -170,10 +170,11 @@ python scripts/ingestao.py   # gera .md em chunks_md/
 
 ### Passo 3 — Chunking dos documentos
 
-Divide cada Markdown em chunks de 512 caracteres com sobreposição de 80 caracteres,
-preservando tabelas inteiras e descartando trechos com menos de 50 caracteres (ruído).
+Divide cada Markdown em chunks de 512 caracteres com sobreposição de 80 caracteres e
+descarta trechos com menos de 50 caracteres (ruído). Tabelas não são cortadas, então
+28.845 chunks passam de 512 caracteres.
 
-**Resultado:** ~508.000 arquivos `.txt` em `chunks/`
+**Resultado:** 508.156 chunks indexados, a partir de arquivos `.txt` em `chunks/`
 
 ```bash
 python scripts/chunking.py   # gera .txt em chunks/
@@ -235,14 +236,16 @@ Os dados são montados como volumes — nenhum arquivo de dados é copiado para 
 projeto_rag/
 │
 ├── scripts/                    # Todo o código do pipeline
+│   ├── config.py               # Configuração única (caminhos, modelos, top_k, prompt)
+│   ├── nucleo.py               # Recuperação, prompt e geração, usados por pipeline e avaliar
 │   ├── downloads.py            # [Passo 1] Download dos PDFs da ANEEL
 │   ├── download_extras.py      # [Passo 1b] Download de HTML/XLSX
 │   ├── ingestao.py             # [Passo 2] PDF/HTML → Markdown
 │   ├── chunking.py             # [Passo 3] Markdown → chunks .txt
 │   ├── indexar.py              # [Passo 4] Chunks → embeddings → ChromaDB
-│   ├── pipeline.py             # [Passo 5] Pipeline RAG (query → resposta)
+│   ├── pipeline.py             # [Passo 5] Linha de comando do RAG (query → resposta)
 │   ├── upload_vectorstore.py   # Sobe o vectorstore para o Hugging Face
-│   └── avaliar.py              # [Passo 6] Avaliação RAGAS
+│   └── avaliar.py              # [Passo 6] Benchmark de 100 perguntas
 │
 ├── dados/                      # Dados brutos (não versionados)
 │   ├── pdfs/                   # PDFs originais da ANEEL
@@ -265,27 +268,34 @@ projeto_rag/
 
 ---
 
-## Avaliação com RAGAS
+## Avaliação
 
-O pipeline é avaliado usando a biblioteca [RAGAS](https://docs.ragas.io/) com as seguintes métricas:
+`scripts/avaliar.py` roda 100 perguntas com o mesmo código do pipeline e salva em `avaliacao/` a resposta, o LLM que respondeu e os documentos usados. Para testar com poucas perguntas, use `--limite`.
 
-| Métrica               | O que mede                                          |
-| --------------------- | --------------------------------------------------- |
-| **Faithfulness**      | A resposta está ancorada nos chunks recuperados?    |
-| **Answer Relevancy**  | A resposta responde de fato à pergunta?             |
-| **Context Precision** | Os chunks retornados são relevantes para a query?   |
-| **Context Recall**    | Os chunks cobrem completamente a resposta esperada? |
+**Ainda não há métricas publicadas.** O benchmark atual não tem resposta nem documento esperados, então ele coleta respostas, mas não dá nota.
+
+## Limitações conhecidas
+
+- O corpus cobre apenas atos de 2016, 2021 e 2022.
+- Atos com situação REVOGADA não são recuperados, então perguntas sobre eles ficam sem resposta. Outras situações, como ANULADA e SUSPENSA, continuam sendo recuperadas.
+- A busca é só vetorial e o texto indexado não inclui título nem número do ato. Em um diagnóstico com 10 perguntas que citavam um ato específico, o documento esperado não apareceu entre os 5 primeiros resultados em nenhuma.
+- O modelo de embeddings considera até 128 tokens. Em uma amostra de 5.000 chunks, 30,2% passam disso e têm o final ignorado na busca.
+- 34,4% dos chunks são cópias exatas de outros, como cláusulas padrão repetidas entre atos.
 
 ---
 
 ## Parâmetros configuráveis
 
-| Script        | Parâmetro       | Padrão | Descrição                              |
-| ------------- | --------------- | ------ | -------------------------------------- |
-| `chunking.py` | `CHUNK_SIZE`    | 512    | Tamanho máximo do chunk em caracteres  |
-| `chunking.py` | `CHUNK_OVERLAP` | 80     | Sobreposição entre chunks consecutivos |
-| `indexar.py`  | `BATCH_SIZE`    | 64     | Chunks por lote de embedding           |
-| `pipeline.py` | `TOP_K`         | 5      | Chunks retornados por query            |
+Todos ficam em [`scripts/config.py`](scripts/config.py).
+
+| Parâmetro       | Padrão                | Descrição                              |
+| --------------- | --------------------- | -------------------------------------- |
+| `CHUNK_SIZE`    | 512                   | Tamanho máximo do chunk em caracteres  |
+| `CHUNK_OVERLAP` | 80                    | Sobreposição entre chunks consecutivos |
+| `BATCH_SIZE`    | 64                    | Chunks por lote de embedding           |
+| `TOP_K`         | 5                     | Chunks retornados por pergunta         |
+| `GEMINI_MODELO` | `gemini-3.8-flash`    | LLM primário                           |
+| `GROQ_MODELO`   | `openai/gpt-oss-120b` | LLM de fallback                        |
 
 ---
 
@@ -303,9 +313,6 @@ Certifique-se de estar usando o Python do `.venv` (`.venv\Scripts\activate`).
 **Pouca RAM durante o `indexar.py`:**  
 Reduza o batch size: `python scripts/indexar.py --batch-size 32`
 
-**Erro "Microsoft Visual C++ 14.0 is required" no Windows:**
-Esse erro ocorre ao instalar a biblioteca ragas para avaliação. Baixe o Microsoft C++ Build Tools, instale a carga de trabalho "Desenvolvimento para desktop com C++" e tente novamente.
-
 **Erro `O arquivo .venv\Scripts\Activate.ps1 não pode ser carregado` no Windows:**  
 Isso acontece por causa da política de segurança padrão do PowerShell. Para resolver, rode este comando no terminal para liberar a execução de scripts para o seu usuário (confirme com `S` ou `Y` se perguntar):
 ```powershell
@@ -320,10 +327,9 @@ pip install -r requirements.txt
 
 **Erro gigantesco com tela vermelha sobre `numpy`, `metadata-generation-failed` ou `invalid register` (Ninja/C++):**  
 Isso acontece quando o Windows tenta compilar bibliotecas na unha por não encontrar uma versão pré-pronta. Motivos mais comuns:
-1. **Você está usando o Python 3.13** (muito novo, incompatível com muitas libs de IA). Solução: instale o **Python 3.11 ou 3.12** e recrie o ambiente virtual.
+1. **Não há versão pronta da biblioteca para o seu Python.** O projeto foi testado em Python 3.14.3 no Windows; com outra versão, recrie o ambiente virtual usando essa.
 2. **Você instalou o Python versão 32-bits.** Solução: Baixe a versão 64-bits no site oficial.
 3. **O seu instalador `pip` está velho.** Tente rodar `python -m pip install --upgrade pip` antes de instalar as dependências.
-*Dica rápida:* A biblioteca `ragas` já vem comentada com um `#` no `requirements.txt` por padrão justamente para evitar essa falha no Windows. Se você precisar rodar a avaliação (`avaliar.py`), terá que descomentá-la, mas esteja ciente das restrições de versão do Python acima.
 
 ## Contato
 

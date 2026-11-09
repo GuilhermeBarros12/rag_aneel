@@ -17,7 +17,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 ENV PYTHONUNBUFFERED=1
 ENV PYTHONDONTWRITEBYTECODE=1
 
-# Instala dependências de sistema necessárias para PyMuPDF e lxml
+# Instala dependências de sistema necessárias para o PyMuPDF
 RUN apt-get update && apt-get install -y --no-install-recommends \
     libgl1 \
     libglib2.0-0 \

@@ -34,7 +34,7 @@ indexar:  ## [Passo 4] Gera embeddings e indexa no ChromaDB
 pipeline:  ## [Passo 5] Inicia o pipeline RAG interativo
 	$(PYTHON) scripts/pipeline.py
 
-avaliar:  ## [Passo 6] Avalia com RAGAS nas 400 perguntas
+avaliar:  ## [Passo 6] Roda o benchmark de 100 perguntas
 	$(PYTHON) scripts/avaliar.py
 
 # ── Docker ────────────────────────────────────────────────────────
