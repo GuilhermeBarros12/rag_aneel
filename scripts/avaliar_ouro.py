@@ -49,6 +49,33 @@ def posicao_primeiro_acerto(ids: List[str], esperados: List[str]) -> Optional[in
     return None
 
 
+def trecho_correto(trecho_id: str, texto: str, q: dict) -> bool:
+    """
+    Diz se um trecho recuperado serve para a pergunta.
+    Perguntas com 'evidencia' exigem que o texto do trecho contenha esses termos;
+    as demais exigem que o trecho venha de um documento esperado.
+    """
+    if q.get("evidencia"):
+        return contem_termos(texto, q["evidencia"])
+    return documento_do_trecho(trecho_id) in q["documentos_esperados"]
+
+
+def posicao_primeiro_correto(trechos, q: dict) -> Optional[int]:
+    """Posição (a partir de 1) do primeiro trecho correto para a pergunta."""
+    for posicao, t in enumerate(trechos, 1):
+        if trecho_correto(t.id, t.texto, q):
+            return posicao
+    return None
+
+
+def trechos_citados(resposta: str) -> List[int]:
+    """Números citados na resposta: '[Trecho 2]' e '[Trechos 1 e 3]' viram [2] e [1, 3]."""
+    numeros = []
+    for grupo in re.findall(r"Trechos?\s+([\d\s,e]+)", resposta, flags=re.IGNORECASE):
+        numeros += [int(n) for n in re.findall(r"\d+", grupo)]
+    return numeros
+
+
 def resumir_posicoes(posicoes: List[Optional[int]]) -> Dict[str, float]:
     """Calcula hit@k e MRR. Uma pergunta sem acerto até k=10 soma zero."""
     n = len(posicoes)
@@ -77,24 +104,47 @@ def medir_recuperacao(perguntas: List[dict], colecao, modelo, filtro) -> List[di
     linhas = []
     for q in perguntas:
         trechos = recuperar_trechos(q["pergunta"], colecao, modelo, top_k=max(KS), filtro=filtro)
-        ids = [t.id for t in trechos]
         linhas.append({
             "id": q["id"],
             "categoria": q["categoria"],
-            "posicao": posicao_primeiro_acerto(ids, q["documentos_esperados"]),
-            "top3": ids[:3],
+            "posicao": posicao_primeiro_correto(trechos, q),
+            "top3": [t.id for t in trechos[:3]],
         })
     return linhas
 
 
-def medir_geracao(perguntas: List[dict], colecao, modelo) -> List[dict]:
-    """Usa um único LLM, para os números não misturarem modelos."""
+def salvar_json(caminho: str, dados) -> None:
+    with open(caminho, "w", encoding="utf-8", newline="\n") as f:
+        json.dump(dados, f, ensure_ascii=False, indent=1)
+
+
+def medir_geracao(perguntas: List[dict], colecao, modelo, caminho_parcial: str, assinatura: dict) -> List[dict]:
+    """
+    Usa um único LLM, para os números não misturarem modelos.
+    Salva o progresso a cada pergunta: se a cota acabar, basta rodar o mesmo
+    comando de novo para continuar de onde parou.
+    """
     linhas = []
+    if os.path.exists(caminho_parcial):
+        with open(caminho_parcial, encoding="utf-8") as f:
+            parcial = json.load(f)
+        if parcial["assinatura"] != assinatura:
+            raise SystemExit(f"[ERRO] {caminho_parcial} veio de outra configuracao. Apague o arquivo ou use outro --rotulo.")
+        linhas = parcial["linhas"]
+        print(f"[RETOMADA] {len(linhas)} perguntas ja respondidas.")
+    feitas = {l["id"] for l in linhas}
+
     for i, q in enumerate(perguntas, 1):
+        if q["id"] in feitas:
+            continue
         print(f"[{i}/{len(perguntas)}] {q['pergunta'][:70]}")
         r = responder(q["pergunta"], colecao, modelo, provedores=[config.LLM_AVALIACAO])
         if r.llm is None:
-            raise SystemExit(f"[ERRO] Medicao interrompida: {r.resposta}")
+            print(r.resposta)
+            raise SystemExit(f"[ERRO] Medicao interrompida em {q['id']}. Progresso salvo; rode o mesmo comando para continuar.")
+
+        # trechos que a resposta citou, pela marcação [Trecho N]
+        citados = [r.trechos[n - 1] for n in trechos_citados(r.resposta) if 1 <= n <= len(r.trechos)]
         linhas.append({
             "id": q["id"],
             "categoria": q["categoria"],
@@ -103,7 +153,9 @@ def medir_geracao(perguntas: List[dict], colecao, modelo) -> List[dict]:
             "resposta": r.resposta,
             "recusou": recusou(r.resposta),
             "termos_ok": contem_termos(r.resposta, q["termos"]) if q["termos"] else None,
+            "citou_correto": None if q["deve_recusar"] else any(trecho_correto(t.id, t.texto, q) for t in citados),
         })
+        salvar_json(caminho_parcial, {"assinatura": assinatura, "linhas": linhas})
         time.sleep(DELAY_ENTRE_PERGUNTAS)
     return linhas
 
@@ -118,12 +170,22 @@ def por_categoria(linhas: List[dict]) -> Dict[str, Dict[str, float]]:
 def resumir_geracao(linhas: List[dict]) -> Dict[str, float]:
     recusar = [l for l in linhas if l["deve_recusar"]]
     responder_ = [l for l in linhas if not l["deve_recusar"]]
+
+    def taxa(grupo: List[dict], chave: str) -> Optional[float]:
+        """Fração do grupo com a chave verdadeira; None se o grupo for vazio."""
+        return sum(bool(l.get(chave)) for l in grupo) / len(grupo) if grupo else None
+
     return {
         "llm": sorted({l["llm"] for l in linhas}),
-        "abstencao_correta": sum(l["recusou"] for l in recusar) / len(recusar),
-        "recusa_indevida": sum(l["recusou"] for l in responder_) / len(responder_),
-        "termos_presentes": sum(bool(l["termos_ok"]) for l in responder_) / len(responder_),
+        "abstencao_correta": taxa(recusar, "recusou"),
+        "recusa_indevida": taxa(responder_, "recusou"),
+        "termos_presentes": taxa(responder_, "termos_ok"),
+        "citou_trecho_correto": taxa(responder_, "citou_correto"),
     }
+
+
+def formatar(valor: Optional[float]) -> str:
+    return "sem perguntas" if valor is None else f"{valor:.3f}"
 
 
 def linha_tabela(nome: str, m: Dict[str, float]) -> str:
@@ -147,9 +209,10 @@ def escrever_relatorio(caminho: str, dados: dict) -> None:
         g = dados["geracao"]["resumo"]
         m += ["## Geração", "", f"LLM: `{', '.join(g['llm'])}`.", "",
               "| Métrica | Valor |", "|---|---|",
-              f"| Abstenção correta (deve recusar) | {g['abstencao_correta']:.3f} |",
-              f"| Recusa indevida (deve responder) | {g['recusa_indevida']:.3f} |",
-              f"| Termos esperados presentes | {g['termos_presentes']:.3f} |", ""]
+              f"| Abstenção correta (deve recusar) | {formatar(g['abstencao_correta'])} |",
+              f"| Recusa indevida (deve responder) | {formatar(g['recusa_indevida'])} |",
+              f"| Termos esperados presentes | {formatar(g['termos_presentes'])} |",
+              f"| Citou um trecho correto | {formatar(g.get('citou_trecho_correto'))} |", ""]
     with open(caminho, "w", encoding="utf-8", newline="\n") as f:
         f.write("\n".join(m))
 
@@ -166,8 +229,8 @@ def main() -> None:
         perguntas = json.load(f)["perguntas"]
     colecao, modelo = carregar_recursos()
 
-    # Perguntas de recusa não têm documento esperado, então não entram em hit@k
-    com_alvo = [q for q in perguntas if q["documentos_esperados"]]
+    # Perguntas de recusa não têm documento nem evidência esperados, então não entram em hit@k
+    com_alvo = [q for q in perguntas if q["documentos_esperados"] or q.get("evidencia")]
     dados = {
         "rotulo": args.rotulo,
         "executado_em": datetime.now(timezone.utc).isoformat(),
@@ -181,14 +244,24 @@ def main() -> None:
             "categorias": por_categoria(linhas),
             "detalhe": linhas,
         }
+    os.makedirs(args.saida, exist_ok=True)
+    caminho_parcial = os.path.join(args.saida, f"{args.rotulo}.parcial.json")
     if args.com_llm:
-        linhas = medir_geracao(perguntas, colecao, modelo)
+        # identifica a configuração, para não misturar respostas de rodadas diferentes
+        assinatura = {
+            "conjunto": dados["conjunto"],
+            "modo_busca": config.MODO_BUSCA,
+            "incluir_revogados": config.INCLUIR_REVOGADOS,
+            "top_k": config.TOP_K,
+            "llm": config.LLM_AVALIACAO,
+        }
+        linhas = medir_geracao(perguntas, colecao, modelo, caminho_parcial, assinatura)
         dados["geracao"] = {"resumo": resumir_geracao(linhas), "detalhe": linhas}
 
-    os.makedirs(args.saida, exist_ok=True)
-    with open(os.path.join(args.saida, f"{args.rotulo}.json"), "w", encoding="utf-8", newline="\n") as f:
-        json.dump(dados, f, ensure_ascii=False, indent=1)
+    salvar_json(os.path.join(args.saida, f"{args.rotulo}.json"), dados)
     escrever_relatorio(os.path.join(args.saida, f"{args.rotulo}.md"), dados)
+    if os.path.exists(caminho_parcial):
+        os.remove(caminho_parcial)
     print(f"Resultados salvos em {args.saida} ({args.rotulo}.json e {args.rotulo}.md)")
 
 
