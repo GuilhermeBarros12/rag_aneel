@@ -1,0 +1,1535 @@
+{
+ "rotulo": "baseline",
+ "executado_em": "2026-11-09T14:18:28.839417+00:00",
+ "conjunto": "conjunto_ouro.json",
+ "recuperacao": {
+  "com_filtro": {
+   "geral": {
+    "n": 46,
+    "hit@1": 0.08695652173913043,
+    "hit@3": 0.08695652173913043,
+    "hit@5": 0.13043478260869565,
+    "hit@10": 0.15217391304347827,
+    "mrr": 0.1002415458937198
+   },
+   "categorias": {
+    "ato_citado": {
+     "n": 10,
+     "hit@1": 0.0,
+     "hit@3": 0.0,
+     "hit@5": 0.0,
+     "hit@10": 0.0,
+     "mrr": 0.0
+    },
+    "fato_com_ato": {
+     "n": 12,
+     "hit@1": 0.0,
+     "hit@3": 0.0,
+     "hit@5": 0.08333333333333333,
+     "hit@10": 0.08333333333333333,
+     "mrr": 0.020833333333333332
+    },
+    "fato_sem_ato": {
+     "n": 18,
+     "hit@1": 0.2222222222222222,
+     "hit@3": 0.2222222222222222,
+     "hit@5": 0.2777777777777778,
+     "hit@10": 0.3333333333333333,
+     "mrr": 0.24228395061728392
+    },
+    "revogado": {
+     "n": 6,
+     "hit@1": 0.0,
+     "hit@3": 0.0,
+     "hit@5": 0.0,
+     "hit@10": 0.0,
+     "mrr": 0.0
+    }
+   },
+   "detalhe": [
+    {
+     "id": "Q01",
+     "categoria": "ato_citado",
+     "posicao": null,
+     "top3": [
+      "rea202211602ti_chunk3",
+      "rea202211601ti_chunk3",
+      "reh20223041ti_chunk3"
+     ]
+    },
+    {
+     "id": "Q02",
+     "categoria": "ato_citado",
+     "posicao": null,
+     "top3": [
+      "area202211062_1_chunk14",
+      "adsp20222977_1_chunk35",
+      "adsp20222710_1_chunk56"
+     ]
+    },
+    {
+     "id": "Q03",
+     "categoria": "ato_citado",
+     "posicao": null,
+     "top3": [
+      "adsp20223254_1_chunk34",
+      "rea202110338ti_chunk6",
+      "rea202212736ti_chunk5"
+     ]
+    },
+    {
+     "id": "Q04",
+     "categoria": "ato_citado",
+     "posicao": null,
+     "top3": [
+      "adsp20161880_chunk5",
+      "adsp20222129_1_chunk31",
+      "adsp20162977_1_chunk25"
+     ]
+    },
+    {
+     "id": "Q05",
+     "categoria": "ato_citado",
+     "posicao": null,
+     "top3": [
+      "dsp20221068ti_chunk3",
+      "area202212161_1_chunk23",
+      "area202212162_1_chunk23"
+     ]
+    },
+    {
+     "id": "Q06",
+     "categoria": "ato_citado",
+     "posicao": null,
+     "top3": [
+      "dsp20221632_chunk4",
+      "adsp20221632_1_chunk24",
+      "ndsp20213651_chunk7"
+     ]
+    },
+    {
+     "id": "Q07",
+     "categoria": "ato_citado",
+     "posicao": null,
+     "top3": [
+      "area202212161_1_chunk23",
+      "area202212163_1_chunk23",
+      "area202212164_1_chunk23"
+     ]
+    },
+    {
+     "id": "Q08",
+     "categoria": "ato_citado",
+     "posicao": null,
+     "top3": [
+      "rea202213053ti_chunk3",
+      "rea202212967ti_chunk3",
+      "rea202212873ti_chunk3"
+     ]
+    },
+    {
+     "id": "Q09",
+     "categoria": "ato_citado",
+     "posicao": null,
+     "top3": [
+      "dsp20221633_chunk3",
+      "reh20212959ti_chunk15",
+      "nreh20223066_1_chunk17"
+     ]
+    },
+    {
+     "id": "Q10",
+     "categoria": "ato_citado",
+     "posicao": null,
+     "top3": [
+      "area202212536_1_chunk96",
+      "areh20223099_1_chunk88",
+      "areh20162128_1_chunk35"
+     ]
+    },
+    {
+     "id": "Q11",
+     "categoria": "fato_com_ato",
+     "posicao": null,
+     "top3": [
+      "adsp2022617_1_chunk11",
+      "dsp2022711_chunk3",
+      "dsp20221163_chunk3"
+     ]
+    },
+    {
+     "id": "Q12",
+     "categoria": "fato_com_ato",
+     "posicao": null,
+     "top3": [
+      "edt2022sn214_chunk4",
+      "dsp2016647_chunk3",
+      "adsp20221650_chunk8"
+     ]
+    },
+    {
+     "id": "Q13",
+     "categoria": "fato_com_ato",
+     "posicao": null,
+     "top3": [
+      "areh20223026_1_chunk53",
+      "dsp20221374_chunk4",
+      "adsp20161387_chunk8"
+     ]
+    },
+    {
+     "id": "Q14",
+     "categoria": "fato_com_ato",
+     "posicao": 4,
+     "top3": [
+      "ndsp2021034_chunk742",
+      "prt20221465tispde_chunk14",
+      "ndsp2021034_chunk702"
+     ]
+    },
+    {
+     "id": "Q15",
+     "categoria": "fato_com_ato",
+     "posicao": null,
+     "top3": [
+      "emdsp20222187_chunk8",
+      "adsp20223010_chunk14",
+      "adsp20223499_1_chunk4"
+     ]
+    },
+    {
+     "id": "Q16",
+     "categoria": "fato_com_ato",
+     "posicao": null,
+     "top3": [
+      "ndsp20212156_chunk4",
+      "area202211452_1_chunk5",
+      "adsp20212430_1_chunk6"
+     ]
+    },
+    {
+     "id": "Q17",
+     "categoria": "fato_com_ato",
+     "posicao": null,
+     "top3": [
+      "adsp20212408_chunk8",
+      "adsp20222381_1_chunk5",
+      "adsp20221722_1_chunk5"
+     ]
+    },
+    {
+     "id": "Q18",
+     "categoria": "fato_com_ato",
+     "posicao": null,
+     "top3": [
+      "dsp20162540ti_chunk6",
+      "dsp20161203ti_chunk5",
+      "rea202110080ti_chunk6"
+     ]
+    },
+    {
+     "id": "Q19",
+     "categoria": "fato_com_ato",
+     "posicao": null,
+     "top3": [
+      "area202212075_1_chunk23",
+      "adsp20222124_1_chunk22",
+      "area20165994_1_chunk23"
+     ]
+    },
+    {
+     "id": "Q20",
+     "categoria": "fato_com_ato",
+     "posicao": null,
+     "top3": [
+      "prt2021021_chunk3",
+      "prt2022106_chunk3",
+      "prt2021045_chunk3"
+     ]
+    },
+    {
+     "id": "Q21",
+     "categoria": "fato_com_ato",
+     "posicao": null,
+     "top3": [
+      "ndsp20222992_chunk8",
+      "dsp20221632_chunk4",
+      "ndsp20222242_chunk8"
+     ]
+    },
+    {
+     "id": "Q22",
+     "categoria": "fato_com_ato",
+     "posicao": null,
+     "top3": [
+      "adsp2022949_1_chunk16",
+      "adsp2022949_1_chunk8",
+      "ndsp20222513_chunk1"
+     ]
+    },
+    {
+     "id": "Q23",
+     "categoria": "fato_sem_ato",
+     "posicao": null,
+     "top3": [
+      "dsp2021719ti_chunk3",
+      "rea202211822ti_chunk4",
+      "rea202211820ti_chunk4"
+     ]
+    },
+    {
+     "id": "Q24",
+     "categoria": "fato_sem_ato",
+     "posicao": null,
+     "top3": [
+      "rea202211626ti_chunk6",
+      "area202110250_1_chunk19",
+      "area202110253_1_chunk17"
+     ]
+    },
+    {
+     "id": "Q25",
+     "categoria": "fato_sem_ato",
+     "posicao": null,
+     "top3": [
+      "rea202212283ti_chunk6",
+      "dsp20213332ti_chunk3",
+      "dsp20213400ti_chunk3"
+     ]
+    },
+    {
+     "id": "Q26",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "rea202213032ti_chunk4",
+      "rea202213034ti_chunk4",
+      "rea202213036ti_chunk4"
+     ]
+    },
+    {
+     "id": "Q27",
+     "categoria": "fato_sem_ato",
+     "posicao": 9,
+     "top3": [
+      "dsp20221863_chunk3",
+      "area202212033_1_chunk4",
+      "area202212034_1_chunk4"
+     ]
+    },
+    {
+     "id": "Q28",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "rea202110536ti_chunk3",
+      "area202212193_1_chunk8",
+      "area202212194_1_chunk8"
+     ]
+    },
+    {
+     "id": "Q29",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "area202212308_1_chunk10",
+      "rea20165896ti_chunk4",
+      "area20219883_1_chunk4"
+     ]
+    },
+    {
+     "id": "Q30",
+     "categoria": "fato_sem_ato",
+     "posicao": null,
+     "top3": [
+      "rea202213185ti_chunk6",
+      "area202110370_1_chunk15",
+      "ndsp20222296_chunk8"
+     ]
+    },
+    {
+     "id": "Q31",
+     "categoria": "fato_sem_ato",
+     "posicao": null,
+     "top3": [
+      "area202213337_1_chunk4",
+      "dsp20161136ti_chunk3",
+      "rea202213337ti_chunk3"
+     ]
+    },
+    {
+     "id": "Q32",
+     "categoria": "fato_sem_ato",
+     "posicao": 4,
+     "top3": [
+      "dsp20213500ti_chunk3",
+      "rea202211262ti_chunk6",
+      "dsp20213942ti_chunk3"
+     ]
+    },
+    {
+     "id": "Q33",
+     "categoria": "fato_sem_ato",
+     "posicao": null,
+     "top3": [
+      "area202110250_1_chunk19",
+      "area202110253_1_chunk17",
+      "area20219613_1_chunk14"
+     ]
+    },
+    {
+     "id": "Q34",
+     "categoria": "fato_sem_ato",
+     "posicao": null,
+     "top3": [
+      "rea202110699ti_chunk4",
+      "rea202110697ti_chunk4",
+      "rea202110700ti_chunk4"
+     ]
+    },
+    {
+     "id": "Q35",
+     "categoria": "fato_sem_ato",
+     "posicao": null,
+     "top3": [
+      "prt2021578mme_chunk3",
+      "dsp20162499ti_chunk4",
+      "prt2021577mme_chunk3"
+     ]
+    },
+    {
+     "id": "Q36",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20212089ti_chunk3",
+      "dsp20212090ti_chunk3",
+      "dsp20222854ti_chunk3"
+     ]
+    },
+    {
+     "id": "Q37",
+     "categoria": "fato_sem_ato",
+     "posicao": null,
+     "top3": [
+      "dsp20222557_chunk3",
+      "rea202211878ti_chunk4",
+      "area202212869_1_chunk2"
+     ]
+    },
+    {
+     "id": "Q38",
+     "categoria": "fato_sem_ato",
+     "posicao": null,
+     "top3": [
+      "dsp20163236ti_chunk6",
+      "area202211984_1_chunk2",
+      "ndsp20162769_chunk222"
+     ]
+    },
+    {
+     "id": "Q39",
+     "categoria": "fato_sem_ato",
+     "posicao": null,
+     "top3": [
+      "area202211867_1_chunk2",
+      "area202110433_1_chunk2",
+      "rea202213204ti_chunk5"
+     ]
+    },
+    {
+     "id": "Q40",
+     "categoria": "fato_sem_ato",
+     "posicao": null,
+     "top3": [
+      "adsp20223478_1_chunk17",
+      "adsp20211898_1_chunk43",
+      "ect2022020_1_chunk6"
+     ]
+    },
+    {
+     "id": "Q41",
+     "categoria": "revogado",
+     "posicao": null,
+     "top3": [
+      "adsp2022951_1_chunk29",
+      "dsp2016726ti_chunk6",
+      "dsp20161142ti_chunk7"
+     ]
+    },
+    {
+     "id": "Q42",
+     "categoria": "revogado",
+     "posicao": null,
+     "top3": [
+      "adsp20221129_1_chunk61",
+      "area20165920_1_chunk60",
+      "reh20213001ti_chunk3"
+     ]
+    },
+    {
+     "id": "Q43",
+     "categoria": "revogado",
+     "posicao": null,
+     "top3": [
+      "rea202110700ti_chunk4",
+      "rea202110701ti_chunk4",
+      "rea202110702ti_chunk4"
+     ]
+    },
+    {
+     "id": "Q44",
+     "categoria": "revogado",
+     "posicao": null,
+     "top3": [
+      "rea202211756ti_chunk4",
+      "rea202211765ti_chunk4",
+      "rea202211755ti_chunk4"
+     ]
+    },
+    {
+     "id": "Q45",
+     "categoria": "revogado",
+     "posicao": null,
+     "top3": [
+      "adsp20212123_1_chunk2",
+      "prt2021303_chunk2",
+      "prt2021070_chunk5"
+     ]
+    },
+    {
+     "id": "Q46",
+     "categoria": "revogado",
+     "posicao": null,
+     "top3": [
+      "area202211902_1_chunk20",
+      "rea202213181ti_chunk6",
+      "rea20165958ti_chunk107"
+     ]
+    }
+   ]
+  },
+  "sem_filtro": {
+   "geral": {
+    "n": 46,
+    "hit@1": 0.10869565217391304,
+    "hit@3": 0.10869565217391304,
+    "hit@5": 0.17391304347826086,
+    "hit@10": 0.1956521739130435,
+    "mrr": 0.12632850241545893
+   },
+   "categorias": {
+    "ato_citado": {
+     "n": 10,
+     "hit@1": 0.0,
+     "hit@3": 0.0,
+     "hit@5": 0.0,
+     "hit@10": 0.0,
+     "mrr": 0.0
+    },
+    "fato_com_ato": {
+     "n": 12,
+     "hit@1": 0.0,
+     "hit@3": 0.0,
+     "hit@5": 0.08333333333333333,
+     "hit@10": 0.08333333333333333,
+     "mrr": 0.020833333333333332
+    },
+    "fato_sem_ato": {
+     "n": 18,
+     "hit@1": 0.2222222222222222,
+     "hit@3": 0.2222222222222222,
+     "hit@5": 0.2777777777777778,
+     "hit@10": 0.3333333333333333,
+     "mrr": 0.24228395061728392
+    },
+    "revogado": {
+     "n": 6,
+     "hit@1": 0.16666666666666666,
+     "hit@3": 0.16666666666666666,
+     "hit@5": 0.3333333333333333,
+     "hit@10": 0.3333333333333333,
+     "mrr": 0.19999999999999998
+    }
+   },
+   "detalhe": [
+    {
+     "id": "Q01",
+     "categoria": "ato_citado",
+     "posicao": null,
+     "top3": [
+      "rea202211740ti_chunk3",
+      "rea202211602ti_chunk3",
+      "rea202211741ti_chunk3"
+     ]
+    },
+    {
+     "id": "Q02",
+     "categoria": "ato_citado",
+     "posicao": null,
+     "top3": [
+      "area202211062_1_chunk14",
+      "adsp20222977_1_chunk35",
+      "adsp20222710_1_chunk56"
+     ]
+    },
+    {
+     "id": "Q03",
+     "categoria": "ato_citado",
+     "posicao": null,
+     "top3": [
+      "adsp20223254_1_chunk34",
+      "rea202110338ti_chunk6",
+      "area202213307_1_chunk19"
+     ]
+    },
+    {
+     "id": "Q04",
+     "categoria": "ato_citado",
+     "posicao": null,
+     "top3": [
+      "adsp20161880_chunk5",
+      "adsp20222129_1_chunk31",
+      "adsp20162977_1_chunk25"
+     ]
+    },
+    {
+     "id": "Q05",
+     "categoria": "ato_citado",
+     "posicao": null,
+     "top3": [
+      "dsp20221068ti_chunk3",
+      "area202212164_1_chunk23",
+      "area202212298_1_chunk21"
+     ]
+    },
+    {
+     "id": "Q06",
+     "categoria": "ato_citado",
+     "posicao": null,
+     "top3": [
+      "dsp20221632_chunk4",
+      "adsp20221632_1_chunk24",
+      "ndsp20213651_chunk7"
+     ]
+    },
+    {
+     "id": "Q07",
+     "categoria": "ato_citado",
+     "posicao": null,
+     "top3": [
+      "area202213307_1_chunk19",
+      "area202213308_1_chunk19",
+      "area202213309_1_chunk19"
+     ]
+    },
+    {
+     "id": "Q08",
+     "categoria": "ato_citado",
+     "posicao": null,
+     "top3": [
+      "rea202213053ti_chunk3",
+      "rea202212967ti_chunk3",
+      "rea202212873ti_chunk3"
+     ]
+    },
+    {
+     "id": "Q09",
+     "categoria": "ato_citado",
+     "posicao": null,
+     "top3": [
+      "nreh20223066_1_chunk17",
+      "nreh20223067_1_chunk17",
+      "area202212802_1_chunk14"
+     ]
+    },
+    {
+     "id": "Q10",
+     "categoria": "ato_citado",
+     "posicao": null,
+     "top3": [
+      "area202212536_1_chunk96",
+      "areh20223099_1_chunk88",
+      "areh20162128_1_chunk35"
+     ]
+    },
+    {
+     "id": "Q11",
+     "categoria": "fato_com_ato",
+     "posicao": null,
+     "top3": [
+      "adsp2022617_1_chunk11",
+      "dsp2022711_chunk3",
+      "dsp20221163_chunk3"
+     ]
+    },
+    {
+     "id": "Q12",
+     "categoria": "fato_com_ato",
+     "posicao": null,
+     "top3": [
+      "edt2022sn214_chunk4",
+      "dsp2016647_chunk3",
+      "adsp20221650_chunk8"
+     ]
+    },
+    {
+     "id": "Q13",
+     "categoria": "fato_com_ato",
+     "posicao": null,
+     "top3": [
+      "areh20223026_1_chunk53",
+      "dsp20221374_chunk4",
+      "adsp20161387_chunk8"
+     ]
+    },
+    {
+     "id": "Q14",
+     "categoria": "fato_com_ato",
+     "posicao": 4,
+     "top3": [
+      "ndsp2021034_chunk742",
+      "prt20221465tispde_chunk14",
+      "ndsp2021034_chunk702"
+     ]
+    },
+    {
+     "id": "Q15",
+     "categoria": "fato_com_ato",
+     "posicao": null,
+     "top3": [
+      "emdsp20222187_chunk8",
+      "adsp20223010_chunk14",
+      "adsp20223499_1_chunk4"
+     ]
+    },
+    {
+     "id": "Q16",
+     "categoria": "fato_com_ato",
+     "posicao": null,
+     "top3": [
+      "ndsp20212156_chunk4",
+      "area202211452_1_chunk5",
+      "adsp20212430_1_chunk6"
+     ]
+    },
+    {
+     "id": "Q17",
+     "categoria": "fato_com_ato",
+     "posicao": null,
+     "top3": [
+      "adsp20212408_chunk8",
+      "adsp20222381_1_chunk5",
+      "adsp20221722_1_chunk5"
+     ]
+    },
+    {
+     "id": "Q18",
+     "categoria": "fato_com_ato",
+     "posicao": null,
+     "top3": [
+      "dsp20162540ti_chunk6",
+      "dsp20161203ti_chunk5",
+      "area202211374_1_chunk8"
+     ]
+    },
+    {
+     "id": "Q19",
+     "categoria": "fato_com_ato",
+     "posicao": null,
+     "top3": [
+      "area202212075_1_chunk23",
+      "adsp20222124_1_chunk22",
+      "area20165994_1_chunk23"
+     ]
+    },
+    {
+     "id": "Q20",
+     "categoria": "fato_com_ato",
+     "posicao": null,
+     "top3": [
+      "prt2021021_chunk3",
+      "prt2022106_chunk3",
+      "prt2021045_chunk3"
+     ]
+    },
+    {
+     "id": "Q21",
+     "categoria": "fato_com_ato",
+     "posicao": null,
+     "top3": [
+      "ndsp20222992_chunk8",
+      "dsp20221632_chunk4",
+      "ndsp20222242_chunk8"
+     ]
+    },
+    {
+     "id": "Q22",
+     "categoria": "fato_com_ato",
+     "posicao": null,
+     "top3": [
+      "adsp2022949_1_chunk16",
+      "adsp2022949_1_chunk8",
+      "ndsp20222513_chunk1"
+     ]
+    },
+    {
+     "id": "Q23",
+     "categoria": "fato_sem_ato",
+     "posicao": null,
+     "top3": [
+      "dsp2021719ti_chunk3",
+      "rea202211822ti_chunk4",
+      "rea202211820ti_chunk4"
+     ]
+    },
+    {
+     "id": "Q24",
+     "categoria": "fato_sem_ato",
+     "posicao": null,
+     "top3": [
+      "rea202211626ti_chunk6",
+      "area202110250_1_chunk19",
+      "area202110253_1_chunk17"
+     ]
+    },
+    {
+     "id": "Q25",
+     "categoria": "fato_sem_ato",
+     "posicao": null,
+     "top3": [
+      "rea202212283ti_chunk6",
+      "dsp20213332ti_chunk3",
+      "dsp20213400ti_chunk3"
+     ]
+    },
+    {
+     "id": "Q26",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "rea202213032ti_chunk4",
+      "rea202213034ti_chunk4",
+      "rea202213036ti_chunk4"
+     ]
+    },
+    {
+     "id": "Q27",
+     "categoria": "fato_sem_ato",
+     "posicao": 9,
+     "top3": [
+      "dsp20221863_chunk3",
+      "area202212033_1_chunk4",
+      "area202212034_1_chunk4"
+     ]
+    },
+    {
+     "id": "Q28",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "rea202110536ti_chunk3",
+      "area202212193_1_chunk8",
+      "area202212194_1_chunk8"
+     ]
+    },
+    {
+     "id": "Q29",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "area202212308_1_chunk10",
+      "ndsp2016178_chunk39",
+      "ndsp2016045_chunk54"
+     ]
+    },
+    {
+     "id": "Q30",
+     "categoria": "fato_sem_ato",
+     "posicao": null,
+     "top3": [
+      "dsp20163177ti_chunk5",
+      "rea202213185ti_chunk6",
+      "area202110370_1_chunk15"
+     ]
+    },
+    {
+     "id": "Q31",
+     "categoria": "fato_sem_ato",
+     "posicao": null,
+     "top3": [
+      "area202213337_1_chunk4",
+      "rea202213337ti_chunk3",
+      "dsp2022881_chunk3"
+     ]
+    },
+    {
+     "id": "Q32",
+     "categoria": "fato_sem_ato",
+     "posicao": 4,
+     "top3": [
+      "dsp20213500ti_chunk3",
+      "rea202211262ti_chunk6",
+      "dsp20213942ti_chunk3"
+     ]
+    },
+    {
+     "id": "Q33",
+     "categoria": "fato_sem_ato",
+     "posicao": null,
+     "top3": [
+      "area202110250_1_chunk19",
+      "area202110253_1_chunk17",
+      "area20219613_1_chunk14"
+     ]
+    },
+    {
+     "id": "Q34",
+     "categoria": "fato_sem_ato",
+     "posicao": null,
+     "top3": [
+      "rea202110699ti_chunk4",
+      "rea202110697ti_chunk4",
+      "rea202110700ti_chunk4"
+     ]
+    },
+    {
+     "id": "Q35",
+     "categoria": "fato_sem_ato",
+     "posicao": null,
+     "top3": [
+      "prt2021578mme_chunk3",
+      "dsp20162499ti_chunk4",
+      "prt2021577mme_chunk3"
+     ]
+    },
+    {
+     "id": "Q36",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20212089ti_chunk3",
+      "dsp20212090ti_chunk3",
+      "dsp20222854ti_chunk3"
+     ]
+    },
+    {
+     "id": "Q37",
+     "categoria": "fato_sem_ato",
+     "posicao": null,
+     "top3": [
+      "dsp20222557_chunk3",
+      "rea202211878ti_chunk4",
+      "area202212869_1_chunk2"
+     ]
+    },
+    {
+     "id": "Q38",
+     "categoria": "fato_sem_ato",
+     "posicao": null,
+     "top3": [
+      "dsp20163236ti_chunk6",
+      "area202211984_1_chunk2",
+      "ndsp20162769_chunk222"
+     ]
+    },
+    {
+     "id": "Q39",
+     "categoria": "fato_sem_ato",
+     "posicao": null,
+     "top3": [
+      "area202211867_1_chunk2",
+      "area202110433_1_chunk2",
+      "rea202213204ti_chunk5"
+     ]
+    },
+    {
+     "id": "Q40",
+     "categoria": "fato_sem_ato",
+     "posicao": null,
+     "top3": [
+      "adsp20223478_1_chunk17",
+      "adsp20211898_1_chunk43",
+      "ect2022020_1_chunk6"
+     ]
+    },
+    {
+     "id": "Q41",
+     "categoria": "revogado",
+     "posicao": 5,
+     "top3": [
+      "adsp2022951_1_chunk29",
+      "dsp2016726ti_chunk6",
+      "dsp20161142ti_chunk7"
+     ]
+    },
+    {
+     "id": "Q42",
+     "categoria": "revogado",
+     "posicao": null,
+     "top3": [
+      "adsp20221129_1_chunk61",
+      "area20165920_1_chunk60",
+      "area202212206_1_chunk44"
+     ]
+    },
+    {
+     "id": "Q43",
+     "categoria": "revogado",
+     "posicao": 1,
+     "top3": [
+      "rea202110062ti_chunk4",
+      "rea202110063ti_chunk4",
+      "rea202110059ti_chunk4"
+     ]
+    },
+    {
+     "id": "Q44",
+     "categoria": "revogado",
+     "posicao": null,
+     "top3": [
+      "rea202211756ti_chunk4",
+      "rea202211765ti_chunk4",
+      "rea202211755ti_chunk4"
+     ]
+    },
+    {
+     "id": "Q45",
+     "categoria": "revogado",
+     "posicao": null,
+     "top3": [
+      "prt2022026_chunk2",
+      "adsp20212123_1_chunk2",
+      "prt2021316_chunk2"
+     ]
+    },
+    {
+     "id": "Q46",
+     "categoria": "revogado",
+     "posicao": null,
+     "top3": [
+      "rea202110842ti_chunk6",
+      "area202211902_1_chunk20",
+      "rea202213181ti_chunk6"
+     ]
+    }
+   ]
+  }
+ },
+ "geracao": {
+  "resumo": {
+   "llm": [
+    "groq/openai/gpt-oss-120b"
+   ],
+   "abstencao_correta": 1.0,
+   "recusa_indevida": 0.8478260869565217,
+   "termos_presentes": 0.13043478260869565
+  },
+  "detalhe": [
+   {
+    "id": "Q01",
+    "categoria": "ato_citado",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "Não encontrei informação suficiente nos documentos disponíveis.",
+    "recusou": true,
+    "termos_ok": false
+   },
+   {
+    "id": "Q02",
+    "categoria": "ato_citado",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "Não encontrei informação suficiente nos documentos disponíveis.",
+    "recusou": true,
+    "termos_ok": false
+   },
+   {
+    "id": "Q03",
+    "categoria": "ato_citado",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "Não encontrei informação suficiente nos documentos disponíveis.",
+    "recusou": true,
+    "termos_ok": false
+   },
+   {
+    "id": "Q04",
+    "categoria": "ato_citado",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "Não encontrei informação suficiente nos documentos disponíveis.",
+    "recusou": true,
+    "termos_ok": false
+   },
+   {
+    "id": "Q05",
+    "categoria": "ato_citado",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "Não encontrei informação suficiente nos documentos disponíveis.",
+    "recusou": true,
+    "termos_ok": false
+   },
+   {
+    "id": "Q06",
+    "categoria": "ato_citado",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "Não encontrei informação suficiente nos documentos disponíveis.",
+    "recusou": true,
+    "termos_ok": false
+   },
+   {
+    "id": "Q07",
+    "categoria": "ato_citado",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "Não encontrei informação suficiente nos documentos disponíveis.",
+    "recusou": true,
+    "termos_ok": false
+   },
+   {
+    "id": "Q08",
+    "categoria": "ato_citado",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "Não encontrei informação suficiente nos documentos disponíveis.",
+    "recusou": true,
+    "termos_ok": false
+   },
+   {
+    "id": "Q09",
+    "categoria": "ato_citado",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "Não encontrei informação suficiente nos documentos disponíveis.",
+    "recusou": true,
+    "termos_ok": false
+   },
+   {
+    "id": "Q10",
+    "categoria": "ato_citado",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "De acordo com o [Trecho 3], a Resolução Homologatória de 2016 (referente ao Processo nº 48500.001084/2016‑60) homologa o índice de reajuste tarifário anual das tarifas da **Cooperativa Aliança – COOPERALIANÇA**.",
+    "recusou": false,
+    "termos_ok": false
+   },
+   {
+    "id": "Q11",
+    "categoria": "fato_com_ato",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "Não encontrei informação suficiente nos documentos disponíveis.",
+    "recusou": true,
+    "termos_ok": false
+   },
+   {
+    "id": "Q12",
+    "categoria": "fato_com_ato",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "Não encontrei informação suficiente nos documentos disponíveis.",
+    "recusou": true,
+    "termos_ok": false
+   },
+   {
+    "id": "Q13",
+    "categoria": "fato_com_ato",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "Não encontrei informação suficiente nos documentos disponíveis.",
+    "recusou": true,
+    "termos_ok": false
+   },
+   {
+    "id": "Q14",
+    "categoria": "fato_com_ato",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "Cada unidade geradora da EOL Vent​os de Santa Edwiges tem potência de **2.700 kW**.  \nDe acordo com o [Trecho 4].",
+    "recusou": false,
+    "termos_ok": true
+   },
+   {
+    "id": "Q15",
+    "categoria": "fato_com_ato",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "Não encontrei informação suficiente nos documentos disponíveis.",
+    "recusou": true,
+    "termos_ok": false
+   },
+   {
+    "id": "Q16",
+    "categoria": "fato_com_ato",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "Não encontrei informação suficiente nos documentos disponíveis.",
+    "recusou": true,
+    "termos_ok": false
+   },
+   {
+    "id": "Q17",
+    "categoria": "fato_com_ato",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "Não encontrei informação suficiente nos documentos disponíveis.",
+    "recusou": true,
+    "termos_ok": false
+   },
+   {
+    "id": "Q18",
+    "categoria": "fato_com_ato",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "Não encontrei informação suficiente nos documentos disponíveis.",
+    "recusou": true,
+    "termos_ok": false
+   },
+   {
+    "id": "Q19",
+    "categoria": "fato_com_ato",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "Não encontrei informação suficiente nos documentos disponíveis.",
+    "recusou": true,
+    "termos_ok": false
+   },
+   {
+    "id": "Q20",
+    "categoria": "fato_com_ato",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "Não encontrei informação suficiente nos documentos disponíveis.",
+    "recusou": true,
+    "termos_ok": false
+   },
+   {
+    "id": "Q21",
+    "categoria": "fato_com_ato",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "Não encontrei informação suficiente nos documentos disponíveis.",
+    "recusou": true,
+    "termos_ok": false
+   },
+   {
+    "id": "Q22",
+    "categoria": "fato_com_ato",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "Não encontrei informação suficiente nos documentos disponíveis.",
+    "recusou": true,
+    "termos_ok": false
+   },
+   {
+    "id": "Q23",
+    "categoria": "fato_sem_ato",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "Não encontrei informação suficiente nos documentos disponíveis.",
+    "recusou": true,
+    "termos_ok": false
+   },
+   {
+    "id": "Q24",
+    "categoria": "fato_sem_ato",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "Não encontrei informação suficiente nos documentos disponíveis.",
+    "recusou": true,
+    "termos_ok": false
+   },
+   {
+    "id": "Q25",
+    "categoria": "fato_sem_ato",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "Não encontrei informação suficiente nos documentos disponíveis.",
+    "recusou": true,
+    "termos_ok": false
+   },
+   {
+    "id": "Q26",
+    "categoria": "fato_sem_ato",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "A Central Geradora Fotovoltaica Humaita Solar III está localizada no município de **Juazeiro**, no estado da Bahia. (De acordo com o [Trecho 2])",
+    "recusou": false,
+    "termos_ok": true
+   },
+   {
+    "id": "Q27",
+    "categoria": "fato_sem_ato",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "A autorização da Central Geradora Eólica Oeste Seridó IX foi transferida para a **Central Geradora Eólica Seridó IX S.A.** De acordo com o [Trecho 2].",
+    "recusou": false,
+    "termos_ok": true
+   },
+   {
+    "id": "Q28",
+    "categoria": "fato_sem_ato",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "A autorização da Central Geradora Eólica Chuí V foi transferida para a **Omega Geração S.A.** (CNPJ 09.149.503/0001‑06).  \n\nDe acordo com o [Trecho 1].",
+    "recusou": false,
+    "termos_ok": true
+   },
+   {
+    "id": "Q29",
+    "categoria": "fato_sem_ato",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "A autorização da PCH Salto Forqueta foi transferida para a **Cooperativa de Distribuição de Energia Teutônia – Certel Energia**【Trecho 4】.",
+    "recusou": false,
+    "termos_ok": true
+   },
+   {
+    "id": "Q30",
+    "categoria": "fato_sem_ato",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "Não encontrei informação suficiente nos documentos disponíveis.",
+    "recusou": true,
+    "termos_ok": false
+   },
+   {
+    "id": "Q31",
+    "categoria": "fato_sem_ato",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "Não encontrei informação suficiente nos documentos disponíveis.",
+    "recusou": true,
+    "termos_ok": false
+   },
+   {
+    "id": "Q32",
+    "categoria": "fato_sem_ato",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "Não encontrei informação suficiente nos documentos disponíveis.",
+    "recusou": true,
+    "termos_ok": false
+   },
+   {
+    "id": "Q33",
+    "categoria": "fato_sem_ato",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "Não encontrei informação suficiente nos documentos disponíveis.",
+    "recusou": true,
+    "termos_ok": false
+   },
+   {
+    "id": "Q34",
+    "categoria": "fato_sem_ato",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "Não encontrei informação suficiente nos documentos disponíveis.",
+    "recusou": true,
+    "termos_ok": false
+   },
+   {
+    "id": "Q35",
+    "categoria": "fato_sem_ato",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "Não encontrei informação suficiente nos documentos disponíveis.",
+    "recusou": true,
+    "termos_ok": false
+   },
+   {
+    "id": "Q36",
+    "categoria": "fato_sem_ato",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "O CNPJ da Delta Fund V Comercializadora de Energia S.A. é **40.594.268/0001-13**.  \nDe acordo com o [Trecho 1].",
+    "recusou": false,
+    "termos_ok": true
+   },
+   {
+    "id": "Q37",
+    "categoria": "fato_sem_ato",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "Não encontrei informação suficiente nos documentos disponíveis.",
+    "recusou": true,
+    "termos_ok": false
+   },
+   {
+    "id": "Q38",
+    "categoria": "fato_sem_ato",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "Não encontrei informação suficiente nos documentos disponíveis.",
+    "recusou": true,
+    "termos_ok": false
+   },
+   {
+    "id": "Q39",
+    "categoria": "fato_sem_ato",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "Não encontrei informação suficiente nos documentos disponíveis.",
+    "recusou": true,
+    "termos_ok": false
+   },
+   {
+    "id": "Q40",
+    "categoria": "fato_sem_ato",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "Não encontrei informação suficiente nos documentos disponíveis.",
+    "recusou": true,
+    "termos_ok": false
+   },
+   {
+    "id": "Q41",
+    "categoria": "revogado",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "Não encontrei informação suficiente nos documentos disponíveis.",
+    "recusou": true,
+    "termos_ok": false
+   },
+   {
+    "id": "Q42",
+    "categoria": "revogado",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "Não encontrei informação suficiente nos documentos disponíveis.",
+    "recusou": true,
+    "termos_ok": false
+   },
+   {
+    "id": "Q43",
+    "categoria": "revogado",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "Não encontrei informação suficiente nos documentos disponíveis.",
+    "recusou": true,
+    "termos_ok": false
+   },
+   {
+    "id": "Q44",
+    "categoria": "revogado",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "Não encontrei informação suficiente nos documentos disponíveis.",
+    "recusou": true,
+    "termos_ok": false
+   },
+   {
+    "id": "Q45",
+    "categoria": "revogado",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "Não encontrei informação suficiente nos documentos disponíveis.",
+    "recusou": true,
+    "termos_ok": false
+   },
+   {
+    "id": "Q46",
+    "categoria": "revogado",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "Não encontrei informação suficiente nos documentos disponíveis.",
+    "recusou": true,
+    "termos_ok": false
+   },
+   {
+    "id": "Q47",
+    "categoria": "ato_inexistente",
+    "deve_recusar": true,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "Não encontrei informação suficiente nos documentos disponíveis.",
+    "recusou": true,
+    "termos_ok": null
+   },
+   {
+    "id": "Q48",
+    "categoria": "ato_inexistente",
+    "deve_recusar": true,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "Não encontrei informação suficiente nos documentos disponíveis.",
+    "recusou": true,
+    "termos_ok": null
+   },
+   {
+    "id": "Q49",
+    "categoria": "fora_do_periodo",
+    "deve_recusar": true,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "Não encontrei informação suficiente nos documentos disponíveis.",
+    "recusou": true,
+    "termos_ok": null
+   },
+   {
+    "id": "Q50",
+    "categoria": "fora_do_periodo",
+    "deve_recusar": true,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "Não encontrei informação suficiente nos documentos disponíveis.",
+    "recusou": true,
+    "termos_ok": null
+   },
+   {
+    "id": "Q51",
+    "categoria": "fora_do_periodo",
+    "deve_recusar": true,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "Não encontrei informação suficiente nos documentos disponíveis.",
+    "recusou": true,
+    "termos_ok": null
+   },
+   {
+    "id": "Q52",
+    "categoria": "fora_do_periodo",
+    "deve_recusar": true,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "Não encontrei informação suficiente nos documentos disponíveis.",
+    "recusou": true,
+    "termos_ok": null
+   },
+   {
+    "id": "Q53",
+    "categoria": "fora_do_dominio",
+    "deve_recusar": true,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "Não encontrei informação suficiente nos documentos disponíveis.",
+    "recusou": true,
+    "termos_ok": null
+   },
+   {
+    "id": "Q54",
+    "categoria": "fora_do_dominio",
+    "deve_recusar": true,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "Não encontrei informação suficiente nos documentos disponíveis.",
+    "recusou": true,
+    "termos_ok": null
+   },
+   {
+    "id": "Q55",
+    "categoria": "dado_ausente",
+    "deve_recusar": true,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "Não encontrei informação suficiente nos documentos disponíveis.",
+    "recusou": true,
+    "termos_ok": null
+   },
+   {
+    "id": "Q56",
+    "categoria": "dado_ausente",
+    "deve_recusar": true,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "Não encontrei informação suficiente nos documentos disponíveis.",
+    "recusou": true,
+    "termos_ok": null
+   }
+  ]
+ }
+}

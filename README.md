@@ -245,7 +245,8 @@ projeto_rag/
 │   ├── indexar.py              # [Passo 4] Chunks → embeddings → ChromaDB
 │   ├── pipeline.py             # [Passo 5] Linha de comando do RAG (query → resposta)
 │   ├── upload_vectorstore.py   # Sobe o vectorstore para o Hugging Face
-│   └── avaliar.py              # [Passo 6] Benchmark de 100 perguntas
+│   ├── avaliar.py              # [Passo 6] Benchmark de 100 perguntas
+│   └── avaliar_ouro.py         # Métricas no conjunto de ouro (hit@k, MRR, abstenção)
 │
 ├── dados/                      # Dados brutos (não versionados)
 │   ├── pdfs/                   # PDFs originais da ANEEL
@@ -272,14 +273,14 @@ projeto_rag/
 
 `scripts/avaliar.py` roda 100 perguntas com o mesmo código do pipeline e salva em `avaliacao/` a resposta, o LLM que respondeu e os documentos usados. Para testar com poucas perguntas, use `--limite`.
 
-**Ainda não há métricas publicadas.** O benchmark atual não tem resposta nem documento esperados, então ele coleta respostas, mas não dá nota.
+Esse benchmark não tem gabarito, então coleta respostas sem dar nota. As métricas vêm de `scripts/avaliar_ouro.py`, em um conjunto de 56 perguntas com documento e resposta esperados. Veja a metodologia e o baseline em [docs/avaliacao/RESULTADOS.md](docs/avaliacao/RESULTADOS.md).
 
 ## Limitações conhecidas
 
 - O corpus cobre apenas atos de 2016, 2021 e 2022.
 - 153 dos 155 arquivos de texto de Resoluções Normativas (prefixo `ren`) foram baixados como página de bloqueio do Cloudflare, sem o conteúdo da norma. Votos e notas técnicas dessas resoluções continuam indexados.
 - Atos com situação REVOGADA não são recuperados, então perguntas sobre eles ficam sem resposta. Outras situações, como ANULADA e SUSPENSA, continuam sendo recuperadas.
-- A busca é só vetorial e o texto indexado não inclui título nem número do ato. Em um diagnóstico com 10 perguntas que citavam um ato específico, o documento esperado não apareceu entre os 5 primeiros resultados em nenhuma.
+- A busca é só vetorial e o texto indexado não inclui título nem número do ato. No baseline, o documento esperado veio entre os 5 primeiros resultados em 13% das perguntas, e em nenhuma das 10 que pedem o conteúdo de um ato pelo número.
 - O modelo de embeddings considera até 128 tokens. Em uma amostra de 5.000 chunks, 30,2% passam disso e têm o final ignorado na busca.
 - 34,4% dos chunks são cópias exatas de outros, como cláusulas padrão repetidas entre atos.
 
