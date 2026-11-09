@@ -1,16 +1,11 @@
 import os
 import json
-from pathlib import Path
 import pymupdf4llm
 from bs4 import BeautifulSoup  # extrai texto limpo de arquivos HTML
 
+from config import PASTA_EXTRAS, PASTA_JSONS, PASTA_MARKDOWNS as PASTA_SAIDA, PASTA_PDFS
+
 # ============================================================
-# Caminhos resolvidos a partir da raiz do projeto (funciona de qualquer CWD)
-ROOT         = Path(__file__).resolve().parent.parent
-PASTA_JSONS  = str(ROOT / "dados" / "jsons")
-PASTA_PDFS   = str(ROOT / "dados" / "pdfs")
-PASTA_EXTRAS = str(ROOT / "dados" / "extras")  # HTMLs e planilhas
-PASTA_SAIDA  = str(ROOT / "chunks_md")
 
 os.makedirs(PASTA_SAIDA, exist_ok=True)  # cria a pasta de saída se não existir
 

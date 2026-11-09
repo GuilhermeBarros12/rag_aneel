@@ -1,23 +1,18 @@
 import os      # para navegar no sistema de arquivos e checar caminhos
 import re      # para usar expressões regulares (extrair o bloco YAML e detectar tabelas)
-from pathlib import Path
 
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 # RecursiveCharacterTextSplitter: divide o texto tentando os separadores em ordem
 # (parágrafos → linhas → frases → palavras → caracteres), evitando cortes ruins
 
-# ============================================================
-# Caminhos resolvidos a partir da raiz do projeto (funciona de qualquer CWD)
-ROOT            = Path(__file__).resolve().parent.parent
-PASTA_MARKDOWNS = str(ROOT / "chunks_md")  # onde estão os .md gerados pelo ingestao.py
-PASTA_CHUNKS    = str(ROOT / "chunks")     # onde serão salvos os .txt de cada chunk
-
-CHUNK_SIZE    = 512   # tamanho máximo de cada chunk em caracteres
-CHUNK_OVERLAP = 80    # quantos caracteres de sobreposição entre chunks consecutivos
-MIN_CHARS     = 50    # chunks menores que isso são descartados (ruído)
-
-# separadores tentados em ordem — do mais semântico ao mais bruto
-SEPARADORES = ["\n\n", "\n", ". ", " ", ""]
+from config import (
+    CHUNK_OVERLAP,
+    CHUNK_SIZE,
+    MIN_CHARS,
+    PASTA_CHUNKS,
+    PASTA_MARKDOWNS,
+    SEPARADORES,
+)
 
 # ============================================================
 
