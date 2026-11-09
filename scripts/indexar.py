@@ -1,7 +1,6 @@
 import os                          # para navegar no sistema de arquivos
 import re                          # para extrair o bloco YAML dos chunks com regex
 import argparse                    # para receber argumentos via linha de comando
-from pathlib import Path
 from typing import Dict, List, Set, Tuple
 
 from tqdm import tqdm              # barra de progresso visual no terminal
@@ -10,25 +9,7 @@ import chromadb                    # banco vetorial — persiste os embeddings e
 from sentence_transformers import SentenceTransformer
 # SentenceTransformer: carrega e roda o modelo de embeddings multilingual
 
-# ============================================================
-# CONFIGURAÇÕES PADRÃO
-# ============================================================
-
-# Caminhos resolvidos a partir da raiz do projeto (funciona de qualquer CWD)
-ROOT = Path(__file__).resolve().parent.parent
-
-PASTA_CHUNKS      = str(ROOT / "chunks")       # onde estão os .txt gerados pelo chunking.py
-PASTA_VECTORSTORE = str(ROOT / "vectorstore")  # onde o ChromaDB vai salvar os dados em disco
-
-NOME_COLECAO = "aneel_docs"           # nome da coleção dentro do ChromaDB
-
-# modelo multilingual treinado para similaridade semântica em português
-# NÃO trocar por all-MiniLM-L6-v2: esse é English-only (384 dims), muito inferior para PT-BR
-MODELO_EMBEDDING = "sentence-transformers/paraphrase-multilingual-mpnet-base-v2"
-
-BATCH_SIZE = 64   # quantos chunks processa por vez
-                  # valores maiores são mais rápidos mas consomem mais RAM
-                  # 64 é seguro para ~8 GB de RAM; reduza para 32 se travar
+from config import BATCH_SIZE, MODELO_EMBEDDING, NOME_COLECAO, PASTA_CHUNKS, PASTA_VECTORSTORE
 
 # ============================================================
 # FUNÇÕES UTILITÁRIAS

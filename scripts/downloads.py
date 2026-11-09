@@ -2,18 +2,15 @@ import os
 import json
 import time
 import urllib.parse
-from pathlib import Path
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from tqdm import tqdm                                  # barra de progresso visual
 
+from config import PASTA_JSONS, PASTA_PDFS
+
 # ============================================================
-# Caminhos resolvidos a partir da raiz do projeto (funciona de qualquer CWD)
-ROOT            = Path(__file__).resolve().parent.parent
-PASTA_JSONS     = str(ROOT / "dados" / "jsons")
-PASTA_PDFS      = str(ROOT / "dados" / "pdfs")
-DELAY_DOWNLOAD  = 1     # segundos entre downloads
+DELAY_DOWNLOAD = 1     # segundos entre downloads
 MAX_ESPERA      = 30    # segundos máximos esperando cada download
 MAX_TENTATIVAS  = 3     # máximo de vezes que tenta reiniciar o Chrome
 EXTENSOES_VALIDAS = {".pdf", ".html", ".zip", ".doc", ".docx", ".xls", ".xlsx"}  # extensões válidas para download

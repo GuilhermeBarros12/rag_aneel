@@ -2,18 +2,15 @@ import os
 import json
 import time
 import urllib.parse
-from pathlib import Path
 import requests
 import urllib.request
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 
+from config import PASTA_EXTRAS, PASTA_JSONS
+
 # ============================================================
-# Caminhos resolvidos a partir da raiz do projeto (funciona de qualquer CWD)
-ROOT         = Path(__file__).resolve().parent.parent
-PASTA_JSONS  = str(ROOT / "dados" / "jsons")
-PASTA_EXTRAS = str(ROOT / "dados" / "extras")   # antes: "html, xlsm, etc"
 DELAY = 1
 # ============================================================
 
