@@ -4,6 +4,7 @@ import pymupdf4llm
 from bs4 import BeautifulSoup  # extrai texto limpo de arquivos HTML
 
 from config import PASTA_EXTRAS, PASTA_JSONS, PASTA_MARKDOWNS as PASTA_SAIDA, PASTA_PDFS
+from validacao import eh_pagina_de_bloqueio
 
 # ============================================================
 
@@ -29,6 +30,11 @@ def extrair_html_para_markdown(caminho):
     try:
         with open(caminho, "r", encoding="utf-8", errors="ignore") as f:
             conteudo = f.read()
+
+        # página de bloqueio salva no lugar do documento: não vira Markdown
+        if eh_pagina_de_bloqueio(conteudo):
+            print(f"   ⚠️  Página de bloqueio ignorada: {caminho}")
+            return None
 
         soup = BeautifulSoup(conteudo, "html.parser")
 
