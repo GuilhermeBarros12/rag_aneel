@@ -1,0 +1,1019 @@
+{
+ "rotulo": "hibrida_peso2",
+ "executado_em": "2026-11-09T14:48:26.523089+00:00",
+ "conjunto": "conjunto_ouro.json",
+ "recuperacao": {
+  "com_filtro": {
+   "geral": {
+    "n": 46,
+    "hit@1": 0.5434782608695652,
+    "hit@3": 0.6739130434782609,
+    "hit@5": 0.7391304347826086,
+    "hit@10": 0.8695652173913043,
+    "mrr": 0.6394496204278813
+   },
+   "categorias": {
+    "ato_citado": {
+     "n": 10,
+     "hit@1": 0.9,
+     "hit@3": 0.9,
+     "hit@5": 1.0,
+     "hit@10": 1.0,
+     "mrr": 0.925
+    },
+    "fato_com_ato": {
+     "n": 12,
+     "hit@1": 0.3333333333333333,
+     "hit@3": 0.5,
+     "hit@5": 0.5833333333333334,
+     "hit@10": 0.9166666666666666,
+     "mrr": 0.47172619047619047
+    },
+    "fato_sem_ato": {
+     "n": 18,
+     "hit@1": 0.6666666666666666,
+     "hit@3": 0.8888888888888888,
+     "hit@5": 0.9444444444444444,
+     "hit@10": 1.0,
+     "mrr": 0.7996031746031745
+    },
+    "revogado": {
+     "n": 6,
+     "hit@1": 0.0,
+     "hit@3": 0.0,
+     "hit@5": 0.0,
+     "hit@10": 0.16666666666666666,
+     "mrr": 0.018518518518518517
+    }
+   },
+   "detalhe": [
+    {
+     "id": "Q01",
+     "categoria": "ato_citado",
+     "posicao": 1,
+     "top3": [
+      "prt20221322tispde_chunk1",
+      "prt20221322tispde_chunk3",
+      "prt20221322tispde_chunk2"
+     ]
+    },
+    {
+     "id": "Q02",
+     "categoria": "ato_citado",
+     "posicao": 1,
+     "top3": [
+      "dsp20222942_chunk1",
+      "dsp20212942ti_chunk1",
+      "adsp20222942_1_chunk36"
+     ]
+    },
+    {
+     "id": "Q03",
+     "categoria": "ato_citado",
+     "posicao": 1,
+     "top3": [
+      "prt20226715_chunk1",
+      "aprt20226715_1_chunk12",
+      "aprt20226715_1_chunk1"
+     ]
+    },
+    {
+     "id": "Q04",
+     "categoria": "ato_citado",
+     "posicao": 1,
+     "top3": [
+      "dsp20161198_chunk1",
+      "adsp20221198_1_chunk11",
+      "dsp20221198_chunk1"
+     ]
+    },
+    {
+     "id": "Q05",
+     "categoria": "ato_citado",
+     "posicao": 1,
+     "top3": [
+      "dsp20211604_chunk1",
+      "dsp20211604_chunk3",
+      "dsp20221604ti_chunk1"
+     ]
+    },
+    {
+     "id": "Q06",
+     "categoria": "ato_citado",
+     "posicao": 1,
+     "top3": [
+      "dsp20213501ti_chunk1",
+      "dsp20223501ti_chunk1",
+      "dsp20213501ti_chunk3"
+     ]
+    },
+    {
+     "id": "Q07",
+     "categoria": "ato_citado",
+     "posicao": 1,
+     "top3": [
+      "prt2021528mme_chunk1",
+      "prt2021528mme_chunk2",
+      "prt2021528mme_chunk8"
+     ]
+    },
+    {
+     "id": "Q08",
+     "categoria": "ato_citado",
+     "posicao": 4,
+     "top3": [
+      "area202211324_1_chunk96",
+      "nreh20223067_chunk209",
+      "ndsp20221425_chunk37"
+     ]
+    },
+    {
+     "id": "Q09",
+     "categoria": "ato_citado",
+     "posicao": 1,
+     "top3": [
+      "areh20212852_1_chunk17",
+      "areh20212852_1_chunk23",
+      "reh20212852ti_chunk1"
+     ]
+    },
+    {
+     "id": "Q10",
+     "categoria": "ato_citado",
+     "posicao": 1,
+     "top3": [
+      "reh20162146ti_chunk1",
+      "nreh20162146_chunk100",
+      "nreh20162146_chunk105"
+     ]
+    },
+    {
+     "id": "Q11",
+     "categoria": "fato_com_ato",
+     "posicao": 6,
+     "top3": [
+      "dsp20221090ti_chunk3",
+      "dsp20223330_chunk3",
+      "dsp20221163_chunk3"
+     ]
+    },
+    {
+     "id": "Q12",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "emdsp20223350_chunk95",
+      "emdsp20223350_chunk104",
+      "emdsp20223350_chunk64"
+     ]
+    },
+    {
+     "id": "Q13",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20213501ti_chunk1",
+      "dsp20213501ti_chunk3",
+      "dsp20213501ti_chunk2"
+     ]
+    },
+    {
+     "id": "Q14",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20161321ti_chunk3",
+      "ndsp2021034_chunk711",
+      "dsp20213814ti_chunk3"
+     ]
+    },
+    {
+     "id": "Q15",
+     "categoria": "fato_com_ato",
+     "posicao": 7,
+     "top3": [
+      "adsp20223010_chunk14",
+      "emdsp20223351_chunk17",
+      "emdsp20223352_chunk17"
+     ]
+    },
+    {
+     "id": "Q16",
+     "categoria": "fato_com_ato",
+     "posicao": 3,
+     "top3": [
+      "area20165724_1_chunk13",
+      "emdsp20222187_chunk8",
+      "dsp20162592ti_chunk1"
+     ]
+    },
+    {
+     "id": "Q17",
+     "categoria": "fato_com_ato",
+     "posicao": 7,
+     "top3": [
+      "area202110290_1_chunk3",
+      "rea202110290ti_chunk4",
+      "area20219818_1_chunk3"
+     ]
+    },
+    {
+     "id": "Q18",
+     "categoria": "fato_com_ato",
+     "posicao": 8,
+     "top3": [
+      "dsp20162278ti_chunk5",
+      "dsp20162279ti_chunk5",
+      "dsp20162275ti_chunk5"
+     ]
+    },
+    {
+     "id": "Q19",
+     "categoria": "fato_com_ato",
+     "posicao": 4,
+     "top3": [
+      "adsp20222196_1_chunk11",
+      "area202110201_1_chunk31",
+      "area202110202_1_chunk31"
+     ]
+    },
+    {
+     "id": "Q20",
+     "categoria": "fato_com_ato",
+     "posicao": null,
+     "top3": [
+      "prt2021021_chunk3",
+      "aprt2022017_1_chunk4",
+      "prt2022106_chunk3"
+     ]
+    },
+    {
+     "id": "Q21",
+     "categoria": "fato_com_ato",
+     "posicao": 2,
+     "top3": [
+      "dsp20222307ti_chunk3",
+      "dsp20214042ti_chunk2",
+      "dsp20214042ti_chunk3"
+     ]
+    },
+    {
+     "id": "Q22",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "adsp20212891_1_chunk20",
+      "emdsp20223364_chunk9",
+      "adsp20212891_1_chunk12"
+     ]
+    },
+    {
+     "id": "Q23",
+     "categoria": "fato_sem_ato",
+     "posicao": 2,
+     "top3": [
+      "ndsp2021034_chunk645",
+      "area202211250_1_chunk27",
+      "area202211251_1_chunk27"
+     ]
+    },
+    {
+     "id": "Q24",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "area202211617_1_chunk2",
+      "rea202211617ti_chunk1",
+      "area202211617_1_chunk3"
+     ]
+    },
+    {
+     "id": "Q25",
+     "categoria": "fato_sem_ato",
+     "posicao": 2,
+     "top3": [
+      "dsp20213830ti_chunk3",
+      "area202110358_1_chunk4",
+      "rea202110358ti_chunk7"
+     ]
+    },
+    {
+     "id": "Q26",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "rea202213034ti_chunk4",
+      "rea202213034ti_chunk1",
+      "rea202213034ti_chunk7"
+     ]
+    },
+    {
+     "id": "Q27",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "area202212041_1_chunk4",
+      "area202212034_1_chunk4",
+      "area202212033_1_chunk4"
+     ]
+    },
+    {
+     "id": "Q28",
+     "categoria": "fato_sem_ato",
+     "posicao": 4,
+     "top3": [
+      "rea202110534ti_chunk6",
+      "rea202110535ti_chunk6",
+      "rea202110550ti_chunk6"
+     ]
+    },
+    {
+     "id": "Q29",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "area202212308_1_chunk10",
+      "area20165789_1_chunk2",
+      "area20165789_1_chunk4"
+     ]
+    },
+    {
+     "id": "Q30",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20223034ti_chunk2",
+      "dsp20223034ti_chunk4",
+      "dsp20223034ti_chunk1"
+     ]
+    },
+    {
+     "id": "Q31",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "area20219658_1_chunk97",
+      "area20219658_1_chunk98",
+      "area20219657_1_chunk97"
+     ]
+    },
+    {
+     "id": "Q32",
+     "categoria": "fato_sem_ato",
+     "posicao": 2,
+     "top3": [
+      "dsp20211143_chunk3",
+      "dsp2021041ti_chunk3",
+      "dsp20211215ti_chunk3"
+     ]
+    },
+    {
+     "id": "Q33",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "prt2021482tispde_chunk3",
+      "prt20221167tispde_chunk3",
+      "prt20221167tispde_chunk4"
+     ]
+    },
+    {
+     "id": "Q34",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "prt20221787tispde_chunk3",
+      "prt20221789tispde_chunk3",
+      "prt20221803tispde_chunk3"
+     ]
+    },
+    {
+     "id": "Q35",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "prt2021612tispde_chunk3",
+      "adsp20221411_1_chunk4",
+      "prt2021548tispde_chunk3"
+     ]
+    },
+    {
+     "id": "Q36",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20212089ti_chunk3",
+      "dsp20212090ti_chunk3",
+      "prt2016062mme_chunk2"
+     ]
+    },
+    {
+     "id": "Q37",
+     "categoria": "fato_sem_ato",
+     "posicao": 7,
+     "top3": [
+      "area202212870_1_chunk2",
+      "area202212869_1_chunk2",
+      "area202212873_1_chunk2"
+     ]
+    },
+    {
+     "id": "Q38",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "area202110932_1_chunk14",
+      "rea202110932ti_chunk6",
+      "area202110932_1_chunk9"
+     ]
+    },
+    {
+     "id": "Q39",
+     "categoria": "fato_sem_ato",
+     "posicao": 2,
+     "top3": [
+      "area202211404_1_chunk2",
+      "area202211313_1_chunk12",
+      "rea202211313ti_chunk1"
+     ]
+    },
+    {
+     "id": "Q40",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "nreh20162093_chunk4",
+      "nreh20212909_chunk27",
+      "nreh20162093_chunk2"
+     ]
+    },
+    {
+     "id": "Q41",
+     "categoria": "revogado",
+     "posicao": null,
+     "top3": [
+      "dsp2021436_chunk1",
+      "res2016005cj_chunk1",
+      "res20161047ana_chunk1"
+     ]
+    },
+    {
+     "id": "Q42",
+     "categoria": "revogado",
+     "posicao": null,
+     "top3": [
+      "rea20165909ti_chunk4",
+      "rea20165909ti_chunk1",
+      "aap2016016ti_chunk3"
+     ]
+    },
+    {
+     "id": "Q43",
+     "categoria": "revogado",
+     "posicao": 9,
+     "top3": [
+      "rea202212016ti_chunk4",
+      "rea202212019ti_chunk4",
+      "rea202212017ti_chunk4"
+     ]
+    },
+    {
+     "id": "Q44",
+     "categoria": "revogado",
+     "posicao": null,
+     "top3": [
+      "dsp20214140ti_chunk5",
+      "adsp20221221_1_chunk3",
+      "adsp20221221_1_chunk11"
+     ]
+    },
+    {
+     "id": "Q45",
+     "categoria": "revogado",
+     "posicao": null,
+     "top3": [
+      "prt2021360_chunk4",
+      "prt2021202_chunk3",
+      "prt2021202_chunk18"
+     ]
+    },
+    {
+     "id": "Q46",
+     "categoria": "revogado",
+     "posicao": null,
+     "top3": [
+      "rea202211417ti_chunk9",
+      "rea202211414ti_chunk9",
+      "rea202211415ti_chunk9"
+     ]
+    }
+   ]
+  },
+  "sem_filtro": {
+   "geral": {
+    "n": 46,
+    "hit@1": 0.6521739130434783,
+    "hit@3": 0.8043478260869565,
+    "hit@5": 0.8695652173913043,
+    "hit@10": 0.9782608695652174,
+    "mrr": 0.7565993788819876
+   },
+   "categorias": {
+    "ato_citado": {
+     "n": 10,
+     "hit@1": 0.9,
+     "hit@3": 0.9,
+     "hit@5": 1.0,
+     "hit@10": 1.0,
+     "mrr": 0.925
+    },
+    "fato_com_ato": {
+     "n": 12,
+     "hit@1": 0.3333333333333333,
+     "hit@3": 0.5,
+     "hit@5": 0.5833333333333334,
+     "hit@10": 0.9166666666666666,
+     "mrr": 0.47172619047619047
+    },
+    "fato_sem_ato": {
+     "n": 18,
+     "hit@1": 0.6666666666666666,
+     "hit@3": 0.8888888888888888,
+     "hit@5": 0.9444444444444444,
+     "hit@10": 1.0,
+     "mrr": 0.7996031746031745
+    },
+    "revogado": {
+     "n": 6,
+     "hit@1": 0.8333333333333334,
+     "hit@3": 1.0,
+     "hit@5": 1.0,
+     "hit@10": 1.0,
+     "mrr": 0.9166666666666666
+    }
+   },
+   "detalhe": [
+    {
+     "id": "Q01",
+     "categoria": "ato_citado",
+     "posicao": 1,
+     "top3": [
+      "prt20221322tispde_chunk1",
+      "prt20221322tispde_chunk3",
+      "prt20221322tispde_chunk2"
+     ]
+    },
+    {
+     "id": "Q02",
+     "categoria": "ato_citado",
+     "posicao": 1,
+     "top3": [
+      "dsp20222942_chunk1",
+      "dsp20212942ti_chunk1",
+      "adsp20222942_1_chunk36"
+     ]
+    },
+    {
+     "id": "Q03",
+     "categoria": "ato_citado",
+     "posicao": 1,
+     "top3": [
+      "prt20226715_chunk1",
+      "aprt20226715_1_chunk12",
+      "aprt20226715_1_chunk1"
+     ]
+    },
+    {
+     "id": "Q04",
+     "categoria": "ato_citado",
+     "posicao": 1,
+     "top3": [
+      "dsp20161198_chunk1",
+      "adsp20221198_1_chunk11",
+      "dsp20221198_chunk1"
+     ]
+    },
+    {
+     "id": "Q05",
+     "categoria": "ato_citado",
+     "posicao": 1,
+     "top3": [
+      "dsp20211604_chunk1",
+      "dsp20211604_chunk3",
+      "dsp20221604ti_chunk1"
+     ]
+    },
+    {
+     "id": "Q06",
+     "categoria": "ato_citado",
+     "posicao": 1,
+     "top3": [
+      "dsp20213501ti_chunk1",
+      "dsp20223501ti_chunk1",
+      "dsp20213501ti_chunk3"
+     ]
+    },
+    {
+     "id": "Q07",
+     "categoria": "ato_citado",
+     "posicao": 1,
+     "top3": [
+      "prt2021528mme_chunk1",
+      "prt2021528mme_chunk2",
+      "prt2021528mme_chunk8"
+     ]
+    },
+    {
+     "id": "Q08",
+     "categoria": "ato_citado",
+     "posicao": 4,
+     "top3": [
+      "area202211324_1_chunk96",
+      "nreh20223067_chunk209",
+      "ndsp20221425_chunk37"
+     ]
+    },
+    {
+     "id": "Q09",
+     "categoria": "ato_citado",
+     "posicao": 1,
+     "top3": [
+      "areh20212852_1_chunk17",
+      "areh20212852_1_chunk23",
+      "reh20212852ti_chunk1"
+     ]
+    },
+    {
+     "id": "Q10",
+     "categoria": "ato_citado",
+     "posicao": 1,
+     "top3": [
+      "reh20162146ti_chunk1",
+      "nreh20162146_chunk100",
+      "nreh20162146_chunk105"
+     ]
+    },
+    {
+     "id": "Q11",
+     "categoria": "fato_com_ato",
+     "posicao": 6,
+     "top3": [
+      "dsp20223330_chunk3",
+      "dsp20221090ti_chunk3",
+      "dsp20221163_chunk3"
+     ]
+    },
+    {
+     "id": "Q12",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "emdsp20223350_chunk95",
+      "emdsp20223350_chunk104",
+      "emdsp20223350_chunk64"
+     ]
+    },
+    {
+     "id": "Q13",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20213501ti_chunk1",
+      "dsp20213501ti_chunk3",
+      "dsp20213501ti_chunk2"
+     ]
+    },
+    {
+     "id": "Q14",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20161321ti_chunk3",
+      "ndsp2021034_chunk711",
+      "dsp20213814ti_chunk3"
+     ]
+    },
+    {
+     "id": "Q15",
+     "categoria": "fato_com_ato",
+     "posicao": 7,
+     "top3": [
+      "adsp20223010_chunk14",
+      "emdsp20223351_chunk17",
+      "emdsp20223352_chunk17"
+     ]
+    },
+    {
+     "id": "Q16",
+     "categoria": "fato_com_ato",
+     "posicao": 3,
+     "top3": [
+      "area20165724_1_chunk13",
+      "emdsp20222187_chunk8",
+      "dsp20162592ti_chunk1"
+     ]
+    },
+    {
+     "id": "Q17",
+     "categoria": "fato_com_ato",
+     "posicao": 7,
+     "top3": [
+      "area202110290_1_chunk3",
+      "rea202110290ti_chunk4",
+      "area20219818_1_chunk3"
+     ]
+    },
+    {
+     "id": "Q18",
+     "categoria": "fato_com_ato",
+     "posicao": 8,
+     "top3": [
+      "dsp20162278ti_chunk5",
+      "dsp20162279ti_chunk5",
+      "dsp20162275ti_chunk5"
+     ]
+    },
+    {
+     "id": "Q19",
+     "categoria": "fato_com_ato",
+     "posicao": 4,
+     "top3": [
+      "adsp20222196_1_chunk11",
+      "area202110201_1_chunk31",
+      "area202110202_1_chunk31"
+     ]
+    },
+    {
+     "id": "Q20",
+     "categoria": "fato_com_ato",
+     "posicao": null,
+     "top3": [
+      "prt2021021_chunk3",
+      "aprt2022017_1_chunk4",
+      "prt2022106_chunk3"
+     ]
+    },
+    {
+     "id": "Q21",
+     "categoria": "fato_com_ato",
+     "posicao": 2,
+     "top3": [
+      "dsp20222307ti_chunk3",
+      "dsp20214042ti_chunk2",
+      "dsp20214042ti_chunk3"
+     ]
+    },
+    {
+     "id": "Q22",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "adsp20212891_1_chunk20",
+      "emdsp20223364_chunk9",
+      "adsp20212891_1_chunk12"
+     ]
+    },
+    {
+     "id": "Q23",
+     "categoria": "fato_sem_ato",
+     "posicao": 2,
+     "top3": [
+      "ndsp2021034_chunk645",
+      "area202211250_1_chunk27",
+      "area202211251_1_chunk27"
+     ]
+    },
+    {
+     "id": "Q24",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "area202211617_1_chunk2",
+      "rea202211617ti_chunk1",
+      "area202211617_1_chunk3"
+     ]
+    },
+    {
+     "id": "Q25",
+     "categoria": "fato_sem_ato",
+     "posicao": 2,
+     "top3": [
+      "dsp20213830ti_chunk3",
+      "area202110358_1_chunk4",
+      "rea202110358ti_chunk7"
+     ]
+    },
+    {
+     "id": "Q26",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "rea202213034ti_chunk4",
+      "rea202213034ti_chunk1",
+      "rea202213034ti_chunk7"
+     ]
+    },
+    {
+     "id": "Q27",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "area202212041_1_chunk4",
+      "area202212034_1_chunk4",
+      "area202212033_1_chunk4"
+     ]
+    },
+    {
+     "id": "Q28",
+     "categoria": "fato_sem_ato",
+     "posicao": 4,
+     "top3": [
+      "rea202110534ti_chunk6",
+      "rea202110535ti_chunk6",
+      "rea202110550ti_chunk6"
+     ]
+    },
+    {
+     "id": "Q29",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "area202212308_1_chunk10",
+      "area20165789_1_chunk2",
+      "area20165789_1_chunk4"
+     ]
+    },
+    {
+     "id": "Q30",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20223034ti_chunk2",
+      "dsp20223034ti_chunk4",
+      "dsp20223034ti_chunk1"
+     ]
+    },
+    {
+     "id": "Q31",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "area20219658_1_chunk97",
+      "area20219658_1_chunk98",
+      "area20219657_1_chunk97"
+     ]
+    },
+    {
+     "id": "Q32",
+     "categoria": "fato_sem_ato",
+     "posicao": 2,
+     "top3": [
+      "dsp20211143_chunk3",
+      "dsp2021041ti_chunk3",
+      "dsp20211215ti_chunk3"
+     ]
+    },
+    {
+     "id": "Q33",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "prt2021482tispde_chunk3",
+      "prt20221167tispde_chunk3",
+      "prt20221167tispde_chunk4"
+     ]
+    },
+    {
+     "id": "Q34",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "prt20221787tispde_chunk3",
+      "prt20221789tispde_chunk3",
+      "prt20221803tispde_chunk3"
+     ]
+    },
+    {
+     "id": "Q35",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "prt2021612tispde_chunk3",
+      "adsp20221411_1_chunk4",
+      "prt2021548tispde_chunk3"
+     ]
+    },
+    {
+     "id": "Q36",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20212089ti_chunk3",
+      "dsp20212090ti_chunk3",
+      "prt2016062mme_chunk2"
+     ]
+    },
+    {
+     "id": "Q37",
+     "categoria": "fato_sem_ato",
+     "posicao": 7,
+     "top3": [
+      "area202212870_1_chunk2",
+      "area202212869_1_chunk2",
+      "area202212873_1_chunk2"
+     ]
+    },
+    {
+     "id": "Q38",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "area202110932_1_chunk14",
+      "rea202110932ti_chunk6",
+      "area202110932_1_chunk9"
+     ]
+    },
+    {
+     "id": "Q39",
+     "categoria": "fato_sem_ato",
+     "posicao": 2,
+     "top3": [
+      "area202211404_1_chunk2",
+      "area202211313_1_chunk12",
+      "rea202211313ti_chunk1"
+     ]
+    },
+    {
+     "id": "Q40",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "nreh20162093_chunk4",
+      "nreh20212909_chunk27",
+      "nreh20162093_chunk2"
+     ]
+    },
+    {
+     "id": "Q41",
+     "categoria": "revogado",
+     "posicao": 1,
+     "top3": [
+      "res2016436ana_chunk1",
+      "dsp2021436_chunk1",
+      "res2016005cj_chunk1"
+     ]
+    },
+    {
+     "id": "Q42",
+     "categoria": "revogado",
+     "posicao": 1,
+     "top3": [
+      "rea202110230ti_chunk1",
+      "area202110230_1_chunk2",
+      "area202110230_1_chunk1"
+     ]
+    },
+    {
+     "id": "Q43",
+     "categoria": "revogado",
+     "posicao": 1,
+     "top3": [
+      "rea202110062ti_chunk4",
+      "rea202110062ti_chunk13",
+      "rea202212016ti_chunk4"
+     ]
+    },
+    {
+     "id": "Q44",
+     "categoria": "revogado",
+     "posicao": 1,
+     "top3": [
+      "rea20219796ti_chunk7",
+      "rea20219795ti_chunk7",
+      "rea20219797ti_chunk7"
+     ]
+    },
+    {
+     "id": "Q45",
+     "categoria": "revogado",
+     "posicao": 2,
+     "top3": [
+      "prt2021360_chunk4",
+      "prt2022365_chunk4",
+      "prt2022365_chunk3"
+     ]
+    },
+    {
+     "id": "Q46",
+     "categoria": "revogado",
+     "posicao": 1,
+     "top3": [
+      "area202212304_1_chunk2",
+      "rea202212304ti_chunk8",
+      "rea202212300ti_chunk8"
+     ]
+    }
+   ]
+  }
+ }
+}
