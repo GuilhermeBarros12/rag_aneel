@@ -5,7 +5,7 @@
 
 PYTHON = .venv/bin/python
 
-.PHONY: help setup download ingestao chunking indexar pipeline avaliar docker-build docker-run
+.PHONY: help setup download ingestao chunking indexar pipeline avaliar medir testar lint docker-build docker-run
 
 help:  ## Exibe esta ajuda
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | \
@@ -39,6 +39,12 @@ avaliar:  ## [Passo 6] Roda o benchmark de 100 perguntas
 
 medir:  ## Mede o sistema no conjunto de ouro (com LLM, consome cota)
 	$(PYTHON) scripts/avaliar_ouro.py --com-llm
+
+testar:  ## Roda os testes (sem rede e sem chaves)
+	$(PYTHON) -m pytest
+
+lint:  ## Verifica erros no código
+	$(PYTHON) -m ruff check scripts tests
 
 # ── Docker ────────────────────────────────────────────────────────
 
