@@ -22,6 +22,7 @@ from avaliar_ouro import KS, documento_do_trecho, posicao_primeiro_acerto, resum
 SEMENTE = 2027
 N_DOCUMENTOS = 3000
 MAX_CHUNKS_POR_DOC = 200  # documentos sorteados maiores que isso ficam de fora
+MAX_CHARS_ENTRADA = 2000  # bem acima dos 128 tokens que o modelo lê
 
 
 def sem_prefixo(ementa):
@@ -51,13 +52,16 @@ def main():
     sorteados = random.Random(SEMENTE).sample(candidatos, N_DOCUMENTOS - len(obrigatorios & set(por_doc)))
     docs = sorted((obrigatorios & set(por_doc)) | set(sorteados))
     ids = [i for d in docs for i in por_doc[d]]
-    print(f"documentos: {len(docs)} | chunks: {len(ids)}")
+    print(f"documentos: {len(docs)} | chunks: {len(ids)}", flush=True)
 
     textos, metas, base = {}, {}, {}
     for i in range(0, len(ids), 4000):
         r = col.get(ids=ids[i:i + 4000], include=["documents", "metadatas", "embeddings"])
         for k, cid in enumerate(r["ids"]):
-            textos[cid], metas[cid], base[cid] = r["documents"][k], r["metadatas"][k], r["embeddings"][k]
+            # float32 ocupa bem menos memória que a lista de números do Python
+            textos[cid], metas[cid] = r["documents"][k], r["metadatas"][k]
+            base[cid] = np.asarray(r["embeddings"][k], dtype=np.float32)
+        print(f"   carregados {len(textos)}/{len(ids)} chunks", flush=True)
     permitido = np.array([metas[i].get("situacao") != "Situação:REVOGADA" for i in ids])
 
     modelo = SentenceTransformer(config.MODELO_EMBEDDING)
@@ -86,8 +90,14 @@ def main():
     saida["variantes"]["atual"] = medir(normaliza(np.array([base[i] for i in ids])))
     for nome, montar in VARIANTES.items():
         inicio = time.time()
-        emb = modelo.encode([montar(metas[i], textos[i]) for i in ids], batch_size=64,
-                            normalize_embeddings=True, show_progress_bar=False)
+        # O modelo lê só 128 tokens, então cortar o texto não muda o embedding e poupa memória
+        entradas = [montar(metas[i], textos[i])[:MAX_CHARS_ENTRADA] for i in ids]
+        partes = []
+        for p in range(0, len(entradas), 5000):
+            partes.append(modelo.encode(entradas[p:p + 5000], batch_size=32,
+                                        normalize_embeddings=True, show_progress_bar=False))
+            print(f"   {nome}: {min(p + 5000, len(entradas))}/{len(entradas)} em {time.time() - inicio:.0f}s", flush=True)
+        emb = np.vstack(partes)
         saida["variantes"][nome] = medir(emb)
         saida.setdefault("segundos_por_variante", {})[nome] = round(time.time() - inicio)
         print(nome, "segundos:", saida["segundos_por_variante"][nome])
