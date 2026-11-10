@@ -58,9 +58,59 @@ Para reproduzir a configuração atual:
 python scripts/avaliar_ouro.py --com-llm --rotulo atual
 ```
 
-Incluir atos revogados elevaria o hit@5 da busca léxica para 0,978, sem piorar os outros grupos. Essa política continua desligada porque seu efeito nas respostas ainda não foi medido.
+## Política de atos revogados
 
-**Ainda não concluído:** cabeçalho contextual nos embeddings, outros tamanhos de chunk, troca do modelo de embedding e o efeito da busca léxica em perguntas conceituais.
+Medido em 09/11/2026 com `INCLUIR_REVOGADOS=1`, busca léxica e o mesmo LLM. Detalhes em [experimentos/etapa3_revogados_llm.md](experimentos/etapa3_revogados_llm.md).
+
+| Métrica | Excluindo revogados (atual) | Incluindo revogados |
+|---|---|---|
+| hit@5 | 0,870 | 0,978 |
+| MRR | 0,815 | 0,913 |
+| Abstenção correta | 1,000 (10 de 10) | 1,000 (10 de 10) |
+| Recusa indevida | 0,239 (11 de 46) | 0,174 (8 de 46) |
+| Termos esperados na resposta | 0,630 (29 de 46) | 0,674 (31 de 46) |
+| Termos esperados nas 6 perguntas sobre atos revogados | 2 de 6 | 5 de 6 |
+| Citou um trecho correto | Não medido | 0,848 (39 de 46) |
+
+Nas 6 perguntas sobre atos revogados, a resposta avisou a revogação em todas. Fora desse grupo, uma pergunta (Q40) passou de certa para errada entre as duas rodadas, o que é compatível com a variação do LLM de uma execução para outra.
+
+O padrão do sistema continua excluindo revogados até o dono do projeto decidir.
+
+## Limpeza do índice
+
+153 arquivos de Resoluções Normativas eram páginas de bloqueio do Cloudflare e geraram 306 chunks sem conteúdo. `scripts/limpar_indice.py` cria uma cópia do índice sem eles, com 507.850 chunks. Na cópia limpa, as métricas de recuperação ficaram idênticas às do índice original, tanto na busca léxica quanto na vetorial ([limpo_ouro_lexica.md](experimentos/limpo_ouro_lexica.md), [limpo_ouro_densa.md](experimentos/limpo_ouro_densa.md)). As medições a partir desta seção usam a cópia limpa.
+
+## Perguntas conceituais (prévia)
+
+O conjunto de ouro favorece perguntas com nomes e números. Para testar o outro caso, há um [rascunho de 19 perguntas](conjunto_conceitual_rascunho.md) que não citam o número de um ato. Nelas, um trecho conta como correto quando contém a evidência esperada. O rascunho ainda não foi revisado nem congelado, então estes números são uma prévia.
+
+| Busca | hit@1 | hit@5 | hit@10 | MRR |
+|---|---|---|---|---|
+| Léxica | 0,211 | 0,526 | 0,579 | 0,307 |
+| Vetorial | 0,211 | 0,211 | 0,263 | 0,217 |
+| Híbrida (pesos iguais) | 0,105 | 0,368 | 0,579 | 0,264 |
+
+A busca léxica continua à frente, mas acerta bem menos do que no conjunto de ouro (hit@5 de 0,526 contra 0,870). Perguntas conceituais são o ponto fraco atual da recuperação.
+
+## Cabeçalho contextual nos embeddings (descartado)
+
+Hipótese: incluir o título e a ementa do ato no texto de cada chunk, antes de calcular o embedding, ajudaria a busca vetorial a achar o documento certo. Testado com `scripts/exp_cabecalho.py` em um subconjunto de 3.000 documentos (49.263 chunks), com busca exata, excluindo revogados. Como o subconjunto é menor que o corpus, só a diferença entre as linhas é comparável.
+
+| Texto embedado | hit@1 | hit@5 | hit@10 | MRR |
+|---|---|---|---|---|
+| Só o chunk (atual) | 0,152 | 0,261 | 0,283 | 0,199 |
+| Título + chunk | 0,152 | 0,174 | 0,304 | 0,181 |
+| Título + ementa + chunk | 0,109 | 0,217 | 0,283 | 0,156 |
+
+Nenhuma variante melhorou o hit@5 nem o MRR, então a ideia foi descartada e o corpus não será reindexado por esse motivo. Uma explicação provável, não testada, é que o modelo lê só 128 tokens, e o cabeçalho ocupa parte desse espaço. Cada variante levou cerca de 55 minutos em CPU. Dados em [experimentos/cabecalho_subconjunto.json](experimentos/cabecalho_subconjunto.json).
+
+## Métrica de citação
+
+A partir de 09/11/2026, a medição com LLM também verifica se a resposta citou, pela marcação `[Trecho N]`, um trecho correto para a pergunta. A medição salva o progresso a cada pergunta e pode ser retomada com o mesmo comando se a cota da API acabar.
+
+Em 7 das 46 perguntas, a resposta citou um trecho correto mas não continha os termos esperados. Isso sugere que a verificação por termos é rigorosa demais em alguns casos, e essas respostas ainda não foram revisadas uma a uma.
+
+**Ainda não concluído:** outros tamanhos de chunk, troca do modelo de embedding, revisão e congelamento do conjunto conceitual e repetição das rodadas com LLM para medir a variação.
 
 ## Limites desta medição
 

@@ -35,6 +35,19 @@ A busca padrão é léxica (`MODO_BUSCA=lexica`). Os modos `densa` e `hibrida` e
 
 O corpus tem 18.688 atos de 2016, 2021 e 2022, em 26.747 arquivos e 508.156 chunks.
 
+**Andamento em 09/11/2026** (branch `refino/etapas-1-2`, detalhes em `docs/avaliacao/RESULTADOS.md`)
+
+| Etapa | Situação |
+|---|---|
+| 1.1 Cópia limpa do índice | Feita em `vectorstore_limpo/` (507.850 chunks). Falta o Guilherme decidir a troca do índice oficial e a republicação no Hugging Face |
+| 1.2 Recusar páginas de bloqueio | Feita, com testes em `tests/test_validacao.py` |
+| 1.3 Recuperar as Resoluções Normativas | Não iniciada. Depende do download manual |
+| 2.1 Política de revogados | Medida. Incluir revogados melhorou os números. Falta o Guilherme escolher o padrão |
+| 2.2 Perguntas conceituais | Rascunho de 19 perguntas e prévia prontos. Falta a revisão do Guilherme para congelar |
+| 2.3 Cabeçalho contextual | Concluída e descartada: não melhorou a busca vetorial |
+| 2.4 Melhorias da busca vetorial | Não iniciada |
+| 2.5 Fortalecer a medição | Citação de trecho correto e retomada feitas. Falta repetir rodadas para medir a variação |
+
 ## 2. Regras de trabalho
 
 Valem para todas as etapas. Elas vêm do dono do projeto e não são negociáveis.
