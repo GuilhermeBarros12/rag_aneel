@@ -15,7 +15,6 @@ from validacao import eh_pagina_de_bloqueio
 DELAY = 1
 # ============================================================
 
-os.makedirs(PASTA_EXTRAS, exist_ok=True)
 
 # extensões que vamos baixar agora
 EXTENSOES_ALVO = {".html", ".htm", ".xlsx", ".xlsm"}
@@ -155,8 +154,9 @@ def baixar_extras(lista, pasta_destino):
     if log_erros:
         with open("erros_extras.txt", "w", encoding="utf-8") as f:
             f.write("\n".join(log_erros))
-        print(f"⚠️  Erros salvos em: erros_extras.txt")
+        print("⚠️  Erros salvos em: erros_extras.txt")
 # ============================================================
 if __name__ == "__main__":
+    os.makedirs(PASTA_EXTRAS, exist_ok=True)
     lista = carregar_extras(PASTA_JSONS)
     baixar_extras(lista, PASTA_EXTRAS)

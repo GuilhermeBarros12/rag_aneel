@@ -8,7 +8,6 @@ from validacao import eh_pagina_de_bloqueio
 
 # ============================================================
 
-os.makedirs(PASTA_SAIDA, exist_ok=True)  # cria a pasta de saída se não existir
 
 # ------------------------------------------------------------
 
@@ -125,6 +124,8 @@ def processar_documentos(documentos):
     - Adiciona metadata no topo
     - Salva na pasta de saída
     """
+    os.makedirs(PASTA_SAIDA, exist_ok=True)  # cria a pasta de saída se não existir
+
     total       = len(documentos)
     processados = 0
     ignorados   = 0
