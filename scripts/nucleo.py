@@ -8,6 +8,7 @@ e quais documentos foram usados.
 
 import os
 import sys
+import time
 from dataclasses import asdict, dataclass, field
 from typing import Dict, List, Optional, Tuple
 
@@ -105,9 +106,43 @@ def garantir_vectorstore() -> None:
         sys.exit(1)
 
 
-def carregar_recursos() -> Tuple[object, object]:
-    """Garante o índice e devolve (colecao, modelo de embeddings)."""
+def garantir_lexico() -> None:
+    """Garante o acervo léxico: usa o local, baixa o pronto ou cria a partir do índice vetorial."""
 
+    import lexico
+
+    if lexico.existe():
+        return
+
+    tem_indice = os.path.exists(os.path.join(config.PASTA_VECTORSTORE, "chroma.sqlite3"))
+    if not tem_indice:
+        print(f"Acervo lexico nao encontrado. Tentando baixar de: {config.HF_REPO_ID}")
+        if lexico.baixar():
+            print("[OK] Acervo lexico baixado.\n")
+            return
+        print("Acervo pronto indisponivel. Sera criado a partir do indice vetorial.")
+        garantir_vectorstore()
+
+    print("Criando o acervo lexico (so na primeira execucao)...")
+    lexico.construir()
+
+
+def carregar_recursos() -> Tuple[object, object]:
+    """
+    Prepara o que o modo de busca precisa e devolve (colecao, modelo de embeddings).
+    No modo "lexica" os dois são None: basta o acervo léxico, sem ChromaDB nem embeddings.
+    """
+
+    if config.MODO_BUSCA != "densa":
+        import lexico
+
+        garantir_lexico()
+        print(f"[OK] Acervo lexico pronto. {lexico.total()} chunks.\n")
+
+    if config.MODO_BUSCA == "lexica":
+        return None, None
+
+    # Importados só aqui: são pesados e o modo léxico não precisa deles
     import chromadb
     from sentence_transformers import SentenceTransformer
 
@@ -121,12 +156,9 @@ def carregar_recursos() -> Tuple[object, object]:
     colecao = client.get_collection(name=config.NOME_COLECAO)
     print(f"[OK] ChromaDB conectado. {colecao.count()} chunks indexados.\n")
 
-    if config.MODO_BUSCA != "densa":
-        import lexico
-
-        if not lexico.existe():
-            print("Criando o indice lexico (so na primeira execucao)...")
-            lexico.construir()
+    if config.MODO_BUSCA == "hibrida" and lexico.total() != colecao.count():
+        print(f"[AVISO] O acervo lexico tem {lexico.total()} chunks e o indice vetorial tem "
+              f"{colecao.count()}. Rode 'python scripts/lexico.py' para recriar o acervo.\n")
 
     return colecao, modelo
 
@@ -165,23 +197,23 @@ def recuperar_trechos(
     lexicos = lexico.buscar(query, candidatos, excluir_situacao=excluir)
 
     if config.MODO_BUSCA == "lexica":
-        return carregar_trechos(lexicos[:top_k], colecao, {})
+        return carregar_trechos(lexicos[:top_k], {})
 
     densos = busca_densa(query, colecao, modelo, candidatos, filtro)
     ids = fundir_rrf([[t.id for t in densos], lexicos], [1.0, config.PESO_LEXICO])[:top_k]
-    return carregar_trechos(ids, colecao, {t.id: t for t in densos})
+    return carregar_trechos(ids, {t.id: t for t in densos})
 
 
-def carregar_trechos(ids: List[str], colecao, conhecidos: Dict[str, Trecho]) -> List[Trecho]:
-    """Monta os trechos na ordem de ids, buscando no índice os que faltam."""
+def carregar_trechos(ids: List[str], conhecidos: Dict[str, Trecho]) -> List[Trecho]:
+    """Monta os trechos na ordem de ids, lendo do acervo léxico os que faltam."""
 
-    faltam = [i for i in ids if i not in conhecidos]
+    import lexico
+
     trechos = dict(conhecidos)
-    if faltam:
-        r = colecao.get(ids=faltam, include=["documents", "metadatas"])
-        for i, d, m in zip(r["ids"], r["documents"], r["metadatas"]):
-            trechos[i] = Trecho(id=i, texto=d, distancia=None, metadata=m or {})
-    return [trechos[i] for i in ids]
+    faltam = [i for i in ids if i not in trechos]
+    for chunk_id, texto, metadata in lexico.carregar(faltam):
+        trechos[chunk_id] = Trecho(id=chunk_id, texto=texto, distancia=None, metadata=metadata)
+    return [trechos[i] for i in ids if i in trechos]
 
 
 def busca_densa(
@@ -268,10 +300,29 @@ def gerar_com_groq(prompt: str) -> str:
     return response.choices[0].message.content
 
 
+def tipo_de_erro(erro: Exception) -> str:
+    """
+    Classifica o erro de um LLM:
+    "cota"       — limite diário esgotado; insistir não adianta
+    "temporario" — sobrecarga ou limite por minuto; vale tentar de novo
+    "definitivo" — o resto (chave errada, modelo inexistente, tempo esgotado)
+    """
+    texto = str(erro).lower()
+    codigo = getattr(erro, "status_code", None) or getattr(erro, "code", None)
+
+    if "per day" in texto or "quota" in texto:
+        return "cota"
+    if "timeout" in texto or "timed out" in texto or "deadline" in texto:
+        return "definitivo"  # esperar mais 60 s é pior do que seguir para o próximo LLM
+    if codigo in (429, 500, 502, 503) or "unavailable" in texto or "rate limit" in texto:
+        return "temporario"
+    return "definitivo"
+
+
 def gerar_resposta(prompt: str, provedores: Optional[List[str]] = None) -> Geracao:
     """
     Tenta os provedores em ordem e guarda os erros de quem falhou.
-    Sem a lista, usa Gemini e depois Groq.
+    Sem a lista, usa Gemini e depois Groq. Erros temporários ganham nova tentativa.
     """
 
     disponiveis = {
@@ -282,13 +333,18 @@ def gerar_resposta(prompt: str, provedores: Optional[List[str]] = None) -> Gerac
     erros: List[str] = []
     for chave in provedores or ["gemini", "groq"]:
         nome, gerar = disponiveis[chave]
-        try:
-            texto = (gerar(prompt) or "").strip()
-            if not texto:
-                raise ValueError("resposta vazia")
-            return Geracao(texto=texto, llm=nome, erros=erros)
-        except Exception as e:
-            erros.append(f"{nome}: {e}")
+        for tentativa in range(1, config.TENTATIVAS_LLM + 1):
+            try:
+                texto = (gerar(prompt) or "").strip()
+                if not texto:
+                    raise ValueError("resposta vazia")
+                return Geracao(texto=texto, llm=nome, erros=erros)
+            except Exception as e:
+                tipo = tipo_de_erro(e)
+                erros.append(f"{nome} ({tipo}): {e}")
+                if tipo != "temporario" or tentativa == config.TENTATIVAS_LLM:
+                    break
+                time.sleep(config.ESPERA_ENTRE_TENTATIVAS_S * tentativa)
 
     return Geracao(texto=None, llm=None, erros=erros)
 
@@ -307,15 +363,30 @@ def responder(
 ) -> RespostaRAG:
     """Pipeline RAG completo: pergunta, recuperação, prompt e geração."""
 
-    trechos = recuperar_trechos(
-        query, colecao, modelo, top_k=top_k, filtro=config.FILTRO_PADRAO
-    )
+    trechos = []
+    if query.strip():
+        trechos = recuperar_trechos(
+            query, colecao, modelo, top_k=top_k, filtro=config.FILTRO_PADRAO
+        )
+
+    # Sem trechos não há o que perguntar ao LLM: responde direto, sem gastar cota
+    if not trechos:
+        return RespostaRAG(
+            pergunta=query,
+            resposta=config.RESPOSTA_SEM_TRECHOS,
+            llm=config.SEM_LLM,
+            erros=[],
+            trechos=[],
+        )
+
     geracao = gerar_resposta(montar_prompt(query, trechos), provedores=provedores)
 
     resposta = geracao.texto
     if resposta is None:
         detalhes = "\n".join(f"  {e}" for e in geracao.erros)
         resposta = f"[ERRO] Nenhum LLM disponivel.\n{detalhes}"
+        if any("(cota)" in e for e in geracao.erros):
+            resposta += "\nA cota diaria de um LLM acabou. Tente mais tarde ou troque o modelo no .env."
 
     return RespostaRAG(
         pergunta=query,

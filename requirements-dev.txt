@@ -1,0 +1,7 @@
+# Ferramentas de desenvolvimento. Não são necessárias para usar o sistema.
+# Instale com: pip install -r requirements-dev.txt
+
+# pytest: roda os testes da pasta tests/
+pytest==9.2.0
+# ruff: verifica erros no código (imports sem uso, nomes indefinidos)
+ruff==0.17.4

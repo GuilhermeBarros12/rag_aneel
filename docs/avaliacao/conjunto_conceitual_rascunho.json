@@ -1,0 +1,321 @@
+{
+ "status": "rascunho",
+ "perguntas": [
+  {
+   "id": "C01",
+   "categoria": "sigla",
+   "deve_recusar": false,
+   "pergunta": "O que significa a sigla REIDI?",
+   "resposta_curta": "Regime Especial de Incentivos para o Desenvolvimento da Infraestrutura.",
+   "termos": [
+    "Regime Especial de Incentivos"
+   ],
+   "evidencia": [
+    "Regime Especial de Incentivos para o Desenvolvimento da Infraestrutura"
+   ],
+   "ato": null,
+   "documentos_esperados": [],
+   "chunks_com_evidencia": 1240
+  },
+  {
+   "id": "C02",
+   "categoria": "sigla",
+   "deve_recusar": false,
+   "pergunta": "O que significa DRO nos despachos de geração?",
+   "resposta_curta": "Despacho de Registro do Requerimento de Outorga.",
+   "termos": [
+    "Requerimento de Outorga"
+   ],
+   "evidencia": [
+    "Requerimento de Outorga",
+    "DRO"
+   ],
+   "ato": null,
+   "documentos_esperados": [],
+   "chunks_com_evidencia": 2451
+  },
+  {
+   "id": "C03",
+   "categoria": "sigla",
+   "deve_recusar": false,
+   "pergunta": "O que mede o indicador DEC?",
+   "resposta_curta": "A Duração Equivalente de Interrupção por Unidade Consumidora.",
+   "termos": [
+    "Duração Equivalente de Interrupção"
+   ],
+   "evidencia": [
+    "Duração Equivalente de Interrupção"
+   ],
+   "ato": null,
+   "documentos_esperados": [],
+   "chunks_com_evidencia": 404
+  },
+  {
+   "id": "C04",
+   "categoria": "sigla",
+   "deve_recusar": false,
+   "pergunta": "O que significa a sigla TUSD?",
+   "resposta_curta": "Tarifa de Uso do Sistema de Distribuição.",
+   "termos": [
+    "Uso d",
+    "Distribuição"
+   ],
+   "evidencia": [
+    "Tarifas de Uso do",
+    "TUSD"
+   ],
+   "ato": null,
+   "documentos_esperados": [],
+   "chunks_com_evidencia": 3750
+  },
+  {
+   "id": "C05",
+   "categoria": "sigla",
+   "deve_recusar": false,
+   "pergunta": "O que significa a sigla MRE?",
+   "resposta_curta": "Mecanismo de Realocação de Energia.",
+   "termos": [
+    "Mecanismo de Realocação de Energia"
+   ],
+   "evidencia": [
+    "Mecanismo de Realocação de Energia"
+   ],
+   "ato": null,
+   "documentos_esperados": [],
+   "chunks_com_evidencia": 352
+  },
+  {
+   "id": "C06",
+   "categoria": "sigla",
+   "deve_recusar": false,
+   "pergunta": "O que é o PRORET?",
+   "resposta_curta": "Os Procedimentos de Regulação Tarifária.",
+   "termos": [
+    "Procedimentos de Regulação Tarifária"
+   ],
+   "evidencia": [
+    "Procedimentos de Regulação Tarifária"
+   ],
+   "ato": null,
+   "documentos_esperados": [],
+   "chunks_com_evidencia": 1976
+  },
+  {
+   "id": "C07",
+   "categoria": "parafrase",
+   "deve_recusar": false,
+   "pergunta": "Para que serve uma Nota Técnica dentro da agência?",
+   "resposta_curta": "Para subsidiar as decisões da Agência.",
+   "termos": [
+    "subsidiar"
+   ],
+   "evidencia": [
+    "subsidiar as decisões"
+   ],
+   "ato": null,
+   "documentos_esperados": [],
+   "chunks_com_evidencia": 10388
+  },
+  {
+   "id": "C08",
+   "categoria": "parafrase",
+   "deve_recusar": false,
+   "pergunta": "Quantos dias uma empresa tem para recorrer de uma decisão da ANEEL?",
+   "resposta_curta": "Dez dias.",
+   "termos": [
+    "dez"
+   ],
+   "evidencia": [
+    "dez dias",
+    "recurso"
+   ],
+   "ato": null,
+   "documentos_esperados": [],
+   "chunks_com_evidencia": 262
+  },
+  {
+   "id": "C09",
+   "categoria": "parafrase",
+   "deve_recusar": false,
+   "pergunta": "Depois da anuência da ANEEL, em quanto tempo uma troca de controle societário precisa ser concluída?",
+   "resposta_curta": "Em até 120 dias da publicação do despacho.",
+   "termos": [
+    "120"
+   ],
+   "evidencia": [
+    "120 (cento e vinte) dias",
+    "implementação da operação"
+   ],
+   "ato": null,
+   "documentos_esperados": [],
+   "chunks_com_evidencia": 87
+  },
+  {
+   "id": "C10",
+   "categoria": "parafrase",
+   "deve_recusar": false,
+   "pergunta": "A agência responde por prejuízos de terceiros quando cancela uma autorização de usina?",
+   "resposta_curta": "Não. A revogação não acarreta responsabilidade por compromissos assumidos com terceiros.",
+   "termos": [
+    "responsabilidade"
+   ],
+   "evidencia": [
+    "revogação da autorização não acarretará"
+   ],
+   "ato": null,
+   "documentos_esperados": [],
+   "chunks_com_evidencia": 1960
+  },
+  {
+   "id": "C11",
+   "categoria": "parafrase",
+   "deve_recusar": false,
+   "pergunta": "Como se chama a remuneração anual das concessionárias de transmissão?",
+   "resposta_curta": "Receita Anual Permitida (RAP).",
+   "termos": [
+    "Receita Anual Permitida"
+   ],
+   "evidencia": [
+    "Receita Anual Permitida"
+   ],
+   "ato": null,
+   "documentos_esperados": [],
+   "chunks_com_evidencia": 2856
+  },
+  {
+   "id": "C12",
+   "categoria": "parafrase",
+   "deve_recusar": false,
+   "pergunta": "Em qual entidade uma empresa autorizada a vender energia precisa atuar?",
+   "resposta_curta": "Na Câmara de Comercialização de Energia Elétrica (CCEE).",
+   "termos": [
+    "Câmara de Comercialização"
+   ],
+   "evidencia": [
+    "Agente Comercializador",
+    "Câmara de Comercialização de Energia Elétrica"
+   ],
+   "ato": null,
+   "documentos_esperados": [],
+   "chunks_com_evidencia": 122
+  },
+  {
+   "id": "C13",
+   "categoria": "parafrase",
+   "deve_recusar": false,
+   "pergunta": "Qual norma legal fundamenta as desapropriações por utilidade pública no setor elétrico?",
+   "resposta_curta": "O Decreto-Lei nº 3.365, de 1941.",
+   "termos": [
+    "3.365"
+   ],
+   "evidencia": [
+    "Decreto-Lei nº 3.365"
+   ],
+   "ato": null,
+   "documentos_esperados": [],
+   "chunks_com_evidencia": 2992
+  },
+  {
+   "id": "C14",
+   "categoria": "parafrase",
+   "deve_recusar": false,
+   "pergunta": "Qual lei concede benefício a projetos de infraestrutura considerados prioritários?",
+   "resposta_curta": "A Lei nº 12.431, de 2011.",
+   "termos": [
+    "12.431"
+   ],
+   "evidencia": [
+    "Prioritário",
+    "12.431"
+   ],
+   "ato": null,
+   "documentos_esperados": [],
+   "chunks_com_evidencia": 824
+  },
+  {
+   "id": "C15",
+   "categoria": "parafrase",
+   "deve_recusar": false,
+   "pergunta": "O que acontece com a energia gerada por uma usina durante a fase de testes?",
+   "resposta_curta": "Ela é contabilizada.",
+   "termos": [
+    "contabiliza"
+   ],
+   "evidencia": [
+    "operação em teste",
+    "contabilização"
+   ],
+   "ato": null,
+   "documentos_esperados": [],
+   "chunks_com_evidencia": 87
+  },
+  {
+   "id": "C16",
+   "categoria": "parafrase",
+   "deve_recusar": false,
+   "pergunta": "Onde uma empresa deve pedir a habilitação no regime de incentivos à infraestrutura?",
+   "resposta_curta": "Na Secretaria da Receita Federal do Brasil.",
+   "termos": [
+    "Receita Federal"
+   ],
+   "evidencia": [
+    "habilitação do projeto no REIDI",
+    "requeridos"
+   ],
+   "ato": null,
+   "documentos_esperados": [],
+   "chunks_com_evidencia": 1016
+  },
+  {
+   "id": "C17",
+   "categoria": "parafrase",
+   "deve_recusar": false,
+   "pergunta": "O que o interessado precisa apresentar para a ANEEL emitir a outorga depois do registro do requerimento?",
+   "resposta_curta": "Os documentos dos Anexos I e II da Resolução Normativa nº 876, de 2020.",
+   "termos": [
+    "Anexos I e II"
+   ],
+   "evidencia": [
+    "depende de apresentação dos documentos",
+    "876"
+   ],
+   "ato": null,
+   "documentos_esperados": [],
+   "chunks_com_evidencia": 684
+  },
+  {
+   "id": "C18",
+   "categoria": "parafrase",
+   "deve_recusar": false,
+   "pergunta": "Quando uma unidade geradora entra em operação comercial, o que deve acontecer com a energia produzida?",
+   "resposta_curta": "Ela deve estar disponível ao sistema.",
+   "termos": [
+    "disponível ao sistema"
+   ],
+   "evidencia": [
+    "operação comercial",
+    "disponível ao sistema"
+   ],
+   "ato": null,
+   "documentos_esperados": [],
+   "chunks_com_evidencia": 172
+  },
+  {
+   "id": "C19",
+   "categoria": "parafrase",
+   "deve_recusar": false,
+   "pergunta": "Por quanto tempo a empresa deve guardar a documentação sobre o uso dos recursos captados?",
+   "resposta_curta": "Até cinco anos após o vencimento.",
+   "termos": [
+    "cinco anos"
+   ],
+   "evidencia": [
+    "utilização dos recursos captados",
+    "cinco anos"
+   ],
+   "ato": null,
+   "documentos_esperados": [],
+   "chunks_com_evidencia": 422
+  }
+ ]
+}

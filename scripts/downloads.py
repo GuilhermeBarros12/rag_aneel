@@ -16,7 +16,6 @@ MAX_TENTATIVAS  = 3     # máximo de vezes que tenta reiniciar o Chrome
 EXTENSOES_VALIDAS = {".pdf", ".html", ".zip", ".doc", ".docx", ".xls", ".xlsx"}  # extensões válidas para download
 # ============================================================
 
-os.makedirs(PASTA_PDFS, exist_ok=True)
 
 # ------------------------------------------------------------
 
@@ -127,7 +126,7 @@ def reiniciar_driver(driver, pasta_destino):
     """Fecha o Chrome atual e abre um novo. Retorna o novo driver."""
     try:
         driver.quit()                      # tenta fechar o Chrome atual
-    except:
+    except Exception:
         pass                               # ignora erro se já estava fechado
     time.sleep(3)                          # pausa antes de reabrir
     return criar_driver(pasta_destino)     # retorna novo driver
@@ -209,5 +208,6 @@ def baixar_com_selenium(lista_urls, pasta_destino):
 # EXECUÇÃO
 # ============================================================
 if __name__ == "__main__":
+    os.makedirs(PASTA_PDFS, exist_ok=True)
     lista_urls = carregar_todas_urls(PASTA_JSONS)
     baixar_com_selenium(lista_urls, PASTA_PDFS)

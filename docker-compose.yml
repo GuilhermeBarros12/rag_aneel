@@ -1,4 +1,4 @@
-version: "3.9"
+# ATENÇÃO: esta configuração ainda não foi testada (ver "Rodar com Docker" no README).
 
 services:
   rag:
@@ -20,6 +20,9 @@ services:
       - ./chunks_md:/app/chunks_md # markdowns gerados pela ingestão
       - ./chunks:/app/chunks # chunks .txt gerados pelo chunking
       - ./vectorstore:/app/vectorstore # índice ChromaDB persistido
+      - ./vectorstore_lexico:/app/vectorstore_lexico # acervo léxico (textos + BM25)
+      - ./docs/avaliacao:/app/docs/avaliacao # conjunto de ouro e resultados medidos
+      - ./avaliacao:/app/avaliacao # respostas do benchmark antigo
 
     # Mantém o container ativo para execuções interativas
     stdin_open: true

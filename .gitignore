@@ -6,6 +6,7 @@ chunks_md/
 chunks/
 vectorstore/
 vectorstore_lexico/
+vectorstore_limpo/
 
 # ── Arquivos de log gerados pelos scripts ───────────────────────
 scripts/erros_download.txt

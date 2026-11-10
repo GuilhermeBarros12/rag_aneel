@@ -1,0 +1,31 @@
+# Roda o lint e os testes a cada push e a cada pull request.
+# Os testes não usam rede, chaves de API nem o índice real.
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  lint-e-testes:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Instala as dependências
+        run: |
+          python -m pip install --upgrade pip
+          # PyTorch só de CPU, para não baixar as bibliotecas de GPU
+          pip install torch==2.11.0 --index-url https://download.pytorch.org/whl/cpu
+          pip install -r requirements.txt -r requirements-dev.txt
+
+      - name: Lint
+        run: ruff check scripts tests
+
+      - name: Testes
+        run: pytest -q

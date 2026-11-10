@@ -16,7 +16,6 @@ from config import (
 
 # ============================================================
 
-os.makedirs(PASTA_CHUNKS, exist_ok=True)   # cria a pasta de saída se não existir
                                             # exist_ok=True evita erro se já existir
 
 # ------------------------------------------------------------
@@ -220,6 +219,8 @@ def processar_markdowns(pasta_entrada, pasta_saida):
     """
 
     # lista todos os arquivos .md da pasta de entrada
+    os.makedirs(pasta_saida, exist_ok=True)  # cria a pasta de saída se não existir
+
     arquivos = [f for f in os.listdir(pasta_entrada) if f.endswith(".md")]
 
     total_docs    = len(arquivos)   # total de documentos a processar

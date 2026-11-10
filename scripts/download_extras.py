@@ -9,12 +9,12 @@ from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 
 from config import PASTA_EXTRAS, PASTA_JSONS
+from validacao import eh_pagina_de_bloqueio
 
 # ============================================================
 DELAY = 1
 # ============================================================
 
-os.makedirs(PASTA_EXTRAS, exist_ok=True)
 
 # extensões que vamos baixar agora
 EXTENSOES_ALVO = {".html", ".htm", ".xlsx", ".xlsm"}
@@ -103,6 +103,13 @@ def baixar_extras(lista, pasta_destino):
                 driver.get(url)
                 time.sleep(3)
                 conteudo = driver.page_source
+                # página de bloqueio não é o documento: não salva e registra no log
+                if eh_pagina_de_bloqueio(conteudo):
+                    print(f"[{i+1}/{total}] ❌ Página de bloqueio: {nome}")
+                    log_erros.append(url)
+                    erros += 1
+                    time.sleep(DELAY)
+                    continue
                 with open(destino, "w", encoding="utf-8") as f:
                     f.write(conteudo)
                 tamanho = os.path.getsize(destino)
@@ -147,8 +154,9 @@ def baixar_extras(lista, pasta_destino):
     if log_erros:
         with open("erros_extras.txt", "w", encoding="utf-8") as f:
             f.write("\n".join(log_erros))
-        print(f"⚠️  Erros salvos em: erros_extras.txt")
+        print("⚠️  Erros salvos em: erros_extras.txt")
 # ============================================================
 if __name__ == "__main__":
+    os.makedirs(PASTA_EXTRAS, exist_ok=True)
     lista = carregar_extras(PASTA_JSONS)
     baixar_extras(lista, PASTA_EXTRAS)

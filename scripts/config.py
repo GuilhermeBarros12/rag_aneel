@@ -26,6 +26,7 @@ PASTA_CHUNKS      = str(ROOT / "chunks")
 # Podem apontar para uma cópia, para testar sem tocar no índice original
 PASTA_VECTORSTORE = os.getenv("VECTORSTORE_DIR", str(ROOT / "vectorstore"))
 PASTA_LEXICO      = os.getenv("LEXICO_DIR", str(ROOT / "vectorstore_lexico"))
+ARQUIVO_LEXICO    = "lexico.sqlite3"  # textos, metadata e índice BM25 em um arquivo só
 PASTA_RESULTADOS  = os.getenv("RESULTADOS_DIR", str(ROOT / "avaliacao"))
 PASTA_DOCS_AVALIACAO = str(ROOT / "docs" / "avaliacao")  # resultados versionados
 
@@ -79,6 +80,16 @@ GROQ_MODELO   = os.getenv("GROQ_MODEL", "openai/gpt-oss-120b")
 TEMPERATURA   = 0.0  # respostas o mais repetíveis possível, nos dois LLMs
 MAX_CHARS_TRECHO = 4000  # corta chunks de tabela muito longos ao montar o prompt
 TIMEOUT_LLM_S = 60  # espera máxima por LLM antes de seguir para o fallback
+TENTATIVAS_LLM = 2  # vezes que cada LLM é tentado quando o erro é temporário (ex.: 503)
+ESPERA_ENTRE_TENTATIVAS_S = 5
+
+# Valor do campo "llm" quando a resposta não precisou de LLM (ex.: a busca não achou nada)
+SEM_LLM = "sem-llm"
+RESPOSTA_SEM_TRECHOS = (
+    "Não encontrei informação suficiente nos documentos disponíveis. "
+    "A busca não devolveu nenhum trecho para essa pergunta. "
+    "Tente citar o número do ato, o nome da empresa ou o tema."
+)
 
 # A medição usa um único LLM, sem fallback, para os números não misturarem modelos
 LLM_AVALIACAO = os.getenv("LLM_AVALIACAO", "groq")

@@ -13,17 +13,18 @@ Sistema de **Retrieval-Augmented Generation (RAG)** desenvolvido para responder 
 
 > O vectorstore com o corpus de 2016, 2021 e 2022 já está pré-construído e hospedado no Hugging Face.
 > Ele é baixado automaticamente na primeira execução. Você **não precisa** baixar PDFs nem gerar embeddings.
+> A busca padrão usa só o acervo léxico (`lexico.sqlite3`, cerca de 0,6 GB), sem o índice vetorial nem o modelo de embeddings.
 
 ### Pré-requisitos
 
 | Requisito           | Detalhe                                                                        |
 | ------------------- | ------------------------------------------------------------------------------ |
 | Git                 | [Download](https://git-scm.com/downloads) (ou baixe o repositório como .ZIP)   |
-| Python 3.10+        | Testado em 3.14.3. [Download](https://www.python.org/downloads/)               |
+| Python 3.11+        | Testado em 3.14.3. [Download](https://www.python.org/downloads/)               |
 | Chave de API Gemini | Crie em [aistudio.google.com](https://aistudio.google.com/app/apikey)          |
 | Chave de API Groq   | Crie em [console.groq.com](https://console.groq.com) — usado como fallback     |
-| Espaço em disco     | ~6 GB (índice de 4,4 GB e modelo de embeddings de 1,1 GB)                      |
-| RAM                 | 4 GB livres (pico medido de 3,2 GB em uma consulta com busca vetorial)         |
+| Espaço em disco     | ~0,6 GB com o acervo léxico pronto; ~5 GB se ele for criado localmente         |
+| RAM                 | Pico medido de 113 MB na busca léxica e de 3,2 GB na vetorial                  |
 
 ### Passo 1 — Obtenha o código do repositório
 
@@ -84,7 +85,7 @@ source .venv/bin/activate
 python scripts/pipeline.py
 ```
 
-Na **primeira execução**, o vectorstore (~4,4 GB) será baixado automaticamente do Hugging Face, e o índice léxico será criado a partir dele (cerca de 1 minuto e 290 MB).
+Na **primeira execução**, o sistema procura o acervo léxico pronto no Hugging Face (cerca de 0,6 GB). Se ele ainda não estiver publicado, baixa o índice vetorial (~4,4 GB) e cria o acervo a partir dele, em cerca de 1 minuto. Os modos `densa` e `hibrida` sempre precisam do índice vetorial e do modelo de embeddings (1,1 GB).
 Nas execuções seguintes, ele já estará em disco e o sistema inicia em segundos.
 
 **Modo direto (uma pergunta):**
@@ -207,11 +208,14 @@ python scripts/upload_vectorstore.py
 ```
 
 > Requer `HF_TOKEN` (tipo Write) e `HF_REPO_ID` configurados no `.env`.
+> Para enviar só o acervo léxico, use `python scripts/upload_vectorstore.py --acervo`.
 
 ---
 
 ## Rodar com Docker (avançado)
 
+> **Não testado.** O `Dockerfile` e o `docker-compose.yml` foram revisados, mas ainda não foram executados de ponta a ponta. Prefira o Quick Start.
+>
 > O Docker cobre os passos 2 a 6 do pipeline (ingestão, chunking, indexação, pipeline e avaliação).
 > O download dos dados (passo 1) deve ser feito localmente antes, pois requer o Google Chrome.
 
@@ -247,7 +251,9 @@ projeto_rag/
 │   ├── ingestao.py             # [Passo 2] PDF/HTML → Markdown
 │   ├── chunking.py             # [Passo 3] Markdown → chunks .txt
 │   ├── indexar.py              # [Passo 4] Chunks → embeddings → ChromaDB
-│   ├── lexico.py               # Índice e busca BM25 (SQLite FTS5)
+│   ├── lexico.py               # Acervo léxico: textos, metadata e busca BM25 (SQLite FTS5)
+│   ├── validacao.py            # Reconhece páginas de bloqueio baixadas no lugar do documento
+│   ├── limpar_indice.py        # Gera uma cópia do índice sem páginas de bloqueio
 │   ├── pipeline.py             # [Passo 5] Linha de comando do RAG (query → resposta)
 │   ├── upload_vectorstore.py   # Sobe o vectorstore para o Hugging Face
 │   ├── avaliar.py              # [Passo 6] Benchmark de 100 perguntas
@@ -261,7 +267,8 @@ projeto_rag/
 ├── chunks_md/                  # Markdowns gerados (não versionados)
 ├── chunks/                     # Chunks .txt gerados (não versionados)
 ├── vectorstore/                # Índice ChromaDB (não versionado)
-├── vectorstore_lexico/         # Índice BM25 gerado localmente (não versionado)
+├── vectorstore_lexico/         # Acervo léxico, cerca de 0,6 GB (não versionado)
+├── tests/                      # Testes automáticos (pytest), sem rede nem chaves
 ├── docs/avaliacao/             # Conjunto de ouro e resultados medidos
 │
 ├── Dockerfile                  # Imagem Docker do pipeline
@@ -270,6 +277,9 @@ projeto_rag/
 ├── setup.sh                    # Setup automático Linux/Mac
 ├── Makefile                    # Atalhos para Linux/Mac
 ├── requirements.txt            # Dependências Python
+├── requirements-dev.txt        # pytest e ruff, para desenvolvimento
+├── pyproject.toml              # Versão do Python e configuração do pytest e do ruff
+├── .github/workflows/ci.yml    # Lint e testes a cada push
 ├── .env.example                # Template de variáveis de ambiente
 └── .gitignore
 ```
@@ -278,9 +288,19 @@ projeto_rag/
 
 ## Avaliação
 
-`scripts/avaliar.py` roda 100 perguntas com o mesmo código do pipeline e salva em `avaliacao/` a resposta, o LLM que respondeu e os documentos usados. Para testar com poucas perguntas, use `--limite`.
+`scripts/avaliar.py` é o benchmark antigo, mantido como registro. Ele roda 100 perguntas com o mesmo código do pipeline e salva em `avaliacao/` a resposta, o LLM que respondeu e os documentos usados. Para testar com poucas perguntas, use `--limite`.
 
 Esse benchmark não tem gabarito, então coleta respostas sem dar nota. As métricas vêm de `scripts/avaliar_ouro.py`, em um conjunto de 56 perguntas com documento e resposta esperados. Veja a metodologia e os resultados em [docs/avaliacao/RESULTADOS.md](docs/avaliacao/RESULTADOS.md).
+
+## Testes
+
+```bash
+pip install -r requirements-dev.txt
+pytest
+ruff check scripts tests
+```
+
+São 42 testes que rodam sem rede, sem chaves de API e sem o índice real: eles criam um índice minúsculo em uma pasta temporária. Cobrem a leitura da metadata, o chunking, a busca nos três modos, a montagem do prompt, as novas tentativas e o fallback entre LLMs e as métricas. O arquivo `.github/workflows/ci.yml` roda o lint e os testes a cada push.
 
 ## Limitações conhecidas
 

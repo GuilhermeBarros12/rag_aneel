@@ -1,5 +1,7 @@
 """
-Benchmark de 100 perguntas: roda o mesmo código do pipeline (nucleo.py) e salva,
+Benchmark antigo, mantido como registro. As métricas oficiais vêm de avaliar_ouro.py.
+
+Roda 100 perguntas com o mesmo código do pipeline (nucleo.py) e salva,
 para cada pergunta, a resposta, o LLM que respondeu e os documentos usados.
 
 As métricas ainda não fazem parte deste script. Para elas é preciso um conjunto

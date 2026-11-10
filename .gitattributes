@@ -1,0 +1,8 @@
+# Fim de linha LF em todos os textos, para o Git parar de avisar sobre CRLF no Windows
+* text=auto eol=lf
+# Scripts do Windows precisam de CRLF
+*.bat text eol=crlf
+# Arquivos binários não são convertidos
+*.pdf binary
+*.sqlite3 binary
+*.bin binary

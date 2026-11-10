@@ -6,8 +6,6 @@ from typing import Dict, List, Set, Tuple
 from tqdm import tqdm              # barra de progresso visual no terminal
 
 import chromadb                    # banco vetorial — persiste os embeddings em disco
-from sentence_transformers import SentenceTransformer
-# SentenceTransformer: carrega e roda o modelo de embeddings multilingual
 
 from config import BATCH_SIZE, MODELO_EMBEDDING, NOME_COLECAO, PASTA_CHUNKS, PASTA_VECTORSTORE
 
@@ -111,7 +109,7 @@ def indexar_chunks(
     pasta_chunks: str,
     ids_existentes: Set[str],
     colecao,
-    modelo: SentenceTransformer,
+    modelo,
 ) -> None:
     """
     Função principal de indexação.
@@ -258,6 +256,9 @@ def main() -> None:
     # ── 2. carrega o modelo de embeddings ─────────────────────────────────
     print(f"\nCarregando modelo de embeddings: {MODELO_EMBEDDING}")
     print("(Na primeira vez, fara download de ~1 GB — aguarde)\n")
+    # importado só aqui: é pesado, e as funções de leitura acima não precisam dele
+    from sentence_transformers import SentenceTransformer
+
     modelo = SentenceTransformer(MODELO_EMBEDDING)
     # o modelo fica em cache local após o primeiro download
     # nas próximas execuções carrega do cache em segundos
