@@ -104,6 +104,20 @@ Hipótese: incluir o título e a ementa do ato no texto de cada chunk, antes de 
 
 Nenhuma variante melhorou o hit@5 nem o MRR, então a ideia foi descartada e o corpus não será reindexado por esse motivo. Uma explicação provável, não testada, é que o modelo lê só 128 tokens, e o cabeçalho ocupa parte desse espaço. Cada variante levou cerca de 55 minutos em CPU. Dados em [experimentos/cabecalho_subconjunto.json](experimentos/cabecalho_subconjunto.json).
 
+## Caminho leve e robustez (10/11/2026)
+
+O acervo léxico passou a guardar também os textos e a metadata dos chunks. Com isso, a busca padrão não usa mais o ChromaDB nem o modelo de embeddings.
+
+| Medida | Antes | Depois |
+|---|---|---|
+| Arquivos necessários para a busca padrão | Índice vetorial (4,4 GB) e modelo (1,1 GB) | Acervo léxico (0,6 GB) |
+| Pico de memória em uma pergunta | 3,2 GB | 113 MB |
+| hit@5 e MRR no conjunto de ouro | 0,870 e 0,815 | 0,870 e 0,815 |
+
+As métricas de recuperação ficaram idênticas, medidas apontando o sistema para uma pasta de índice vetorial que não existe. O acervo pronto ainda não está publicado no Hugging Face. Até lá, a primeira execução baixa o índice vetorial e cria o acervo a partir dele. O download do acervo pronto não foi testado, porque depende dessa publicação.
+
+Outras mudanças desta etapa, cobertas por testes: erros temporários de LLM (como 503) ganham uma nova tentativa antes do fallback, cota diária esgotada vai direto para o próximo LLM, e uma busca sem resultados responde sem chamar o LLM.
+
 ## Métrica de citação
 
 A partir de 09/11/2026, a medição com LLM também verifica se a resposta citou, pela marcação `[Trecho N]`, um trecho correto para a pergunta. A medição salva o progresso a cada pergunta e pode ser retomada com o mesmo comando se a cota da API acabar.

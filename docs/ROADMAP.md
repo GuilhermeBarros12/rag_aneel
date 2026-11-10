@@ -47,6 +47,14 @@ O corpus tem 18.688 atos de 2016, 2021 e 2022, em 26.747 arquivos e 508.156 chun
 | 2.3 Cabeçalho contextual | Concluída e descartada: não melhorou a busca vetorial |
 | 2.4 Melhorias da busca vetorial | Não iniciada |
 | 2.5 Fortalecer a medição | Citação de trecho correto e retomada feitas. Falta repetir rodadas para medir a variação |
+| 3.1 Falhas de LLM | Feita: nova tentativa em erro temporário, cota esgotada vai direto ao fallback, com testes |
+| 3.2 Não carregar o que não é usado | Feita: 113 MB de pico na busca léxica, contra 3,2 GB antes |
+| 3.3 Caminho leve | Feita no código: o acervo léxico (0,6 GB) basta para a busca padrão. Falta o Guilherme publicar o acervo com `upload_vectorstore.py --acervo` |
+| 3.4 Limpeza de comportamento | Feita: sem criação de pastas ao importar, pergunta sem termos responde sem LLM, aviso de acervo desatualizado, `avaliar.py` marcado como legado |
+| 4.1 Testes | Feita: 42 testes com pytest |
+| 4.2 Lint e CI | Ruff sem erros. Workflow escrito, ainda não executado no GitHub porque a branch não foi enviada |
+| 4.3 Instalação reproduzível | Parcial: `pyproject.toml`, `requirements-dev.txt` e `.gitattributes` criados. A instalação em ambiente limpo será testada pelo CI |
+| 4.4 Docker | Revisado, mas não testado: o Docker não está instalado nesta máquina. O README avisa |
 
 ## 2. Regras de trabalho
 
