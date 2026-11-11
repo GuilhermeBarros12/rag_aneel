@@ -7,6 +7,7 @@ e quais documentos foram usados.
 """
 
 import os
+import re
 import sys
 import time
 from dataclasses import asdict, dataclass, field
@@ -354,6 +355,41 @@ def gerar_resposta(prompt: str, provedores: Optional[List[str]] = None) -> Gerac
 # ============================================================
 
 
+# Pergunta que cita um ato: "Despacho nº 3.683", "Resolução Autorizativa nº 10.230", "3.386/2016"
+_CITA_ATO = re.compile(
+    r"\b(?:despacho|resolu\w*|portaria|decreto|lei|edital|comunicado|of[ií]cio|nota t[eé]cnica)\b\D{0,30}\d"
+    r"|\b\d{1,3}(?:\.\d{3})*\s*/\s*\d{4}\b",
+    re.IGNORECASE,
+)
+# Pergunta sobre a situação do ato: "está vigente?", "foi revogada?", "ainda está em vigor?"
+_SOBRE_VIGENCIA = re.compile(r"revoga|vig[eê]n|em vigor|vigora|ainda vale", re.IGNORECASE)
+
+
+def motivo_para_incluir_revogados(query: str) -> Optional[str]:
+    """Diz por que a política intermediária inclui revogados nesta pergunta, ou None."""
+    if _SOBRE_VIGENCIA.search(query):
+        return "pergunta sobre vigência"
+    if _CITA_ATO.search(query):
+        return "pergunta cita um ato"
+    return None
+
+
+def recuperar_com_politica(query: str, colecao, modelo, top_k: int = config.TOP_K) -> List[Trecho]:
+    """Recupera os trechos aplicando config.POLITICA_REVOGADOS."""
+
+    politica = config.POLITICA_REVOGADOS
+    if politica == "incluir":
+        return recuperar_trechos(query, colecao, modelo, top_k=top_k, filtro=None)
+    if politica == "intermediaria" and motivo_para_incluir_revogados(query):
+        return recuperar_trechos(query, colecao, modelo, top_k=top_k, filtro=None)
+
+    trechos = recuperar_trechos(query, colecao, modelo, top_k=top_k, filtro=config.FILTRO_SEM_REVOGADOS)
+    if not trechos and politica == "intermediaria":
+        # nada vigente encontrado: os revogados são a única fonte possível
+        trechos = recuperar_trechos(query, colecao, modelo, top_k=top_k, filtro=None)
+    return trechos
+
+
 def responder(
     query: str,
     colecao,
@@ -365,9 +401,7 @@ def responder(
 
     trechos = []
     if query.strip():
-        trechos = recuperar_trechos(
-            query, colecao, modelo, top_k=top_k, filtro=config.FILTRO_PADRAO
-        )
+        trechos = recuperar_com_politica(query, colecao, modelo, top_k=top_k)
 
     # Sem trechos não há o que perguntar ao LLM: responde direto, sem gastar cota
     if not trechos:

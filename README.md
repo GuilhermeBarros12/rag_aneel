@@ -338,7 +338,7 @@ Todos ficam em [`scripts/config.py`](scripts/config.py).
 | `GEMINI_MODELO` | `gemini-3.8-flash`    | LLM primário                           |
 | `GROQ_MODELO`   | `openai/gpt-oss-120b` | LLM de fallback                        |
 | `MODO_BUSCA`    | `lexica`              | `lexica`, `densa` ou `hibrida`         |
-| `INCLUIR_REVOGADOS` | `0`               | Com `1`, recupera atos revogados       |
+| `POLITICA_REVOGADOS` | `intermediaria`   | `intermediaria`, `excluir` ou `incluir` |
 
 ---
 

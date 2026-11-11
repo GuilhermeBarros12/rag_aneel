@@ -59,9 +59,16 @@ TOP_K = int(os.getenv("TOP_K", "5"))
 
 FILTRO_SEM_REVOGADOS = {"situacao": {"$ne": "Situação:REVOGADA"}}
 
-# Com "1", atos revogados podem ser recuperados, e o prompt pede para avisar a situação
-INCLUIR_REVOGADOS = os.getenv("INCLUIR_REVOGADOS", "0") == "1"
-FILTRO_PADRAO = None if INCLUIR_REVOGADOS else FILTRO_SEM_REVOGADOS
+# Política para atos revogados (o prompt sempre pede para avisar a situação do ato):
+#   "intermediaria" — busca só nos vigentes, mas inclui os revogados quando a pergunta cita
+#                     um ato específico, pergunta sobre vigência ou revogação, ou quando a
+#                     busca nos vigentes não acha nada
+#   "excluir"       — nunca recupera atos revogados
+#   "incluir"       — recupera tudo
+# INCLUIR_REVOGADOS=1, do formato antigo, equivale a "incluir".
+POLITICA_REVOGADOS = os.getenv("POLITICA_REVOGADOS") or (
+    "incluir" if os.getenv("INCLUIR_REVOGADOS") == "1" else "intermediaria"
+)
 
 # "densa" usa só embeddings; "hibrida" funde embeddings e BM25; "lexica" usa só BM25
 MODO_BUSCA = os.getenv("MODO_BUSCA", "lexica")

@@ -229,7 +229,7 @@ def main() -> None:
             "groq": config.GROQ_MODELO,
             "temperatura": config.TEMPERATURA,
             "top_k": config.TOP_K,
-            "filtro": config.FILTRO_PADRAO,
+            "politica_revogados": config.POLITICA_REVOGADOS,
         },
         "resultados": resultados,
     })

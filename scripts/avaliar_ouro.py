@@ -18,7 +18,7 @@ from datetime import datetime, timezone
 from typing import Dict, List, Optional
 
 import config
-from nucleo import carregar_recursos, recuperar_trechos, responder
+from nucleo import carregar_recursos, recuperar_com_politica, recuperar_trechos, responder
 
 KS = (1, 3, 5, 10)
 FRASE_RECUSA = "nao encontrei informacao suficiente"
@@ -100,10 +100,14 @@ def contem_termos(resposta: str, termos: List[str]) -> bool:
 # ============================================================
 
 
-def medir_recuperacao(perguntas: List[dict], colecao, modelo, filtro) -> List[dict]:
+def medir_recuperacao(perguntas: List[dict], colecao, modelo, filtro, usar_politica: bool = False) -> List[dict]:
+    """Mede a recuperação com um filtro fixo ou, com usar_politica, com a política de revogados do sistema."""
     linhas = []
     for q in perguntas:
-        trechos = recuperar_trechos(q["pergunta"], colecao, modelo, top_k=max(KS), filtro=filtro)
+        if usar_politica:
+            trechos = recuperar_com_politica(q["pergunta"], colecao, modelo, top_k=max(KS))
+        else:
+            trechos = recuperar_trechos(q["pergunta"], colecao, modelo, top_k=max(KS), filtro=filtro)
         linhas.append({
             "id": q["id"],
             "categoria": q["categoria"],
@@ -199,8 +203,9 @@ def escrever_relatorio(caminho: str, dados: dict) -> None:
     m = [f"# Resultados: {dados['rotulo']}", "",
          f"Executado em {dados['executado_em']}. Conjunto: `{dados['conjunto']}`.",
          f"Busca: `{config.MODO_BUSCA}`. Embedding: `{config.MODELO_EMBEDDING}`. "
-         f"Chunks recuperados pelo sistema: {config.TOP_K}. Inclui revogados: {config.INCLUIR_REVOGADOS}.", ""]
-    for chave, titulo in (("com_filtro", "Recuperação excluindo revogados"),
+         f"Chunks recuperados pelo sistema: {config.TOP_K}. Política de revogados: `{config.POLITICA_REVOGADOS}`.", ""]
+    for chave, titulo in (("politica", "Recuperação com a política de revogados do sistema"),
+                          ("com_filtro", "Recuperação excluindo revogados"),
                           ("sem_filtro", "Recuperação incluindo revogados")):
         bloco = dados["recuperacao"][chave]
         m += [f"## {titulo}", "", cab, sep, linha_tabela("Todas com documento esperado", bloco["geral"])]
@@ -237,8 +242,8 @@ def main() -> None:
         "conjunto": os.path.basename(args.conjunto),
         "recuperacao": {},
     }
-    for nome, filtro in (("com_filtro", config.FILTRO_SEM_REVOGADOS), ("sem_filtro", None)):
-        linhas = medir_recuperacao(com_alvo, colecao, modelo, filtro)
+    for nome, filtro in (("politica", None), ("com_filtro", config.FILTRO_SEM_REVOGADOS), ("sem_filtro", None)):
+        linhas = medir_recuperacao(com_alvo, colecao, modelo, filtro, usar_politica=(nome == "politica"))
         dados["recuperacao"][nome] = {
             "geral": resumir_posicoes([l["posicao"] for l in linhas]),
             "categorias": por_categoria(linhas),
@@ -251,9 +256,10 @@ def main() -> None:
         assinatura = {
             "conjunto": dados["conjunto"],
             "modo_busca": config.MODO_BUSCA,
-            "incluir_revogados": config.INCLUIR_REVOGADOS,
+            "politica_revogados": config.POLITICA_REVOGADOS,
             "top_k": config.TOP_K,
             "llm": config.LLM_AVALIACAO,
+            "modelo_llm": config.GEMINI_MODELO if config.LLM_AVALIACAO == "gemini" else config.GROQ_MODELO,
         }
         linhas = medir_geracao(perguntas, colecao, modelo, caminho_parcial, assinatura)
         dados["geracao"] = {"resumo": resumir_geracao(linhas), "detalhe": linhas}
