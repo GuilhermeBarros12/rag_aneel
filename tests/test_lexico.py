@@ -42,6 +42,18 @@ def test_carregar_devolve_texto_e_metadata_na_ordem_pedida(acervo):
     assert "chunk_id" not in metadata
 
 
+def test_busca_funciona_em_outra_thread(acervo):
+    # a demo atende cada pergunta em uma thread diferente da que abriu o acervo
+    import threading
+
+    lexico.buscar("Despacho 3.683", 1)
+    resultado = []
+    t = threading.Thread(target=lambda: resultado.append(lexico.buscar("Despacho 3.683", 1)))
+    t.start()
+    t.join()
+    assert resultado and resultado[0][0].startswith("dsp20223683ti_chunk")
+
+
 def test_acervo_informa_total_e_formato(acervo):
     assert lexico.existe()
     assert lexico.total() == 4
