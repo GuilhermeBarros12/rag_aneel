@@ -30,7 +30,8 @@ DELAY_ENTRE_PERGUNTAS = 2  # segundos, para evitar rate limit
 
 
 def normalizar(texto: str) -> str:
-    """Minúsculas, sem acentos e com espaços simples, para comparar textos."""
+    """Minúsculas, sem acentos, sem ponto de milhar e com espaços simples, para comparar textos."""
+    texto = re.sub(r"(?<=\d)\.(?=\d{3}(?!\d))", "", texto)  # "1.045" e "1045" passam a ser iguais
     texto = unicodedata.normalize("NFKD", texto).encode("ascii", "ignore").decode()
     return re.sub(r"\s+", " ", texto).lower()
 
