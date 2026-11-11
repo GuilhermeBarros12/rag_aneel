@@ -116,6 +116,19 @@ ementa: {doc.get('ementa', '')}
 
 # ------------------------------------------------------------
 
+def ordenar_versoes(pdfs):
+    """
+    Coloca os PDFs antes dos HTMLs.
+
+    Algumas Resoluções Normativas têm o mesmo texto em ren2016756.html e
+    ren2016756.pdf. As duas versões geram o mesmo ren2016756.md, e só a primeira
+    é processada. Com o HTML primeiro, 153 normas ficaram com a página de bloqueio
+    no lugar do texto. O PDF é a versão mais confiável, então vem primeiro.
+    """
+    return sorted(pdfs, key=lambda p: not (p.get("arquivo") or "").strip().lower().endswith(".pdf"))
+
+# ------------------------------------------------------------
+
 def processar_documentos(documentos):
     """
     Para cada documento:
@@ -131,7 +144,7 @@ def processar_documentos(documentos):
     ignorados   = 0
 
     for i, doc in enumerate(documentos):
-        pdfs = doc.get("pdfs", [])
+        pdfs = ordenar_versoes(doc.get("pdfs", []))
 
         for pdf_info in pdfs:
             nome_arquivo = pdf_info.get("arquivo", "").strip()
