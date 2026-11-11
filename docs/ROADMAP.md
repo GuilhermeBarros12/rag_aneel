@@ -41,7 +41,7 @@ O corpus tem 18.688 atos de 2016, 2021 e 2022, em 26.747 arquivos e 508.156 chun
 |---|---|
 | 1.1 Cópia limpa do índice | Feita em `vectorstore_limpo/` (507.850 chunks). Falta o Guilherme decidir a troca do índice oficial e a republicação no Hugging Face |
 | 1.2 Recusar páginas de bloqueio | Feita, com testes em `tests/test_validacao.py` |
-| 1.3 Recuperar as Resoluções Normativas | Não iniciada. Depende do download manual |
+| 1.3 Recuperar as Resoluções Normativas | Feita na cópia limpa: 152 normas reindexadas a partir dos PDFs que já estavam em `dados/pdfs` (eram ignoradas por um conflito de nomes na ingestão). Falta `ren2021912`, sem PDF, e republicar o índice |
 | 2.1 Política de revogados | Medida. Incluir revogados melhorou os números. Falta o Guilherme escolher o padrão |
 | 2.2 Perguntas conceituais | Rascunho de 19 perguntas e prévia prontos. Falta a revisão do Guilherme para congelar |
 | 2.3 Cabeçalho contextual | Concluída e descartada: não melhorou a busca vetorial |
@@ -52,9 +52,10 @@ O corpus tem 18.688 atos de 2016, 2021 e 2022, em 26.747 arquivos e 508.156 chun
 | 3.3 Caminho leve | Feita no código: o acervo léxico (0,6 GB) basta para a busca padrão. Falta o Guilherme publicar o acervo com `upload_vectorstore.py --acervo` |
 | 3.4 Limpeza de comportamento | Feita: sem criação de pastas ao importar, pergunta sem termos responde sem LLM, aviso de acervo desatualizado, `avaliar.py` marcado como legado |
 | 4.1 Testes | Feita: 42 testes com pytest |
-| 4.2 Lint e CI | Ruff sem erros. Workflow escrito, ainda não executado no GitHub porque a branch não foi enviada |
-| 4.3 Instalação reproduzível | Parcial: `pyproject.toml`, `requirements-dev.txt` e `.gitattributes` criados. A instalação em ambiente limpo será testada pelo CI |
+| 4.2 Lint e CI | Feita: ruff sem erros e CI passando no GitHub |
+| 4.3 Instalação reproduzível | Feita: o CI instala tudo do zero em Linux com Python 3.12 e os testes passam |
 | 4.4 Docker | Revisado, mas não testado: o Docker não está instalado nesta máquina. O README avisa |
+| 5 Demo | Feita: `python scripts/app.py`, testada de ponta a ponta. Falta captura de tela no README e publicação opcional em um Space |
 
 ## 2. Regras de trabalho
 

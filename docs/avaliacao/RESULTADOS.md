@@ -118,6 +118,14 @@ As métricas de recuperação ficaram idênticas, medidas apontando o sistema pa
 
 Outras mudanças desta etapa, cobertas por testes: erros temporários de LLM (como 503) ganham uma nova tentativa antes do fallback, cota diária esgotada vai direto para o próximo LLM, e uma busca sem resultados responde sem chamar o LLM.
 
+## Resoluções Normativas recuperadas (11/11/2026)
+
+Das 153 normas que eram páginas de bloqueio, 152 tinham o PDF real em `dados/pdfs`. Elas eram ignoradas por um conflito de nomes: o HTML e o PDF de cada norma geravam o mesmo arquivo `.md`, e o HTML, processado primeiro, impedia o PDF de entrar. A ingestão agora processa o PDF primeiro.
+
+`scripts/atualizar_documentos.py` reindexou só essas 152 normas na cópia limpa do índice, em cerca de 17 minutos de CPU, gerando 9.707 chunks. A cópia passou a ter 517.557 chunks. Nenhum chunk tem marca de bloqueio.
+
+No conjunto de ouro, a recuperação não mudou (hit@5 de 0,870 e MRR de 0,815, em [com_normas_recuperadas.md](experimentos/com_normas_recuperadas.md)). Isso era esperado, porque o conjunto não tem perguntas sobre Resoluções Normativas. Em um teste avulso, a pergunta sobre a REN 1.018/2022 recuperou a norma certa, mas a resposta do LLM foi pobre. Medir a qualidade nessas normas exige perguntas novas no conjunto de avaliação.
+
 ## Métrica de citação
 
 A partir de 09/11/2026, a medição com LLM também verifica se a resposta citou, pela marcação `[Trecho N]`, um trecho correto para a pergunta. A medição salva o progresso a cada pergunta e pode ser retomada com o mesmo comando se a cota da API acabar.
