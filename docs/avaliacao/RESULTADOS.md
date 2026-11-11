@@ -114,7 +114,7 @@ O acervo léxico passou a guardar também os textos e a metadata dos chunks. Com
 | Pico de memória em uma pergunta | 3,2 GB | 113 MB |
 | hit@5 e MRR no conjunto de ouro | 0,870 e 0,815 | 0,870 e 0,815 |
 
-As métricas de recuperação ficaram idênticas, medidas apontando o sistema para uma pasta de índice vetorial que não existe. O acervo pronto ainda não está publicado no Hugging Face. Até lá, a primeira execução baixa o índice vetorial e cria o acervo a partir dele. O download do acervo pronto não foi testado, porque depende dessa publicação.
+As métricas de recuperação ficaram idênticas, medidas apontando o sistema para uma pasta de índice vetorial que não existe. Desde 11/11/2026 o acervo está publicado no Hugging Face. Em uma pasta vazia e sem token, a primeira pergunta baixou só esse arquivo e foi respondida em 19 segundos.
 
 Outras mudanças desta etapa, cobertas por testes: erros temporários de LLM (como 503) ganham uma nova tentativa antes do fallback, cota diária esgotada vai direto para o próximo LLM, e uma busca sem resultados responde sem chamar o LLM.
 

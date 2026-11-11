@@ -39,9 +39,9 @@ O corpus tem 18.688 atos de 2016, 2021 e 2022, em 26.747 arquivos e 508.156 chun
 
 | Etapa | Situação |
 |---|---|
-| 1.1 Cópia limpa do índice | Feita em `vectorstore_limpo/` (507.850 chunks). Falta o Guilherme decidir a troca do índice oficial e a republicação no Hugging Face |
+| 1.1 Cópia limpa do índice | Publicada em 11/11/2026, com backup local do índice anterior. Falta apagar o histórico do dataset, que ainda guarda as versões com o IP |
 | 1.2 Recusar páginas de bloqueio | Feita, com testes em `tests/test_validacao.py` |
-| 1.3 Recuperar as Resoluções Normativas | Feita na cópia limpa: 152 normas reindexadas a partir dos PDFs que já estavam em `dados/pdfs` (eram ignoradas por um conflito de nomes na ingestão). Falta `ren2021912`, sem PDF, e republicar o índice |
+| 1.3 Recuperar as Resoluções Normativas | Feita e publicada: 152 normas reindexadas a partir dos PDFs. Falta `ren2021912`, sem PDF |
 | 2.1 Política de revogados | Medida. Incluir revogados melhorou os números. Falta o Guilherme escolher o padrão |
 | 2.2 Perguntas conceituais | Rascunho de 19 perguntas e prévia prontos. Falta a revisão do Guilherme para congelar |
 | 2.3 Cabeçalho contextual | Concluída e descartada: não melhorou a busca vetorial |
@@ -49,7 +49,7 @@ O corpus tem 18.688 atos de 2016, 2021 e 2022, em 26.747 arquivos e 508.156 chun
 | 2.5 Fortalecer a medição | Citação de trecho correto e retomada feitas. Falta repetir rodadas para medir a variação |
 | 3.1 Falhas de LLM | Feita: nova tentativa em erro temporário, cota esgotada vai direto ao fallback, com testes |
 | 3.2 Não carregar o que não é usado | Feita: 113 MB de pico na busca léxica, contra 3,2 GB antes |
-| 3.3 Caminho leve | Feita no código: o acervo léxico (0,6 GB) basta para a busca padrão. Falta o Guilherme publicar o acervo com `upload_vectorstore.py --acervo` |
+| 3.3 Caminho leve | Feita e publicada: o acervo léxico (0,6 GB) está no Hugging Face, e a busca padrão funciona baixando só ele |
 | 3.4 Limpeza de comportamento | Feita: sem criação de pastas ao importar, pergunta sem termos responde sem LLM, aviso de acervo desatualizado, `avaliar.py` marcado como legado |
 | 4.1 Testes | Feita: 42 testes com pytest |
 | 4.2 Lint e CI | Feita: ruff sem erros e CI passando no GitHub |

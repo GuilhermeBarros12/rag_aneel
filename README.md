@@ -85,7 +85,7 @@ source .venv/bin/activate
 python scripts/pipeline.py
 ```
 
-Na **primeira execução**, o sistema procura o acervo léxico pronto no Hugging Face (cerca de 0,6 GB). Se ele ainda não estiver publicado, baixa o índice vetorial (~4,4 GB) e cria o acervo a partir dele, em cerca de 1 minuto. Os modos `densa` e `hibrida` sempre precisam do índice vetorial e do modelo de embeddings (1,1 GB).
+Na **primeira execução**, o sistema baixa do Hugging Face só o acervo léxico (cerca de 0,6 GB). Os modos `densa` e `hibrida` também precisam do índice vetorial (~4,4 GB) e do modelo de embeddings (1,1 GB), baixados automaticamente.
 Nas execuções seguintes, ele já estará em disco e o sistema inicia em segundos.
 
 **Modo direto (uma pergunta):**
@@ -316,7 +316,7 @@ São 42 testes que rodam sem rede, sem chaves de API e sem o índice real: eles 
 ## Limitações conhecidas
 
 - O corpus cobre apenas atos de 2016, 2021 e 2022.
-- No índice publicado no Hugging Face, 153 dos 155 arquivos de texto de Resoluções Normativas são páginas de bloqueio do Cloudflare. A cópia local corrigida (`vectorstore_limpo/`) tem 152 dessas normas reindexadas a partir dos PDFs; falta republicá-la. A `ren2021912` não tem PDF.
+- O índice publicado foi limpo em 11/11/2026: as 153 páginas de bloqueio do Cloudflare saíram, e 152 dessas Resoluções Normativas foram reindexadas a partir dos PDFs. A `ren2021912` continua faltando, porque não tem PDF.
 - Por padrão, atos com situação REVOGADA não são recuperados, então perguntas sobre eles tendem a ficar sem resposta. Outras situações, como ANULADA e SUSPENSA, continuam sendo recuperadas, e o prompt pede para o modelo avisar a perda de vigência.
 - A busca padrão é léxica porque a vetorial e a híbrida mediram pior no conjunto de ouro. Esse conjunto favorece perguntas com nomes e números específicos, e perguntas conceituais não foram medidas.
 - Os embeddings não incluem título nem número do ato. Na busca vetorial, o documento esperado veio entre os 5 primeiros resultados em 13% das perguntas, contra 87% na busca léxica.
