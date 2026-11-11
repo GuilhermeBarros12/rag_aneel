@@ -39,7 +39,7 @@ O corpus tem 18.688 atos de 2016, 2021 e 2022, em 26.747 arquivos e 508.156 chun
 
 | Etapa | Situação |
 |---|---|
-| 1.1 Cópia limpa do índice | Publicada em 11/11/2026, com backup local do índice anterior. Falta apagar o histórico do dataset, que ainda guarda as versões com o IP |
+| 1.1 Cópia limpa do índice | Publicada em 11/11/2026, com backup local do índice anterior. O histórico do dataset foi reduzido a uma versão, mas a revisão antiga ainda pode ser baixada por quem souber o código dela. Remover de vez exige apagar e recriar o repositório |
 | 1.2 Recusar páginas de bloqueio | Feita, com testes em `tests/test_validacao.py` |
 | 1.3 Recuperar as Resoluções Normativas | Feita e publicada: 152 normas reindexadas a partir dos PDFs. Falta `ren2021912`, sem PDF |
 | 2.1 Política de revogados | Medida. Incluir revogados melhorou os números. Falta o Guilherme escolher o padrão |
