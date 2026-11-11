@@ -5,7 +5,7 @@
 
 PYTHON = .venv/bin/python
 
-.PHONY: help setup download ingestao chunking indexar pipeline avaliar medir testar lint docker-build docker-run
+.PHONY: help setup download ingestao chunking indexar pipeline avaliar medir testar demo lint docker-build docker-run
 
 help:  ## Exibe esta ajuda
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | \
@@ -42,6 +42,9 @@ medir:  ## Mede o sistema no conjunto de ouro (com LLM, consome cota)
 
 testar:  ## Roda os testes (sem rede e sem chaves)
 	$(PYTHON) -m pytest
+
+demo:  ## Abre a demo web em http://127.0.0.1:7860
+	$(PYTHON) scripts/app.py
 
 lint:  ## Verifica erros no código
 	$(PYTHON) -m ruff check scripts tests

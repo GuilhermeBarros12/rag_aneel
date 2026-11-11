@@ -37,4 +37,8 @@ tqdm==4.67.3
 # python-dotenv: carrega variáveis do .env sem expor no código
 python-dotenv==1.2.2
 # huggingface_hub: download automático do vectorstore pré-construído
-huggingface_hub==1.11.0
+huggingface_hub==1.33.0
+
+# ── Demo web ─────────────────────────────────────────────────────
+# gradio: interface web da demo (scripts/app.py)
+gradio==6.31.0
