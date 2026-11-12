@@ -1,7 +1,7 @@
 # Resultados: etapa2_citacao_llm
 
 Executado em 2026-11-09T15:05:13.400648+00:00. Conjunto: `conjunto_ouro.json`.
-Busca: `lexica`. Embedding: `sentence-transformers/paraphrase-multilingual-mpnet-base-v2`. Chunks recuperados pelo sistema: 5. Inclui revogados: False.
+Busca: `lexica`. Embedding: `sentence-transformers/paraphrase-multilingual-mpnet-base-v2`. Chunks recuperados pelo sistema: 5. Política de revogados: `intermediaria`.
 
 ## Recuperação excluindo revogados
 
@@ -31,4 +31,6 @@ LLM: `groq/openai/gpt-oss-120b`.
 |---|---|
 | Abstenção correta (deve recusar) | 1.000 |
 | Recusa indevida (deve responder) | 0.239 |
-| Termos esperados presentes | 0.630 |
+| Termos esperados presentes | 0.674 |
+| Citou um trecho correto | 0.000 |
+| Segundos por resposta (média) | 0.0 |

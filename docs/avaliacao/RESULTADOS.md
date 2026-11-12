@@ -47,8 +47,8 @@ Mesmo conjunto, no corpus completo e excluindo atos revogados. Os detalhes de ca
 | Híbrida, peso 2 no BM25 | 0,739 | 0,639 | Não medido | Não medido | Descartada |
 | Híbrida, peso 4 no BM25 | 0,804 | 0,659 | Não medido | Não medido | Descartada |
 | Léxica, com mais peso no título | 0,848 | 0,790 | Não medido | Não medido | Descartada |
-| Léxica (BM25) | 0,870 | 0,815 | 0,326 | 0,587 | Mantida |
-| Léxica com documento identificado no prompt | 0,870 | 0,815 | 0,239 | 0,630 | **Atual** |
+| Léxica (BM25) | 0,870 | 0,815 | 0,326 | 0,609 | Mantida |
+| Léxica com documento identificado no prompt | 0,870 | 0,815 | 0,239 | 0,674 | Substituída pela política intermediária |
 
 A abstenção correta ficou em 1,000 nas três configurações medidas com LLM. A última etapa também corta trechos longos em 4.000 caracteres ao montar o prompt.
 
@@ -68,7 +68,7 @@ Medido em 09/11/2026 com `INCLUIR_REVOGADOS=1`, busca léxica e o mesmo LLM. Det
 | MRR | 0,815 | 0,913 |
 | Abstenção correta | 1,000 (10 de 10) | 1,000 (10 de 10) |
 | Recusa indevida | 0,239 (11 de 46) | 0,174 (8 de 46) |
-| Termos esperados na resposta | 0,630 (29 de 46) | 0,674 (31 de 46) |
+| Termos esperados na resposta | 0,674 (31 de 46) | 0,717 (33 de 46) |
 | Termos esperados nas 6 perguntas sobre atos revogados | 2 de 6 | 5 de 6 |
 | Citou um trecho correto | Não medido | 0,848 (39 de 46) |
 
@@ -154,10 +154,66 @@ Conjunto de ouro v1, busca léxica, política intermediária, uma rodada por mod
 |---|---|---|
 | Abstenção correta | 1,000 (10 de 10) | 1,000 (10 de 10) |
 | Recusa indevida | 0,174 (8 de 46) | 0,217 (10 de 46) |
-| Termos esperados na resposta | 0,696 (32 de 46) | 0,739 (34 de 46) |
+| Termos esperados na resposta | 0,717 (33 de 46) | 0,739 (34 de 46) |
 | Citou um trecho correto | 0,783 (36 de 46) | 0,804 (37 de 46) |
 
 As diferenças são de 1 a 2 perguntas, dentro da variação de uma rodada para outra, então não há vencedor claro. O `gemini-3.8-flash` não pôde ser medido: devolveu erro 503 (alta demanda) em todas as tentativas da noite de 11/11. Detalhes em [llm_gpt_oss_120b.md](experimentos/llm_gpt_oss_120b.md) e [llm_qwen3_8_27b.md](experimentos/llm_qwen3_8_27b.md).
+
+## Teste de LLMs com 10 perguntas (12/11/2026)
+
+Grupo de 10 perguntas sorteado do conjunto v1 com a semente 2027 (`scripts/mini_conjunto.py`): 2 de cada tipo, incluindo 2 que devem ser recusadas. Mesma busca e mesma política para todos os modelos.
+
+| Modelo | Onde roda | Recusa indevida | Termos esperados | Citou trecho correto | Abstenção correta | Segundos por resposta |
+|---|---|---|---|---|---|---|
+| `openai/gpt-oss-120b` (atual) | Groq | 4 de 8 | 4 de 8 | 5 de 8 | 2 de 2 | 2,2 |
+| `openai/gpt-oss-20b` | Groq | 4 de 8 | 4 de 8 | 4 de 8 | 2 de 2 | 2,0 |
+| `qwen/qwen3.8-27b` | Groq | 4 de 8 | 5 de 8 | 5 de 8 | 2 de 2 | 1,8 |
+| `openai/gpt-oss-20b` | Local (LM Studio, RTX 3060 de 8 GB) | 4 de 8 | 4 de 8 | 4 de 8 | 2 de 2 | 153,6 |
+
+Os quatro modelos recusaram exatamente as mesmas 4 perguntas. Nelas, o problema está antes do LLM:
+- Em 3 delas (Q02, Q12 e Q33), a busca trouxe o documento certo, mas não o trecho com a resposta. Na Q12 o trecho certo chegou ao prompt, e mesmo assim os quatro recusaram.
+- A Q46 pergunta sobre um ato revogado sem citá-lo, e a política intermediária o exclui por decisão de projeto.
+
+Conclusão: neste grupo, trocar de LLM quase não muda o resultado. O gargalo é a recuperação do trecho certo. O `qwen3.8-27b` empatou ou superou o modelo atual e foi o mais rápido, mas a diferença é de uma pergunta. O modelo local responde com a mesma qualidade do `gpt-oss-20b` na nuvem, mas é cerca de 75 vezes mais lento nesta máquina, porque o modelo de 12 GB não cabe nos 8 GB da placa de vídeo.
+
+Depois, com a conta gratuita da Cohere, entraram dois modelos feitos para RAG:
+
+| Modelo | Recusa indevida | Termos esperados | Citou trecho correto | Abstenção correta | Segundos por resposta |
+|---|---|---|---|---|---|
+| `command-a-03-2025` (Cohere) | 3 de 8 | 5 de 8 | 6 de 8 | 2 de 2 | 9,7 |
+| `command-a-plus-05-2026` (Cohere) | 4 de 8 | 5 de 8 | 4 de 8 | 2 de 2 | 2,9 |
+
+O padrão se repetiu. A única diferença foi o `command-a-03-2025` na Q02: em vez de recusar, respondeu com informações secundárias dos trechos e não trouxe a resposta esperada, porque o trecho com ela não estava no prompt.
+
+### O gargalo: a busca acha o documento, mas não o trecho
+
+Nas 46 perguntas respondíveis do conjunto v1, com o sistema atual:
+
+| Medida | Resultado |
+|---|---|
+| Documento certo entre os 5 trechos enviados ao LLM | 43 de 46 |
+| Trecho com a resposta entre os 5 enviados | 36 de 46 |
+| Trecho com a resposta entre os 20 primeiros | 38 de 46 |
+| O trecho com a resposta existe no documento certo | 46 de 46 |
+
+Em 7 perguntas o documento certo é encontrado, mas o pedaço dele que responde não chega ao LLM. Aumentar o número de trechos quase não resolve, porque o BM25 favorece os trechos que repetem as palavras da pergunta, como o cabeçalho com o número do ato.
+
+**Correção na medição:** os testes revelaram que a conferência de termos não reconhecia hífens tipográficos (‑) nem números com espaço como separador de milhar ("5 821 551,62"), formatos que alguns modelos usam. A normalização foi corrigida e todos os resultados salvos foram recalculados com `scripts/recontar_termos.py`, sem chamar os LLMs de novo. Cada rodada antiga ganhou uma resposta certa, e os números de "termos esperados" neste arquivo já estão corrigidos: busca léxica de 0,587 para 0,609, citação de 0,630 para 0,674, revogados de 0,674 para 0,717 e a rodada do `gpt-oss-120b` de 0,696 para 0,717. O baseline não mudou.
+
+## Expansão de contexto com LLM (12/11/2026)
+
+Conjunto v1 completo, `groq/openai/gpt-oss-120b`, busca léxica e política intermediária. A única diferença entre as rodadas é a expansão de contexto ([llm_gpt_oss_120b_expansao.md](experimentos/llm_gpt_oss_120b_expansao.md)).
+
+| Métrica | Sem expansão | Com expansão |
+|---|---|---|
+| Resposta presente no contexto enviado | 36 de 46 | 43 de 46 |
+| Termos esperados na resposta | 0,717 (33 de 46) | **0,891 (41 de 46)** |
+| Recusa indevida | 0,174 (8 de 46) | 0,130 (6 de 46) |
+| Citou um trecho correto | 0,783 (36 de 46) | 0,848 (39 de 46) |
+| Abstenção correta | 1,000 (10 de 10) | 1,000 (10 de 10) |
+| Tamanho médio do contexto | 1,9 mil caracteres | 6,2 mil caracteres |
+
+Nove perguntas passaram a ter a resposta certa, e uma piorou: na Q28, a resposta estava no contexto e o modelo recusou mesmo assim. A expansão passou a ser o padrão (`EXPANSAO_CONTEXTO=documento`). O custo é um contexto cerca de 3 vezes maior, o que gasta mais cota e exigiu espaçar as perguntas da medição em 20 segundos, por causa do limite por minuto do Groq.
 
 ## Modelo de embedding E5 no subconjunto (11/11/2026)
 

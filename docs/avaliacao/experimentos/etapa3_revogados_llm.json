@@ -1023,8 +1023,9 @@
    ],
    "abstencao_correta": 1.0,
    "recusa_indevida": 0.17391304347826086,
-   "termos_presentes": 0.6739130434782609,
-   "citou_trecho_correto": 0.8478260869565217
+   "termos_presentes": 0.717391304347826,
+   "citou_trecho_correto": 0.8478260869565217,
+   "segundos_por_resposta": 0.0
   },
   "detalhe": [
    {
@@ -1204,7 +1205,7 @@
     "llm": "groq/openai/gpt-oss-120b",
     "resposta": "A potência instalada da UFV RES Russas IX é **24 000 kW**, conforme indicado no DSP – DESPACHO 2.464/2016 [Trecho 1].  \n\n*Situação do documento:* não consta revogação expressa.",
     "recusou": false,
-    "termos_ok": false,
+    "termos_ok": true,
     "citou_correto": true
    },
    {
@@ -1384,7 +1385,7 @@
     "llm": "groq/openai/gpt-oss-120b",
     "resposta": "O CNPJ da **Delta Fund V Comercializadora de Energia S.A.** é **40.594.268/0001‑13**【DSP - DESPACHO 2089/2021 [Trecho 1]】.  \n\n*Observação:* o despacho está sem indicação de revogação, anulação ou suspensão.",
     "recusou": false,
-    "termos_ok": false,
+    "termos_ok": true,
     "citou_correto": true
    },
    {

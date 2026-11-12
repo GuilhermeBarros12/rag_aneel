@@ -251,5 +251,22 @@ def carregar(ids: List[str]) -> List[Tuple[str, str, Dict[str, str]]]:
     return [achados[i] for i in ids if i in achados]
 
 
+def chunks_do_documento(nome: str) -> List[Tuple[str, str, Dict[str, str]]]:
+    """Todos os chunks de um documento, na ordem do texto, como (id, texto, metadata)."""
+    linhas = conectar().execute(
+        """
+        select c.chunk_id, c.texto, d.metadata
+        from chunks c join documentos d on d.id = c.documento
+        where d.nome = ?
+        """,
+        (nome,),
+    ).fetchall()
+
+    def numero(chunk_id: str) -> int:
+        return int(chunk_id.rsplit("_chunk", 1)[1])
+
+    return sorted(((i, t, json.loads(m)) for i, t, m in linhas), key=lambda x: numero(x[0]))
+
+
 if __name__ == "__main__":
     construir()

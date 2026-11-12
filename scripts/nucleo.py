@@ -301,6 +301,50 @@ def gerar_com_groq(prompt: str) -> str:
     return response.choices[0].message.content
 
 
+class ErroDeApi(Exception):
+    """Erro devolvido por um provedor, com o código HTTP (usado por tipo_de_erro)."""
+
+    def __init__(self, mensagem: str, status_code: Optional[int] = None):
+        super().__init__(mensagem)
+        self.status_code = status_code
+
+
+def gerar_com_compativel(provedor: str, prompt: str) -> str:
+    """Chama um provedor compatível com a API da OpenAI (ver config.PROVEDORES_COMPATIVEIS)."""
+    import httpx
+
+    p = config.PROVEDORES_COMPATIVEIS[provedor]
+    cabecalhos = {}
+    if p["chave"]:
+        chave = os.getenv(p["chave"], "")
+        if not chave:
+            raise ValueError(f"{p['chave']} nao configurada no .env")
+        cabecalhos["Authorization"] = f"Bearer {chave}"
+    if not p["modelo"]:
+        raise ValueError(f"defina o modelo do provedor {provedor} no .env")
+
+    espera = config.TIMEOUT_LOCAL_S if provedor == "local" else config.TIMEOUT_LLM_S
+    r = httpx.post(
+        p["url"].rstrip("/") + "/chat/completions",
+        headers=cabecalhos,
+        json={"model": p["modelo"], "temperature": config.TEMPERATURA,
+              "messages": [{"role": "user", "content": prompt}]},
+        timeout=espera,
+    )
+    if r.status_code != 200:
+        raise ErroDeApi(f"{r.status_code} {r.text[:300]}", status_code=r.status_code)
+    return r.json()["choices"][0]["message"]["content"]
+
+
+def nome_do_modelo(provedor: str) -> str:
+    """'groq' vira 'groq/openai/gpt-oss-120b', e assim por diante."""
+    if provedor == "gemini":
+        return f"gemini/{config.GEMINI_MODELO}"
+    if provedor == "groq":
+        return f"groq/{config.GROQ_MODELO}"
+    return f"{provedor}/{config.PROVEDORES_COMPATIVEIS[provedor]['modelo']}"
+
+
 def tipo_de_erro(erro: Exception) -> str:
     """
     Classifica o erro de um LLM:
@@ -327,9 +371,11 @@ def gerar_resposta(prompt: str, provedores: Optional[List[str]] = None) -> Gerac
     """
 
     disponiveis = {
-        "gemini": (f"gemini/{config.GEMINI_MODELO}", gerar_com_gemini),
-        "groq": (f"groq/{config.GROQ_MODELO}", gerar_com_groq),
+        "gemini": (nome_do_modelo("gemini"), gerar_com_gemini),
+        "groq": (nome_do_modelo("groq"), gerar_com_groq),
     }
+    for nome in config.PROVEDORES_COMPATIVEIS:
+        disponiveis[nome] = (nome_do_modelo(nome), lambda prompt, nome=nome: gerar_com_compativel(nome, prompt))
 
     erros: List[str] = []
     for chave in provedores or ["gemini", "groq"]:
@@ -353,6 +399,43 @@ def gerar_resposta(prompt: str, provedores: Optional[List[str]] = None) -> Gerac
 # ============================================================
 # PIPELINE COMPLETO
 # ============================================================
+
+
+def expandir_contexto(trechos: List[Trecho]) -> List[Trecho]:
+    """
+    Amplia o contexto a partir dos trechos encontrados, documento por documento, na ordem da busca:
+    documento curto entra inteiro; de documento longo entram os trechos encontrados e os vizinhos.
+    Para quando o contexto atinge config.MAX_CHARS_CONTEXTO, mas sempre mantém o primeiro trecho.
+    """
+    import lexico
+
+    if config.EXPANSAO_CONTEXTO != "documento" or not trechos:
+        return trechos
+
+    achados = {t.id for t in trechos}
+    ordem_docs = list(dict.fromkeys(lexico.documento_do_chunk(t.id) for t in trechos))
+    resultado: List[Trecho] = []
+    usados = set()
+    total = 0
+    for doc in ordem_docs:
+        chunks = lexico.chunks_do_documento(doc)
+        tamanho = sum(len(texto) for _, texto, _ in chunks)
+        if tamanho <= config.LIMITE_DOC_CURTO_CHARS:
+            escolhidos = chunks
+        else:
+            posicoes = {i for i, (cid, _, _) in enumerate(chunks) if cid in achados}
+            janela = {p + d for p in posicoes for d in range(-config.VIZINHOS, config.VIZINHOS + 1)}
+            escolhidos = [c for i, c in enumerate(chunks) if i in janela]
+        for cid, texto, metadata in escolhidos:
+            if cid in usados:
+                continue
+            custo = min(len(texto), config.MAX_CHARS_TRECHO)
+            if resultado and total + custo > config.MAX_CHARS_CONTEXTO:
+                return resultado
+            resultado.append(Trecho(id=cid, texto=texto, distancia=None, metadata=metadata))
+            usados.add(cid)
+            total += custo
+    return resultado
 
 
 # Pergunta que cita um ato: "Despacho nº 3.683", "Resolução Autorizativa nº 10.230", "3.386/2016"
@@ -401,7 +484,7 @@ def responder(
 
     trechos = []
     if query.strip():
-        trechos = recuperar_com_politica(query, colecao, modelo, top_k=top_k)
+        trechos = expandir_contexto(recuperar_com_politica(query, colecao, modelo, top_k=top_k))
 
     # Sem trechos não há o que perguntar ao LLM: responde direto, sem gastar cota
     if not trechos:

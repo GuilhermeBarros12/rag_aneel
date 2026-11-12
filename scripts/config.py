@@ -86,9 +86,18 @@ GEMINI_MODELO = os.getenv("GEMINI_MODEL", "gemini-3.8-flash")
 GROQ_MODELO   = os.getenv("GROQ_MODEL", "openai/gpt-oss-120b")
 TEMPERATURA   = 0.0  # respostas o mais repetíveis possível, nos dois LLMs
 MAX_CHARS_TRECHO = 4000  # corta chunks de tabela muito longos ao montar o prompt
+
+# Expansão de contexto: a busca acha o documento certo, mas nem sempre o trecho com a resposta.
+#   "documento" — documento curto vai inteiro ao LLM; de documento longo vão os trechos
+#                 encontrados e os vizinhos imediatos
+#   "nenhuma"   — só os trechos encontrados pela busca
+EXPANSAO_CONTEXTO = os.getenv("EXPANSAO_CONTEXTO", "documento")
+LIMITE_DOC_CURTO_CHARS = 6000   # documento até este tamanho vai inteiro
+VIZINHOS = 1                    # trechos vizinhos incluídos em documentos longos
+MAX_CHARS_CONTEXTO = 10000      # teto do contexto, para caber no limite por minuto dos LLMs
 TIMEOUT_LLM_S = 60  # espera máxima por LLM antes de seguir para o fallback
-TENTATIVAS_LLM = 2  # vezes que cada LLM é tentado quando o erro é temporário (ex.: 503)
-ESPERA_ENTRE_TENTATIVAS_S = 5
+TENTATIVAS_LLM = 3  # vezes que cada LLM é tentado quando o erro é temporário (ex.: 503)
+ESPERA_ENTRE_TENTATIVAS_S = 10
 
 # Valor do campo "llm" quando a resposta não precisou de LLM (ex.: a busca não achou nada)
 SEM_LLM = "sem-llm"
@@ -100,6 +109,24 @@ RESPOSTA_SEM_TRECHOS = (
 
 # A medição usa um único LLM, sem fallback, para os números não misturarem modelos
 LLM_AVALIACAO = os.getenv("LLM_AVALIACAO", "groq")
+
+# Provedores que aceitam o formato da API da OpenAI (/chat/completions).
+# Cada um precisa só da chave no .env (e do modelo, que pode ser trocado pela variável indicada).
+# "local" é o servidor do LM Studio no próprio computador, sem chave.
+PROVEDORES_COMPATIVEIS = {
+    "local": {"url": os.getenv("LOCAL_LLM_URL", "http://localhost:1234/v1"), "chave": None,
+              "modelo": os.getenv("LOCAL_MODEL", "openai/gpt-oss-20b")},
+    "cohere": {"url": "https://api.cohere.ai/compatibility/v1", "chave": "COHERE_API_KEY",
+               "modelo": os.getenv("COHERE_MODEL", "command-a-03-2025")},
+    "mistral": {"url": "https://api.mistral.ai/v1", "chave": "MISTRAL_API_KEY",
+                "modelo": os.getenv("MISTRAL_MODEL", "mistral-medium-latest")},
+    "openrouter": {"url": "https://openrouter.ai/api/v1", "chave": "OPENROUTER_API_KEY",
+                   "modelo": os.getenv("OPENROUTER_MODEL", "")},
+    "nvidia": {"url": "https://integrate.api.nvidia.com/v1", "chave": "NVIDIA_API_KEY",
+               "modelo": os.getenv("NVIDIA_MODEL", "")},
+}
+# Modelos locais rodam parte na CPU e podem demorar bem mais que os da nuvem
+TIMEOUT_LOCAL_S = 600
 
 PROMPT_TEMPLATE = """Você é um assistente especializado em regulação do setor elétrico brasileiro.
 Responda à pergunta usando APENAS as informações dos trechos regulatórios abaixo.
