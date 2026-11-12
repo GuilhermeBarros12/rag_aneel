@@ -339,6 +339,7 @@ Todos ficam em [`scripts/config.py`](scripts/config.py).
 | `GROQ_MODELO`   | `openai/gpt-oss-120b` | LLM de fallback                        |
 | `MODO_BUSCA`    | `lexica`              | `lexica`, `densa` ou `hibrida`         |
 | `POLITICA_REVOGADOS` | `intermediaria`   | `intermediaria`, `excluir` ou `incluir` |
+| `EXPANSAO_CONTEXTO` | `documento`        | Envia documentos curtos inteiros e vizinhos dos trechos longos |
 
 ---
 

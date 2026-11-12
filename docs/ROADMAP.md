@@ -23,17 +23,18 @@ O PR #1 foi mergeado em `main`, com as Fases 0 a 2 completas e a Fase 3 parcial.
 
 A busca padrão é léxica (`MODO_BUSCA=lexica`). Os modos `densa` e `hibrida` existem, mas mediram pior.
 
-**Números medidos** (56 perguntas, corpus completo, excluindo revogados, LLM `groq/openai/gpt-oss-120b`)
+**Números medidos** (conjunto v1, 56 perguntas, corpus completo, LLM `groq/openai/gpt-oss-120b`)
 
-| Métrica | Baseline vetorial | Atual |
+| Métrica | Baseline vetorial | Atual (léxica, política intermediária, expansão de contexto) |
 |---|---|---|
-| hit@5 | 0,130 | 0,870 |
-| MRR | 0,100 | 0,815 |
+| hit@5 | 0,130 | 0,935 |
+| MRR | 0,100 | 0,870 |
+| Resposta presente no contexto enviado | não medido | 43 de 46 |
 | Abstenção correta | 1,000 | 1,000 |
-| Recusa indevida | 0,848 | 0,239 |
-| Termos esperados na resposta | 0,130 | 0,652 |
+| Recusa indevida | 0,848 | 0,130 |
+| Termos esperados na resposta | 0,130 | 0,891 |
 
-O corpus tem 18.688 atos de 2016, 2021 e 2022, em 26.747 arquivos e 508.156 chunks.
+O índice publicado tem 517.557 chunks de atos de 2016, 2021 e 2022, já sem as páginas de bloqueio e com as Resoluções Normativas recuperadas.
 
 **Andamento em 09/11/2026** (branch `refino/etapas-1-2`, detalhes em `docs/avaliacao/RESULTADOS.md`)
 
@@ -57,6 +58,7 @@ O corpus tem 18.688 atos de 2016, 2021 e 2022, em 26.747 arquivos e 508.156 chun
 | 4.4 Docker | Revisado, mas não testado: o Docker não está instalado nesta máquina. O README avisa |
 | 5 Demo | Feita: `python scripts/app.py`, testada de ponta a ponta. Falta captura de tela no README e publicação opcional em um Space |
 | Comparação de LLMs | Feita para `gpt-oss-120b` e `qwen3.8-27b`, sem vencedor claro. O Gemini não pôde ser medido (erro 503) |
+| Expansão de contexto | Feita e adotada: termos esperados de 33 para 41 de 46 no conjunto v1, abstenção mantida |
 
 ## 2. Regras de trabalho
 

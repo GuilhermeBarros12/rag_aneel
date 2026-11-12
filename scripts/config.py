@@ -91,7 +91,7 @@ MAX_CHARS_TRECHO = 4000  # corta chunks de tabela muito longos ao montar o promp
 #   "documento" — documento curto vai inteiro ao LLM; de documento longo vão os trechos
 #                 encontrados e os vizinhos imediatos
 #   "nenhuma"   — só os trechos encontrados pela busca
-EXPANSAO_CONTEXTO = os.getenv("EXPANSAO_CONTEXTO", "nenhuma")
+EXPANSAO_CONTEXTO = os.getenv("EXPANSAO_CONTEXTO", "documento")
 LIMITE_DOC_CURTO_CHARS = 6000   # documento até este tamanho vai inteiro
 VIZINHOS = 1                    # trechos vizinhos incluídos em documentos longos
 MAX_CHARS_CONTEXTO = 10000      # teto do contexto, para caber no limite por minuto dos LLMs
