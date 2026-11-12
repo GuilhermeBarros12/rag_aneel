@@ -1,0 +1,3983 @@
+{
+ "rotulo": "contexto_documento_conjunto_ouro_v2_rascunho",
+ "executado_em": "2026-11-12T04:24:54.052683+00:00",
+ "conjunto": "conjunto_ouro_v2_rascunho.json",
+ "recuperacao": {
+  "politica": {
+   "geral": {
+    "n": 116,
+    "hit@1": 0.6810344827586207,
+    "hit@3": 0.7586206896551724,
+    "hit@5": 0.8362068965517241,
+    "hit@10": 0.853448275862069,
+    "mrr": 0.7365421455938697
+   },
+   "categorias": {
+    "ato_citado": {
+     "n": 10,
+     "hit@1": 0.9,
+     "hit@3": 0.9,
+     "hit@5": 1.0,
+     "hit@10": 1.0,
+     "mrr": 0.925
+    },
+    "conceitual_parafrase": {
+     "n": 13,
+     "hit@1": 0.3076923076923077,
+     "hit@3": 0.38461538461538464,
+     "hit@5": 0.5384615384615384,
+     "hit@10": 0.5384615384615384,
+     "mrr": 0.3679487179487179
+    },
+    "conceitual_sigla": {
+     "n": 6,
+     "hit@1": 0.0,
+     "hit@3": 0.16666666666666666,
+     "hit@5": 0.5,
+     "hit@10": 0.6666666666666666,
+     "mrr": 0.17685185185185184
+    },
+    "fato_com_ato": {
+     "n": 16,
+     "hit@1": 0.875,
+     "hit@3": 0.875,
+     "hit@5": 0.875,
+     "hit@10": 0.875,
+     "mrr": 0.875
+    },
+    "fato_sem_ato": {
+     "n": 29,
+     "hit@1": 0.7586206896551724,
+     "hit@3": 0.8620689655172413,
+     "hit@5": 0.896551724137931,
+     "hit@10": 0.896551724137931,
+     "mrr": 0.8189655172413793
+    },
+    "norma_citada": {
+     "n": 18,
+     "hit@1": 0.6111111111111112,
+     "hit@3": 0.7222222222222222,
+     "hit@5": 0.8333333333333334,
+     "hit@10": 0.8888888888888888,
+     "mrr": 0.6858024691358025
+    },
+    "norma_por_tema": {
+     "n": 3,
+     "hit@1": 1.0,
+     "hit@3": 1.0,
+     "hit@5": 1.0,
+     "hit@10": 1.0,
+     "mrr": 1.0
+    },
+    "regra_atual": {
+     "n": 6,
+     "hit@1": 1.0,
+     "hit@3": 1.0,
+     "hit@5": 1.0,
+     "hit@10": 1.0,
+     "mrr": 1.0
+    },
+    "revogado": {
+     "n": 15,
+     "hit@1": 0.6666666666666666,
+     "hit@3": 0.8,
+     "hit@5": 0.8666666666666667,
+     "hit@10": 0.8666666666666667,
+     "mrr": 0.75
+    }
+   },
+   "detalhe": [
+    {
+     "id": "Q01",
+     "categoria": "ato_citado",
+     "posicao": 1,
+     "top3": [
+      "prt20221322tispde_chunk1",
+      "prt20221322tispde_chunk3",
+      "prt20221322tispde_chunk2"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 3271
+    },
+    {
+     "id": "Q02",
+     "categoria": "ato_citado",
+     "posicao": 1,
+     "top3": [
+      "dsp20222942_chunk1",
+      "dsp20212942ti_chunk1",
+      "adsp20222942_1_chunk36"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 5205
+    },
+    {
+     "id": "Q03",
+     "categoria": "ato_citado",
+     "posicao": 1,
+     "top3": [
+      "prt20226715_chunk1",
+      "aprt20226715_1_chunk12",
+      "aprt20226715_1_chunk1"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 9497
+    },
+    {
+     "id": "Q04",
+     "categoria": "ato_citado",
+     "posicao": 1,
+     "top3": [
+      "dsp20161198_chunk1",
+      "adsp20221198_1_chunk11",
+      "dsp20221198_chunk1"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 4017
+    },
+    {
+     "id": "Q05",
+     "categoria": "ato_citado",
+     "posicao": 1,
+     "top3": [
+      "dsp20211604_chunk1",
+      "dsp20211604_chunk3",
+      "dsp20221604ti_chunk1"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 3778
+    },
+    {
+     "id": "Q06",
+     "categoria": "ato_citado",
+     "posicao": 1,
+     "top3": [
+      "dsp20213501ti_chunk1",
+      "dsp20223501ti_chunk1",
+      "dsp20213501ti_chunk3"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 1630
+    },
+    {
+     "id": "Q07",
+     "categoria": "ato_citado",
+     "posicao": 1,
+     "top3": [
+      "prt2021528mme_chunk1",
+      "prt2021528mme_chunk2",
+      "prt2021528mme_chunk8"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 2475
+    },
+    {
+     "id": "Q08",
+     "categoria": "ato_citado",
+     "posicao": 4,
+     "top3": [
+      "area202211324_1_chunk96",
+      "nreh20223067_chunk209",
+      "ndsp20221425_chunk37"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 9588
+    },
+    {
+     "id": "Q09",
+     "categoria": "ato_citado",
+     "posicao": 1,
+     "top3": [
+      "areh20212852_1_chunk17",
+      "areh20212852_1_chunk23",
+      "reh20212852ti_chunk1"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 9941
+    },
+    {
+     "id": "Q10",
+     "categoria": "ato_citado",
+     "posicao": 1,
+     "top3": [
+      "reh20162146ti_chunk1",
+      "nreh20162146_chunk100",
+      "nreh20162146_chunk105"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 5891
+    },
+    {
+     "id": "Q11",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20222660ti_chunk3",
+      "dsp20222660ti_chunk1",
+      "dsp20222660ti_chunk5"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 1317
+    },
+    {
+     "id": "Q12",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "emdsp20223350_chunk95",
+      "emdsp20223350_chunk104",
+      "emdsp20223350_chunk64"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 4827
+    },
+    {
+     "id": "Q13",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20213501ti_chunk1",
+      "dsp20213501ti_chunk3",
+      "dsp20213501ti_chunk2"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 7241
+    },
+    {
+     "id": "Q14",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20161321ti_chunk3",
+      "dsp20161321ti_chunk1",
+      "dsp20161321ti_chunk2"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 5209
+    },
+    {
+     "id": "Q15",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp2021477ti_chunk2",
+      "dsp2021477ti_chunk1",
+      "adsp20223010_chunk14"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 3355
+    },
+    {
+     "id": "Q16",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20162592ti_chunk1",
+      "dsp20212592ti_chunk1",
+      "adsp20222381_1_chunk5"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 5693
+    },
+    {
+     "id": "Q17",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20222159ti_chunk2",
+      "dsp20222159ti_chunk3",
+      "dsp20222159ti_chunk1"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 6360
+    },
+    {
+     "id": "Q18",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20162464ti_chunk3",
+      "dsp20162464ti_chunk1",
+      "dsp20162464ti_chunk2"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 2318
+    },
+    {
+     "id": "Q19",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20221470ti_chunk1",
+      "area202110199_1_chunk18",
+      "area202211798_1_chunk3"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 5195
+    },
+    {
+     "id": "Q20",
+     "categoria": "fato_com_ato",
+     "posicao": null,
+     "top3": [
+      "prt20163825_chunk2",
+      "prt20163839_chunk3",
+      "prt20163907_chunk3"
+     ],
+     "resposta_no_contexto": false,
+     "chars_contexto": 4623
+    },
+    {
+     "id": "Q21",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20214042ti_chunk2",
+      "dsp20214042ti_chunk3",
+      "dsp20214043ti_chunk3"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 6056
+    },
+    {
+     "id": "Q22",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "adsp20212891_1_chunk20",
+      "emdsp20223364_chunk9",
+      "adsp20212891_1_chunk12"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 5571
+    },
+    {
+     "id": "Q23",
+     "categoria": "fato_sem_ato",
+     "posicao": 2,
+     "top3": [
+      "ndsp2021034_chunk645",
+      "area202211250_1_chunk27",
+      "area202211251_1_chunk27"
+     ],
+     "resposta_no_contexto": false,
+     "chars_contexto": 6183
+    },
+    {
+     "id": "Q24",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "area202211617_1_chunk2",
+      "rea202211617ti_chunk1",
+      "area202211617_1_chunk3"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 4042
+    },
+    {
+     "id": "Q25",
+     "categoria": "fato_sem_ato",
+     "posicao": 2,
+     "top3": [
+      "dsp20213830ti_chunk3",
+      "area202110358_1_chunk4",
+      "rea202110358ti_chunk7"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 9707
+    },
+    {
+     "id": "Q26",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "rea202213034ti_chunk1",
+      "rea202213034ti_chunk7",
+      "rea202213034ti_chunk4"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 9746
+    },
+    {
+     "id": "Q27",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "area202212041_1_chunk4",
+      "area202212041_1_chunk48",
+      "area202212041_1_chunk2"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 4633
+    },
+    {
+     "id": "Q28",
+     "categoria": "fato_sem_ato",
+     "posicao": 4,
+     "top3": [
+      "rea202110534ti_chunk6",
+      "rea202110535ti_chunk6",
+      "rea202110550ti_chunk6"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 9928
+    },
+    {
+     "id": "Q29",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "area20165789_1_chunk3",
+      "area202212308_1_chunk6",
+      "area20165789_1_chunk2"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 4370
+    },
+    {
+     "id": "Q30",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20223034ti_chunk2",
+      "dsp20223034ti_chunk4",
+      "dsp20223034ti_chunk1"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 6058
+    },
+    {
+     "id": "Q31",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "area20219658_1_chunk97",
+      "area20219658_1_chunk98",
+      "area20219657_1_chunk97"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 4227
+    },
+    {
+     "id": "Q32",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp2021041ti_chunk3",
+      "dsp20211143_chunk3",
+      "dsp20211012ti_chunk2"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 2667
+    },
+    {
+     "id": "Q33",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "prt2021482tispde_chunk3",
+      "prt20221167tispde_chunk3",
+      "prt20221167tispde_chunk4"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 8805
+    },
+    {
+     "id": "Q34",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "prt20221787tispde_chunk3",
+      "prt20221789tispde_chunk3",
+      "prt20221803tispde_chunk3"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 9939
+    },
+    {
+     "id": "Q35",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "prt2021612tispde_chunk3",
+      "adsp20221411_1_chunk4",
+      "prt2021548tispde_chunk3"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 8714
+    },
+    {
+     "id": "Q36",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20212089ti_chunk3",
+      "dsp20212089ti_chunk2",
+      "dsp20212090ti_chunk3"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 3246
+    },
+    {
+     "id": "Q37",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20211569ti_chunk3",
+      "dsp20211717ti_chunk3",
+      "dsp20212435ti_chunk3"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 9698
+    },
+    {
+     "id": "Q38",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "area202110932_1_chunk14",
+      "rea202110932ti_chunk6",
+      "area202110932_1_chunk9"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 4784
+    },
+    {
+     "id": "Q39",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "area202211313_1_chunk12",
+      "rea202211313ti_chunk1",
+      "area202211313_1_chunk6"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 7514
+    },
+    {
+     "id": "Q40",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "nreh20162093_chunk4",
+      "nreh20212909_chunk27",
+      "nreh20162093_chunk2"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 9863
+    },
+    {
+     "id": "Q41",
+     "categoria": "revogado",
+     "posicao": 1,
+     "top3": [
+      "res2016436ana_chunk1",
+      "dsp2021436_chunk1",
+      "res2016005cj_chunk1"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 9921
+    },
+    {
+     "id": "Q42",
+     "categoria": "revogado",
+     "posicao": 1,
+     "top3": [
+      "rea202110230ti_chunk1",
+      "area202110230_1_chunk2",
+      "area202110230_1_chunk1"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 6693
+    },
+    {
+     "id": "Q43",
+     "categoria": "revogado",
+     "posicao": 1,
+     "top3": [
+      "prt2021919tispde_chunk3",
+      "rea202212016ti_chunk4",
+      "rea202212019ti_chunk4"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 9980
+    },
+    {
+     "id": "Q44",
+     "categoria": "revogado",
+     "posicao": null,
+     "top3": [
+      "dsp20214140ti_chunk5",
+      "adsp20221221_1_chunk3",
+      "adsp20221221_1_chunk11"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 6184
+    },
+    {
+     "id": "Q45",
+     "categoria": "revogado",
+     "posicao": 2,
+     "top3": [
+      "prt2021360_chunk4",
+      "prt2022365_chunk4",
+      "prt2022365_chunk3"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 6897
+    },
+    {
+     "id": "Q46",
+     "categoria": "revogado",
+     "posicao": null,
+     "top3": [
+      "rea202211417ti_chunk9",
+      "rea202211414ti_chunk9",
+      "rea202211415ti_chunk9"
+     ],
+     "resposta_no_contexto": false,
+     "chars_contexto": 9716
+    },
+    {
+     "id": "Q057",
+     "categoria": "norma_citada",
+     "posicao": 1,
+     "top3": [
+      "ren20221009_chunk1",
+      "ren20221018_chunk1",
+      "ren20221015_chunk31"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 8004
+    },
+    {
+     "id": "Q058",
+     "categoria": "norma_citada",
+     "posicao": 1,
+     "top3": [
+      "ren2021959_chunk4",
+      "ren2021959_chunk1",
+      "ren2021959_chunk16"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 4275
+    },
+    {
+     "id": "Q059",
+     "categoria": "norma_citada",
+     "posicao": 5,
+     "top3": [
+      "adsp20221044_chunk32",
+      "adsp2016633_1_chunk41",
+      "adsp2016633_1_chunk20"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 8364
+    },
+    {
+     "id": "Q060",
+     "categoria": "norma_citada",
+     "posicao": 2,
+     "top3": [
+      "acp2022040ti_chunk2",
+      "ren2021954_chunk1",
+      "acp2022040ti_chunk4"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 4242
+    },
+    {
+     "id": "Q061",
+     "categoria": "norma_citada",
+     "posicao": 1,
+     "top3": [
+      "ren20221048_chunk1",
+      "aren20221048_1_chunk54",
+      "aren20221048_1_chunk26"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 4740
+    },
+    {
+     "id": "Q062",
+     "categoria": "norma_citada",
+     "posicao": 9,
+     "top3": [
+      "ren20221025_chunk1",
+      "aren20221025_1_chunk2",
+      "aren20221025_1_chunk3"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 5994
+    },
+    {
+     "id": "Q063",
+     "categoria": "norma_citada",
+     "posicao": null,
+     "top3": [
+      "ren2016742_chunk7",
+      "ren2021953_chunk20",
+      "ren2016717_chunk25"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 5639
+    },
+    {
+     "id": "Q064",
+     "categoria": "norma_citada",
+     "posicao": 1,
+     "top3": [
+      "aren20221022_2_chunk66",
+      "aren20221022_2_1_chunk30",
+      "aren20221022_2_chunk78"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 6695
+    },
+    {
+     "id": "Q065",
+     "categoria": "norma_citada",
+     "posicao": 1,
+     "top3": [
+      "ren2016731_chunk1",
+      "aren2016731_1_chunk65",
+      "aren2016731_1_chunk38"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 4214
+    },
+    {
+     "id": "Q066",
+     "categoria": "norma_citada",
+     "posicao": 5,
+     "top3": [
+      "ren20221050_chunk1",
+      "aren20221050_1_chunk51",
+      "aren20221050_1_chunk49"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 5347
+    },
+    {
+     "id": "Q067",
+     "categoria": "norma_citada",
+     "posicao": 1,
+     "top3": [
+      "ren20221039_chunk1",
+      "ren20221039_chunk2",
+      "aren20221039_1_chunk7"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 7260
+    },
+    {
+     "id": "Q068",
+     "categoria": "norma_citada",
+     "posicao": 1,
+     "top3": [
+      "ren20221034_chunk1",
+      "ren20221034_chunk19",
+      "aren20221034_1_chunk2"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 4886
+    },
+    {
+     "id": "Q069",
+     "categoria": "norma_citada",
+     "posicao": 1,
+     "top3": [
+      "ren2021917_chunk1",
+      "ren2021917_chunk3",
+      "ren2021917_chunk4"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 3436
+    },
+    {
+     "id": "Q070",
+     "categoria": "norma_citada",
+     "posicao": 3,
+     "top3": [
+      "adsp20223049_1_chunk20",
+      "ren2021917_chunk3",
+      "ren2021916_chunk1"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 4845
+    },
+    {
+     "id": "Q071",
+     "categoria": "norma_citada",
+     "posicao": 1,
+     "top3": [
+      "ren20221003_chunk1",
+      "aren20221020_1_chunk49",
+      "ren20221020_chunk7"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 9779
+    },
+    {
+     "id": "Q072",
+     "categoria": "norma_citada",
+     "posicao": 1,
+     "top3": [
+      "ren20221012_chunk1",
+      "aren20221012_1_chunk24",
+      "aren20221012_1_chunk39"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 4724
+    },
+    {
+     "id": "Q073",
+     "categoria": "norma_citada",
+     "posicao": null,
+     "top3": [
+      "ren20221040_chunk1",
+      "aren20221040_1_chunk2",
+      "ren20221040_chunk4"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 9576
+    },
+    {
+     "id": "Q074",
+     "categoria": "norma_citada",
+     "posicao": 1,
+     "top3": [
+      "aren20221045_2_chunk94",
+      "aren20221045_2_chunk84",
+      "aren20221045_2_chunk55"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 8853
+    },
+    {
+     "id": "Q075",
+     "categoria": "revogado",
+     "posicao": 1,
+     "top3": [
+      "ren2016748_chunk1",
+      "adsp2016748_1_chunk7",
+      "aren2016748_1_chunk82"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 4886
+    },
+    {
+     "id": "Q076",
+     "categoria": "revogado",
+     "posicao": 1,
+     "top3": [
+      "ren2021947_chunk1",
+      "ats2022004ti_chunk2",
+      "aren2021947_3_chunk13"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 8791
+    },
+    {
+     "id": "Q077",
+     "categoria": "revogado",
+     "posicao": 1,
+     "top3": [
+      "ren2016700_chunk1",
+      "dsp20163079ti_chunk2",
+      "dsp20162296ti_chunk2"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 3650
+    },
+    {
+     "id": "Q078",
+     "categoria": "revogado",
+     "posicao": 1,
+     "top3": [
+      "ren2016718_chunk1",
+      "aren2016718_1_chunk4",
+      "aren2016718_1_chunk7"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 9665
+    },
+    {
+     "id": "Q079",
+     "categoria": "revogado",
+     "posicao": 4,
+     "top3": [
+      "aren2021944_1_chunk81",
+      "aren2021936_1_chunk47",
+      "ren2021936_chunk4"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 5951
+    },
+    {
+     "id": "Q080",
+     "categoria": "revogado",
+     "posicao": 1,
+     "top3": [
+      "ren20221043_chunk1",
+      "aren20221043_1_chunk2",
+      "aren20221043_1_chunk17"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 5905
+    },
+    {
+     "id": "Q081",
+     "categoria": "revogado",
+     "posicao": 2,
+     "top3": [
+      "aren20221007_1_chunk21",
+      "ren2021960_chunk1",
+      "ren2021960_chunk4"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 4529
+    },
+    {
+     "id": "Q082",
+     "categoria": "revogado",
+     "posicao": 1,
+     "top3": [
+      "ren2021925_chunk1",
+      "ren2021925_chunk3",
+      "aren2021925_1_chunk5"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 4607
+    },
+    {
+     "id": "Q083",
+     "categoria": "revogado",
+     "posicao": 1,
+     "top3": [
+      "ndsp20212424_chunk2",
+      "ndsp20212424_chunk1",
+      "dsp20212424ti_chunk3"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 3653
+    },
+    {
+     "id": "Q084",
+     "categoria": "norma_por_tema",
+     "posicao": 1,
+     "top3": [
+      "aren2021959_1_chunk59",
+      "ren2021959_chunk13",
+      "ren2021959_chunk17"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 4326
+    },
+    {
+     "id": "Q085",
+     "categoria": "norma_por_tema",
+     "posicao": 1,
+     "top3": [
+      "aren20221044_1_chunk1",
+      "ren2021916_chunk14",
+      "aprt20216705_2_chunk6"
+     ],
+     "resposta_no_contexto": false,
+     "chars_contexto": 5663
+    },
+    {
+     "id": "Q086",
+     "categoria": "norma_por_tema",
+     "posicao": 1,
+     "top3": [
+      "ren2021917_chunk10",
+      "ren2021917_chunk3",
+      "ren2021917_chunk4"
+     ],
+     "resposta_no_contexto": false,
+     "chars_contexto": 7754
+    },
+    {
+     "id": "Q087",
+     "categoria": "regra_atual",
+     "posicao": 1,
+     "top3": [
+      "ren2021919_chunk5",
+      "ren2021919_chunk1",
+      "area20219639_1_chunk13"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 8364
+    },
+    {
+     "id": "Q088",
+     "categoria": "regra_atual",
+     "posicao": 1,
+     "top3": [
+      "ren2021948_chunk533",
+      "ren2021948_chunk569",
+      "ren2021948_chunk324"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 9369
+    },
+    {
+     "id": "Q089",
+     "categoria": "regra_atual",
+     "posicao": 1,
+     "top3": [
+      "ren2021957_chunk274",
+      "ren2021957_chunk213",
+      "aren2021957_1_chunk23"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 7656
+    },
+    {
+     "id": "Q090",
+     "categoria": "regra_atual",
+     "posicao": 1,
+     "top3": [
+      "aren2021963_1_chunk14",
+      "ren2021963_chunk4",
+      "ren2021963_chunk117"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 5330
+    },
+    {
+     "id": "Q091",
+     "categoria": "regra_atual",
+     "posicao": 1,
+     "top3": [
+      "ren20221045_chunk1",
+      "aren20221045_2_chunk7",
+      "aren20221045_2_chunk6"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 8165
+    },
+    {
+     "id": "Q092",
+     "categoria": "regra_atual",
+     "posicao": 1,
+     "top3": [
+      "ren2021956_chunk5",
+      "aren20221050_1_chunk31",
+      "ren20221050_chunk1"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 6171
+    },
+    {
+     "id": "Q093",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20221070_chunk1",
+      "dsp20221070_chunk3",
+      "dsp20221070_chunk5"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 3198
+    },
+    {
+     "id": "Q094",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp2021723_chunk3",
+      "dsp20223224ti_chunk3",
+      "dsp2021723_chunk1"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 4662
+    },
+    {
+     "id": "Q095",
+     "categoria": "fato_com_ato",
+     "posicao": null,
+     "top3": [
+      "dsp2022908_chunk3",
+      "dsp2022698_chunk3",
+      "dsp2022908_chunk2"
+     ],
+     "resposta_no_contexto": false,
+     "chars_contexto": 5035
+    },
+    {
+     "id": "Q096",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "prt20226724_chunk1",
+      "aprt20226724_1_chunk54",
+      "prt20226724_chunk3"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 4506
+    },
+    {
+     "id": "Q097",
+     "categoria": "fato_sem_ato",
+     "posicao": null,
+     "top3": [
+      "dsp2016079_chunk3",
+      "dsp2016680_chunk3",
+      "dsp2016079_chunk2"
+     ],
+     "resposta_no_contexto": false,
+     "chars_contexto": 9907
+    },
+    {
+     "id": "Q098",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "adsp20212976_1_chunk1",
+      "adsp20212976_1_chunk3",
+      "adsp20212976_1_chunk2"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 3669
+    },
+    {
+     "id": "Q099",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "emdsp20222951_chunk115",
+      "emdsp20222951_chunk105",
+      "adsp20211284_1_chunk33"
+     ],
+     "resposta_no_contexto": false,
+     "chars_contexto": 5454
+    },
+    {
+     "id": "Q100",
+     "categoria": "fato_sem_ato",
+     "posicao": null,
+     "top3": [
+      "dsp20211690_chunk3",
+      "dsp20211690_chunk4",
+      "dsp20211690_chunk1"
+     ],
+     "resposta_no_contexto": false,
+     "chars_contexto": 1408
+    },
+    {
+     "id": "Q101",
+     "categoria": "fato_sem_ato",
+     "posicao": 2,
+     "top3": [
+      "area202211098_1_chunk8",
+      "area202110081_3_chunk7",
+      "area202110080_3_chunk7"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 9583
+    },
+    {
+     "id": "Q102",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20212079ti_chunk2",
+      "dsp20211874ti_chunk2",
+      "dsp20213321ti_chunk2"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 4367
+    },
+    {
+     "id": "Q103",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "edt2016sn240_chunk2",
+      "edt2021sn37_chunk2",
+      "dsp20213241ti_chunk3"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 9938
+    },
+    {
+     "id": "Q104",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20213417ti_chunk3",
+      "dsp20213458ti_chunk3",
+      "dsp20213677ti_chunk3"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 4204
+    },
+    {
+     "id": "Q105",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp2022928ti_chunk2",
+      "dsp2022928ti_chunk3",
+      "dsp2022927ti_chunk2"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 2550
+    },
+    {
+     "id": "Q106",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "area202212061_1_chunk7",
+      "area202212061_1_chunk2",
+      "rea202212061ti_chunk7"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 8845
+    },
+    {
+     "id": "Q107",
+     "categoria": "fato_sem_ato",
+     "posicao": null,
+     "top3": [
+      "area202110018_1_chunk93",
+      "area202110018_1_chunk12",
+      "area202110018_1_chunk2"
+     ],
+     "resposta_no_contexto": false,
+     "chars_contexto": 4636
+    },
+    {
+     "id": "C01",
+     "categoria": "conceitual_sigla",
+     "posicao": null,
+     "top3": [
+      "adsp20211055_1_chunk108",
+      "adsp20162584_1_chunk67",
+      "alel2021003_1_chunk109"
+     ],
+     "resposta_no_contexto": false,
+     "chars_contexto": 5786
+    },
+    {
+     "id": "C02",
+     "categoria": "conceitual_sigla",
+     "posicao": 2,
+     "top3": [
+      "dsp20214010_chunk3",
+      "area202110000_1_chunk4",
+      "area202110001_1_chunk4"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 7291
+    },
+    {
+     "id": "C03",
+     "categoria": "conceitual_sigla",
+     "posicao": 9,
+     "top3": [
+      "aprt20216658_2_chunk197",
+      "area202110990_1_chunk11",
+      "area202110990_1_chunk31"
+     ],
+     "resposta_no_contexto": false,
+     "chars_contexto": 5584
+    },
+    {
+     "id": "C04",
+     "categoria": "conceitual_sigla",
+     "posicao": null,
+     "top3": [
+      "adsp20211055_1_chunk108",
+      "adsp20162584_1_chunk67",
+      "alel2021003_1_chunk109"
+     ],
+     "resposta_no_contexto": false,
+     "chars_contexto": 6286
+    },
+    {
+     "id": "C05",
+     "categoria": "conceitual_sigla",
+     "posicao": 5,
+     "top3": [
+      "adsp20211055_1_chunk108",
+      "adsp20162584_1_chunk67",
+      "alel2021003_1_chunk109"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 5958
+    },
+    {
+     "id": "C06",
+     "categoria": "conceitual_sigla",
+     "posicao": 4,
+     "top3": [
+      "nreh20223066_chunk251",
+      "aren20221049_1_chunk15",
+      "aprt20216705_1_chunk28"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 7682
+    },
+    {
+     "id": "C07",
+     "categoria": "conceitual_parafrase",
+     "posicao": 1,
+     "top3": [
+      "nreh20162026_chunk57",
+      "ndsp20223036_chunk6",
+      "nreh20162100_chunk50"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 5649
+    },
+    {
+     "id": "C08",
+     "categoria": "conceitual_parafrase",
+     "posicao": null,
+     "top3": [
+      "edt2021sn192_chunk4",
+      "adsp20161707_1_chunk12",
+      "adsp20213626_1_chunk10"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 5934
+    },
+    {
+     "id": "C09",
+     "categoria": "conceitual_parafrase",
+     "posicao": null,
+     "top3": [
+      "adsp2021609_1_chunk6",
+      "adsp20221487_chunk9",
+      "adsp20223498_1_chunk28"
+     ],
+     "resposta_no_contexto": false,
+     "chars_contexto": 9773
+    },
+    {
+     "id": "C10",
+     "categoria": "conceitual_parafrase",
+     "posicao": null,
+     "top3": [
+      "adsp2022898_1_chunk20",
+      "adsp20223277_1_chunk88",
+      "area202110313_1_chunk33"
+     ],
+     "resposta_no_contexto": false,
+     "chars_contexto": 4577
+    },
+    {
+     "id": "C11",
+     "categoria": "conceitual_parafrase",
+     "posicao": 5,
+     "top3": [
+      "aprt20163851_1_chunk18",
+      "aprt20163852_1_chunk16",
+      "aprt20163854_1_chunk16"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 4462
+    },
+    {
+     "id": "C12",
+     "categoria": "conceitual_parafrase",
+     "posicao": null,
+     "top3": [
+      "adsp20212904_2_chunk2764",
+      "dsp20211380_chunk2795",
+      "dsp20221352_chunk3"
+     ],
+     "resposta_no_contexto": false,
+     "chars_contexto": 5136
+    },
+    {
+     "id": "C13",
+     "categoria": "conceitual_parafrase",
+     "posicao": 3,
+     "top3": [
+      "adsp20212904_2_chunk1062",
+      "dsp20211380_chunk1033",
+      "rea20165887ti_chunk9"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 9021
+    },
+    {
+     "id": "C14",
+     "categoria": "conceitual_parafrase",
+     "posicao": 4,
+     "top3": [
+      "adsp2021519_1_chunk8",
+      "adsp2021520_1_chunk8",
+      "adsp2021521_1_chunk8"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 9311
+    },
+    {
+     "id": "C15",
+     "categoria": "conceitual_parafrase",
+     "posicao": null,
+     "top3": [
+      "dsp20161481_chunk4",
+      "ndsp20222162_chunk11",
+      "ndsp20222163_chunk11"
+     ],
+     "resposta_no_contexto": false,
+     "chars_contexto": 6333
+    },
+    {
+     "id": "C16",
+     "categoria": "conceitual_parafrase",
+     "posicao": 1,
+     "top3": [
+      "prt2016217spde_chunk6",
+      "prt2021835tispde_chunk6",
+      "prt2021959tispde_chunk6"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 9374
+    },
+    {
+     "id": "C17",
+     "categoria": "conceitual_parafrase",
+     "posicao": null,
+     "top3": [
+      "adsp2016955_1_chunk9",
+      "ndsp2022624_chunk32",
+      "ndsp20213078_chunk23"
+     ],
+     "resposta_no_contexto": false,
+     "chars_contexto": 9966
+    },
+    {
+     "id": "C18",
+     "categoria": "conceitual_parafrase",
+     "posicao": 1,
+     "top3": [
+      "dsp20161977ti_chunk3",
+      "ndsp2022715_chunk11",
+      "dsp20161559ti_chunk4"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 5904
+    },
+    {
+     "id": "C19",
+     "categoria": "conceitual_parafrase",
+     "posicao": 1,
+     "top3": [
+      "prt2016082mme_chunk6",
+      "prt2016100mme_chunk6",
+      "prt20211088tispde_chunk6"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 9777
+    }
+   ],
+   "contexto": {
+    "expansao": "documento",
+    "n": 116,
+    "com_resposta": 98,
+    "chars_medio": 6273
+   }
+  },
+  "com_filtro": {
+   "geral": {
+    "n": 116,
+    "hit@1": 0.6120689655172413,
+    "hit@3": 0.6724137931034483,
+    "hit@5": 0.7413793103448276,
+    "hit@10": 0.7672413793103449,
+    "mrr": 0.6586685823754789
+   },
+   "categorias": {
+    "ato_citado": {
+     "n": 10,
+     "hit@1": 0.9,
+     "hit@3": 0.9,
+     "hit@5": 1.0,
+     "hit@10": 1.0,
+     "mrr": 0.925
+    },
+    "conceitual_parafrase": {
+     "n": 13,
+     "hit@1": 0.3076923076923077,
+     "hit@3": 0.38461538461538464,
+     "hit@5": 0.5384615384615384,
+     "hit@10": 0.5384615384615384,
+     "mrr": 0.3679487179487179
+    },
+    "conceitual_sigla": {
+     "n": 6,
+     "hit@1": 0.0,
+     "hit@3": 0.16666666666666666,
+     "hit@5": 0.5,
+     "hit@10": 0.6666666666666666,
+     "mrr": 0.17685185185185184
+    },
+    "fato_com_ato": {
+     "n": 16,
+     "hit@1": 0.875,
+     "hit@3": 0.875,
+     "hit@5": 0.875,
+     "hit@10": 0.875,
+     "mrr": 0.875
+    },
+    "fato_sem_ato": {
+     "n": 29,
+     "hit@1": 0.7586206896551724,
+     "hit@3": 0.8620689655172413,
+     "hit@5": 0.896551724137931,
+     "hit@10": 0.896551724137931,
+     "mrr": 0.8189655172413793
+    },
+    "norma_citada": {
+     "n": 18,
+     "hit@1": 0.6111111111111112,
+     "hit@3": 0.7222222222222222,
+     "hit@5": 0.8333333333333334,
+     "hit@10": 0.9444444444444444,
+     "mrr": 0.6978395061728395
+    },
+    "norma_por_tema": {
+     "n": 3,
+     "hit@1": 1.0,
+     "hit@3": 1.0,
+     "hit@5": 1.0,
+     "hit@10": 1.0,
+     "mrr": 1.0
+    },
+    "regra_atual": {
+     "n": 6,
+     "hit@1": 1.0,
+     "hit@3": 1.0,
+     "hit@5": 1.0,
+     "hit@10": 1.0,
+     "mrr": 1.0
+    },
+    "revogado": {
+     "n": 15,
+     "hit@1": 0.13333333333333333,
+     "hit@3": 0.13333333333333333,
+     "hit@5": 0.13333333333333333,
+     "hit@10": 0.13333333333333333,
+     "mrr": 0.13333333333333333
+    }
+   },
+   "detalhe": [
+    {
+     "id": "Q01",
+     "categoria": "ato_citado",
+     "posicao": 1,
+     "top3": [
+      "prt20221322tispde_chunk1",
+      "prt20221322tispde_chunk3",
+      "prt20221322tispde_chunk2"
+     ]
+    },
+    {
+     "id": "Q02",
+     "categoria": "ato_citado",
+     "posicao": 1,
+     "top3": [
+      "dsp20222942_chunk1",
+      "dsp20212942ti_chunk1",
+      "adsp20222942_1_chunk36"
+     ]
+    },
+    {
+     "id": "Q03",
+     "categoria": "ato_citado",
+     "posicao": 1,
+     "top3": [
+      "prt20226715_chunk1",
+      "aprt20226715_1_chunk12",
+      "aprt20226715_1_chunk1"
+     ]
+    },
+    {
+     "id": "Q04",
+     "categoria": "ato_citado",
+     "posicao": 1,
+     "top3": [
+      "dsp20161198_chunk1",
+      "adsp20221198_1_chunk11",
+      "dsp20221198_chunk1"
+     ]
+    },
+    {
+     "id": "Q05",
+     "categoria": "ato_citado",
+     "posicao": 1,
+     "top3": [
+      "dsp20211604_chunk1",
+      "dsp20211604_chunk3",
+      "dsp20221604ti_chunk1"
+     ]
+    },
+    {
+     "id": "Q06",
+     "categoria": "ato_citado",
+     "posicao": 1,
+     "top3": [
+      "dsp20213501ti_chunk1",
+      "dsp20223501ti_chunk1",
+      "dsp20213501ti_chunk3"
+     ]
+    },
+    {
+     "id": "Q07",
+     "categoria": "ato_citado",
+     "posicao": 1,
+     "top3": [
+      "prt2021528mme_chunk1",
+      "prt2021528mme_chunk2",
+      "prt2021528mme_chunk8"
+     ]
+    },
+    {
+     "id": "Q08",
+     "categoria": "ato_citado",
+     "posicao": 4,
+     "top3": [
+      "area202211324_1_chunk96",
+      "nreh20223067_chunk209",
+      "ndsp20221425_chunk37"
+     ]
+    },
+    {
+     "id": "Q09",
+     "categoria": "ato_citado",
+     "posicao": 1,
+     "top3": [
+      "areh20212852_1_chunk17",
+      "areh20212852_1_chunk23",
+      "reh20212852ti_chunk1"
+     ]
+    },
+    {
+     "id": "Q10",
+     "categoria": "ato_citado",
+     "posicao": 1,
+     "top3": [
+      "reh20162146ti_chunk1",
+      "nreh20162146_chunk100",
+      "nreh20162146_chunk105"
+     ]
+    },
+    {
+     "id": "Q11",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20222660ti_chunk3",
+      "dsp20222660ti_chunk1",
+      "dsp20222660ti_chunk5"
+     ]
+    },
+    {
+     "id": "Q12",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "emdsp20223350_chunk95",
+      "emdsp20223350_chunk104",
+      "emdsp20223350_chunk64"
+     ]
+    },
+    {
+     "id": "Q13",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20213501ti_chunk1",
+      "dsp20213501ti_chunk3",
+      "dsp20213501ti_chunk2"
+     ]
+    },
+    {
+     "id": "Q14",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20161321ti_chunk3",
+      "dsp20161321ti_chunk1",
+      "dsp20161321ti_chunk2"
+     ]
+    },
+    {
+     "id": "Q15",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp2021477ti_chunk2",
+      "dsp2021477ti_chunk1",
+      "adsp20223010_chunk14"
+     ]
+    },
+    {
+     "id": "Q16",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20162592ti_chunk1",
+      "adsp20222381_1_chunk5",
+      "dsp20162592ti_chunk2"
+     ]
+    },
+    {
+     "id": "Q17",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20222159ti_chunk2",
+      "dsp20222159ti_chunk3",
+      "dsp20222159ti_chunk1"
+     ]
+    },
+    {
+     "id": "Q18",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20162464ti_chunk3",
+      "dsp20162464ti_chunk1",
+      "dsp20162464ti_chunk2"
+     ]
+    },
+    {
+     "id": "Q19",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20221470ti_chunk1",
+      "area202110199_1_chunk18",
+      "area202211798_1_chunk3"
+     ]
+    },
+    {
+     "id": "Q20",
+     "categoria": "fato_com_ato",
+     "posicao": null,
+     "top3": [
+      "prt20163825_chunk2",
+      "prt20163839_chunk3",
+      "prt20163907_chunk3"
+     ]
+    },
+    {
+     "id": "Q21",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20214042ti_chunk2",
+      "dsp20214042ti_chunk3",
+      "dsp20214043ti_chunk3"
+     ]
+    },
+    {
+     "id": "Q22",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "adsp20212891_1_chunk20",
+      "emdsp20223364_chunk9",
+      "adsp20212891_1_chunk12"
+     ]
+    },
+    {
+     "id": "Q23",
+     "categoria": "fato_sem_ato",
+     "posicao": 2,
+     "top3": [
+      "ndsp2021034_chunk645",
+      "area202211250_1_chunk27",
+      "area202211251_1_chunk27"
+     ]
+    },
+    {
+     "id": "Q24",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "area202211617_1_chunk2",
+      "rea202211617ti_chunk1",
+      "area202211617_1_chunk3"
+     ]
+    },
+    {
+     "id": "Q25",
+     "categoria": "fato_sem_ato",
+     "posicao": 2,
+     "top3": [
+      "dsp20213830ti_chunk3",
+      "area202110358_1_chunk4",
+      "rea202110358ti_chunk7"
+     ]
+    },
+    {
+     "id": "Q26",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "rea202213034ti_chunk1",
+      "rea202213034ti_chunk7",
+      "rea202213034ti_chunk4"
+     ]
+    },
+    {
+     "id": "Q27",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "area202212041_1_chunk4",
+      "area202212041_1_chunk48",
+      "area202212041_1_chunk2"
+     ]
+    },
+    {
+     "id": "Q28",
+     "categoria": "fato_sem_ato",
+     "posicao": 4,
+     "top3": [
+      "rea202110534ti_chunk6",
+      "rea202110535ti_chunk6",
+      "rea202110550ti_chunk6"
+     ]
+    },
+    {
+     "id": "Q29",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "area20165789_1_chunk3",
+      "area202212308_1_chunk6",
+      "area20165789_1_chunk2"
+     ]
+    },
+    {
+     "id": "Q30",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20223034ti_chunk2",
+      "dsp20223034ti_chunk4",
+      "dsp20223034ti_chunk1"
+     ]
+    },
+    {
+     "id": "Q31",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "area20219658_1_chunk97",
+      "area20219658_1_chunk98",
+      "area20219657_1_chunk97"
+     ]
+    },
+    {
+     "id": "Q32",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp2021041ti_chunk3",
+      "dsp20211143_chunk3",
+      "dsp20211012ti_chunk2"
+     ]
+    },
+    {
+     "id": "Q33",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "prt2021482tispde_chunk3",
+      "prt20221167tispde_chunk3",
+      "prt20221167tispde_chunk4"
+     ]
+    },
+    {
+     "id": "Q34",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "prt20221787tispde_chunk3",
+      "prt20221789tispde_chunk3",
+      "prt20221803tispde_chunk3"
+     ]
+    },
+    {
+     "id": "Q35",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "prt2021612tispde_chunk3",
+      "adsp20221411_1_chunk4",
+      "prt2021548tispde_chunk3"
+     ]
+    },
+    {
+     "id": "Q36",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20212089ti_chunk3",
+      "dsp20212089ti_chunk2",
+      "dsp20212090ti_chunk3"
+     ]
+    },
+    {
+     "id": "Q37",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20211569ti_chunk3",
+      "dsp20211717ti_chunk3",
+      "dsp20212435ti_chunk3"
+     ]
+    },
+    {
+     "id": "Q38",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "area202110932_1_chunk14",
+      "rea202110932ti_chunk6",
+      "area202110932_1_chunk9"
+     ]
+    },
+    {
+     "id": "Q39",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "area202211313_1_chunk12",
+      "rea202211313ti_chunk1",
+      "area202211313_1_chunk6"
+     ]
+    },
+    {
+     "id": "Q40",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "nreh20162093_chunk4",
+      "nreh20212909_chunk27",
+      "nreh20162093_chunk2"
+     ]
+    },
+    {
+     "id": "Q41",
+     "categoria": "revogado",
+     "posicao": null,
+     "top3": [
+      "dsp2021436_chunk1",
+      "res2016005cj_chunk1",
+      "res20161047ana_chunk1"
+     ]
+    },
+    {
+     "id": "Q42",
+     "categoria": "revogado",
+     "posicao": null,
+     "top3": [
+      "rea20165909ti_chunk4",
+      "rea20165909ti_chunk1",
+      "aap2016016ti_chunk3"
+     ]
+    },
+    {
+     "id": "Q43",
+     "categoria": "revogado",
+     "posicao": 1,
+     "top3": [
+      "prt2021919tispde_chunk3",
+      "rea202212016ti_chunk4",
+      "rea202212019ti_chunk4"
+     ]
+    },
+    {
+     "id": "Q44",
+     "categoria": "revogado",
+     "posicao": null,
+     "top3": [
+      "dsp20214140ti_chunk5",
+      "adsp20221221_1_chunk3",
+      "adsp20221221_1_chunk11"
+     ]
+    },
+    {
+     "id": "Q45",
+     "categoria": "revogado",
+     "posicao": null,
+     "top3": [
+      "prt2021360_chunk4",
+      "prt2021202_chunk3",
+      "prt2021202_chunk18"
+     ]
+    },
+    {
+     "id": "Q46",
+     "categoria": "revogado",
+     "posicao": null,
+     "top3": [
+      "rea202211417ti_chunk9",
+      "rea202211414ti_chunk9",
+      "rea202211415ti_chunk9"
+     ]
+    },
+    {
+     "id": "Q057",
+     "categoria": "norma_citada",
+     "posicao": 1,
+     "top3": [
+      "ren20221009_chunk1",
+      "ren20221018_chunk1",
+      "ren20221015_chunk31"
+     ]
+    },
+    {
+     "id": "Q058",
+     "categoria": "norma_citada",
+     "posicao": 1,
+     "top3": [
+      "ren2021959_chunk4",
+      "ren2021959_chunk1",
+      "ren2021959_chunk16"
+     ]
+    },
+    {
+     "id": "Q059",
+     "categoria": "norma_citada",
+     "posicao": 4,
+     "top3": [
+      "adsp20221044_chunk32",
+      "adsp2016633_1_chunk41",
+      "adsp2016633_1_chunk20"
+     ]
+    },
+    {
+     "id": "Q060",
+     "categoria": "norma_citada",
+     "posicao": 2,
+     "top3": [
+      "acp2022040ti_chunk2",
+      "ren2021954_chunk1",
+      "acp2022040ti_chunk4"
+     ]
+    },
+    {
+     "id": "Q061",
+     "categoria": "norma_citada",
+     "posicao": 1,
+     "top3": [
+      "ren20221048_chunk1",
+      "aren20221048_1_chunk54",
+      "aren20221048_1_chunk26"
+     ]
+    },
+    {
+     "id": "Q062",
+     "categoria": "norma_citada",
+     "posicao": 9,
+     "top3": [
+      "ren20221025_chunk1",
+      "aren20221025_1_chunk2",
+      "aren20221025_1_chunk3"
+     ]
+    },
+    {
+     "id": "Q063",
+     "categoria": "norma_citada",
+     "posicao": 6,
+     "top3": [
+      "dsp2022013_chunk3",
+      "adsp20222970_1_chunk6",
+      "adsp20222045_chunk3"
+     ]
+    },
+    {
+     "id": "Q064",
+     "categoria": "norma_citada",
+     "posicao": 1,
+     "top3": [
+      "aren20221022_2_chunk66",
+      "aren20221022_2_1_chunk30",
+      "aren20221022_2_chunk78"
+     ]
+    },
+    {
+     "id": "Q065",
+     "categoria": "norma_citada",
+     "posicao": 1,
+     "top3": [
+      "ren2016731_chunk1",
+      "aren2016731_1_chunk65",
+      "aren2016731_1_chunk38"
+     ]
+    },
+    {
+     "id": "Q066",
+     "categoria": "norma_citada",
+     "posicao": 5,
+     "top3": [
+      "ren20221050_chunk1",
+      "aren20221050_1_chunk51",
+      "aren20221050_1_chunk49"
+     ]
+    },
+    {
+     "id": "Q067",
+     "categoria": "norma_citada",
+     "posicao": 1,
+     "top3": [
+      "ren20221039_chunk1",
+      "ren20221039_chunk2",
+      "aren20221039_1_chunk7"
+     ]
+    },
+    {
+     "id": "Q068",
+     "categoria": "norma_citada",
+     "posicao": 1,
+     "top3": [
+      "ren20221034_chunk1",
+      "ren20221034_chunk19",
+      "aren20221034_1_chunk2"
+     ]
+    },
+    {
+     "id": "Q069",
+     "categoria": "norma_citada",
+     "posicao": 1,
+     "top3": [
+      "ren2021917_chunk1",
+      "ren2021917_chunk3",
+      "ren2021917_chunk4"
+     ]
+    },
+    {
+     "id": "Q070",
+     "categoria": "norma_citada",
+     "posicao": 3,
+     "top3": [
+      "adsp20223049_1_chunk20",
+      "ren2021917_chunk3",
+      "ren2021916_chunk1"
+     ]
+    },
+    {
+     "id": "Q071",
+     "categoria": "norma_citada",
+     "posicao": 1,
+     "top3": [
+      "ren20221003_chunk1",
+      "aren20221020_1_chunk49",
+      "ren20221020_chunk7"
+     ]
+    },
+    {
+     "id": "Q072",
+     "categoria": "norma_citada",
+     "posicao": 1,
+     "top3": [
+      "ren20221012_chunk1",
+      "aren20221012_1_chunk24",
+      "aren20221012_1_chunk39"
+     ]
+    },
+    {
+     "id": "Q073",
+     "categoria": "norma_citada",
+     "posicao": null,
+     "top3": [
+      "ren20221040_chunk1",
+      "aren20221040_1_chunk2",
+      "ren20221040_chunk4"
+     ]
+    },
+    {
+     "id": "Q074",
+     "categoria": "norma_citada",
+     "posicao": 1,
+     "top3": [
+      "aren20221045_2_chunk94",
+      "aren20221045_2_chunk84",
+      "aren20221045_2_chunk55"
+     ]
+    },
+    {
+     "id": "Q075",
+     "categoria": "revogado",
+     "posicao": null,
+     "top3": [
+      "adsp2016748_1_chunk7",
+      "area202110064_1_chunk69",
+      "area202110064_1_chunk9"
+     ]
+    },
+    {
+     "id": "Q076",
+     "categoria": "revogado",
+     "posicao": null,
+     "top3": [
+      "ats2022004ti_chunk2",
+      "dsp2021947ti_chunk1",
+      "dsp2022947_chunk1"
+     ]
+    },
+    {
+     "id": "Q077",
+     "categoria": "revogado",
+     "posicao": null,
+     "top3": [
+      "dsp20163079ti_chunk2",
+      "dsp20162296ti_chunk2",
+      "dsp20162632ti_chunk2"
+     ]
+    },
+    {
+     "id": "Q078",
+     "categoria": "revogado",
+     "posicao": null,
+     "top3": [
+      "ren20221003_chunk198",
+      "ren20221003_chunk194",
+      "aren20221020_1_chunk12"
+     ]
+    },
+    {
+     "id": "Q079",
+     "categoria": "revogado",
+     "posicao": null,
+     "top3": [
+      "aren2021964_1_chunk5",
+      "aren2021962_1_chunk21",
+      "aprt2022342_1_chunk11"
+     ]
+    },
+    {
+     "id": "Q080",
+     "categoria": "revogado",
+     "posicao": null,
+     "top3": [
+      "dsp20221043_chunk1",
+      "prt20211043tispde_chunk1",
+      "dsp2021019ti_chunk3"
+     ]
+    },
+    {
+     "id": "Q081",
+     "categoria": "revogado",
+     "posicao": null,
+     "top3": [
+      "ndsp2016960_chunk4",
+      "dsp2021960_chunk1",
+      "prt2021960tispde_chunk1"
+     ]
+    },
+    {
+     "id": "Q082",
+     "categoria": "revogado",
+     "posicao": null,
+     "top3": [
+      "aren2021956_1_chunk13",
+      "ren2021956_chunk8",
+      "adsp20162731_1_chunk2"
+     ]
+    },
+    {
+     "id": "Q083",
+     "categoria": "revogado",
+     "posicao": 1,
+     "top3": [
+      "ndsp20212424_chunk2",
+      "ndsp20212424_chunk1",
+      "dsp20212424ti_chunk3"
+     ]
+    },
+    {
+     "id": "Q084",
+     "categoria": "norma_por_tema",
+     "posicao": 1,
+     "top3": [
+      "aren2021959_1_chunk59",
+      "ren2021959_chunk13",
+      "ren2021959_chunk17"
+     ]
+    },
+    {
+     "id": "Q085",
+     "categoria": "norma_por_tema",
+     "posicao": 1,
+     "top3": [
+      "aren20221044_1_chunk1",
+      "ren2021916_chunk14",
+      "aprt20216705_2_chunk6"
+     ]
+    },
+    {
+     "id": "Q086",
+     "categoria": "norma_por_tema",
+     "posicao": 1,
+     "top3": [
+      "ren2021917_chunk10",
+      "ren2021917_chunk3",
+      "ren2021917_chunk4"
+     ]
+    },
+    {
+     "id": "Q087",
+     "categoria": "regra_atual",
+     "posicao": 1,
+     "top3": [
+      "ren2021919_chunk5",
+      "ren2021919_chunk1",
+      "area20219639_1_chunk13"
+     ]
+    },
+    {
+     "id": "Q088",
+     "categoria": "regra_atual",
+     "posicao": 1,
+     "top3": [
+      "ren2021948_chunk533",
+      "ren2021948_chunk569",
+      "ren2021948_chunk324"
+     ]
+    },
+    {
+     "id": "Q089",
+     "categoria": "regra_atual",
+     "posicao": 1,
+     "top3": [
+      "ren2021957_chunk274",
+      "ren2021957_chunk213",
+      "aren2021957_1_chunk23"
+     ]
+    },
+    {
+     "id": "Q090",
+     "categoria": "regra_atual",
+     "posicao": 1,
+     "top3": [
+      "aren2021963_1_chunk14",
+      "ren2021963_chunk4",
+      "ren2021963_chunk117"
+     ]
+    },
+    {
+     "id": "Q091",
+     "categoria": "regra_atual",
+     "posicao": 1,
+     "top3": [
+      "ren20221045_chunk1",
+      "aren20221045_2_chunk7",
+      "aren20221045_2_chunk6"
+     ]
+    },
+    {
+     "id": "Q092",
+     "categoria": "regra_atual",
+     "posicao": 1,
+     "top3": [
+      "ren2021956_chunk5",
+      "aren20221050_1_chunk31",
+      "ren20221050_chunk1"
+     ]
+    },
+    {
+     "id": "Q093",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20221070_chunk1",
+      "dsp20221070_chunk3",
+      "dsp20221070_chunk5"
+     ]
+    },
+    {
+     "id": "Q094",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp2021723_chunk3",
+      "dsp20223224ti_chunk3",
+      "dsp2021723_chunk1"
+     ]
+    },
+    {
+     "id": "Q095",
+     "categoria": "fato_com_ato",
+     "posicao": null,
+     "top3": [
+      "dsp2022908_chunk3",
+      "dsp2022698_chunk3",
+      "dsp2022908_chunk2"
+     ]
+    },
+    {
+     "id": "Q096",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "prt20226724_chunk1",
+      "aprt20226724_1_chunk54",
+      "prt20226724_chunk3"
+     ]
+    },
+    {
+     "id": "Q097",
+     "categoria": "fato_sem_ato",
+     "posicao": null,
+     "top3": [
+      "dsp2016079_chunk3",
+      "dsp2016680_chunk3",
+      "dsp2016079_chunk2"
+     ]
+    },
+    {
+     "id": "Q098",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "adsp20212976_1_chunk1",
+      "adsp20212976_1_chunk3",
+      "adsp20212976_1_chunk2"
+     ]
+    },
+    {
+     "id": "Q099",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "emdsp20222951_chunk115",
+      "emdsp20222951_chunk105",
+      "adsp20211284_1_chunk33"
+     ]
+    },
+    {
+     "id": "Q100",
+     "categoria": "fato_sem_ato",
+     "posicao": null,
+     "top3": [
+      "dsp20211690_chunk3",
+      "dsp20211690_chunk4",
+      "dsp20211690_chunk1"
+     ]
+    },
+    {
+     "id": "Q101",
+     "categoria": "fato_sem_ato",
+     "posicao": 2,
+     "top3": [
+      "area202211098_1_chunk8",
+      "area202110081_3_chunk7",
+      "area202110080_3_chunk7"
+     ]
+    },
+    {
+     "id": "Q102",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20212079ti_chunk2",
+      "dsp20211874ti_chunk2",
+      "dsp20213321ti_chunk2"
+     ]
+    },
+    {
+     "id": "Q103",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "edt2016sn240_chunk2",
+      "edt2021sn37_chunk2",
+      "dsp20213241ti_chunk3"
+     ]
+    },
+    {
+     "id": "Q104",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20213417ti_chunk3",
+      "dsp20213458ti_chunk3",
+      "dsp20213677ti_chunk3"
+     ]
+    },
+    {
+     "id": "Q105",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp2022928ti_chunk2",
+      "dsp2022928ti_chunk3",
+      "dsp2022927ti_chunk2"
+     ]
+    },
+    {
+     "id": "Q106",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "area202212061_1_chunk7",
+      "area202212061_1_chunk2",
+      "rea202212061ti_chunk7"
+     ]
+    },
+    {
+     "id": "Q107",
+     "categoria": "fato_sem_ato",
+     "posicao": null,
+     "top3": [
+      "area202110018_1_chunk93",
+      "area202110018_1_chunk12",
+      "area202110018_1_chunk2"
+     ]
+    },
+    {
+     "id": "C01",
+     "categoria": "conceitual_sigla",
+     "posicao": null,
+     "top3": [
+      "adsp20211055_1_chunk108",
+      "adsp20162584_1_chunk67",
+      "alel2021003_1_chunk109"
+     ]
+    },
+    {
+     "id": "C02",
+     "categoria": "conceitual_sigla",
+     "posicao": 2,
+     "top3": [
+      "dsp20214010_chunk3",
+      "area202110000_1_chunk4",
+      "area202110001_1_chunk4"
+     ]
+    },
+    {
+     "id": "C03",
+     "categoria": "conceitual_sigla",
+     "posicao": 9,
+     "top3": [
+      "aprt20216658_2_chunk197",
+      "area202110990_1_chunk11",
+      "area202110990_1_chunk31"
+     ]
+    },
+    {
+     "id": "C04",
+     "categoria": "conceitual_sigla",
+     "posicao": null,
+     "top3": [
+      "adsp20211055_1_chunk108",
+      "adsp20162584_1_chunk67",
+      "alel2021003_1_chunk109"
+     ]
+    },
+    {
+     "id": "C05",
+     "categoria": "conceitual_sigla",
+     "posicao": 5,
+     "top3": [
+      "adsp20211055_1_chunk108",
+      "adsp20162584_1_chunk67",
+      "alel2021003_1_chunk109"
+     ]
+    },
+    {
+     "id": "C06",
+     "categoria": "conceitual_sigla",
+     "posicao": 4,
+     "top3": [
+      "nreh20223066_chunk251",
+      "aren20221049_1_chunk15",
+      "aprt20216705_1_chunk28"
+     ]
+    },
+    {
+     "id": "C07",
+     "categoria": "conceitual_parafrase",
+     "posicao": 1,
+     "top3": [
+      "nreh20162026_chunk57",
+      "ndsp20223036_chunk6",
+      "nreh20162100_chunk50"
+     ]
+    },
+    {
+     "id": "C08",
+     "categoria": "conceitual_parafrase",
+     "posicao": null,
+     "top3": [
+      "edt2021sn192_chunk4",
+      "adsp20161707_1_chunk12",
+      "adsp20213626_1_chunk10"
+     ]
+    },
+    {
+     "id": "C09",
+     "categoria": "conceitual_parafrase",
+     "posicao": null,
+     "top3": [
+      "adsp2021609_1_chunk6",
+      "adsp20221487_chunk9",
+      "adsp20223498_1_chunk28"
+     ]
+    },
+    {
+     "id": "C10",
+     "categoria": "conceitual_parafrase",
+     "posicao": null,
+     "top3": [
+      "adsp2022898_1_chunk20",
+      "adsp20223277_1_chunk88",
+      "area202110313_1_chunk33"
+     ]
+    },
+    {
+     "id": "C11",
+     "categoria": "conceitual_parafrase",
+     "posicao": 5,
+     "top3": [
+      "aprt20163851_1_chunk18",
+      "aprt20163852_1_chunk16",
+      "aprt20163854_1_chunk16"
+     ]
+    },
+    {
+     "id": "C12",
+     "categoria": "conceitual_parafrase",
+     "posicao": null,
+     "top3": [
+      "adsp20212904_2_chunk2764",
+      "dsp20211380_chunk2795",
+      "dsp20221352_chunk3"
+     ]
+    },
+    {
+     "id": "C13",
+     "categoria": "conceitual_parafrase",
+     "posicao": 3,
+     "top3": [
+      "adsp20212904_2_chunk1062",
+      "dsp20211380_chunk1033",
+      "rea20165887ti_chunk9"
+     ]
+    },
+    {
+     "id": "C14",
+     "categoria": "conceitual_parafrase",
+     "posicao": 4,
+     "top3": [
+      "adsp2021519_1_chunk8",
+      "adsp2021520_1_chunk8",
+      "adsp2021521_1_chunk8"
+     ]
+    },
+    {
+     "id": "C15",
+     "categoria": "conceitual_parafrase",
+     "posicao": null,
+     "top3": [
+      "dsp20161481_chunk4",
+      "ndsp20222162_chunk11",
+      "ndsp20222163_chunk11"
+     ]
+    },
+    {
+     "id": "C16",
+     "categoria": "conceitual_parafrase",
+     "posicao": 1,
+     "top3": [
+      "prt2016217spde_chunk6",
+      "prt2021835tispde_chunk6",
+      "prt2021959tispde_chunk6"
+     ]
+    },
+    {
+     "id": "C17",
+     "categoria": "conceitual_parafrase",
+     "posicao": null,
+     "top3": [
+      "adsp2016955_1_chunk9",
+      "ndsp2022624_chunk32",
+      "ndsp20213078_chunk23"
+     ]
+    },
+    {
+     "id": "C18",
+     "categoria": "conceitual_parafrase",
+     "posicao": 1,
+     "top3": [
+      "dsp20161977ti_chunk3",
+      "ndsp2022715_chunk11",
+      "dsp20161559ti_chunk4"
+     ]
+    },
+    {
+     "id": "C19",
+     "categoria": "conceitual_parafrase",
+     "posicao": 1,
+     "top3": [
+      "prt2016082mme_chunk6",
+      "prt2016100mme_chunk6",
+      "prt20211088tispde_chunk6"
+     ]
+    }
+   ]
+  },
+  "sem_filtro": {
+   "geral": {
+    "n": 116,
+    "hit@1": 0.6810344827586207,
+    "hit@3": 0.7758620689655172,
+    "hit@5": 0.8448275862068966,
+    "hit@10": 0.8620689655172413,
+    "mrr": 0.7420498084291188
+   },
+   "categorias": {
+    "ato_citado": {
+     "n": 10,
+     "hit@1": 0.9,
+     "hit@3": 0.9,
+     "hit@5": 1.0,
+     "hit@10": 1.0,
+     "mrr": 0.925
+    },
+    "conceitual_parafrase": {
+     "n": 13,
+     "hit@1": 0.3076923076923077,
+     "hit@3": 0.46153846153846156,
+     "hit@5": 0.5384615384615384,
+     "hit@10": 0.5384615384615384,
+     "mrr": 0.3871794871794872
+    },
+    "conceitual_sigla": {
+     "n": 6,
+     "hit@1": 0.0,
+     "hit@3": 0.16666666666666666,
+     "hit@5": 0.3333333333333333,
+     "hit@10": 0.5,
+     "mrr": 0.14444444444444446
+    },
+    "fato_com_ato": {
+     "n": 16,
+     "hit@1": 0.875,
+     "hit@3": 0.875,
+     "hit@5": 0.875,
+     "hit@10": 0.875,
+     "mrr": 0.875
+    },
+    "fato_sem_ato": {
+     "n": 29,
+     "hit@1": 0.7586206896551724,
+     "hit@3": 0.8620689655172413,
+     "hit@5": 0.896551724137931,
+     "hit@10": 0.896551724137931,
+     "mrr": 0.8189655172413793
+    },
+    "norma_citada": {
+     "n": 18,
+     "hit@1": 0.6111111111111112,
+     "hit@3": 0.7222222222222222,
+     "hit@5": 0.8333333333333334,
+     "hit@10": 0.8888888888888888,
+     "mrr": 0.6858024691358025
+    },
+    "norma_por_tema": {
+     "n": 3,
+     "hit@1": 1.0,
+     "hit@3": 1.0,
+     "hit@5": 1.0,
+     "hit@10": 1.0,
+     "mrr": 1.0
+    },
+    "regra_atual": {
+     "n": 6,
+     "hit@1": 0.6666666666666666,
+     "hit@3": 0.8333333333333334,
+     "hit@5": 1.0,
+     "hit@10": 1.0,
+     "mrr": 0.7638888888888888
+    },
+    "revogado": {
+     "n": 15,
+     "hit@1": 0.8,
+     "hit@3": 0.9333333333333333,
+     "hit@5": 1.0,
+     "hit@10": 1.0,
+     "mrr": 0.8833333333333333
+    }
+   },
+   "detalhe": [
+    {
+     "id": "Q01",
+     "categoria": "ato_citado",
+     "posicao": 1,
+     "top3": [
+      "prt20221322tispde_chunk1",
+      "prt20221322tispde_chunk3",
+      "prt20221322tispde_chunk2"
+     ]
+    },
+    {
+     "id": "Q02",
+     "categoria": "ato_citado",
+     "posicao": 1,
+     "top3": [
+      "dsp20222942_chunk1",
+      "dsp20212942ti_chunk1",
+      "adsp20222942_1_chunk36"
+     ]
+    },
+    {
+     "id": "Q03",
+     "categoria": "ato_citado",
+     "posicao": 1,
+     "top3": [
+      "prt20226715_chunk1",
+      "aprt20226715_1_chunk12",
+      "aprt20226715_1_chunk1"
+     ]
+    },
+    {
+     "id": "Q04",
+     "categoria": "ato_citado",
+     "posicao": 1,
+     "top3": [
+      "dsp20161198_chunk1",
+      "adsp20221198_1_chunk11",
+      "dsp20221198_chunk1"
+     ]
+    },
+    {
+     "id": "Q05",
+     "categoria": "ato_citado",
+     "posicao": 1,
+     "top3": [
+      "dsp20211604_chunk1",
+      "dsp20211604_chunk3",
+      "dsp20221604ti_chunk1"
+     ]
+    },
+    {
+     "id": "Q06",
+     "categoria": "ato_citado",
+     "posicao": 1,
+     "top3": [
+      "dsp20213501ti_chunk1",
+      "dsp20223501ti_chunk1",
+      "dsp20213501ti_chunk3"
+     ]
+    },
+    {
+     "id": "Q07",
+     "categoria": "ato_citado",
+     "posicao": 1,
+     "top3": [
+      "prt2021528mme_chunk1",
+      "prt2021528mme_chunk2",
+      "prt2021528mme_chunk8"
+     ]
+    },
+    {
+     "id": "Q08",
+     "categoria": "ato_citado",
+     "posicao": 4,
+     "top3": [
+      "area202211324_1_chunk96",
+      "nreh20223067_chunk209",
+      "ndsp20221425_chunk37"
+     ]
+    },
+    {
+     "id": "Q09",
+     "categoria": "ato_citado",
+     "posicao": 1,
+     "top3": [
+      "areh20212852_1_chunk17",
+      "areh20212852_1_chunk23",
+      "reh20212852ti_chunk1"
+     ]
+    },
+    {
+     "id": "Q10",
+     "categoria": "ato_citado",
+     "posicao": 1,
+     "top3": [
+      "reh20162146ti_chunk1",
+      "nreh20162146_chunk100",
+      "nreh20162146_chunk105"
+     ]
+    },
+    {
+     "id": "Q11",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20222660ti_chunk3",
+      "dsp20222660ti_chunk1",
+      "dsp20222660ti_chunk5"
+     ]
+    },
+    {
+     "id": "Q12",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "emdsp20223350_chunk95",
+      "emdsp20223350_chunk104",
+      "emdsp20223350_chunk64"
+     ]
+    },
+    {
+     "id": "Q13",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20213501ti_chunk1",
+      "dsp20213501ti_chunk3",
+      "dsp20213501ti_chunk2"
+     ]
+    },
+    {
+     "id": "Q14",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20161321ti_chunk3",
+      "dsp20161321ti_chunk1",
+      "dsp20161321ti_chunk2"
+     ]
+    },
+    {
+     "id": "Q15",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp2021477ti_chunk2",
+      "dsp2021477ti_chunk1",
+      "adsp20223010_chunk14"
+     ]
+    },
+    {
+     "id": "Q16",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20162592ti_chunk1",
+      "dsp20212592ti_chunk1",
+      "adsp20222381_1_chunk5"
+     ]
+    },
+    {
+     "id": "Q17",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20222159ti_chunk2",
+      "dsp20222159ti_chunk3",
+      "dsp20222159ti_chunk1"
+     ]
+    },
+    {
+     "id": "Q18",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20162464ti_chunk3",
+      "dsp20162464ti_chunk1",
+      "dsp20162464ti_chunk2"
+     ]
+    },
+    {
+     "id": "Q19",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20221470ti_chunk1",
+      "area202110199_1_chunk18",
+      "area202211798_1_chunk3"
+     ]
+    },
+    {
+     "id": "Q20",
+     "categoria": "fato_com_ato",
+     "posicao": null,
+     "top3": [
+      "prt20163825_chunk2",
+      "prt20163839_chunk3",
+      "prt20163907_chunk3"
+     ]
+    },
+    {
+     "id": "Q21",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20214042ti_chunk2",
+      "dsp20214042ti_chunk3",
+      "dsp20214043ti_chunk3"
+     ]
+    },
+    {
+     "id": "Q22",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "adsp20212891_1_chunk20",
+      "emdsp20223364_chunk9",
+      "adsp20212891_1_chunk12"
+     ]
+    },
+    {
+     "id": "Q23",
+     "categoria": "fato_sem_ato",
+     "posicao": 2,
+     "top3": [
+      "ndsp2021034_chunk645",
+      "area202211250_1_chunk27",
+      "area202211251_1_chunk27"
+     ]
+    },
+    {
+     "id": "Q24",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "area202211617_1_chunk2",
+      "rea202211617ti_chunk1",
+      "area202211617_1_chunk3"
+     ]
+    },
+    {
+     "id": "Q25",
+     "categoria": "fato_sem_ato",
+     "posicao": 2,
+     "top3": [
+      "dsp20213830ti_chunk3",
+      "area202110358_1_chunk4",
+      "rea202110358ti_chunk7"
+     ]
+    },
+    {
+     "id": "Q26",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "rea202213034ti_chunk1",
+      "rea202213034ti_chunk7",
+      "rea202213034ti_chunk4"
+     ]
+    },
+    {
+     "id": "Q27",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "area202212041_1_chunk4",
+      "area202212041_1_chunk48",
+      "area202212041_1_chunk2"
+     ]
+    },
+    {
+     "id": "Q28",
+     "categoria": "fato_sem_ato",
+     "posicao": 4,
+     "top3": [
+      "rea202110534ti_chunk6",
+      "rea202110535ti_chunk6",
+      "rea202110550ti_chunk6"
+     ]
+    },
+    {
+     "id": "Q29",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "area20165789_1_chunk3",
+      "area202212308_1_chunk6",
+      "area20165789_1_chunk2"
+     ]
+    },
+    {
+     "id": "Q30",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20223034ti_chunk2",
+      "dsp20223034ti_chunk4",
+      "dsp20223034ti_chunk1"
+     ]
+    },
+    {
+     "id": "Q31",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "area20219658_1_chunk97",
+      "area20219658_1_chunk98",
+      "area20219657_1_chunk97"
+     ]
+    },
+    {
+     "id": "Q32",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp2021041ti_chunk3",
+      "dsp20211143_chunk3",
+      "dsp20211012ti_chunk2"
+     ]
+    },
+    {
+     "id": "Q33",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "prt2021482tispde_chunk3",
+      "prt20221167tispde_chunk3",
+      "prt20221167tispde_chunk4"
+     ]
+    },
+    {
+     "id": "Q34",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "prt20221787tispde_chunk3",
+      "prt20221789tispde_chunk3",
+      "prt20221803tispde_chunk3"
+     ]
+    },
+    {
+     "id": "Q35",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "prt2021612tispde_chunk3",
+      "adsp20221411_1_chunk4",
+      "prt2021548tispde_chunk3"
+     ]
+    },
+    {
+     "id": "Q36",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20212089ti_chunk3",
+      "dsp20212089ti_chunk2",
+      "dsp20212090ti_chunk3"
+     ]
+    },
+    {
+     "id": "Q37",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20211569ti_chunk3",
+      "dsp20211717ti_chunk3",
+      "dsp20212435ti_chunk3"
+     ]
+    },
+    {
+     "id": "Q38",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "area202110932_1_chunk14",
+      "rea202110932ti_chunk6",
+      "area202110932_1_chunk9"
+     ]
+    },
+    {
+     "id": "Q39",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "area202211313_1_chunk12",
+      "rea202211313ti_chunk1",
+      "area202211313_1_chunk6"
+     ]
+    },
+    {
+     "id": "Q40",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "nreh20162093_chunk4",
+      "nreh20212909_chunk27",
+      "nreh20162093_chunk2"
+     ]
+    },
+    {
+     "id": "Q41",
+     "categoria": "revogado",
+     "posicao": 1,
+     "top3": [
+      "res2016436ana_chunk1",
+      "dsp2021436_chunk1",
+      "res2016005cj_chunk1"
+     ]
+    },
+    {
+     "id": "Q42",
+     "categoria": "revogado",
+     "posicao": 1,
+     "top3": [
+      "rea202110230ti_chunk1",
+      "area202110230_1_chunk2",
+      "area202110230_1_chunk1"
+     ]
+    },
+    {
+     "id": "Q43",
+     "categoria": "revogado",
+     "posicao": 1,
+     "top3": [
+      "rea202110062ti_chunk13",
+      "rea202110062ti_chunk12",
+      "rea202110054ti_chunk13"
+     ]
+    },
+    {
+     "id": "Q44",
+     "categoria": "revogado",
+     "posicao": 1,
+     "top3": [
+      "rea20219796ti_chunk7",
+      "rea20219795ti_chunk7",
+      "rea20219797ti_chunk7"
+     ]
+    },
+    {
+     "id": "Q45",
+     "categoria": "revogado",
+     "posicao": 2,
+     "top3": [
+      "prt2021360_chunk4",
+      "prt2022365_chunk4",
+      "prt2022365_chunk3"
+     ]
+    },
+    {
+     "id": "Q46",
+     "categoria": "revogado",
+     "posicao": 1,
+     "top3": [
+      "area202212304_1_chunk2",
+      "rea202212304ti_chunk8",
+      "rea202212300ti_chunk8"
+     ]
+    },
+    {
+     "id": "Q057",
+     "categoria": "norma_citada",
+     "posicao": 1,
+     "top3": [
+      "ren20221009_chunk1",
+      "ren20221018_chunk1",
+      "ren20221015_chunk31"
+     ]
+    },
+    {
+     "id": "Q058",
+     "categoria": "norma_citada",
+     "posicao": 1,
+     "top3": [
+      "ren2021959_chunk4",
+      "ren2021959_chunk1",
+      "ren2021959_chunk16"
+     ]
+    },
+    {
+     "id": "Q059",
+     "categoria": "norma_citada",
+     "posicao": 5,
+     "top3": [
+      "adsp20221044_chunk32",
+      "adsp2016633_1_chunk41",
+      "adsp2016633_1_chunk20"
+     ]
+    },
+    {
+     "id": "Q060",
+     "categoria": "norma_citada",
+     "posicao": 2,
+     "top3": [
+      "acp2022040ti_chunk2",
+      "ren2021954_chunk1",
+      "acp2022040ti_chunk4"
+     ]
+    },
+    {
+     "id": "Q061",
+     "categoria": "norma_citada",
+     "posicao": 1,
+     "top3": [
+      "ren20221048_chunk1",
+      "aren20221048_1_chunk54",
+      "aren20221048_1_chunk26"
+     ]
+    },
+    {
+     "id": "Q062",
+     "categoria": "norma_citada",
+     "posicao": 9,
+     "top3": [
+      "ren20221025_chunk1",
+      "aren20221025_1_chunk2",
+      "aren20221025_1_chunk3"
+     ]
+    },
+    {
+     "id": "Q063",
+     "categoria": "norma_citada",
+     "posicao": null,
+     "top3": [
+      "ren2016742_chunk7",
+      "ren2021953_chunk20",
+      "ren2016717_chunk25"
+     ]
+    },
+    {
+     "id": "Q064",
+     "categoria": "norma_citada",
+     "posicao": 1,
+     "top3": [
+      "aren20221022_2_chunk66",
+      "aren20221022_2_1_chunk30",
+      "aren20221022_2_chunk78"
+     ]
+    },
+    {
+     "id": "Q065",
+     "categoria": "norma_citada",
+     "posicao": 1,
+     "top3": [
+      "ren2016731_chunk1",
+      "aren2016731_1_chunk65",
+      "aren2016731_1_chunk38"
+     ]
+    },
+    {
+     "id": "Q066",
+     "categoria": "norma_citada",
+     "posicao": 5,
+     "top3": [
+      "ren20221050_chunk1",
+      "aren20221050_1_chunk51",
+      "aren20221050_1_chunk49"
+     ]
+    },
+    {
+     "id": "Q067",
+     "categoria": "norma_citada",
+     "posicao": 1,
+     "top3": [
+      "ren20221039_chunk1",
+      "ren20221039_chunk2",
+      "aren20221039_1_chunk7"
+     ]
+    },
+    {
+     "id": "Q068",
+     "categoria": "norma_citada",
+     "posicao": 1,
+     "top3": [
+      "ren20221034_chunk1",
+      "ren20221034_chunk19",
+      "aren20221034_1_chunk2"
+     ]
+    },
+    {
+     "id": "Q069",
+     "categoria": "norma_citada",
+     "posicao": 1,
+     "top3": [
+      "ren2021917_chunk1",
+      "ren2021917_chunk3",
+      "ren2021917_chunk4"
+     ]
+    },
+    {
+     "id": "Q070",
+     "categoria": "norma_citada",
+     "posicao": 3,
+     "top3": [
+      "adsp20223049_1_chunk20",
+      "ren2021917_chunk3",
+      "ren2021916_chunk1"
+     ]
+    },
+    {
+     "id": "Q071",
+     "categoria": "norma_citada",
+     "posicao": 1,
+     "top3": [
+      "ren20221003_chunk1",
+      "aren20221020_1_chunk49",
+      "ren20221020_chunk7"
+     ]
+    },
+    {
+     "id": "Q072",
+     "categoria": "norma_citada",
+     "posicao": 1,
+     "top3": [
+      "ren20221012_chunk1",
+      "aren20221012_1_chunk24",
+      "aren20221012_1_chunk39"
+     ]
+    },
+    {
+     "id": "Q073",
+     "categoria": "norma_citada",
+     "posicao": null,
+     "top3": [
+      "ren20221040_chunk1",
+      "aren20221040_1_chunk2",
+      "ren20221040_chunk4"
+     ]
+    },
+    {
+     "id": "Q074",
+     "categoria": "norma_citada",
+     "posicao": 1,
+     "top3": [
+      "aren20221045_2_chunk94",
+      "aren20221045_2_chunk84",
+      "aren20221045_2_chunk55"
+     ]
+    },
+    {
+     "id": "Q075",
+     "categoria": "revogado",
+     "posicao": 1,
+     "top3": [
+      "ren2016748_chunk1",
+      "adsp2016748_1_chunk7",
+      "aren2016748_1_chunk82"
+     ]
+    },
+    {
+     "id": "Q076",
+     "categoria": "revogado",
+     "posicao": 1,
+     "top3": [
+      "ren2021947_chunk1",
+      "ats2022004ti_chunk2",
+      "aren2021947_3_chunk13"
+     ]
+    },
+    {
+     "id": "Q077",
+     "categoria": "revogado",
+     "posicao": 1,
+     "top3": [
+      "ren2016700_chunk1",
+      "dsp20163079ti_chunk2",
+      "dsp20162296ti_chunk2"
+     ]
+    },
+    {
+     "id": "Q078",
+     "categoria": "revogado",
+     "posicao": 1,
+     "top3": [
+      "ren2016718_chunk1",
+      "aren2016718_1_chunk4",
+      "aren2016718_1_chunk7"
+     ]
+    },
+    {
+     "id": "Q079",
+     "categoria": "revogado",
+     "posicao": 4,
+     "top3": [
+      "aren2021944_1_chunk81",
+      "aren2021936_1_chunk47",
+      "ren2021936_chunk4"
+     ]
+    },
+    {
+     "id": "Q080",
+     "categoria": "revogado",
+     "posicao": 1,
+     "top3": [
+      "ren20221043_chunk1",
+      "aren20221043_1_chunk2",
+      "aren20221043_1_chunk17"
+     ]
+    },
+    {
+     "id": "Q081",
+     "categoria": "revogado",
+     "posicao": 2,
+     "top3": [
+      "aren20221007_1_chunk21",
+      "ren2021960_chunk1",
+      "ren2021960_chunk4"
+     ]
+    },
+    {
+     "id": "Q082",
+     "categoria": "revogado",
+     "posicao": 1,
+     "top3": [
+      "ren2021925_chunk1",
+      "ren2021925_chunk3",
+      "aren2021925_1_chunk5"
+     ]
+    },
+    {
+     "id": "Q083",
+     "categoria": "revogado",
+     "posicao": 1,
+     "top3": [
+      "ndsp20212424_chunk2",
+      "ndsp20162680_chunk2",
+      "ndsp20212424_chunk1"
+     ]
+    },
+    {
+     "id": "Q084",
+     "categoria": "norma_por_tema",
+     "posicao": 1,
+     "top3": [
+      "aren2021959_1_chunk59",
+      "ren2021959_chunk13",
+      "ren2021959_chunk17"
+     ]
+    },
+    {
+     "id": "Q085",
+     "categoria": "norma_por_tema",
+     "posicao": 1,
+     "top3": [
+      "aren20221044_1_chunk1",
+      "ren2021916_chunk14",
+      "aprt20216705_2_chunk6"
+     ]
+    },
+    {
+     "id": "Q086",
+     "categoria": "norma_por_tema",
+     "posicao": 1,
+     "top3": [
+      "ren2021917_chunk10",
+      "ren2021917_chunk3",
+      "ren2021917_chunk4"
+     ]
+    },
+    {
+     "id": "Q087",
+     "categoria": "regra_atual",
+     "posicao": 4,
+     "top3": [
+      "aren2016740_1_chunk27",
+      "aren2016740_1_chunk23",
+      "ren2016740_chunk1"
+     ]
+    },
+    {
+     "id": "Q088",
+     "categoria": "regra_atual",
+     "posicao": 1,
+     "top3": [
+      "ren2021948_chunk533",
+      "ren2021948_chunk569",
+      "ren2021948_chunk324"
+     ]
+    },
+    {
+     "id": "Q089",
+     "categoria": "regra_atual",
+     "posicao": 1,
+     "top3": [
+      "ren2021957_chunk274",
+      "ren2021957_chunk213",
+      "aren2021957_1_chunk23"
+     ]
+    },
+    {
+     "id": "Q090",
+     "categoria": "regra_atual",
+     "posicao": 1,
+     "top3": [
+      "aren2021963_1_chunk14",
+      "ren2021963_chunk4",
+      "aren2016715_1_chunk2"
+     ]
+    },
+    {
+     "id": "Q091",
+     "categoria": "regra_atual",
+     "posicao": 1,
+     "top3": [
+      "ren20221045_chunk1",
+      "aren20221045_2_chunk7",
+      "aren20221045_2_chunk6"
+     ]
+    },
+    {
+     "id": "Q092",
+     "categoria": "regra_atual",
+     "posicao": 3,
+     "top3": [
+      "aren2021925_1_chunk46",
+      "aren2021925_1_chunk22",
+      "ren2021956_chunk5"
+     ]
+    },
+    {
+     "id": "Q093",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20221070_chunk1",
+      "dsp20221070_chunk3",
+      "dsp20221070_chunk5"
+     ]
+    },
+    {
+     "id": "Q094",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp2021723_chunk3",
+      "dsp20223224ti_chunk3",
+      "dsp2021723_chunk1"
+     ]
+    },
+    {
+     "id": "Q095",
+     "categoria": "fato_com_ato",
+     "posicao": null,
+     "top3": [
+      "dsp2022908_chunk3",
+      "dsp2022698_chunk3",
+      "dsp2022908_chunk2"
+     ]
+    },
+    {
+     "id": "Q096",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "prt20226724_chunk1",
+      "aprt20226724_1_chunk54",
+      "prt20226724_chunk3"
+     ]
+    },
+    {
+     "id": "Q097",
+     "categoria": "fato_sem_ato",
+     "posicao": null,
+     "top3": [
+      "dsp2016079_chunk3",
+      "dsp2016680_chunk3",
+      "dsp2016079_chunk2"
+     ]
+    },
+    {
+     "id": "Q098",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "adsp20212976_1_chunk1",
+      "adsp20212976_1_chunk3",
+      "adsp20212976_1_chunk2"
+     ]
+    },
+    {
+     "id": "Q099",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "emdsp20222951_chunk115",
+      "emdsp20222951_chunk105",
+      "adsp20211284_1_chunk33"
+     ]
+    },
+    {
+     "id": "Q100",
+     "categoria": "fato_sem_ato",
+     "posicao": null,
+     "top3": [
+      "dsp20211690_chunk3",
+      "dsp20211690_chunk4",
+      "dsp20211690_chunk1"
+     ]
+    },
+    {
+     "id": "Q101",
+     "categoria": "fato_sem_ato",
+     "posicao": 2,
+     "top3": [
+      "area202211098_1_chunk8",
+      "area202110081_3_chunk7",
+      "area202110080_3_chunk7"
+     ]
+    },
+    {
+     "id": "Q102",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20212079ti_chunk2",
+      "dsp20211874ti_chunk2",
+      "dsp20213321ti_chunk2"
+     ]
+    },
+    {
+     "id": "Q103",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "edt2016sn240_chunk2",
+      "edt2021sn37_chunk2",
+      "dsp20213241ti_chunk3"
+     ]
+    },
+    {
+     "id": "Q104",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20213417ti_chunk3",
+      "dsp20213458ti_chunk3",
+      "dsp20213677ti_chunk3"
+     ]
+    },
+    {
+     "id": "Q105",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp2022928ti_chunk2",
+      "dsp2022928ti_chunk3",
+      "dsp2022927ti_chunk2"
+     ]
+    },
+    {
+     "id": "Q106",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "area202212061_1_chunk7",
+      "area202212061_1_chunk2",
+      "rea202212061ti_chunk7"
+     ]
+    },
+    {
+     "id": "Q107",
+     "categoria": "fato_sem_ato",
+     "posicao": null,
+     "top3": [
+      "area202110018_1_chunk93",
+      "area202110018_1_chunk12",
+      "area202110018_1_chunk2"
+     ]
+    },
+    {
+     "id": "C01",
+     "categoria": "conceitual_sigla",
+     "posicao": null,
+     "top3": [
+      "adsp20211055_1_chunk108",
+      "adsp20162584_1_chunk67",
+      "alel2021003_1_chunk109"
+     ]
+    },
+    {
+     "id": "C02",
+     "categoria": "conceitual_sigla",
+     "posicao": 2,
+     "top3": [
+      "dsp20214010_chunk3",
+      "area202110000_1_chunk4",
+      "area202110001_1_chunk4"
+     ]
+    },
+    {
+     "id": "C03",
+     "categoria": "conceitual_sigla",
+     "posicao": null,
+     "top3": [
+      "aren2016728_2_chunk210",
+      "aren2016728_2_chunk209",
+      "aprt20216658_2_chunk197"
+     ]
+    },
+    {
+     "id": "C04",
+     "categoria": "conceitual_sigla",
+     "posicao": null,
+     "top3": [
+      "adsp20211055_1_chunk108",
+      "adsp20162584_1_chunk67",
+      "alel2021003_1_chunk109"
+     ]
+    },
+    {
+     "id": "C05",
+     "categoria": "conceitual_sigla",
+     "posicao": 5,
+     "top3": [
+      "adsp20211055_1_chunk108",
+      "adsp20162584_1_chunk67",
+      "alel2021003_1_chunk109"
+     ]
+    },
+    {
+     "id": "C06",
+     "categoria": "conceitual_sigla",
+     "posicao": 6,
+     "top3": [
+      "nreh20223066_chunk251",
+      "aren2021912_2_chunk11",
+      "aren20221049_1_chunk15"
+     ]
+    },
+    {
+     "id": "C07",
+     "categoria": "conceitual_parafrase",
+     "posicao": 2,
+     "top3": [
+      "aren2021913_3_chunk26",
+      "nreh20162026_chunk57",
+      "ndsp20223036_chunk6"
+     ]
+    },
+    {
+     "id": "C08",
+     "categoria": "conceitual_parafrase",
+     "posicao": null,
+     "top3": [
+      "edt2021sn192_chunk4",
+      "adsp20161707_1_chunk12",
+      "adsp20213626_1_chunk10"
+     ]
+    },
+    {
+     "id": "C09",
+     "categoria": "conceitual_parafrase",
+     "posicao": null,
+     "top3": [
+      "adsp2021609_1_chunk6",
+      "adsp20221487_chunk9",
+      "adsp20223498_1_chunk28"
+     ]
+    },
+    {
+     "id": "C10",
+     "categoria": "conceitual_parafrase",
+     "posicao": null,
+     "top3": [
+      "adsp2022898_1_chunk20",
+      "adsp20223277_1_chunk88",
+      "area202110313_1_chunk33"
+     ]
+    },
+    {
+     "id": "C11",
+     "categoria": "conceitual_parafrase",
+     "posicao": 5,
+     "top3": [
+      "aprt20163851_1_chunk18",
+      "aprt20163852_1_chunk16",
+      "aprt20163854_1_chunk16"
+     ]
+    },
+    {
+     "id": "C12",
+     "categoria": "conceitual_parafrase",
+     "posicao": null,
+     "top3": [
+      "adsp20212904_2_chunk2764",
+      "dsp20211380_chunk2795",
+      "dsp20221352_chunk3"
+     ]
+    },
+    {
+     "id": "C13",
+     "categoria": "conceitual_parafrase",
+     "posicao": 3,
+     "top3": [
+      "adsp20212904_2_chunk1062",
+      "dsp20211380_chunk1033",
+      "rea20165887ti_chunk9"
+     ]
+    },
+    {
+     "id": "C14",
+     "categoria": "conceitual_parafrase",
+     "posicao": 1,
+     "top3": [
+      "prt2016281mme_chunk7",
+      "prt2016281mme_chunk6",
+      "prt2016610mme_chunk4"
+     ]
+    },
+    {
+     "id": "C15",
+     "categoria": "conceitual_parafrase",
+     "posicao": null,
+     "top3": [
+      "dsp20161481_chunk4",
+      "ndsp20222162_chunk11",
+      "ndsp20222163_chunk11"
+     ]
+    },
+    {
+     "id": "C16",
+     "categoria": "conceitual_parafrase",
+     "posicao": 1,
+     "top3": [
+      "prt2016217spde_chunk6",
+      "prt2021835tispde_chunk6",
+      "prt2021959tispde_chunk6"
+     ]
+    },
+    {
+     "id": "C17",
+     "categoria": "conceitual_parafrase",
+     "posicao": null,
+     "top3": [
+      "adsp2016955_1_chunk9",
+      "ndsp2022624_chunk32",
+      "ndsp20213078_chunk23"
+     ]
+    },
+    {
+     "id": "C18",
+     "categoria": "conceitual_parafrase",
+     "posicao": 1,
+     "top3": [
+      "dsp20161977ti_chunk3",
+      "ndsp2022715_chunk11",
+      "dsp20161559ti_chunk4"
+     ]
+    },
+    {
+     "id": "C19",
+     "categoria": "conceitual_parafrase",
+     "posicao": 1,
+     "top3": [
+      "prt2016082mme_chunk6",
+      "prt2016100mme_chunk6",
+      "prt20211088tispde_chunk6"
+     ]
+    }
+   ]
+  }
+ }
+}
