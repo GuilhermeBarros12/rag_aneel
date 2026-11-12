@@ -43,3 +43,4 @@ LLM: `groq/qwen/qwen3.8-27b`.
 | Recusa indevida (deve responder) | 0.217 |
 | Termos esperados presentes | 0.739 |
 | Citou um trecho correto | 0.804 |
+| Segundos por resposta (média) | 0.0 |

@@ -1023,7 +1023,9 @@
    ],
    "abstencao_correta": 1.0,
    "recusa_indevida": 0.2391304347826087,
-   "termos_presentes": 0.6304347826086957
+   "termos_presentes": 0.6521739130434783,
+   "citou_trecho_correto": 0.0,
+   "segundos_por_resposta": 0.0
   },
   "detalhe": [
    {
@@ -1348,7 +1350,7 @@
     "llm": "groq/openai/gpt-oss-120b",
     "resposta": "O CNPJ da **Delta Fund V Comercializadora de Energia S.A.** é **40.594.268/0001‑13**.\n\n- **DSP – DESPACHO 2089/2021** – Trecho 1: “Delta Fund V Comercializadora de Energia S.A., inscrita no CNPJ/MF sob nº **40.594.268/0001‑13** …”  \n- **DSP – DESPACHO 2089/2021** – Trecho 2: “autorizar a empresa Delta Fund V Comercializadora de Energia S.A., inscrita no CNPJ/MF sob nº **40.594.268/0001‑13** …”\n\n*Situação dos documentos: NÃO CONSTA REVOGAÇÃO EXPRESSA.*",
     "recusou": false,
-    "termos_ok": false
+    "termos_ok": true
    },
    {
     "id": "Q37",

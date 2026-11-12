@@ -1530,7 +1530,8 @@
    "abstencao_correta": 1.0,
    "recusa_indevida": 0.21739130434782608,
    "termos_presentes": 0.7391304347826086,
-   "citou_trecho_correto": 0.8043478260869565
+   "citou_trecho_correto": 0.8043478260869565,
+   "segundos_por_resposta": 0.0
   },
   "detalhe": [
    {
