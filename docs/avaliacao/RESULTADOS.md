@@ -140,11 +140,30 @@ Recuperação no conjunto de ouro v1, busca léxica ([politica_intermediaria.md]
 
 As perguntas sobre revogados que continuam perdidas não citam o ato, como "qual empresa foi autorizada a explorar a UFV Paranaíba 10?". É o custo aceito da política: evitar que um ato revogado responda a uma pergunta sobre a regra atual.
 
-## Conjunto de ouro v2 (rascunho, 11/11/2026)
+## Conjunto de ouro v2 (congelado em 12/11/2026)
 
-[128 perguntas](conjunto_ouro_v2_rascunho.md), ainda não congeladas. As 56 da versão 1 continuam iguais. Entram 72 novas: 18 sobre Resoluções Normativas citadas pelo número, 3 pelo tema, 6 de regra atual (a norma vigente e a revogada tratam do mesmo tema), 9 sobre atos revogados, 16 de outros atos sorteados, 19 conceituais revisadas e 2 de recusa. Cada resposta foi conferida no texto indexado.
+[127 perguntas congeladas](conjunto_ouro_v2.md). O rascunho tinha 128 ([conjunto_ouro_v2_rascunho.md](conjunto_ouro_v2_rascunho.md)); na revisão, a C07 saiu porque a evidência aparece no rodapé de mais de 10 mil chunks, e quatro perguntas passaram a exigir termos mais estritos (C04, C08, C10) ou menos literais (Q082).
+
+As 56 da versão 1 continuam iguais. O rascunho trazia 72 novas: 18 sobre Resoluções Normativas citadas pelo número, 3 pelo tema, 6 de regra atual (a norma vigente e a revogada tratam do mesmo tema), 9 sobre atos revogados, 16 de outros atos sorteados, 19 conceituais revisadas e 2 de recusa. Cada resposta foi conferida no texto indexado.
 
 Prévia da recuperação com a política intermediária ([previa_v2_lexica.md](experimentos/previa_v2_lexica.md)): hit@5 de 0,836 nas 116 perguntas com documento ou evidência esperada. Nas 6 de regra atual, o hit@5 foi 1,000: o sistema achou a norma vigente, e não a revogada.
+
+Recuperação no conjunto congelado, com o sistema padrão: busca léxica, política intermediária e expansão de contexto ([v2_recuperacao.md](experimentos/v2_recuperacao.md)).
+
+| Grupo | n | hit@5 | MRR |
+|---|---|---|---|
+| Todas com documento ou evidência esperada | 115 | 0,835 | 0,734 |
+| Ato citado pelo número | 10 | 1,000 | 0,925 |
+| Resolução Normativa citada pelo número | 18 | 0,833 | 0,686 |
+| Resolução Normativa pelo tema | 3 | 1,000 | 1,000 |
+| Regra atual | 6 | 1,000 | 1,000 |
+| Ato revogado | 15 | 0,867 | 0,750 |
+| Fato específico, citando o ato | 16 | 0,875 | 0,875 |
+| Fato específico, sem citar o ato | 29 | 0,897 | 0,819 |
+| Conceitual: paráfrase | 12 | 0,500 | 0,315 |
+| Conceitual: sigla | 6 | 0,500 | 0,177 |
+
+A resposta chega ao LLM em 97 das 115 perguntas, com contexto médio de 6,3 mil caracteres. O ponto fraco são as conceituais: sem citar um ato, a busca léxica acha a sigla ou o tema em milhares de chunks e raramente no que define o termo. A medição com LLM nas 127 perguntas ainda não foi feita.
 
 ## Comparação de LLMs (11/11/2026)
 
