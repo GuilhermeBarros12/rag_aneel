@@ -1,9 +1,9 @@
 # Resultados: etapa1_lexica_llm
 
 Executado em 2026-11-09T14:56:56.422000+00:00. Conjunto: `conjunto_ouro.json`.
-Embedding: `sentence-transformers/paraphrase-multilingual-mpnet-base-v2`. Chunks recuperados pelo sistema: 5.
+Busca: `lexica`. Embedding: `sentence-transformers/paraphrase-multilingual-mpnet-base-v2`. Chunks recuperados pelo sistema: 5. Política de revogados: `intermediaria`.
 
-## Recuperação do sistema entregue (exclui revogados)
+## Recuperação excluindo revogados
 
 | Grupo | n | hit@1 | hit@3 | hit@5 | hit@10 | MRR |
 |---|---|---|---|---|---|---|
@@ -13,7 +13,7 @@ Embedding: `sentence-transformers/paraphrase-multilingual-mpnet-base-v2`. Chunks
 | fato_sem_ato | 18 | 0.833 | 0.944 | 1.000 | 1.000 | 0.903 |
 | revogado | 6 | 0.167 | 0.167 | 0.167 | 0.167 | 0.167 |
 
-## Recuperação sem o filtro de revogados
+## Recuperação incluindo revogados
 
 | Grupo | n | hit@1 | hit@3 | hit@5 | hit@10 | MRR |
 |---|---|---|---|---|---|---|
@@ -31,4 +31,6 @@ LLM: `groq/openai/gpt-oss-120b`.
 |---|---|
 | Abstenção correta (deve recusar) | 1.000 |
 | Recusa indevida (deve responder) | 0.326 |
-| Termos esperados presentes | 0.587 |
+| Termos esperados presentes | 0.609 |
+| Citou um trecho correto | 0.000 |
+| Segundos por resposta (média) | 0.0 |

@@ -40,7 +40,8 @@ def normalizar(texto: str) -> str:
     """Minúsculas, sem acentos, sem ponto de milhar e com espaços simples, para comparar textos."""
     # hífens e travessões tipográficos (U+2010 a U+2015 e o sinal de menos U+2212) viram "-"
     texto = re.sub("[‐-―−]", "-", texto)
-    texto = re.sub(r"(?<=\d)\.(?=\d{3}(?!\d))", "", texto)  # "1.045" e "1045" passam a ser iguais
+    # separador de milhar: "1.045", "1 045" e "1045" passam a ser iguais (inclui espaços finos e sem quebra)
+    texto = re.sub(r"(?<=\d)[.\s  ](?=\d{3}(?!\d))", "", texto)
     texto = unicodedata.normalize("NFKD", texto).encode("ascii", "ignore").decode()
     return re.sub(r"\s+", " ", texto).lower()
 

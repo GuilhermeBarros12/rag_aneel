@@ -1023,7 +1023,9 @@
    ],
    "abstencao_correta": 1.0,
    "recusa_indevida": 0.32608695652173914,
-   "termos_presentes": 0.5869565217391305
+   "termos_presentes": 0.6086956521739131,
+   "citou_trecho_correto": 0.0,
+   "segundos_por_resposta": 0.0
   },
   "detalhe": [
    {
@@ -1348,7 +1350,7 @@
     "llm": "groq/openai/gpt-oss-120b",
     "resposta": "O CNPJ da Delta Fund V Comercializadora de Energia S.A. é **40.594.268/0001‑13**.  \nDe acordo com o [Trecho 1] e o [Trecho 2].",
     "recusou": false,
-    "termos_ok": false
+    "termos_ok": true
    },
    {
     "id": "Q37",

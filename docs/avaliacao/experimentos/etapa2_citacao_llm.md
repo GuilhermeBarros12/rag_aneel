@@ -31,6 +31,6 @@ LLM: `groq/openai/gpt-oss-120b`.
 |---|---|
 | Abstenção correta (deve recusar) | 1.000 |
 | Recusa indevida (deve responder) | 0.239 |
-| Termos esperados presentes | 0.652 |
+| Termos esperados presentes | 0.674 |
 | Citou um trecho correto | 0.000 |
 | Segundos por resposta (média) | 0.0 |

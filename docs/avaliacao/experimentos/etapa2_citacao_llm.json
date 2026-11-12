@@ -1023,7 +1023,7 @@
    ],
    "abstencao_correta": 1.0,
    "recusa_indevida": 0.2391304347826087,
-   "termos_presentes": 0.6521739130434783,
+   "termos_presentes": 0.6739130434782609,
    "citou_trecho_correto": 0.0,
    "segundos_por_resposta": 0.0
   },
@@ -1188,7 +1188,7 @@
     "llm": "groq/openai/gpt-oss-120b",
     "resposta": "A potência instalada da UFV RES Russas IX, conforme o Despacho nº 2.464, de 2016, é **24 000 kW**【DSP - DESPACHO 2464/2016 [Trecho 1]】.  \n\n*Observação:* O documento não apresenta indicação de revogação, anulação ou suspensão; sua situação é “NÃO CONSTA REVOGAÇÃO EXPRESSA”.",
     "recusou": false,
-    "termos_ok": false
+    "termos_ok": true
    },
    {
     "id": "Q19",
