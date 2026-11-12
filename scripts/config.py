@@ -86,9 +86,18 @@ GEMINI_MODELO = os.getenv("GEMINI_MODEL", "gemini-3.8-flash")
 GROQ_MODELO   = os.getenv("GROQ_MODEL", "openai/gpt-oss-120b")
 TEMPERATURA   = 0.0  # respostas o mais repetíveis possível, nos dois LLMs
 MAX_CHARS_TRECHO = 4000  # corta chunks de tabela muito longos ao montar o prompt
+
+# Expansão de contexto: a busca acha o documento certo, mas nem sempre o trecho com a resposta.
+#   "documento" — documento curto vai inteiro ao LLM; de documento longo vão os trechos
+#                 encontrados e os vizinhos imediatos
+#   "nenhuma"   — só os trechos encontrados pela busca
+EXPANSAO_CONTEXTO = os.getenv("EXPANSAO_CONTEXTO", "nenhuma")
+LIMITE_DOC_CURTO_CHARS = 6000   # documento até este tamanho vai inteiro
+VIZINHOS = 1                    # trechos vizinhos incluídos em documentos longos
+MAX_CHARS_CONTEXTO = 10000      # teto do contexto, para caber no limite por minuto dos LLMs
 TIMEOUT_LLM_S = 60  # espera máxima por LLM antes de seguir para o fallback
-TENTATIVAS_LLM = 2  # vezes que cada LLM é tentado quando o erro é temporário (ex.: 503)
-ESPERA_ENTRE_TENTATIVAS_S = 5
+TENTATIVAS_LLM = 3  # vezes que cada LLM é tentado quando o erro é temporário (ex.: 503)
+ESPERA_ENTRE_TENTATIVAS_S = 10
 
 # Valor do campo "llm" quando a resposta não precisou de LLM (ex.: a busca não achou nada)
 SEM_LLM = "sem-llm"

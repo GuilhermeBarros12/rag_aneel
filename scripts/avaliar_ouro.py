@@ -18,11 +18,18 @@ from datetime import datetime, timezone
 from typing import Dict, List, Optional
 
 import config
-from nucleo import carregar_recursos, nome_do_modelo, recuperar_com_politica, recuperar_trechos, responder
+from nucleo import (
+    carregar_recursos,
+    expandir_contexto,
+    nome_do_modelo,
+    recuperar_com_politica,
+    recuperar_trechos,
+    responder,
+)
 
 KS = (1, 3, 5, 10)
 FRASE_RECUSA = "nao encontrei informacao suficiente"
-DELAY_ENTRE_PERGUNTAS = 2  # segundos, para evitar rate limit
+DELAY_ENTRE_PERGUNTAS = float(os.getenv("AVALIACAO_ESPERA_S", "2"))  # segundos entre perguntas, para evitar rate limit
 
 # ============================================================
 # MÉTRICAS (funções puras, sem índice nem rede)
@@ -111,13 +118,26 @@ def medir_recuperacao(perguntas: List[dict], colecao, modelo, filtro, usar_polit
             trechos = recuperar_com_politica(q["pergunta"], colecao, modelo, top_k=max(KS))
         else:
             trechos = recuperar_trechos(q["pergunta"], colecao, modelo, top_k=max(KS), filtro=filtro)
-        linhas.append({
+        linha = {
             "id": q["id"],
             "categoria": q["categoria"],
             "posicao": posicao_primeiro_correto(trechos, q),
             "top3": [t.id for t in trechos[:3]],
-        })
+        }
+        if usar_politica:
+            # o que de fato vai ao LLM: os top_k do sistema, com a expansão configurada
+            contexto = expandir_contexto(recuperar_com_politica(q["pergunta"], colecao, modelo))
+            linha["resposta_no_contexto"] = any(trecho_tem_resposta(t.texto, q) for t in contexto)
+            linha["chars_contexto"] = sum(min(len(t.texto), config.MAX_CHARS_TRECHO) for t in contexto)
+        linhas.append(linha)
     return linhas
+
+
+def trecho_tem_resposta(texto: str, q: dict) -> bool:
+    """O trecho contém a resposta: os termos esperados ou, se houver, a evidência exigida."""
+    if q.get("evidencia"):
+        return contem_termos(texto, q["evidencia"])
+    return bool(q["termos"]) and contem_termos(texto, q["termos"])
 
 
 def salvar_json(caminho: str, dados) -> None:
@@ -219,6 +239,10 @@ def escrever_relatorio(caminho: str, dados: dict) -> None:
         bloco = dados["recuperacao"][chave]
         m += [f"## {titulo}", "", cab, sep, linha_tabela("Todas com documento esperado", bloco["geral"])]
         m += [linha_tabela(c, v) for c, v in bloco["categorias"].items()] + [""]
+        if "contexto" in bloco:
+            c = bloco["contexto"]
+            m += [f"Expansão de contexto: `{config.EXPANSAO_CONTEXTO}`. Resposta presente no contexto enviado ao LLM: "
+                  f"{c['com_resposta']} de {c['n']}. Tamanho médio do contexto: {c['chars_medio']} caracteres.", ""]
     if "geracao" in dados:
         g = dados["geracao"]["resumo"]
         m += ["## Geração", "", f"LLM: `{', '.join(g['llm'])}`.", "",
@@ -259,6 +283,14 @@ def main() -> None:
             "categorias": por_categoria(linhas),
             "detalhe": linhas,
         }
+        if nome == "politica":
+            com_termos = [l for l, q in zip(linhas, com_alvo) if q["termos"] or q.get("evidencia")]
+            dados["recuperacao"][nome]["contexto"] = {
+                "expansao": config.EXPANSAO_CONTEXTO,
+                "n": len(com_termos),
+                "com_resposta": sum(l["resposta_no_contexto"] for l in com_termos),
+                "chars_medio": round(sum(l["chars_contexto"] for l in com_termos) / max(1, len(com_termos))),
+            }
     os.makedirs(args.saida, exist_ok=True)
     caminho_parcial = os.path.join(args.saida, f"{args.rotulo}.parcial.json")
     if args.com_llm:
@@ -267,6 +299,7 @@ def main() -> None:
             "conjunto": dados["conjunto"],
             "modo_busca": config.MODO_BUSCA,
             "politica_revogados": config.POLITICA_REVOGADOS,
+            "expansao_contexto": config.EXPANSAO_CONTEXTO,
             "top_k": config.TOP_K,
             "llm": config.LLM_AVALIACAO,
             "modelo_llm": nome_do_modelo(config.LLM_AVALIACAO),

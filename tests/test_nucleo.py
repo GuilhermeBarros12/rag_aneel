@@ -265,3 +265,35 @@ def test_provedor_local_nao_exige_chave(monkeypatch, sem_espera):
     monkeypatch.setattr(httpx, "post", lambda *a, **k: RespostaHttpFalsa(200, {"choices": [{"message": {"content": "ok"}}]}))
     g = nucleo.gerar_resposta("prompt", provedores=["local"])
     assert g.texto == "ok" and g.llm.startswith("local/")
+
+
+# ---------- expansão de contexto ----------
+
+
+def test_sem_expansao_o_contexto_nao_muda(acervo, monkeypatch):
+    monkeypatch.setattr(config, "EXPANSAO_CONTEXTO", "nenhuma")
+    trechos = [nucleo.Trecho(id="dsp20223683ti_chunk1", texto="x", distancia=None, metadata={})]
+    assert nucleo.expandir_contexto(trechos) == trechos
+
+
+def test_documento_curto_entra_inteiro_e_na_ordem(acervo, monkeypatch):
+    monkeypatch.setattr(config, "EXPANSAO_CONTEXTO", "documento")
+    trechos = [nucleo.Trecho(id="dsp20223683ti_chunk2", texto="x", distancia=None, metadata={})]
+    ids = [t.id for t in nucleo.expandir_contexto(trechos)]
+    assert ids == ["dsp20223683ti_chunk1", "dsp20223683ti_chunk2"]
+
+
+def test_documento_longo_recebe_so_os_vizinhos(acervo, monkeypatch):
+    monkeypatch.setattr(config, "EXPANSAO_CONTEXTO", "documento")
+    monkeypatch.setattr(config, "LIMITE_DOC_CURTO_CHARS", 10)  # força o documento a ser "longo"
+    monkeypatch.setattr(config, "VIZINHOS", 0)
+    trechos = [nucleo.Trecho(id="dsp20223683ti_chunk2", texto="x", distancia=None, metadata={})]
+    assert [t.id for t in nucleo.expandir_contexto(trechos)] == ["dsp20223683ti_chunk2"]
+
+
+def test_contexto_respeita_o_teto(acervo, monkeypatch):
+    monkeypatch.setattr(config, "EXPANSAO_CONTEXTO", "documento")
+    monkeypatch.setattr(config, "MAX_CHARS_CONTEXTO", 1)
+    trechos = [nucleo.Trecho(id="dsp20223683ti_chunk2", texto="x", distancia=None, metadata={}),
+               nucleo.Trecho(id="prt2022092_chunk1", texto="y", distancia=None, metadata={})]
+    assert len(nucleo.expandir_contexto(trechos)) == 1  # mantém só o primeiro

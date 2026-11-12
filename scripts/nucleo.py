@@ -401,6 +401,43 @@ def gerar_resposta(prompt: str, provedores: Optional[List[str]] = None) -> Gerac
 # ============================================================
 
 
+def expandir_contexto(trechos: List[Trecho]) -> List[Trecho]:
+    """
+    Amplia o contexto a partir dos trechos encontrados, documento por documento, na ordem da busca:
+    documento curto entra inteiro; de documento longo entram os trechos encontrados e os vizinhos.
+    Para quando o contexto atinge config.MAX_CHARS_CONTEXTO, mas sempre mantém o primeiro trecho.
+    """
+    import lexico
+
+    if config.EXPANSAO_CONTEXTO != "documento" or not trechos:
+        return trechos
+
+    achados = {t.id for t in trechos}
+    ordem_docs = list(dict.fromkeys(lexico.documento_do_chunk(t.id) for t in trechos))
+    resultado: List[Trecho] = []
+    usados = set()
+    total = 0
+    for doc in ordem_docs:
+        chunks = lexico.chunks_do_documento(doc)
+        tamanho = sum(len(texto) for _, texto, _ in chunks)
+        if tamanho <= config.LIMITE_DOC_CURTO_CHARS:
+            escolhidos = chunks
+        else:
+            posicoes = {i for i, (cid, _, _) in enumerate(chunks) if cid in achados}
+            janela = {p + d for p in posicoes for d in range(-config.VIZINHOS, config.VIZINHOS + 1)}
+            escolhidos = [c for i, c in enumerate(chunks) if i in janela]
+        for cid, texto, metadata in escolhidos:
+            if cid in usados:
+                continue
+            custo = min(len(texto), config.MAX_CHARS_TRECHO)
+            if resultado and total + custo > config.MAX_CHARS_CONTEXTO:
+                return resultado
+            resultado.append(Trecho(id=cid, texto=texto, distancia=None, metadata=metadata))
+            usados.add(cid)
+            total += custo
+    return resultado
+
+
 # Pergunta que cita um ato: "Despacho nº 3.683", "Resolução Autorizativa nº 10.230", "3.386/2016"
 _CITA_ATO = re.compile(
     r"\b(?:despacho|resolu\w*|portaria|decreto|lei|edital|comunicado|of[ií]cio|nota t[eé]cnica)\b\D{0,30}\d"
@@ -447,7 +484,7 @@ def responder(
 
     trechos = []
     if query.strip():
-        trechos = recuperar_com_politica(query, colecao, modelo, top_k=top_k)
+        trechos = expandir_contexto(recuperar_com_politica(query, colecao, modelo, top_k=top_k))
 
     # Sem trechos não há o que perguntar ao LLM: responde direto, sem gastar cota
     if not trechos:
