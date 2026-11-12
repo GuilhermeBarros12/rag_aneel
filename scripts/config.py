@@ -78,6 +78,16 @@ PESO_LEXICO = float(os.getenv("PESO_LEXICO", "1"))  # peso do BM25 na fusão (em
 # Peso de cada coluna no BM25: título, ementa e texto do chunk
 PESOS_BM25 = tuple(float(p) for p in os.getenv("PESOS_BM25", "1,1,1").split(","))
 
+# Reranker (busca léxica ou híbrida): reordena os primeiros candidatos antes de escolher os TOP_K.
+#   "nenhum" — usa a ordem da busca
+#   "cohere" — modelo de rerank da Cohere (precisa de COHERE_API_KEY; plano gratuito
+#              com 1.000 chamadas por mês e 10 por minuto)
+RERANKER = os.getenv("RERANKER", "nenhum")
+RERANK_CANDIDATOS = int(os.getenv("RERANK_CANDIDATOS", "30"))
+COHERE_RERANK_MODELO = os.getenv("COHERE_RERANK_MODEL", "rerank-v5.0-pro")
+RERANK_TENTATIVAS = 6     # o limite por minuto do plano gratuito pede paciência
+RERANK_ESPERA_S = 12      # espera vezes o número da tentativa, em erro 429
+
 # ============================================================
 # GERAÇÃO
 # ============================================================

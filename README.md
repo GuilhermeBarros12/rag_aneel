@@ -340,6 +340,7 @@ Todos ficam em [`scripts/config.py`](scripts/config.py).
 | `MODO_BUSCA`    | `lexica`              | `lexica`, `densa` ou `hibrida`         |
 | `POLITICA_REVOGADOS` | `intermediaria`   | `intermediaria`, `excluir` ou `incluir` |
 | `EXPANSAO_CONTEXTO` | `documento`        | Envia documentos curtos inteiros e vizinhos dos trechos longos |
+| `RERANKER`          | `nenhum`           | `cohere` reordena os 30 primeiros candidatos com o rerank da Cohere (precisa de `COHERE_API_KEY`) |
 
 ---
 

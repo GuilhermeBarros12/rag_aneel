@@ -59,6 +59,7 @@ O índice publicado tem 517.557 chunks de atos de 2016, 2021 e 2022, já sem as 
 | 5 Demo | Feita: `python scripts/app.py`, testada de ponta a ponta. Falta captura de tela no README e publicação opcional em um Space |
 | Comparação de LLMs | Feita para `gpt-oss-120b` e `qwen3.8-27b`, sem vencedor claro. O Gemini não pôde ser medido (erro 503) |
 | Expansão de contexto | Feita e adotada: termos esperados de 33 para 41 de 46 no conjunto v1, abstenção mantida |
+| Reranker | Testado com a Cohere no conjunto v2: hit@5 de 0,835 para 0,870 e resposta no contexto de 97 para 103 de 115. Opcional (`RERANKER=cohere`), por causa do limite do plano gratuito |
 
 ## 2. Regras de trabalho
 

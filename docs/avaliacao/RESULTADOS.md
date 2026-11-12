@@ -165,6 +165,29 @@ Recuperação no conjunto congelado, com o sistema padrão: busca léxica, polí
 
 A resposta chega ao LLM em 97 das 115 perguntas, com contexto médio de 6,3 mil caracteres. O ponto fraco são as conceituais: sem citar um ato, a busca léxica acha a sigla ou o tema em milhares de chunks e raramente no que define o termo. A medição com LLM nas 127 perguntas ainda não foi feita.
 
+## Reranker da Cohere (12/11/2026)
+
+Conjunto v2 congelado, só recuperação, busca léxica, política intermediária e expansão de contexto. O reranker `rerank-v5.0-pro` reordena os 30 primeiros candidatos da busca antes de escolher os 5 ([v2_rerank_cohere.md](experimentos/v2_rerank_cohere.md), comparado com [v2_recuperacao.md](experimentos/v2_recuperacao.md)). Foram 115 chamadas, uma por pergunta, guardadas em cache.
+
+| Métrica (115 perguntas) | Sem reranker | Com reranker |
+|---|---|---|
+| hit@1 | 0,678 | 0,774 |
+| hit@5 | 0,835 | **0,870** |
+| MRR | 0,734 | **0,808** |
+| Resposta presente no contexto enviado | 97 | **103** |
+| Tamanho médio do contexto | 6,3 mil caracteres | 6,4 mil caracteres |
+
+| Grupo | hit@5 sem | hit@5 com |
+|---|---|---|
+| Resolução Normativa citada pelo número (18) | 0,833 | 0,944 |
+| Fato específico, sem citar o ato (29) | 0,897 | 0,931 |
+| Conceitual: sigla (6) | 0,500 | 0,667 |
+| Conceitual: paráfrase (12) | 0,500 | 0,500 |
+
+Nenhuma pergunta perdeu o documento certo no top 5. A resposta passou a chegar ao LLM em mais 7 perguntas (Q23, Q085, Q086, Q095, Q099, Q100, C03) e deixou de chegar em 1 (Q28). Nas 46 respondíveis do conjunto v1, o hit@5 ficou em 0,935 e o MRR subiu de 0,870 para 0,908.
+
+O reranker só reordena: as conceituais por paráfrase não melhoraram porque o trecho certo não está entre os 30 candidatos da busca léxica. O custo é uma chamada externa por pergunta, e o plano gratuito da Cohere limita a 1.000 chamadas por mês e 10 por minuto. Por isso o padrão continua `RERANKER=nenhum`.
+
 ## Comparação de LLMs (11/11/2026)
 
 Conjunto de ouro v1, busca léxica, política intermediária, uma rodada por modelo.

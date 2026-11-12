@@ -18,6 +18,7 @@ from datetime import datetime, timezone
 from typing import Dict, List, Optional
 
 import config
+import nucleo
 from nucleo import (
     carregar_recursos,
     expandir_contexto,
@@ -29,6 +30,8 @@ from nucleo import (
 
 KS = (1, 3, 5, 10)
 FRASE_RECUSA = "nao encontrei informacao suficiente"
+# Respostas do reranker guardadas entre execuções, para não gastar a cota duas vezes
+CACHE_RERANK = os.path.join(os.path.dirname(config.PASTA_LEXICO), "cache_experimentos", "rerank.json")
 DELAY_ENTRE_PERGUNTAS = float(os.getenv("AVALIACAO_ESPERA_S", "2"))  # segundos entre perguntas, para evitar rate limit
 
 # ============================================================
@@ -131,6 +134,7 @@ def medir_recuperacao(perguntas: List[dict], colecao, modelo, filtro, usar_polit
             linha["resposta_no_contexto"] = any(trecho_tem_resposta(t.texto, q) for t in contexto)
             linha["chars_contexto"] = sum(min(len(t.texto), config.MAX_CHARS_TRECHO) for t in contexto)
         linhas.append(linha)
+        salvar_cache_rerank(CACHE_RERANK)  # a cada pergunta, para sobreviver a uma interrupção
     return linhas
 
 
@@ -225,13 +229,31 @@ def linha_tabela(nome: str, m: Dict[str, float]) -> str:
     return f"| {nome} | {m['n']} | {valores} | {m['mrr']:.3f} |"
 
 
+def descrever_reranker() -> str:
+    if config.RERANKER == "nenhum":
+        return "nenhum"
+    return f"{config.RERANKER}/{config.COHERE_RERANK_MODELO}, {config.RERANK_CANDIDATOS} candidatos"
+
+
+def carregar_cache_rerank(caminho: str) -> None:
+    if os.path.exists(caminho):
+        with open(caminho, encoding="utf-8") as f:
+            nucleo.CACHE_RERANK.update(json.load(f))
+
+
+def salvar_cache_rerank(caminho: str) -> None:
+    if nucleo.CACHE_RERANK:
+        os.makedirs(os.path.dirname(caminho), exist_ok=True)
+        salvar_json(caminho, nucleo.CACHE_RERANK)
+
+
 def escrever_relatorio(caminho: str, dados: dict) -> None:
     cab = "| Grupo | n | " + " | ".join(f"hit@{k}" for k in KS) + " | MRR |"
     sep = "|---|---|" + "---|" * (len(KS) + 1)
     m = [f"# Resultados: {dados['rotulo']}", "",
          f"Executado em {dados['executado_em']}. Conjunto: `{dados['conjunto']}`.",
          f"Busca: `{config.MODO_BUSCA}`. Embedding: `{config.MODELO_EMBEDDING}`. "
-         f"Chunks recuperados pelo sistema: {config.TOP_K}. Política de revogados: `{config.POLITICA_REVOGADOS}`.", ""]
+         f"Chunks recuperados pelo sistema: {config.TOP_K}. Política de revogados: `{config.POLITICA_REVOGADOS}`. Reranker: `{descrever_reranker()}`.", ""]
     for chave, titulo in (("politica", "Recuperação com a política de revogados do sistema"),
                           ("com_filtro", "Recuperação excluindo revogados"),
                           ("sem_filtro", "Recuperação incluindo revogados")):
@@ -263,11 +285,14 @@ def main() -> None:
     parser.add_argument("--saida", default=config.PASTA_DOCS_AVALIACAO)
     parser.add_argument("--rotulo", default="baseline")
     parser.add_argument("--com-llm", action="store_true", help="Também gera respostas (consome cota).")
+    parser.add_argument("--so-politica", action="store_true",
+                        help="Mede só a recuperação com a política do sistema (menos chamadas ao reranker).")
     args = parser.parse_args()
 
     with open(args.conjunto, encoding="utf-8") as f:
         perguntas = json.load(f)["perguntas"]
     colecao, modelo = carregar_recursos()
+    carregar_cache_rerank(CACHE_RERANK)
 
     # Perguntas de recusa não têm documento nem evidência esperados, então não entram em hit@k
     com_alvo = [q for q in perguntas if q["documentos_esperados"] or q.get("evidencia")]
@@ -275,9 +300,11 @@ def main() -> None:
         "rotulo": args.rotulo,
         "executado_em": datetime.now(timezone.utc).isoformat(),
         "conjunto": os.path.basename(args.conjunto),
+        "reranker": descrever_reranker(),
         "recuperacao": {},
     }
-    for nome, filtro in (("politica", None), ("com_filtro", config.FILTRO_SEM_REVOGADOS), ("sem_filtro", None)):
+    blocos = [("politica", None), ("com_filtro", config.FILTRO_SEM_REVOGADOS), ("sem_filtro", None)]
+    for nome, filtro in blocos[:1] if args.so_politica else blocos:
         linhas = medir_recuperacao(com_alvo, colecao, modelo, filtro, usar_politica=(nome == "politica"))
         dados["recuperacao"][nome] = {
             "geral": resumir_posicoes([l["posicao"] for l in linhas]),
@@ -301,6 +328,7 @@ def main() -> None:
             "modo_busca": config.MODO_BUSCA,
             "politica_revogados": config.POLITICA_REVOGADOS,
             "expansao_contexto": config.EXPANSAO_CONTEXTO,
+            "reranker": descrever_reranker(),
             "top_k": config.TOP_K,
             "llm": config.LLM_AVALIACAO,
             "modelo_llm": nome_do_modelo(config.LLM_AVALIACAO),
@@ -308,6 +336,10 @@ def main() -> None:
         linhas = medir_geracao(perguntas, colecao, modelo, caminho_parcial, assinatura)
         dados["geracao"] = {"resumo": resumir_geracao(linhas), "detalhe": linhas}
 
+    salvar_cache_rerank(CACHE_RERANK)
+    if nucleo.FALHAS_RERANK:
+        dados["falhas_rerank"] = nucleo.FALHAS_RERANK
+        print(f"[AVISO] O reranker falhou {len(nucleo.FALHAS_RERANK)} vezes; essas perguntas ficaram na ordem da busca.")
     salvar_json(os.path.join(args.saida, f"{args.rotulo}.json"), dados)
     escrever_relatorio(os.path.join(args.saida, f"{args.rotulo}.md"), dados)
     if os.path.exists(caminho_parcial):
