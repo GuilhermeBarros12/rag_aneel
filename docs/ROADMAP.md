@@ -31,7 +31,7 @@ A busca padrão é léxica (`MODO_BUSCA=lexica`). Os modos `densa` e `hibrida` e
 | MRR | 0,100 | 0,815 |
 | Abstenção correta | 1,000 | 1,000 |
 | Recusa indevida | 0,848 | 0,239 |
-| Termos esperados na resposta | 0,130 | 0,630 |
+| Termos esperados na resposta | 0,130 | 0,652 |
 
 O corpus tem 18.688 atos de 2016, 2021 e 2022, em 26.747 arquivos e 508.156 chunks.
 
