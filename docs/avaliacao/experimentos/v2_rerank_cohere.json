@@ -1,0 +1,1480 @@
+{
+ "rotulo": "v2_rerank_cohere",
+ "executado_em": "2026-11-12T15:20:10.436048+00:00",
+ "conjunto": "conjunto_ouro_v2.json",
+ "reranker": "cohere/rerank-v5.0-pro, 30 candidatos",
+ "recuperacao": {
+  "politica": {
+   "geral": {
+    "n": 115,
+    "hit@1": 0.7739130434782608,
+    "hit@3": 0.8260869565217391,
+    "hit@5": 0.8695652173913043,
+    "hit@10": 0.8695652173913043,
+    "mrr": 0.8081159420289855
+   },
+   "categorias": {
+    "ato_citado": {
+     "n": 10,
+     "hit@1": 1.0,
+     "hit@3": 1.0,
+     "hit@5": 1.0,
+     "hit@10": 1.0,
+     "mrr": 1.0
+    },
+    "conceitual_parafrase": {
+     "n": 12,
+     "hit@1": 0.25,
+     "hit@3": 0.25,
+     "hit@5": 0.5,
+     "hit@10": 0.5,
+     "mrr": 0.30416666666666664
+    },
+    "conceitual_sigla": {
+     "n": 6,
+     "hit@1": 0.5,
+     "hit@3": 0.6666666666666666,
+     "hit@5": 0.6666666666666666,
+     "hit@10": 0.6666666666666666,
+     "mrr": 0.5833333333333334
+    },
+    "fato_com_ato": {
+     "n": 16,
+     "hit@1": 0.8125,
+     "hit@3": 0.8125,
+     "hit@5": 0.875,
+     "hit@10": 0.875,
+     "mrr": 0.828125
+    },
+    "fato_sem_ato": {
+     "n": 29,
+     "hit@1": 0.8620689655172413,
+     "hit@3": 0.9310344827586207,
+     "hit@5": 0.9310344827586207,
+     "hit@10": 0.9310344827586207,
+     "mrr": 0.896551724137931
+    },
+    "norma_citada": {
+     "n": 18,
+     "hit@1": 0.8888888888888888,
+     "hit@3": 0.9444444444444444,
+     "hit@5": 0.9444444444444444,
+     "hit@10": 0.9444444444444444,
+     "mrr": 0.9074074074074073
+    },
+    "norma_por_tema": {
+     "n": 3,
+     "hit@1": 0.6666666666666666,
+     "hit@3": 1.0,
+     "hit@5": 1.0,
+     "hit@10": 1.0,
+     "mrr": 0.8333333333333334
+    },
+    "regra_atual": {
+     "n": 6,
+     "hit@1": 0.8333333333333334,
+     "hit@3": 0.8333333333333334,
+     "hit@5": 1.0,
+     "hit@10": 1.0,
+     "mrr": 0.8666666666666667
+    },
+    "revogado": {
+     "n": 15,
+     "hit@1": 0.8,
+     "hit@3": 0.8666666666666667,
+     "hit@5": 0.8666666666666667,
+     "hit@10": 0.8666666666666667,
+     "mrr": 0.8333333333333334
+    }
+   },
+   "detalhe": [
+    {
+     "id": "Q01",
+     "categoria": "ato_citado",
+     "posicao": 1,
+     "top3": [
+      "prt20221322tispde_chunk3",
+      "prt20221322tispde_chunk7",
+      "prt20221322tispde_chunk5"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 4273
+    },
+    {
+     "id": "Q02",
+     "categoria": "ato_citado",
+     "posicao": 1,
+     "top3": [
+      "adsp20222942_1_chunk42",
+      "adsp20222942_1_chunk3",
+      "adsp20222942_1_chunk45"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 4600
+    },
+    {
+     "id": "Q03",
+     "categoria": "ato_citado",
+     "posicao": 1,
+     "top3": [
+      "prt20226715_chunk2",
+      "aprt20226715_1_chunk11",
+      "aprt20226715_1_chunk10"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 8007
+    },
+    {
+     "id": "Q04",
+     "categoria": "ato_citado",
+     "posicao": 1,
+     "top3": [
+      "dsp20161198_chunk2",
+      "adsp20161198_1_chunk21",
+      "adsp20161198_1_chunk48"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 4005
+    },
+    {
+     "id": "Q05",
+     "categoria": "ato_citado",
+     "posicao": 1,
+     "top3": [
+      "dsp20211604_chunk3",
+      "edt2021sn151_chunk4",
+      "dsp20211604_chunk2"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 2949
+    },
+    {
+     "id": "Q06",
+     "categoria": "ato_citado",
+     "posicao": 1,
+     "top3": [
+      "dsp20213501ti_chunk2",
+      "dsp20213501ti_chunk1",
+      "dsp20213501ti_chunk3"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 1630
+    },
+    {
+     "id": "Q07",
+     "categoria": "ato_citado",
+     "posicao": 1,
+     "top3": [
+      "prt2021528mme_chunk4",
+      "area202110747_1_chunk3",
+      "prt2021528mme_chunk7"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 4881
+    },
+    {
+     "id": "Q08",
+     "categoria": "ato_citado",
+     "posicao": 1,
+     "top3": [
+      "reh20212959ti_chunk1",
+      "areh20223010_1_chunk3",
+      "area202211324_1_chunk96"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 7594
+    },
+    {
+     "id": "Q09",
+     "categoria": "ato_citado",
+     "posicao": 1,
+     "top3": [
+      "reh20212852ti_chunk1",
+      "reh20212852ti_chunk8",
+      "areh20212852_1_chunk99"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 8676
+    },
+    {
+     "id": "Q10",
+     "categoria": "ato_citado",
+     "posicao": 1,
+     "top3": [
+      "areh20162146_1_chunk41",
+      "reh20162146ti_chunk3",
+      "reh20162146ti_chunk1"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 4475
+    },
+    {
+     "id": "Q11",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20222660ti_chunk4",
+      "dsp20222660ti_chunk2",
+      "dsp20222660ti_chunk3"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 3629
+    },
+    {
+     "id": "Q12",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "emdsp20223350_chunk111",
+      "emdsp20223350_chunk44",
+      "emdsp20223350_chunk108"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 5600
+    },
+    {
+     "id": "Q13",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20213501ti_chunk2",
+      "dsp20213501ti_chunk3",
+      "dsp20213501ti_chunk1"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 1630
+    },
+    {
+     "id": "Q14",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20161321ti_chunk3",
+      "dsp20161321ti_chunk4",
+      "dsp20161321ti_chunk2"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 8688
+    },
+    {
+     "id": "Q15",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp2021477ti_chunk2",
+      "dsp20211490ti_chunk2",
+      "dsp20211327ti_chunk2"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 4140
+    },
+    {
+     "id": "Q16",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20162592ti_chunk2",
+      "dsp20162592ti_chunk1",
+      "dsp20222389ti_chunk2"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 6709
+    },
+    {
+     "id": "Q17",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20222159ti_chunk2",
+      "dsp20222552ti_chunk2",
+      "dsp20222159ti_chunk3"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 4892
+    },
+    {
+     "id": "Q18",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20162464ti_chunk3",
+      "dsp20162464ti_chunk2",
+      "dsp20162456ti_chunk3"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 4692
+    },
+    {
+     "id": "Q19",
+     "categoria": "fato_com_ato",
+     "posicao": 4,
+     "top3": [
+      "adsp20222196_1_chunk8",
+      "adsp20222196_1_chunk37",
+      "area202110199_1_chunk18"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 6974
+    },
+    {
+     "id": "Q20",
+     "categoria": "fato_com_ato",
+     "posicao": null,
+     "top3": [
+      "prt2022291_chunk2",
+      "prt2022212_chunk2",
+      "prt2022197_chunk2"
+     ],
+     "resposta_no_contexto": false,
+     "chars_contexto": 5257
+    },
+    {
+     "id": "Q21",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20214042ti_chunk2",
+      "dsp20214042ti_chunk3",
+      "dsp20214044ti_chunk2"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 3082
+    },
+    {
+     "id": "Q22",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20212891_chunk2",
+      "emdsp20223364_chunk9",
+      "adsp20212891_1_chunk2"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 5510
+    },
+    {
+     "id": "Q23",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "rea202211250ti_chunk1",
+      "rea202211250ti_chunk4",
+      "area202211251_1_chunk11"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 8433
+    },
+    {
+     "id": "Q24",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "rea202211617ti_chunk4",
+      "rea202211617ti_chunk1",
+      "area202211617_1_chunk10"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 9625
+    },
+    {
+     "id": "Q25",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "rea202110358ti_chunk1",
+      "area202110357_1_chunk12",
+      "area202110358_1_chunk12"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 9638
+    },
+    {
+     "id": "Q26",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "rea202213034ti_chunk4",
+      "rea202213034ti_chunk1",
+      "area202213034_1_chunk2"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 9221
+    },
+    {
+     "id": "Q27",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "rea202212041ti_chunk1",
+      "area202212034_1_chunk48",
+      "area202212042_1_chunk48"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 6297
+    },
+    {
+     "id": "Q28",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "area202110524_1_chunk4",
+      "area202110528_1_chunk4",
+      "area202110538_1_chunk4"
+     ],
+     "resposta_no_contexto": false,
+     "chars_contexto": 3645
+    },
+    {
+     "id": "Q29",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "rea202212308ti_chunk2",
+      "rea20165789ti_chunk3",
+      "area20165789_1_chunk2"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 7163
+    },
+    {
+     "id": "Q30",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20223034ti_chunk2",
+      "area202212585_1_chunk3",
+      "area202212586_1_chunk3"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 9383
+    },
+    {
+     "id": "Q31",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "rea20219658ti_chunk1",
+      "rea20219658ti_chunk4",
+      "dsp20212608ti_chunk2"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 4677
+    },
+    {
+     "id": "Q32",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp2021041ti_chunk2",
+      "dsp20211012ti_chunk2",
+      "dsp2021041ti_chunk3"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 2667
+    },
+    {
+     "id": "Q33",
+     "categoria": "fato_sem_ato",
+     "posicao": 2,
+     "top3": [
+      "prt20221167tispde_chunk10",
+      "prt2021482tispde_chunk3",
+      "prt20221167tispde_chunk3"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 9775
+    },
+    {
+     "id": "Q34",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "prt20221787tispde_chunk9",
+      "prt20221787tispde_chunk3",
+      "prt20221797tispde_chunk3"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 9938
+    },
+    {
+     "id": "Q35",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "prt2021612tispde_chunk11",
+      "prt2021548tispde_chunk3",
+      "prt2021612tispde_chunk3"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 9988
+    },
+    {
+     "id": "Q36",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20212089ti_chunk3",
+      "dsp20212089ti_chunk2",
+      "dsp20212090ti_chunk3"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 6356
+    },
+    {
+     "id": "Q37",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20211717ti_chunk3",
+      "dsp20212435ti_chunk3",
+      "dsp20211569ti_chunk3"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 7298
+    },
+    {
+     "id": "Q38",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "rea202110932ti_chunk1",
+      "area202110932_1_chunk2",
+      "area202110932_1_chunk19"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 4920
+    },
+    {
+     "id": "Q39",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "area202211313_1_chunk16",
+      "rea202211313ti_chunk1",
+      "area202211313_1_chunk6"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 7514
+    },
+    {
+     "id": "Q40",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "nreh20162093_chunk4",
+      "nreh20162093_chunk2",
+      "rea20165611ti_chunk4"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 9743
+    },
+    {
+     "id": "Q41",
+     "categoria": "revogado",
+     "posicao": 1,
+     "top3": [
+      "res2016436ana_chunk1",
+      "res2016005cj_chunk1",
+      "res20161594ana_chunk1"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 9476
+    },
+    {
+     "id": "Q42",
+     "categoria": "revogado",
+     "posicao": 1,
+     "top3": [
+      "rea202110230ti_chunk1",
+      "area202110230_1_chunk2",
+      "rea202110230ti_chunk5"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 5662
+    },
+    {
+     "id": "Q43",
+     "categoria": "revogado",
+     "posicao": 1,
+     "top3": [
+      "prt2021919tispde_chunk9",
+      "prt2021919tispde_chunk3",
+      "rea202212014ti_chunk4"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 9895
+    },
+    {
+     "id": "Q44",
+     "categoria": "revogado",
+     "posicao": null,
+     "top3": [
+      "adsp20221221_1_chunk3",
+      "adsp20221221_1_chunk17",
+      "dsp20214140ti_chunk5"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 9321
+    },
+    {
+     "id": "Q45",
+     "categoria": "revogado",
+     "posicao": 1,
+     "top3": [
+      "prt2022365_chunk4",
+      "prt2022071_chunk5",
+      "prt2022282_chunk4"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 9934
+    },
+    {
+     "id": "Q46",
+     "categoria": "revogado",
+     "posicao": null,
+     "top3": [
+      "area20219733_1_chunk26",
+      "rea202211415ti_chunk9",
+      "rea202211414ti_chunk9"
+     ],
+     "resposta_no_contexto": false,
+     "chars_contexto": 9649
+    },
+    {
+     "id": "Q057",
+     "categoria": "norma_citada",
+     "posicao": 1,
+     "top3": [
+      "ren20221009_chunk1",
+      "aren20221018_1_chunk51",
+      "aren20221015_1_chunk15"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 7980
+    },
+    {
+     "id": "Q058",
+     "categoria": "norma_citada",
+     "posicao": 1,
+     "top3": [
+      "ren2021959_chunk2",
+      "ren2021959_chunk4",
+      "ren2021959_chunk10"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 5113
+    },
+    {
+     "id": "Q059",
+     "categoria": "norma_citada",
+     "posicao": 1,
+     "top3": [
+      "ren20221044_chunk1",
+      "aren20221044_1_chunk23",
+      "dsp20221044_chunk1"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 4579
+    },
+    {
+     "id": "Q060",
+     "categoria": "norma_citada",
+     "posicao": 1,
+     "top3": [
+      "aren2021954_1_chunk128",
+      "ren2021954_chunk1",
+      "area202212856_1_chunk3"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 4289
+    },
+    {
+     "id": "Q061",
+     "categoria": "norma_citada",
+     "posicao": 1,
+     "top3": [
+      "ren20221048_chunk1",
+      "ren20221048_chunk3",
+      "aren20221048_1_chunk54"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 4722
+    },
+    {
+     "id": "Q062",
+     "categoria": "norma_citada",
+     "posicao": 1,
+     "top3": [
+      "ren20211000_chunk1",
+      "ren20211000_chunk1827",
+      "aren20221025_1_chunk26"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 5083
+    },
+    {
+     "id": "Q063",
+     "categoria": "norma_citada",
+     "posicao": 3,
+     "top3": [
+      "adsp20222123_1_chunk18",
+      "adsp20222045_chunk3",
+      "ren20211000_chunk1"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 6308
+    },
+    {
+     "id": "Q064",
+     "categoria": "norma_citada",
+     "posicao": 1,
+     "top3": [
+      "ren20221022_chunk1",
+      "aren20221022_2_1_chunk57",
+      "aren20221022_1_chunk5"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 5735
+    },
+    {
+     "id": "Q065",
+     "categoria": "norma_citada",
+     "posicao": 1,
+     "top3": [
+      "ren2016731_chunk1",
+      "aren2016731_1_chunk5",
+      "ren2016731_chunk4"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 4649
+    },
+    {
+     "id": "Q066",
+     "categoria": "norma_citada",
+     "posicao": 1,
+     "top3": [
+      "ren2021956_chunk5",
+      "ren2021956_chunk2",
+      "ren2021956_chunk6"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 4683
+    },
+    {
+     "id": "Q067",
+     "categoria": "norma_citada",
+     "posicao": 1,
+     "top3": [
+      "ren20221039_chunk5",
+      "aren20221039_1_chunk16",
+      "ren20221039_chunk2"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 7260
+    },
+    {
+     "id": "Q068",
+     "categoria": "norma_citada",
+     "posicao": 1,
+     "top3": [
+      "ren20221034_chunk4",
+      "ren20221034_chunk1",
+      "aren20221034_1_chunk21"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 4101
+    },
+    {
+     "id": "Q069",
+     "categoria": "norma_citada",
+     "posicao": 1,
+     "top3": [
+      "ren2021917_chunk10",
+      "ren2021917_chunk4",
+      "ren2021917_chunk3"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 3698
+    },
+    {
+     "id": "Q070",
+     "categoria": "norma_citada",
+     "posicao": 1,
+     "top3": [
+      "ren2021916_chunk1",
+      "areh20212921_1_chunk25",
+      "dsp20221684_chunk4"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 5599
+    },
+    {
+     "id": "Q071",
+     "categoria": "norma_citada",
+     "posicao": 1,
+     "top3": [
+      "ren20221003_chunk2",
+      "ren20221003_chunk14",
+      "ren20221022_chunk6"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 6679
+    },
+    {
+     "id": "Q072",
+     "categoria": "norma_citada",
+     "posicao": 1,
+     "top3": [
+      "ren20221012_chunk1",
+      "aren20221012_1_chunk14",
+      "aren20221012_1_chunk77"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 4562
+    },
+    {
+     "id": "Q073",
+     "categoria": "norma_citada",
+     "posicao": null,
+     "top3": [
+      "rea202212600ti_chunk3",
+      "ren20221040_chunk4",
+      "area202212600_1_chunk2"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 9360
+    },
+    {
+     "id": "Q074",
+     "categoria": "norma_citada",
+     "posicao": 1,
+     "top3": [
+      "ren20221045_chunk1",
+      "aren20221045_2_chunk6",
+      "aren20221045_2_chunk23"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 9463
+    },
+    {
+     "id": "Q075",
+     "categoria": "revogado",
+     "posicao": 1,
+     "top3": [
+      "ren2016748_chunk1",
+      "aren2016748_1_chunk63",
+      "ren2016748_chunk34"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 4967
+    },
+    {
+     "id": "Q076",
+     "categoria": "revogado",
+     "posicao": 1,
+     "top3": [
+      "aren2021947_3_chunk12",
+      "ren2021947_chunk1",
+      "aren2021947_3_chunk10"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 7832
+    },
+    {
+     "id": "Q077",
+     "categoria": "revogado",
+     "posicao": 1,
+     "top3": [
+      "ren2016700_chunk4",
+      "ndsp20162113_chunk4",
+      "ren2016700_chunk1"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 5110
+    },
+    {
+     "id": "Q078",
+     "categoria": "revogado",
+     "posicao": 1,
+     "top3": [
+      "ren2016718_chunk1",
+      "aren2016718_1_chunk13",
+      "ren2016718_chunk2"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 9245
+    },
+    {
+     "id": "Q079",
+     "categoria": "revogado",
+     "posicao": 2,
+     "top3": [
+      "aren2021936_1_chunk30",
+      "aren2021928_1_chunk14",
+      "aren2021936_1_chunk10"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 7141
+    },
+    {
+     "id": "Q080",
+     "categoria": "revogado",
+     "posicao": 1,
+     "top3": [
+      "ren20221043_chunk1",
+      "ren20221043_chunk3",
+      "aren20221043_1_chunk25"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 3795
+    },
+    {
+     "id": "Q081",
+     "categoria": "revogado",
+     "posicao": 1,
+     "top3": [
+      "ren2021960_chunk3",
+      "ren2021960_chunk1",
+      "aren2021960_1_chunk8"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 4555
+    },
+    {
+     "id": "Q082",
+     "categoria": "revogado",
+     "posicao": 1,
+     "top3": [
+      "ren2021925_chunk3",
+      "ren2021925_chunk1",
+      "aren2021925_1_chunk116"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 4748
+    },
+    {
+     "id": "Q083",
+     "categoria": "revogado",
+     "posicao": 1,
+     "top3": [
+      "ndsp20212424_chunk10",
+      "ndsp20212427_chunk11",
+      "ndsp20212427_chunk10"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 9176
+    },
+    {
+     "id": "Q084",
+     "categoria": "norma_por_tema",
+     "posicao": 1,
+     "top3": [
+      "ren2021959_chunk2",
+      "ren2021959_chunk4",
+      "ren2021959_chunk7"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 9029
+    },
+    {
+     "id": "Q085",
+     "categoria": "norma_por_tema",
+     "posicao": 1,
+     "top3": [
+      "aren20221044_1_chunk8",
+      "ren2021916_chunk14",
+      "ren20221044_chunk3"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 4701
+    },
+    {
+     "id": "Q086",
+     "categoria": "norma_por_tema",
+     "posicao": 2,
+     "top3": [
+      "adsp20161631_1_chunk17",
+      "ren2021917_chunk1",
+      "ren2021917_chunk3"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 9763
+    },
+    {
+     "id": "Q087",
+     "categoria": "regra_atual",
+     "posicao": 5,
+     "top3": [
+      "area202110483_1_chunk9",
+      "area20165637_1_chunk5",
+      "area202110085_1_chunk15"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 9569
+    },
+    {
+     "id": "Q088",
+     "categoria": "regra_atual",
+     "posicao": 1,
+     "top3": [
+      "ren2021948_chunk3",
+      "ren2021948_chunk1",
+      "ren2021948_chunk131"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 5803
+    },
+    {
+     "id": "Q089",
+     "categoria": "regra_atual",
+     "posicao": 1,
+     "top3": [
+      "ren2021957_chunk1",
+      "ren2021957_chunk6",
+      "ren2021957_chunk4"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 4500
+    },
+    {
+     "id": "Q090",
+     "categoria": "regra_atual",
+     "posicao": 1,
+     "top3": [
+      "ren2021963_chunk1",
+      "ren2021963_chunk4",
+      "aren2021963_1_chunk3"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 4447
+    },
+    {
+     "id": "Q091",
+     "categoria": "regra_atual",
+     "posicao": 1,
+     "top3": [
+      "ren20221045_chunk1",
+      "aren20221045_1_chunk3",
+      "ren20221045_chunk3"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 9594
+    },
+    {
+     "id": "Q092",
+     "categoria": "regra_atual",
+     "posicao": 1,
+     "top3": [
+      "ren2021956_chunk1",
+      "ren2021956_chunk5",
+      "ren20221050_chunk1"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 5846
+    },
+    {
+     "id": "Q093",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20221070_chunk3",
+      "dsp20221070_chunk4",
+      "dsp20221070_chunk6"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 1527
+    },
+    {
+     "id": "Q094",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp2021723_chunk2",
+      "dsp2021723_chunk3",
+      "dsp2021723_chunk1"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 2075
+    },
+    {
+     "id": "Q095",
+     "categoria": "fato_com_ato",
+     "posicao": null,
+     "top3": [
+      "dsp2022698_chunk3",
+      "ndsp20222678_chunk16",
+      "dsp2022698_chunk2"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 5645
+    },
+    {
+     "id": "Q096",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "prt20226724_chunk3",
+      "prt20226724_chunk2",
+      "prt20226724_chunk1"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 2554
+    },
+    {
+     "id": "Q097",
+     "categoria": "fato_sem_ato",
+     "posicao": null,
+     "top3": [
+      "dsp2016680_chunk3",
+      "dsp2016680_chunk2",
+      "dsp2016079_chunk2"
+     ],
+     "resposta_no_contexto": false,
+     "chars_contexto": 6669
+    },
+    {
+     "id": "Q098",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "adsp20212976_1_chunk17",
+      "dsp20212976_chunk3",
+      "adsp20212976_1_chunk14"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 5173
+    },
+    {
+     "id": "Q099",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20222951ti_chunk2",
+      "emdsp20222951_chunk132",
+      "emdsp20222951_chunk1"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 5384
+    },
+    {
+     "id": "Q100",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20213622_chunk2",
+      "dsp20211690_chunk3",
+      "dsp20211882ti_chunk3"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 6420
+    },
+    {
+     "id": "Q101",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "prt2021639tispde_chunk3",
+      "area202110081_1_chunk11",
+      "area202110080_1_chunk11"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 8693
+    },
+    {
+     "id": "Q102",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20212079ti_chunk2",
+      "dsp20212640ti_chunk2",
+      "dsp20212962ti_chunk2"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 4542
+    },
+    {
+     "id": "Q103",
+     "categoria": "fato_sem_ato",
+     "posicao": 2,
+     "top3": [
+      "edt2021sn37_chunk3",
+      "edt2016sn240_chunk4",
+      "edt2016sn203_chunk2"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 9744
+    },
+    {
+     "id": "Q104",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20213864ti_chunk3",
+      "dsp20213417ti_chunk2",
+      "dsp2022220ti_chunk3"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 4548
+    },
+    {
+     "id": "Q105",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp2022928ti_chunk2",
+      "dsp2022494ti_chunk2",
+      "dsp2022928ti_chunk3"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 4763
+    },
+    {
+     "id": "Q106",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "area202212061_1_chunk2",
+      "rea202212061ti_chunk1",
+      "area202212061_1_chunk7"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 9557
+    },
+    {
+     "id": "Q107",
+     "categoria": "fato_sem_ato",
+     "posicao": null,
+     "top3": [
+      "area202110018_1_chunk4",
+      "area202110016_1_chunk3",
+      "area202110015_1_chunk3"
+     ],
+     "resposta_no_contexto": false,
+     "chars_contexto": 6807
+    },
+    {
+     "id": "C01",
+     "categoria": "conceitual_sigla",
+     "posicao": null,
+     "top3": [
+      "adsp2016295_1_chunk14",
+      "area202110383_3_1_chunk36",
+      "area202110991_1_chunk127"
+     ],
+     "resposta_no_contexto": false,
+     "chars_contexto": 5402
+    },
+    {
+     "id": "C02",
+     "categoria": "conceitual_sigla",
+     "posicao": 1,
+     "top3": [
+      "area20219851_1_chunk5",
+      "area20219853_1_chunk5",
+      "area20219849_1_chunk5"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 8729
+    },
+    {
+     "id": "C03",
+     "categoria": "conceitual_sigla",
+     "posicao": 2,
+     "top3": [
+      "aprt20216658_2_chunk197",
+      "area202110990_1_chunk3",
+      "area202110990_3_chunk18"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 7017
+    },
+    {
+     "id": "C04",
+     "categoria": "conceitual_sigla",
+     "posicao": null,
+     "top3": [
+      "aren20221045_2_chunk24",
+      "areh20162155_1_chunk13",
+      "adsp20211055_1_chunk108"
+     ],
+     "resposta_no_contexto": false,
+     "chars_contexto": 6432
+    },
+    {
+     "id": "C05",
+     "categoria": "conceitual_sigla",
+     "posicao": 1,
+     "top3": [
+      "adsp20221198_1_chunk63",
+      "adsp2016766_1_chunk22",
+      "adsp20161772_1_chunk34"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 4734
+    },
+    {
+     "id": "C06",
+     "categoria": "conceitual_sigla",
+     "posicao": 1,
+     "top3": [
+      "ren20221003_chunk4",
+      "nreh20162189_chunk5",
+      "aprt20226759_1_chunk51"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 5913
+    },
+    {
+     "id": "C08",
+     "categoria": "conceitual_parafrase",
+     "posicao": null,
+     "top3": [
+      "adsp2016633_1_chunk12",
+      "adsp20161957_1_chunk9",
+      "adsp20163288_chunk10"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 5052
+    },
+    {
+     "id": "C09",
+     "categoria": "conceitual_parafrase",
+     "posicao": null,
+     "top3": [
+      "rea20219735ti_chunk109",
+      "adsp20211386_chunk18",
+      "adsp20162571_1_chunk12"
+     ],
+     "resposta_no_contexto": false,
+     "chars_contexto": 9701
+    },
+    {
+     "id": "C10",
+     "categoria": "conceitual_parafrase",
+     "posicao": null,
+     "top3": [
+      "area202213296_1_chunk49",
+      "adsp20221595_1_chunk29",
+      "area202110313_1_chunk33"
+     ],
+     "resposta_no_contexto": false,
+     "chars_contexto": 4937
+    },
+    {
+     "id": "C11",
+     "categoria": "conceitual_parafrase",
+     "posicao": 5,
+     "top3": [
+      "nreh20212990_chunk66",
+      "prt2016120mme_chunk2",
+      "ren2021918_chunk6"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 6591
+    },
+    {
+     "id": "C12",
+     "categoria": "conceitual_parafrase",
+     "posicao": null,
+     "top3": [
+      "dsp20221352_chunk3",
+      "dsp20211135ti_chunk3",
+      "dsp2021887ti_chunk3"
+     ],
+     "resposta_no_contexto": false,
+     "chars_contexto": 4432
+    },
+    {
+     "id": "C13",
+     "categoria": "conceitual_parafrase",
+     "posicao": 5,
+     "top3": [
+      "adsp20161287_1_chunk22",
+      "area20219737_1_chunk13",
+      "area20219639_1_chunk13"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 9898
+    },
+    {
+     "id": "C14",
+     "categoria": "conceitual_parafrase",
+     "posicao": 4,
+     "top3": [
+      "adsp2021519_1_chunk8",
+      "adsp2021521_1_chunk8",
+      "adsp2021520_1_chunk8"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 5620
+    },
+    {
+     "id": "C15",
+     "categoria": "conceitual_parafrase",
+     "posicao": null,
+     "top3": [
+      "ren20221029_chunk19",
+      "ndsp20222248_chunk13",
+      "dsp2016944ti_chunk3"
+     ],
+     "resposta_no_contexto": false,
+     "chars_contexto": 9658
+    },
+    {
+     "id": "C16",
+     "categoria": "conceitual_parafrase",
+     "posicao": 1,
+     "top3": [
+      "prt2016217spde_chunk6",
+      "prt2021835tispde_chunk6",
+      "prt20221252tispde_chunk7"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 9504
+    },
+    {
+     "id": "C17",
+     "categoria": "conceitual_parafrase",
+     "posicao": null,
+     "top3": [
+      "adsp20213781_1_chunk58",
+      "ndsp20213078_chunk23",
+      "adsp2022826_1_chunk21"
+     ],
+     "resposta_no_contexto": false,
+     "chars_contexto": 9748
+    },
+    {
+     "id": "C18",
+     "categoria": "conceitual_parafrase",
+     "posicao": 1,
+     "top3": [
+      "dsp2016503ti_chunk4",
+      "ndsp2022715_chunk11",
+      "ndsp2022906_chunk10"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 4736
+    },
+    {
+     "id": "C19",
+     "categoria": "conceitual_parafrase",
+     "posicao": 1,
+     "top3": [
+      "prt2021515tispde_chunk6",
+      "prt2021808tispde_chunk6",
+      "prt2021736tispde_chunk6"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 9972
+    }
+   ],
+   "contexto": {
+    "expansao": "documento",
+    "n": 115,
+    "com_resposta": 103,
+    "chars_medio": 6417
+   }
+  }
+ }
+}

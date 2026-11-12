@@ -49,6 +49,13 @@ def test_recusa_e_termos():
     assert not a.contem_termos("A usina fica em Natal.", ["Assú"])
 
 
+def test_termo_com_alternativas():
+    assert a.contem_termos("Ela precisa atuar na CCEE.", ["Câmara de Comercialização|CCEE"])
+    assert a.contem_termos("Prazo até 04/06/2023.", ["4 de junho de 2023|4/06/2023"])
+    assert a.contem_termos("Revoga o art. 33 da REN 1.033.", ["art. 33|artigo 33", "1.033"])
+    assert not a.contem_termos("Revoga a REN 1.033.", ["art. 33|artigo 33", "1.033"])
+
+
 def test_trechos_citados():
     assert a.trechos_citados("Conforme o DSP 1/2016 [Trecho 2].") == [2]
     assert a.trechos_citados("Ver [Trechos 1 e 3] e também [Trecho 5].") == [1, 3, 5]

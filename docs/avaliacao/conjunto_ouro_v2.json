@@ -1,0 +1,2366 @@
+{
+  "status": "congelado",
+  "versao": 2,
+  "semente_sorteio": 2027,
+  "congelado_em": "2026-11-12",
+  "observacao": "Q01 a Q56 são a versão 1, inalterada. Q057 a Q109 e C01 a C19 (sem a C07) são novas. Termos com \"|\" aceitam qualquer uma das formas (ajuste de 12/11/2026, antes da primeira medição com LLM).",
+  "perguntas": [
+    {
+      "id": "Q01",
+      "categoria": "ato_citado",
+      "deve_recusar": false,
+      "pergunta": "O que aprova a Portaria nº 1.322/SPE/MME, de 2022?",
+      "resposta_curta": "O enquadramento no REIDI do projeto de transmissão do Lote 05 do Leilão 02/2021, da Energisa Amapá Transmissora.",
+      "termos": [
+        "REIDI",
+        "Energisa Amapá"
+      ],
+      "ato": "PRT - PORTARIA 1322/2022",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "prt20221322tispde"
+      ],
+      "origem": "v1"
+    },
+    {
+      "id": "Q02",
+      "categoria": "ato_citado",
+      "deve_recusar": false,
+      "pergunta": "O que reconhece o Despacho nº 2.942, de 2022?",
+      "resposta_curta": "O cumprimento ou descumprimento, em 2021, dos critérios de eficiência de qualidade do serviço por CEB-DIS, ETO e Enel GO.",
+      "termos": [
+        "critérios de eficiência",
+        "Enel"
+      ],
+      "ato": "DSP - DESPACHO 2942/2022",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "adsp20222942_1",
+        "dsp20222942"
+      ],
+      "origem": "v1"
+    },
+    {
+      "id": "Q03",
+      "categoria": "ato_citado",
+      "deve_recusar": false,
+      "pergunta": "O que autoriza a Portaria nº 6.715, de 2022?",
+      "resposta_curta": "A implementação do Programa de Gestão na Superintendência de Recursos Humanos.",
+      "termos": [
+        "Programa de Gestão",
+        "Recursos Humanos"
+      ],
+      "ato": "PRT - PORTARIA 6715/2022",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "aprt20226715_1",
+        "prt20226715"
+      ],
+      "origem": "v1"
+    },
+    {
+      "id": "Q04",
+      "categoria": "ato_citado",
+      "deve_recusar": false,
+      "pergunta": "O que decidiu o Despacho nº 1.198, de 2016?",
+      "resposta_curta": "Negar provimento ao recurso da WZPAR e manter a hierarquização.",
+      "termos": [
+        "WZPAR",
+        "provimento"
+      ],
+      "ato": "DSP - DESPACHO 1198/2016",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "adsp20161198_1",
+        "dsp20161198"
+      ],
+      "origem": "v1"
+    },
+    {
+      "id": "Q05",
+      "categoria": "ato_citado",
+      "deve_recusar": false,
+      "pergunta": "O que decide o Despacho nº 1.604, de 2021?",
+      "resposta_curta": "Extinguir e arquivar o Processo Administrativo 48500.002634/2020-44.",
+      "termos": [
+        "arquiv"
+      ],
+      "ato": "DSP - DESPACHO 1604/2021",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "dsp20211604"
+      ],
+      "origem": "v1"
+    },
+    {
+      "id": "Q06",
+      "categoria": "ato_citado",
+      "deve_recusar": false,
+      "pergunta": "O que homologa o Despacho nº 3.501, de 2021?",
+      "resposta_curta": "O empréstimo do Fundo RGR à Companhia de Eletricidade do Amapá.",
+      "termos": [
+        "empréstimo",
+        "Amapá"
+      ],
+      "ato": "DSP - DESPACHO 3501/2021",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "dsp20213501ti"
+      ],
+      "origem": "v1"
+    },
+    {
+      "id": "Q07",
+      "categoria": "ato_citado",
+      "deve_recusar": false,
+      "pergunta": "O que reconhece a Portaria nº 528, de 2021?",
+      "resposta_curta": "A necessidade de contratar locação de geração termelétrica em Manicoré, no Amazonas.",
+      "termos": [
+        "Manicoré"
+      ],
+      "ato": "PRT - PORTARIA 528/2021",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "prt2021528mme",
+        "prt2021528tispde"
+      ],
+      "origem": "v1"
+    },
+    {
+      "id": "Q08",
+      "categoria": "ato_citado",
+      "deve_recusar": false,
+      "pergunta": "Qual norma é alterada pela Resolução Homologatória nº 2.959, de 2021?",
+      "resposta_curta": "A Resolução Homologatória nº 2.895, de 2021.",
+      "termos": [
+        "2.895"
+      ],
+      "ato": "REH - RESOLUÇÃO HOMOLOGATÓRIA 2959/2021",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "areh20212959_1",
+        "reh20212959ti"
+      ],
+      "origem": "v1"
+    },
+    {
+      "id": "Q09",
+      "categoria": "ato_citado",
+      "deve_recusar": false,
+      "pergunta": "Qual norma é alterada pela Resolução Homologatória nº 2.852, de 2021?",
+      "resposta_curta": "A Resolução Homologatória nº 2.712, de 2020, da Cemig-GT.",
+      "termos": [
+        "2.712"
+      ],
+      "ato": "REH - RESOLUÇÃO HOMOLOGATÓRIA 2852/2021",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "areh20212852_1",
+        "reh20212852ti"
+      ],
+      "origem": "v1"
+    },
+    {
+      "id": "Q10",
+      "categoria": "ato_citado",
+      "deve_recusar": false,
+      "pergunta": "De qual cooperativa a Resolução Homologatória nº 2.146, de 2016, homologa a revisão tarifária?",
+      "resposta_curta": "Cooperativa de Eletrificação Anita Garibaldi (Cergal).",
+      "termos": [
+        "Cergal"
+      ],
+      "ato": "REH - RESOLUÇÃO HOMOLOGATÓRIA 2146/2016",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "areh20162146_1",
+        "nreh20162146",
+        "reh20162146ti"
+      ],
+      "origem": "v1"
+    },
+    {
+      "id": "Q11",
+      "categoria": "fato_com_ato",
+      "deve_recusar": false,
+      "pergunta": "Segundo o Despacho nº 2.660, de 2022, qual o prazo para implementar a transferência de controle da Companhia Energética Chapecó?",
+      "resposta_curta": "Até 120 dias da publicação.",
+      "termos": [
+        "120"
+      ],
+      "ato": "DSP - DESPACHO 2660/2022",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "dsp20222660ti"
+      ],
+      "origem": "v1"
+    },
+    {
+      "id": "Q12",
+      "categoria": "fato_com_ato",
+      "deve_recusar": false,
+      "pergunta": "Qual o valor da multa aplicada pelo Despacho nº 3.350, de 2022?",
+      "resposta_curta": "R$ 25.588.427,00.",
+      "termos": [
+        "25.588.427"
+      ],
+      "ato": "DSP - DESPACHO 3350/2022",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "dsp20223350",
+        "emdsp20223350"
+      ],
+      "origem": "v1"
+    },
+    {
+      "id": "Q13",
+      "categoria": "fato_com_ato",
+      "deve_recusar": false,
+      "pergunta": "Qual o montante do empréstimo homologado pelo Despacho nº 3.501, de 2021?",
+      "resposta_curta": "R$ 5.821.551,62.",
+      "termos": [
+        "5.821.551,62"
+      ],
+      "ato": "DSP - DESPACHO 3501/2021",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "dsp20213501ti"
+      ],
+      "origem": "v1"
+    },
+    {
+      "id": "Q14",
+      "categoria": "fato_com_ato",
+      "deve_recusar": false,
+      "pergunta": "Qual a potência de cada unidade geradora da EOL Ventos de Santa Edwiges no Despacho nº 1.321, de 2016?",
+      "resposta_curta": "2.700 kW.",
+      "termos": [
+        "2.700"
+      ],
+      "ato": "DSP - DESPACHO 1321/2016",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "dsp20161321ti"
+      ],
+      "origem": "v1"
+    },
+    {
+      "id": "Q15",
+      "categoria": "fato_com_ato",
+      "deve_recusar": false,
+      "pergunta": "Qual a capacidade da unidade UG6 liberada pelo Despacho nº 477, de 2021?",
+      "resposta_curta": "4.200 kW.",
+      "termos": [
+        "4.200"
+      ],
+      "ato": "DSP - DESPACHO 477/2021",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "dsp2021477ti"
+      ],
+      "origem": "v1"
+    },
+    {
+      "id": "Q16",
+      "categoria": "fato_com_ato",
+      "deve_recusar": false,
+      "pergunta": "Qual a capacidade total liberada pelo Despacho nº 2.592, de 2016?",
+      "resposta_curta": "6.600 kW.",
+      "termos": [
+        "6.600"
+      ],
+      "ato": "DSP - DESPACHO 2592/2016",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "dsp20162592ti"
+      ],
+      "origem": "v1"
+    },
+    {
+      "id": "Q17",
+      "categoria": "fato_com_ato",
+      "deve_recusar": false,
+      "pergunta": "Qual a capacidade total da UTE FS Sorriso liberada pelo Despacho nº 2.159, de 2022?",
+      "resposta_curta": "55.000 kW.",
+      "termos": [
+        "55.000"
+      ],
+      "ato": "DSP - DESPACHO 2159/2022",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "dsp20222159ti"
+      ],
+      "origem": "v1"
+    },
+    {
+      "id": "Q18",
+      "categoria": "fato_com_ato",
+      "deve_recusar": false,
+      "pergunta": "Qual a potência instalada da UFV RES Russas IX no Despacho nº 2.464, de 2016?",
+      "resposta_curta": "24.000 kW.",
+      "termos": [
+        "24.000"
+      ],
+      "ato": "DSP - DESPACHO 2464/2016",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "dsp20162464ti"
+      ],
+      "origem": "v1"
+    },
+    {
+      "id": "Q19",
+      "categoria": "fato_com_ato",
+      "deve_recusar": false,
+      "pergunta": "A partir de quando valem as parcelas adicionais de RAP estabelecidas no Despacho nº 1.470, de 2022?",
+      "resposta_curta": "1º de julho de 2022.",
+      "termos": [
+        "julho de 2022"
+      ],
+      "ato": "DSP - DESPACHO 1470/2022",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "dsp20221470ti"
+      ],
+      "origem": "v1"
+    },
+    {
+      "id": "Q20",
+      "categoria": "fato_com_ato",
+      "deve_recusar": false,
+      "pergunta": "A quem foi concedida Licença para Capacitação pela Portaria nº 92, de 2022?",
+      "resposta_curta": "À servidora Ana Cristina Wegelin.",
+      "termos": [
+        "Wegelin"
+      ],
+      "ato": "PRT - PORTARIA 092/2022",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "prt2022092"
+      ],
+      "origem": "v1"
+    },
+    {
+      "id": "Q21",
+      "categoria": "fato_com_ato",
+      "deve_recusar": false,
+      "pergunta": "Até quando o Despacho nº 4.042, de 2021, renovou a validade do registro da EOL Delta 9 I?",
+      "resposta_curta": "Até 24 de dezembro de 2022.",
+      "termos": [
+        "24 de dezembro de 2022"
+      ],
+      "ato": "DSP - DESPACHO 4042/2021",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "dsp20214042ti"
+      ],
+      "origem": "v1"
+    },
+    {
+      "id": "Q22",
+      "categoria": "fato_com_ato",
+      "deve_recusar": false,
+      "pergunta": "Qual pleito sobre a PCH Ponte Branca foi indeferido pelo Despacho nº 2.891, de 2021?",
+      "resposta_curta": "O de excludente de responsabilidade pelo atraso na implantação.",
+      "termos": [
+        "excludente"
+      ],
+      "ato": "DSP - DESPACHO 2891/2021",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "adsp20212891_1",
+        "dsp20212891"
+      ],
+      "origem": "v1"
+    },
+    {
+      "id": "Q23",
+      "categoria": "fato_sem_ato",
+      "deve_recusar": false,
+      "pergunta": "Em qual município fica a Central Geradora Fotovoltaica Futuro II?",
+      "resposta_curta": "Assú, no Rio Grande do Norte.",
+      "termos": [
+        "Assú"
+      ],
+      "ato": "REA - RESOLUÇÃO AUTORIZATIVA 11250/2022",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "area202211250_1",
+        "area202211251_1",
+        "area202211252_1",
+        "area202211253_1",
+        "dsp2021034ti",
+        "rea202211250ti",
+        "rea202211251ti",
+        "rea202211252ti",
+        "rea202211253ti"
+      ],
+      "origem": "v1"
+    },
+    {
+      "id": "Q24",
+      "categoria": "fato_sem_ato",
+      "deve_recusar": false,
+      "pergunta": "Em qual município fica a Central Geradora Eólica Ventos de São Zacarias 06?",
+      "resposta_curta": "Simões, no Piauí.",
+      "termos": [
+        "Simões"
+      ],
+      "ato": "REA - RESOLUÇÃO AUTORIZATIVA 11617/2022",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "area202211612_1",
+        "area202211613_1",
+        "area202211614_1",
+        "area202211615_1",
+        "area202211616_1",
+        "area202211617_1",
+        "area202211618_1",
+        "area202211619_1",
+        "area202211620_1",
+        "area202211621_1",
+        "dsp2021501ti",
+        "prt20221627tispde",
+        "rea202211617ti"
+      ],
+      "origem": "v1"
+    },
+    {
+      "id": "Q25",
+      "categoria": "fato_sem_ato",
+      "deve_recusar": false,
+      "pergunta": "Em qual município fica a Central Geradora Eólica Assuruá 4 IV?",
+      "resposta_curta": "Gentio do Ouro, na Bahia.",
+      "termos": [
+        "Gentio do Ouro"
+      ],
+      "ato": "REA - RESOLUÇÃO AUTORIZATIVA 10358/2021",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "area202110358_1",
+        "dsp20212050ti",
+        "dsp2021315ti",
+        "nreh20212869",
+        "prt20211017tispde",
+        "rea202110355ti",
+        "rea202110356ti",
+        "rea202110357ti",
+        "rea202110358ti",
+        "rea202110359ti",
+        "rea202110360ti"
+      ],
+      "origem": "v1"
+    },
+    {
+      "id": "Q26",
+      "categoria": "fato_sem_ato",
+      "deve_recusar": false,
+      "pergunta": "Em qual município fica a Central Geradora Fotovoltaica Humaita Solar III?",
+      "resposta_curta": "Juazeiro, na Bahia.",
+      "termos": [
+        "Juazeiro"
+      ],
+      "ato": "REA - RESOLUÇÃO AUTORIZATIVA 13034/2022",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "area202213034_1",
+        "rea202213032ti",
+        "rea202213033ti",
+        "rea202213034ti",
+        "rea202213035ti",
+        "rea202213036ti"
+      ],
+      "origem": "v1"
+    },
+    {
+      "id": "Q27",
+      "categoria": "fato_sem_ato",
+      "deve_recusar": false,
+      "pergunta": "Para qual empresa foi transferida a autorização da Central Geradora Eólica Oeste Seridó IX?",
+      "resposta_curta": "Central Geradora Eólica Seridó IX S.A.",
+      "termos": [
+        "Seridó IX S.A"
+      ],
+      "ato": "REA - RESOLUÇÃO AUTORIZATIVA 12041/2022",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "area202212041_1",
+        "prt2021563mme",
+        "rea202212041ti"
+      ],
+      "origem": "v1"
+    },
+    {
+      "id": "Q28",
+      "categoria": "fato_sem_ato",
+      "deve_recusar": false,
+      "pergunta": "Para qual empresa foi transferida a autorização da Central Geradora Eólica Chuí V?",
+      "resposta_curta": "Omega Geração S.A.",
+      "termos": [
+        "Omega Geração"
+      ],
+      "ato": "REA - RESOLUÇÃO AUTORIZATIVA 10536/2021",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "area202110523_1",
+        "area202110524_1",
+        "area202110525_1",
+        "area202110526_1",
+        "area202110527_1",
+        "area202110528_1",
+        "area202110529_1",
+        "area202110530_1",
+        "area202110531_1",
+        "area202110532_1",
+        "area202110533_1",
+        "area202110534_1",
+        "area202110535_1",
+        "area202110536_1",
+        "area202110537_1",
+        "area202110538_1",
+        "area202110539_1",
+        "area202110540_1",
+        "area202110541_1",
+        "area202110542_1",
+        "area202110543_1",
+        "area202110544_1",
+        "area202110545_1",
+        "area202110546_1",
+        "area202110547_1",
+        "area202110548_1",
+        "area202110549_1",
+        "area202110550_1",
+        "area202110551_1",
+        "dsp2022060ti",
+        "ndsp2022060",
+        "rea202110536ti",
+        "rea202110537ti",
+        "rea202110538ti"
+      ],
+      "origem": "v1"
+    },
+    {
+      "id": "Q29",
+      "categoria": "fato_sem_ato",
+      "deve_recusar": false,
+      "pergunta": "Para qual cooperativa foi transferida a autorização da PCH Salto Forqueta?",
+      "resposta_curta": "Cooperativa de Distribuição de Energia Teutônia (CERTEL Energia).",
+      "termos": [
+        "Teutônia"
+      ],
+      "ato": "REA - RESOLUÇÃO AUTORIZATIVA 5789/2016",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "adsp2021745_1",
+        "area20165789_1",
+        "area202212308_1",
+        "ndsp2016086",
+        "ndsp2016178",
+        "ndsp2021034",
+        "ndsp2022060",
+        "rea20165789ti",
+        "rea202212308ti",
+        "rea202212318ti"
+      ],
+      "origem": "v1"
+    },
+    {
+      "id": "Q30",
+      "categoria": "fato_sem_ato",
+      "deve_recusar": false,
+      "pergunta": "Em qual município fica a UFV Nutrata?",
+      "resposta_curta": "Xaxim, em Santa Catarina.",
+      "termos": [
+        "Xaxim"
+      ],
+      "ato": "DSP - DESPACHO 3034/2022",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "dsp20223034ti"
+      ],
+      "origem": "v1"
+    },
+    {
+      "id": "Q31",
+      "categoria": "fato_sem_ato",
+      "deve_recusar": false,
+      "pergunta": "Em qual município fica a UFV Solar Salgueiro III?",
+      "resposta_curta": "Terra Nova, em Pernambuco.",
+      "termos": [
+        "Terra Nova"
+      ],
+      "ato": "DSP - DESPACHO 2608/2021",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "adsp2021184_1",
+        "adsp2021747_1",
+        "area20219656_1",
+        "area20219657_1",
+        "area20219658_1",
+        "dsp2021184",
+        "dsp20212521ti",
+        "dsp20212608ti",
+        "dsp20212758ti",
+        "dsp20213249ti",
+        "dsp2021878ti",
+        "rea20219658ti"
+      ],
+      "origem": "v1"
+    },
+    {
+      "id": "Q32",
+      "categoria": "fato_sem_ato",
+      "deve_recusar": false,
+      "pergunta": "Em qual município fica a EOL Serrote I?",
+      "resposta_curta": "Trairi, no Ceará.",
+      "termos": [
+        "Trairi"
+      ],
+      "ato": "DSP - DESPACHO 1012/2021",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "dsp2021041ti",
+        "dsp2021043ti",
+        "dsp2021044ti",
+        "dsp20211012ti",
+        "dsp20211013ti",
+        "dsp20211215ti",
+        "dsp20211269ti",
+        "dsp20211394ti",
+        "dsp2021175ti",
+        "dsp2021924",
+        "dsp2021947ti"
+      ],
+      "origem": "v1"
+    },
+    {
+      "id": "Q33",
+      "categoria": "fato_sem_ato",
+      "deve_recusar": false,
+      "pergunta": "Em qual município fica a Central Geradora Eólica Ventos de São Vitor 12?",
+      "resposta_curta": "Xique-Xique, na Bahia.",
+      "termos": [
+        "Xique-Xique"
+      ],
+      "ato": "PRT - PORTARIA 482/2021",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "dsp20211404ti",
+        "prt2021482tispde"
+      ],
+      "origem": "v1"
+    },
+    {
+      "id": "Q34",
+      "categoria": "fato_sem_ato",
+      "deve_recusar": false,
+      "pergunta": "Qual empresa é titular da Central Geradora Fotovoltaica Morro Preto 9?",
+      "resposta_curta": "Solatio Energy Gestão de Projetos Solares Ltda.",
+      "termos": [
+        "Solatio"
+      ],
+      "ato": "PRT - PORTARIA 1787/2022",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "prt20221787tispde"
+      ],
+      "origem": "v1"
+    },
+    {
+      "id": "Q35",
+      "categoria": "fato_sem_ato",
+      "deve_recusar": false,
+      "pergunta": "Qual o CNPJ da empresa Ventos de Santa Tereza 14 Energias Renováveis S.A.?",
+      "resposta_curta": "36.957.804/0001-20.",
+      "termos": [
+        "36.957.804/0001-20"
+      ],
+      "ato": "PRT - PORTARIA 612/2021",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "dsp20223519ti",
+        "prt2021548tispde",
+        "prt2021612tispde"
+      ],
+      "origem": "v1"
+    },
+    {
+      "id": "Q36",
+      "categoria": "fato_sem_ato",
+      "deve_recusar": false,
+      "pergunta": "Qual o CNPJ da Delta Fund V Comercializadora de Energia S.A.?",
+      "resposta_curta": "40.594.268/0001-13.",
+      "termos": [
+        "40.594.268/0001-13"
+      ],
+      "ato": "DSP - DESPACHO 2089/2021",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "dsp20212089ti"
+      ],
+      "origem": "v1"
+    },
+    {
+      "id": "Q37",
+      "categoria": "fato_sem_ato",
+      "deve_recusar": false,
+      "pergunta": "Em qual município ficam as usinas fotovoltaicas da Vila Energia Renovável Ltda.?",
+      "resposta_curta": "Bom Jesus da Lapa, na Bahia.",
+      "termos": [
+        "Bom Jesus da Lapa"
+      ],
+      "ato": "DSP - DESPACHO 2435/2021",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "dsp20211569ti",
+        "dsp20211717ti",
+        "dsp20212435ti"
+      ],
+      "origem": "v1"
+    },
+    {
+      "id": "Q38",
+      "categoria": "fato_sem_ato",
+      "deve_recusar": false,
+      "pergunta": "Em favor de qual empresa foi declarada de utilidade pública a área da derivação da Linha de Distribuição 138 kV CGR - UHE MIM?",
+      "resposta_curta": "Energisa Mato Grosso do Sul.",
+      "termos": [
+        "Energisa Mato Grosso do Sul"
+      ],
+      "ato": "REA - RESOLUÇÃO AUTORIZATIVA 10932/2021",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "area202110932_1",
+        "rea202110932ti"
+      ],
+      "origem": "v1"
+    },
+    {
+      "id": "Q39",
+      "categoria": "fato_sem_ato",
+      "deve_recusar": false,
+      "pergunta": "Em favor de qual distribuidora foi declarada de utilidade pública a área da Linha de Distribuição 69 kV Pacatuba - Distrito Industrial de Fortaleza 02P2?",
+      "resposta_curta": "Enel Distribuição Ceará.",
+      "termos": [
+        "Enel Distribuição Ceará"
+      ],
+      "ato": "REA - RESOLUÇÃO AUTORIZATIVA 11313/2022",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "area202211313_1",
+        "rea202211313ti"
+      ],
+      "origem": "v1"
+    },
+    {
+      "id": "Q40",
+      "categoria": "fato_sem_ato",
+      "deve_recusar": false,
+      "pergunta": "Qual o número do Contrato de Permissão de Distribuição da Cooperluz?",
+      "resposta_curta": "032/2010.",
+      "termos": [
+        "032/2010"
+      ],
+      "ato": "REH - RESOLUÇÃO HOMOLOGATÓRIA 2093/2016",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "areh20162093_1",
+        "dsp2016059ti",
+        "nreh20162093",
+        "rea20165611ti",
+        "reh20162093ti",
+        "reh20212909ti",
+        "reh20223089ti"
+      ],
+      "origem": "v1"
+    },
+    {
+      "id": "Q41",
+      "categoria": "revogado",
+      "deve_recusar": false,
+      "pergunta": "Sobre o que dispõe a Resolução nº 436, de 2016, da Agência Nacional de Águas?",
+      "resposta_curta": "Titulares de hidrelétricas em operação sem outorga de direito de uso de recursos hídricos emitida pela ANA.",
+      "termos": [
+        "recursos hídricos"
+      ],
+      "ato": "REO - RESOLUÇÕES OUTRAS 436/2016",
+      "situacao": "Situação:REVOGADA",
+      "documentos_esperados": [
+        "res2016436ana"
+      ],
+      "origem": "v1"
+    },
+    {
+      "id": "Q42",
+      "categoria": "revogado",
+      "deve_recusar": false,
+      "pergunta": "Para quais anos a Resolução Autorizativa nº 10.230, de 2021, autorizou limites de DEC e FEC da Energisa Nova Friburgo?",
+      "resposta_curta": "De 2022 a 2026.",
+      "termos": [
+        "2022",
+        "2026"
+      ],
+      "ato": "REA - RESOLUÇÃO AUTORIZATIVA 10230/2021",
+      "situacao": "Situação:REVOGADA",
+      "documentos_esperados": [
+        "area202110230_1",
+        "rea202110230ti"
+      ],
+      "origem": "v1"
+    },
+    {
+      "id": "Q43",
+      "categoria": "revogado",
+      "deve_recusar": false,
+      "pergunta": "Qual empresa foi autorizada a explorar a Central Geradora Fotovoltaica Paranaíba 10?",
+      "resposta_curta": "Paranaíba I Projetos de Energia Solar Ltda.",
+      "termos": [
+        "Paranaíba I Projetos"
+      ],
+      "ato": "REA - RESOLUÇÃO AUTORIZATIVA 10062/2021",
+      "situacao": "Situação:REVOGADA",
+      "documentos_esperados": [
+        "area202110062_1",
+        "prt2021919tispde",
+        "rea202110062ti"
+      ],
+      "origem": "v1"
+    },
+    {
+      "id": "Q44",
+      "categoria": "revogado",
+      "deve_recusar": false,
+      "pergunta": "Qual empresa foi autorizada a explorar a Central Geradora Fotovoltaica Celeo Barreiras II?",
+      "resposta_curta": "Celeo Redes Brasil S.A.",
+      "termos": [
+        "Celeo Redes"
+      ],
+      "ato": "REA - RESOLUÇÃO AUTORIZATIVA 9796/2021",
+      "situacao": "Situação:REVOGADA",
+      "documentos_esperados": [
+        "area20219795_1",
+        "area20219796_1",
+        "area20219797_1",
+        "area20219798_1",
+        "area20219799_1",
+        "area20219800_1",
+        "area20219801_1",
+        "area20219802_1",
+        "area20219803_1",
+        "area20219804_1",
+        "nreh20212869",
+        "prt2021757spde",
+        "prt2021761spde",
+        "rea20219796ti",
+        "rea20219797ti",
+        "rea20219798ti",
+        "rea20219799ti",
+        "rea20219800ti",
+        "rea20219801ti",
+        "rea20219802ti",
+        "rea20219803ti",
+        "rea20219804ti"
+      ],
+      "origem": "v1"
+    },
+    {
+      "id": "Q45",
+      "categoria": "revogado",
+      "deve_recusar": false,
+      "pergunta": "Quem foi designada gestora do Contrato nº 24/2022-ANEEL?",
+      "resposta_curta": "A servidora Andréia Dal Pizzol.",
+      "termos": [
+        "Dal Pizzol"
+      ],
+      "ato": "PRT - PORTARIA 365/2022",
+      "situacao": "Situação:REVOGADA",
+      "documentos_esperados": [
+        "prt2022365"
+      ],
+      "origem": "v1"
+    },
+    {
+      "id": "Q46",
+      "categoria": "revogado",
+      "deve_recusar": false,
+      "pergunta": "Em qual município fica a UFV Olho do Sol 5?",
+      "resposta_curta": "Piripiri, no Piauí.",
+      "termos": [
+        "Piripiri"
+      ],
+      "ato": "REA - RESOLUÇÃO AUTORIZATIVA 12304/2022",
+      "situacao": "Situação:REVOGADA",
+      "documentos_esperados": [
+        "area202212300_1",
+        "area202212301_1",
+        "area202212302_1",
+        "area202212303_1",
+        "area202212304_1",
+        "area202212305_1",
+        "area202212306_1",
+        "area202212307_1",
+        "dsp20212051ti",
+        "rea202212304ti",
+        "rea202212307ti"
+      ],
+      "origem": "v1"
+    },
+    {
+      "id": "Q47",
+      "categoria": "ato_inexistente",
+      "deve_recusar": true,
+      "pergunta": "O que determina o Despacho nº 9.876, de 2022?",
+      "resposta_curta": "Deve responder que não encontrou informação suficiente.",
+      "termos": [],
+      "ato": null,
+      "situacao": null,
+      "documentos_esperados": [],
+      "origem": "v1"
+    },
+    {
+      "id": "Q48",
+      "categoria": "ato_inexistente",
+      "deve_recusar": true,
+      "pergunta": "Qual o objeto da Resolução Autorizativa nº 99.001, de 2021?",
+      "resposta_curta": "Deve responder que não encontrou informação suficiente.",
+      "termos": [],
+      "ato": null,
+      "situacao": null,
+      "documentos_esperados": [],
+      "origem": "v1"
+    },
+    {
+      "id": "Q49",
+      "categoria": "fora_do_periodo",
+      "deve_recusar": true,
+      "pergunta": "Qual foi o resultado do leilão de transmissão de 2025?",
+      "resposta_curta": "Deve responder que não encontrou informação suficiente.",
+      "termos": [],
+      "ato": null,
+      "situacao": null,
+      "documentos_esperados": [],
+      "origem": "v1"
+    },
+    {
+      "id": "Q50",
+      "categoria": "fora_do_periodo",
+      "deve_recusar": true,
+      "pergunta": "Quem foi nomeado Diretor-Geral da ANEEL em 2025?",
+      "resposta_curta": "Deve responder que não encontrou informação suficiente.",
+      "termos": [],
+      "ato": null,
+      "situacao": null,
+      "documentos_esperados": [],
+      "origem": "v1"
+    },
+    {
+      "id": "Q51",
+      "categoria": "fora_do_periodo",
+      "deve_recusar": true,
+      "pergunta": "Qual a tarifa residencial da Enel São Paulo em janeiro de 2026?",
+      "resposta_curta": "Deve responder que não encontrou informação suficiente.",
+      "termos": [],
+      "ato": null,
+      "situacao": null,
+      "documentos_esperados": [],
+      "origem": "v1"
+    },
+    {
+      "id": "Q52",
+      "categoria": "fora_do_periodo",
+      "deve_recusar": true,
+      "pergunta": "Quantos servidores a ANEEL tem em 2026?",
+      "resposta_curta": "Deve responder que não encontrou informação suficiente.",
+      "termos": [],
+      "ato": null,
+      "situacao": null,
+      "documentos_esperados": [],
+      "origem": "v1"
+    },
+    {
+      "id": "Q53",
+      "categoria": "fora_do_dominio",
+      "deve_recusar": true,
+      "pergunta": "Qual é a capital da Austrália?",
+      "resposta_curta": "Deve responder que não encontrou informação suficiente.",
+      "termos": [],
+      "ato": null,
+      "situacao": null,
+      "documentos_esperados": [],
+      "origem": "v1"
+    },
+    {
+      "id": "Q54",
+      "categoria": "fora_do_dominio",
+      "deve_recusar": true,
+      "pergunta": "Quem foi o campeão da Copa do Mundo de 2022?",
+      "resposta_curta": "Deve responder que não encontrou informação suficiente.",
+      "termos": [],
+      "ato": null,
+      "situacao": null,
+      "documentos_esperados": [],
+      "origem": "v1"
+    },
+    {
+      "id": "Q55",
+      "categoria": "dado_ausente",
+      "deve_recusar": true,
+      "pergunta": "Qual o preço de venda da energia da UFV Nutrata no Despacho nº 3.034, de 2022?",
+      "resposta_curta": "Deve responder que não encontrou informação suficiente.",
+      "termos": [],
+      "ato": null,
+      "situacao": null,
+      "documentos_esperados": [],
+      "origem": "v1"
+    },
+    {
+      "id": "Q56",
+      "categoria": "dado_ausente",
+      "deve_recusar": true,
+      "pergunta": "Qual o valor da multa aplicada à Delta Fund V no Despacho nº 2.089, de 2021?",
+      "resposta_curta": "Deve responder que não encontrou informação suficiente.",
+      "termos": [],
+      "ato": null,
+      "situacao": null,
+      "documentos_esperados": [],
+      "origem": "v1"
+    },
+    {
+      "id": "Q057",
+      "categoria": "norma_citada",
+      "deve_recusar": false,
+      "pergunta": "O que estabelece a Resolução Normativa nº 1.009, de 2022?",
+      "resposta_curta": "As regras de contratação de energia pelos agentes nos ambientes de contratação regulado e livre.",
+      "termos": [
+        "contratação de energia"
+      ],
+      "ato": "REN - RESOLUÇÃO NORMATIVA 1009/2022",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "aren20221009_1",
+        "ren20221009"
+      ],
+      "origem": "v2",
+      "nota": ""
+    },
+    {
+      "id": "Q058",
+      "categoria": "norma_citada",
+      "deve_recusar": false,
+      "pergunta": "Sobre o que dispõe a Resolução Normativa nº 959, de 2021?",
+      "resposta_curta": "A transferência aos municípios e ao Distrito Federal dos ativos de iluminação pública das distribuidoras.",
+      "termos": [
+        "iluminação pública"
+      ],
+      "ato": "REN - RESOLUÇÃO NORMATIVA 959/2021",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "aren2021959_1",
+        "ren2021959"
+      ],
+      "origem": "v2",
+      "nota": ""
+    },
+    {
+      "id": "Q059",
+      "categoria": "norma_citada",
+      "deve_recusar": false,
+      "pergunta": "O que regula a Resolução Normativa nº 1.044, de 2022?",
+      "resposta_curta": "O compartilhamento de infraestrutura de concessionárias e permissionárias de energia elétrica.",
+      "termos": [
+        "compartilhamento de infraestrutura"
+      ],
+      "ato": "REN - RESOLUÇÃO NORMATIVA 1044/2022",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "aren20221044_1",
+        "ren20221044"
+      ],
+      "origem": "v2",
+      "nota": ""
+    },
+    {
+      "id": "Q060",
+      "categoria": "norma_citada",
+      "deve_recusar": false,
+      "pergunta": "Para que tipo de central geradora a Resolução Normativa nº 954, de 2021, estabelece tratamento regulatório?",
+      "resposta_curta": "Central Geradora Híbrida e centrais geradoras associadas.",
+      "termos": [
+        "Híbrida"
+      ],
+      "ato": "REN - RESOLUÇÃO NORMATIVA 954/2021",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "aren2021954_1",
+        "ren2021954"
+      ],
+      "origem": "v2",
+      "nota": ""
+    },
+    {
+      "id": "Q061",
+      "categoria": "norma_citada",
+      "deve_recusar": false,
+      "pergunta": "Qual lei a Resolução Normativa nº 1.048, de 2022, incorpora aos Procedimentos de Regulação Tarifária?",
+      "resposta_curta": "A Lei nº 14.299, de 2022.",
+      "termos": [
+        "14.299"
+      ],
+      "ato": "REN - RESOLUÇÃO NORMATIVA 1048/2022",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "aren20221048_1",
+        "aren20221048_2",
+        "aren20221048_2_1",
+        "aren20221048_2_2",
+        "ren20221048"
+      ],
+      "origem": "v2",
+      "nota": ""
+    },
+    {
+      "id": "Q062",
+      "categoria": "norma_citada",
+      "deve_recusar": false,
+      "pergunta": "O que estabelece a Resolução Normativa nº 1.000, de 2021?",
+      "resposta_curta": "As Regras de Prestação do Serviço Público de Distribuição de Energia Elétrica.",
+      "termos": [
+        "Prestação do Serviço Público de Distribuição"
+      ],
+      "ato": "REN - RESOLUÇÃO NORMATIVA 1000/2021",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "aren20211000_1",
+        "ren20211000"
+      ],
+      "origem": "v2",
+      "nota": ""
+    },
+    {
+      "id": "Q063",
+      "categoria": "norma_citada",
+      "deve_recusar": false,
+      "pergunta": "Qual resolução de 2010 foi revogada pela Resolução Normativa nº 1.000, de 2021?",
+      "resposta_curta": "A Resolução Normativa nº 414, de 2010.",
+      "termos": [
+        "414"
+      ],
+      "ato": "REN - RESOLUÇÃO NORMATIVA 1000/2021",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "aren20211000_1",
+        "ren20211000"
+      ],
+      "origem": "v2",
+      "nota": ""
+    },
+    {
+      "id": "Q064",
+      "categoria": "norma_citada",
+      "deve_recusar": false,
+      "pergunta": "Quais submódulos do PRORET são atualizados pela Resolução Normativa nº 1.022, de 2022?",
+      "resposta_curta": "Os Submódulos 9.1 e 9.2.",
+      "termos": [
+        "9.1",
+        "9.2"
+      ],
+      "ato": "REN - RESOLUÇÃO NORMATIVA 1022/2022",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "aren20221022_1",
+        "aren20221022_2",
+        "aren20221022_2_1",
+        "ren20221022"
+      ],
+      "origem": "v2",
+      "nota": ""
+    },
+    {
+      "id": "Q065",
+      "categoria": "norma_citada",
+      "deve_recusar": false,
+      "pergunta": "O que define a Resolução Normativa nº 731, de 2016?",
+      "resposta_curta": "A metodologia de cálculo da depreciação acumulada de usinas hidrelétricas e termelétricas.",
+      "termos": [
+        "depreciação"
+      ],
+      "ato": "REN - RESOLUÇÃO NORMATIVA 731/2016",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "aren2016731_1",
+        "ren2016731"
+      ],
+      "origem": "v2",
+      "nota": ""
+    },
+    {
+      "id": "Q066",
+      "categoria": "norma_citada",
+      "deve_recusar": false,
+      "pergunta": "Qual é o Módulo 1 dos Procedimentos de Distribuição aprovados pela Resolução Normativa nº 956, de 2021?",
+      "resposta_curta": "O Glossário de Termos Técnicos do PRODIST.",
+      "termos": [
+        "Glossário"
+      ],
+      "ato": "REN - RESOLUÇÃO NORMATIVA 956/2021",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "aren2021956_1",
+        "ren2021956"
+      ],
+      "origem": "v2",
+      "nota": ""
+    },
+    {
+      "id": "Q067",
+      "categoria": "norma_citada",
+      "deve_recusar": false,
+      "pergunta": "Qual artigo a Resolução Normativa nº 1.039, de 2022, revoga?",
+      "resposta_curta": "O art. 33 da Resolução Normativa nº 1.033, de 2022.",
+      "termos": [
+        "art. 33|artigo 33",
+        "1.033"
+      ],
+      "ato": "REN - RESOLUÇÃO NORMATIVA 1039/2022",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "aren20221039_1",
+        "ren20221039"
+      ],
+      "origem": "v2",
+      "nota": ""
+    },
+    {
+      "id": "Q068",
+      "categoria": "norma_citada",
+      "deve_recusar": false,
+      "pergunta": "O que estabelece a Resolução Normativa nº 1.034, de 2022?",
+      "resposta_curta": "Prazos e condições para sazonalização e modulação de garantia física de usinas.",
+      "termos": [
+        "sazonalização"
+      ],
+      "ato": "REN - RESOLUÇÃO NORMATIVA 1034/2022",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "aren20221034_1",
+        "ren20221034"
+      ],
+      "origem": "v2",
+      "nota": ""
+    },
+    {
+      "id": "Q069",
+      "categoria": "norma_citada",
+      "deve_recusar": false,
+      "pergunta": "Que cadastro é regulamentado pela Resolução Normativa nº 917, de 2021?",
+      "resposta_curta": "O Cadastro de Inadimplentes com Obrigações Intrassetoriais.",
+      "termos": [
+        "Inadimplentes"
+      ],
+      "ato": "REN - RESOLUÇÃO NORMATIVA 917/2021",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "aren2021917_1",
+        "ren2021917"
+      ],
+      "origem": "v2",
+      "nota": ""
+    },
+    {
+      "id": "Q070",
+      "categoria": "norma_citada",
+      "deve_recusar": false,
+      "pergunta": "O que disciplina a Resolução Normativa nº 916, de 2021?",
+      "resposta_curta": "A incorporação das Demais Instalações de Transmissão (DIT) ao ativo das distribuidoras.",
+      "termos": [
+        "Demais Instalações de Transmissão"
+      ],
+      "ato": "REN - RESOLUÇÃO NORMATIVA 916/2021",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "aren2021916_1",
+        "ren2021916"
+      ],
+      "origem": "v2",
+      "nota": ""
+    },
+    {
+      "id": "Q071",
+      "categoria": "norma_citada",
+      "deve_recusar": false,
+      "pergunta": "O que aprova a Resolução Normativa nº 1.003, de 2022?",
+      "resposta_curta": "A estrutura e os Submódulos dos Procedimentos de Regulação Tarifária (PRORET).",
+      "termos": [
+        "Regulação Tarifária"
+      ],
+      "ato": "REN - RESOLUÇÃO NORMATIVA 1003/2022",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "aren20221003_1",
+        "ren20221003"
+      ],
+      "origem": "v2",
+      "nota": ""
+    },
+    {
+      "id": "Q072",
+      "categoria": "norma_citada",
+      "deve_recusar": false,
+      "pergunta": "O que aprova a Resolução Normativa nº 1.012, de 2022?",
+      "resposta_curta": "A estrutura e os Submódulos dos Procedimentos de Comercialização.",
+      "termos": [
+        "Procedimentos de Comercialização"
+      ],
+      "ato": "REN - RESOLUÇÃO NORMATIVA 1012/2022",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "aren20221012_1",
+        "ren20221012"
+      ],
+      "origem": "v2",
+      "nota": ""
+    },
+    {
+      "id": "Q073",
+      "categoria": "norma_citada",
+      "deve_recusar": false,
+      "pergunta": "Qual programa ligado à demanda é consolidado pela Resolução Normativa nº 1.030, de 2022?",
+      "resposta_curta": "O programa da Resposta da Demanda.",
+      "termos": [
+        "Resposta da Demanda"
+      ],
+      "ato": "REN - RESOLUÇÃO NORMATIVA 1030/2022",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "aren20221030_1",
+        "ren20221030"
+      ],
+      "origem": "v2",
+      "nota": ""
+    },
+    {
+      "id": "Q074",
+      "categoria": "norma_citada",
+      "deve_recusar": false,
+      "pergunta": "Como se chama o programa cujos procedimentos são estabelecidos pela Resolução Normativa nº 1.045, de 2022?",
+      "resposta_curta": "Programa de Pesquisa, Desenvolvimento e Inovação (PROPDI).",
+      "termos": [
+        "Pesquisa, Desenvolvimento e Inovação"
+      ],
+      "ato": "REN - RESOLUÇÃO NORMATIVA 1045/2022",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "aren20221045_1",
+        "aren20221045_2",
+        "ren20221045"
+      ],
+      "origem": "v2",
+      "nota": ""
+    },
+    {
+      "id": "Q075",
+      "categoria": "revogado",
+      "deve_recusar": false,
+      "pergunta": "Sobre o que dispõe a Resolução Normativa nº 748, de 2016?",
+      "resposta_curta": "A prestação do serviço de distribuição por Distribuidora Designada.",
+      "termos": [
+        "Designada"
+      ],
+      "ato": "REN - RESOLUÇÃO NORMATIVA 748/2016",
+      "situacao": "Situação:REVOGADA",
+      "documentos_esperados": [
+        "aren2016748_1",
+        "ren2016748"
+      ],
+      "origem": "v2",
+      "nota": "Ato revogado"
+    },
+    {
+      "id": "Q076",
+      "categoria": "revogado",
+      "deve_recusar": false,
+      "pergunta": "Qual resolução é alterada pela Resolução Normativa nº 947, de 2021?",
+      "resposta_curta": "A Resolução Normativa nº 614, de 2014.",
+      "termos": [
+        "614"
+      ],
+      "ato": "REN - RESOLUÇÃO NORMATIVA 947/2021",
+      "situacao": "Situação:REVOGADA",
+      "documentos_esperados": [
+        "aren2021947_3",
+        "ren2021947"
+      ],
+      "origem": "v2",
+      "nota": "Ato revogado"
+    },
+    {
+      "id": "Q077",
+      "categoria": "revogado",
+      "deve_recusar": false,
+      "pergunta": "De que trata o Submódulo 6.8 do PRORET aprovado pela Resolução Normativa nº 700, de 2016?",
+      "resposta_curta": "Das Bandeiras Tarifárias.",
+      "termos": [
+        "Bandeiras"
+      ],
+      "ato": "REN - RESOLUÇÃO NORMATIVA 700/2016",
+      "situacao": "Situação:REVOGADA",
+      "documentos_esperados": [
+        "aren2016700_1",
+        "ren2016700"
+      ],
+      "origem": "v2",
+      "nota": "Ato revogado"
+    },
+    {
+      "id": "Q078",
+      "categoria": "revogado",
+      "deve_recusar": false,
+      "pergunta": "Quais procedimentos são alterados pela Resolução Normativa nº 718, de 2016?",
+      "resposta_curta": "Os do Sistema de Medição para Faturamento (SMF).",
+      "termos": [
+        "Medição para Faturamento"
+      ],
+      "ato": "REN - RESOLUÇÃO NORMATIVA 718/2016",
+      "situacao": "Situação:REVOGADA",
+      "documentos_esperados": [
+        "aren2016718_1",
+        "ren2016718"
+      ],
+      "origem": "v2",
+      "nota": "Ato revogado"
+    },
+    {
+      "id": "Q079",
+      "categoria": "revogado",
+      "deve_recusar": false,
+      "pergunta": "Qual era o objetivo da Resolução Normativa nº 928, de 2021?",
+      "resposta_curta": "Medidas para preservar o serviço de distribuição durante a pandemia de COVID-19.",
+      "termos": [
+        "pandemia"
+      ],
+      "ato": "REN - RESOLUÇÃO NORMATIVA 928/2021",
+      "situacao": "Situação:REVOGADA",
+      "documentos_esperados": [
+        "aren2021928_1",
+        "ren2021928"
+      ],
+      "origem": "v2",
+      "nota": "Ato revogado"
+    },
+    {
+      "id": "Q080",
+      "categoria": "revogado",
+      "deve_recusar": false,
+      "pergunta": "O que a Resolução Normativa nº 1.043, de 2022, altera?",
+      "resposta_curta": "O Regimento Interno da ANEEL.",
+      "termos": [
+        "Regimento Interno"
+      ],
+      "ato": "REN - RESOLUÇÃO NORMATIVA 1043/2022",
+      "situacao": "Situação:REVOGADA",
+      "documentos_esperados": [
+        "aren20221043_1",
+        "ren20221043"
+      ],
+      "origem": "v2",
+      "nota": "Ato revogado"
+    },
+    {
+      "id": "Q081",
+      "categoria": "revogado",
+      "deve_recusar": false,
+      "pergunta": "O que aprovou a Resolução Normativa nº 960, de 2021?",
+      "resposta_curta": "As Regras de Comercialização aplicáveis ao Sistema de Contabilização e Liquidação.",
+      "termos": [
+        "Contabilização e Liquidação"
+      ],
+      "ato": "REN - RESOLUÇÃO NORMATIVA 960/2021",
+      "situacao": "Situação:REVOGADA",
+      "documentos_esperados": [
+        "aren2021960_1",
+        "ren2021960"
+      ],
+      "origem": "v2",
+      "nota": "Ato revogado"
+    },
+    {
+      "id": "Q082",
+      "categoria": "revogado",
+      "deve_recusar": false,
+      "pergunta": "Quais módulos do PRODIST foram revisados pela Resolução Normativa nº 925, de 2021?",
+      "resposta_curta": "Os Módulos 1, 6 e 8.",
+      "termos": [
+        "1, 6 e 8"
+      ],
+      "ato": "REN - RESOLUÇÃO NORMATIVA 925/2021",
+      "situacao": "Situação:REVOGADA",
+      "documentos_esperados": [
+        "aren2021925_1",
+        "ren2021925"
+      ],
+      "origem": "v2",
+      "nota": "Ato revogado"
+    },
+    {
+      "id": "Q083",
+      "categoria": "revogado",
+      "deve_recusar": false,
+      "pergunta": "Qual a potência instalada da PCH Salto Grande, no rio Pirapó?",
+      "resposta_curta": "10.000 kW.",
+      "termos": [
+        "10.000|10 MW"
+      ],
+      "ato": "DSP - DESPACHO 2680/2016",
+      "situacao": "Situação:REVOGADA",
+      "documentos_esperados": [
+        "adsp2016086_2",
+        "dsp20162680ti",
+        "dsp2021034ti",
+        "dsp20212424ti",
+        "dsp2022060ti",
+        "ndsp20162680",
+        "ndsp20212424",
+        "ndsp20212427",
+        "ndsp2022060"
+      ],
+      "origem": "v2",
+      "nota": "Ato revogado, sem citar o número: mede o custo da política intermediária"
+    },
+    {
+      "id": "Q084",
+      "categoria": "norma_por_tema",
+      "deve_recusar": false,
+      "pergunta": "Qual Resolução Normativa trata da transferência dos ativos de iluminação pública aos municípios?",
+      "resposta_curta": "A Resolução Normativa nº 959, de 2021.",
+      "termos": [
+        "959"
+      ],
+      "ato": "REN - RESOLUÇÃO NORMATIVA 959/2021",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "aren2021959_1",
+        "ren2021959"
+      ],
+      "origem": "v2",
+      "nota": ""
+    },
+    {
+      "id": "Q085",
+      "categoria": "norma_por_tema",
+      "deve_recusar": false,
+      "pergunta": "Qual Resolução Normativa regula o compartilhamento de infraestrutura das distribuidoras?",
+      "resposta_curta": "A Resolução Normativa nº 1.044, de 2022.",
+      "termos": [
+        "1.044"
+      ],
+      "ato": "REN - RESOLUÇÃO NORMATIVA 1044/2022",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "aren20221044_1",
+        "ren20221044"
+      ],
+      "origem": "v2",
+      "nota": ""
+    },
+    {
+      "id": "Q086",
+      "categoria": "norma_por_tema",
+      "deve_recusar": false,
+      "pergunta": "Qual Resolução Normativa regulamenta o cadastro de inadimplentes com obrigações intrassetoriais?",
+      "resposta_curta": "A Resolução Normativa nº 917, de 2021.",
+      "termos": [
+        "917"
+      ],
+      "ato": "REN - RESOLUÇÃO NORMATIVA 917/2021",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "aren2021917_1",
+        "ren2021917"
+      ],
+      "origem": "v2",
+      "nota": ""
+    },
+    {
+      "id": "Q087",
+      "categoria": "regra_atual",
+      "deve_recusar": false,
+      "pergunta": "Qual norma estabelece hoje os procedimentos para requerer a Declaração de Utilidade Pública de áreas de terra para instalações de energia?",
+      "resposta_curta": "A Resolução Normativa nº 919, de 2021, que revogou a nº 740, de 2016.",
+      "termos": [
+        "919"
+      ],
+      "ato": "REN - RESOLUÇÃO NORMATIVA 919/2021",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "aren2021919_1",
+        "ren2021919"
+      ],
+      "origem": "v2",
+      "nota": "Risco: a REN 740/2016, revogada, trata do mesmo tema"
+    },
+    {
+      "id": "Q088",
+      "categoria": "regra_atual",
+      "deve_recusar": false,
+      "pergunta": "Qual norma aprova hoje a Regulação Econômico-Financeira das concessionárias de energia?",
+      "resposta_curta": "A Resolução Normativa nº 948, de 2021, que revogou a nº 699, de 2016.",
+      "termos": [
+        "948"
+      ],
+      "ato": "REN - RESOLUÇÃO NORMATIVA 948/2021",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "aren2021948_1",
+        "ren2021948"
+      ],
+      "origem": "v2",
+      "nota": "Risco: a REN 699/2016, revogada, trata do mesmo tema"
+    },
+    {
+      "id": "Q089",
+      "categoria": "regra_atual",
+      "deve_recusar": false,
+      "pergunta": "Qual norma institui hoje a Convenção de Comercialização de Energia Elétrica?",
+      "resposta_curta": "A Resolução Normativa nº 957, de 2021.",
+      "termos": [
+        "957"
+      ],
+      "ato": "REN - RESOLUÇÃO NORMATIVA 957/2021",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "aren2021957_1",
+        "ren2021957"
+      ],
+      "origem": "v2",
+      "nota": "Risco: normas de 2016 revogadas tratam do mesmo tema"
+    },
+    {
+      "id": "Q090",
+      "categoria": "regra_atual",
+      "deve_recusar": false,
+      "pergunta": "Qual norma estabelece hoje as condições gerais dos Conselhos de Consumidores de Energia Elétrica?",
+      "resposta_curta": "A Resolução Normativa nº 963, de 2021, que revogou a nº 715, de 2016.",
+      "termos": [
+        "963"
+      ],
+      "ato": "REN - RESOLUÇÃO NORMATIVA 963/2021",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "aren2021963_1",
+        "ren2021963"
+      ],
+      "origem": "v2",
+      "nota": "Risco: a REN 715/2016, revogada, trata do mesmo tema"
+    },
+    {
+      "id": "Q091",
+      "categoria": "regra_atual",
+      "deve_recusar": false,
+      "pergunta": "Qual norma estabelece hoje os procedimentos do programa de pesquisa e desenvolvimento do setor elétrico?",
+      "resposta_curta": "A Resolução Normativa nº 1.045, de 2022, que revogou a nº 754, de 2016.",
+      "termos": [
+        "1.045"
+      ],
+      "ato": "REN - RESOLUÇÃO NORMATIVA 1045/2022",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "aren20221045_1",
+        "aren20221045_2",
+        "ren20221045"
+      ],
+      "origem": "v2",
+      "nota": "Risco: a REN 754/2016, revogada, trata do mesmo tema"
+    },
+    {
+      "id": "Q092",
+      "categoria": "regra_atual",
+      "deve_recusar": false,
+      "pergunta": "Qual norma estabelece hoje os Procedimentos de Distribuição de Energia Elétrica (PRODIST)?",
+      "resposta_curta": "A Resolução Normativa nº 956, de 2021.",
+      "termos": [
+        "956"
+      ],
+      "ato": "REN - RESOLUÇÃO NORMATIVA 956/2021",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "aren2021956_1",
+        "ren2021956"
+      ],
+      "origem": "v2",
+      "nota": "Risco: normas anteriores revogadas tratam do mesmo tema"
+    },
+    {
+      "id": "Q093",
+      "categoria": "fato_com_ato",
+      "deve_recusar": false,
+      "pergunta": "Qual empresa teve considerada atendida a exigência de envio de documentos pelo Despacho nº 1.070, de 2022?",
+      "resposta_curta": "A Goyaz Transmissão de Energia S.A.",
+      "termos": [
+        "Goyaz"
+      ],
+      "ato": "DSP - DESPACHO 1070/2022",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "dsp20221070"
+      ],
+      "origem": "v2",
+      "nota": ""
+    },
+    {
+      "id": "Q094",
+      "categoria": "fato_com_ato",
+      "deve_recusar": false,
+      "pergunta": "Qual empresa foi a contratada no termo aditivo anuído pelo Despacho nº 723, de 2021?",
+      "resposta_curta": "A Ativas Data Center S.A.",
+      "termos": [
+        "Ativas Data Center"
+      ],
+      "ato": "DSP - DESPACHO 723/2021",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "dsp2021723"
+      ],
+      "origem": "v2",
+      "nota": ""
+    },
+    {
+      "id": "Q095",
+      "categoria": "fato_com_ato",
+      "deve_recusar": false,
+      "pergunta": "Em qual leilão o Despacho nº 24, de 2022, habilitou as proponentes vendedoras?",
+      "resposta_curta": "No Leilão de Energia Existente A-1 de 2021 (Leilão nº 9/2021-ANEEL).",
+      "termos": [
+        "Energia Existente"
+      ],
+      "ato": "DSP - DESPACHO 024/2022",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "dsp2022024"
+      ],
+      "origem": "v2",
+      "nota": ""
+    },
+    {
+      "id": "Q096",
+      "categoria": "fato_com_ato",
+      "deve_recusar": false,
+      "pergunta": "O que aprova a Portaria nº 6.724, de 2022, da ANEEL?",
+      "resposta_curta": "A revisão da Cadeia de Valor da ANEEL.",
+      "termos": [
+        "Cadeia de Valor"
+      ],
+      "ato": "PRT - PORTARIA 6724/2022",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "aprt20226724_1",
+        "prt20226724"
+      ],
+      "origem": "v2",
+      "nota": ""
+    },
+    {
+      "id": "Q097",
+      "categoria": "fato_sem_ato",
+      "deve_recusar": false,
+      "pergunta": "Qual o CNPJ da Solar.BR Energia Ltda.?",
+      "resposta_curta": "41.501.877/0001-43.",
+      "termos": [
+        "41.501.877/0001-43"
+      ],
+      "ato": "DSP - DESPACHO 382/2022",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "dsp2022382ti"
+      ],
+      "origem": "v2",
+      "nota": ""
+    },
+    {
+      "id": "Q098",
+      "categoria": "fato_sem_ato",
+      "deve_recusar": false,
+      "pergunta": "Até quando a Iracema Transmissora de Energia deve adequar a teleproteção das linhas de transmissão de Milagres?",
+      "resposta_curta": "Até 4 de junho de 2023.",
+      "termos": [
+        "4 de junho de 2023|4/06/2023|4/6/2023"
+      ],
+      "ato": "DSP - DESPACHO 2976/2021",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "adsp20212976_1",
+        "dsp20212976"
+      ],
+      "origem": "v2",
+      "nota": ""
+    },
+    {
+      "id": "Q099",
+      "categoria": "fato_sem_ato",
+      "deve_recusar": false,
+      "pergunta": "Qual o valor da multa aplicada à Nova Guaporé Energética S.A.?",
+      "resposta_curta": "R$ 983.474,29.",
+      "termos": [
+        "983.474,29"
+      ],
+      "ato": "DSP - DESPACHO 2951/2022",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "dsp20222951ti",
+        "emdsp20222951"
+      ],
+      "origem": "v2",
+      "nota": ""
+    },
+    {
+      "id": "Q100",
+      "categoria": "fato_sem_ato",
+      "deve_recusar": false,
+      "pergunta": "Que alteração estatutária da Gralha Azul Transmissão de Energia foi anuída pela ANEEL em 2021?",
+      "resposta_curta": "A redução do seu Capital Social.",
+      "termos": [
+        "Capital Social"
+      ],
+      "ato": "DSP - DESPACHO 3622/2021",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "dsp20213622"
+      ],
+      "origem": "v2",
+      "nota": ""
+    },
+    {
+      "id": "Q101",
+      "categoria": "fato_sem_ato",
+      "deve_recusar": false,
+      "pergunta": "Qual empresa é titular da Central Geradora Fotovoltaica AC XXIII?",
+      "resposta_curta": "A Vale S.A.",
+      "termos": [
+        "Vale S.A"
+      ],
+      "ato": "PRT - PORTARIA 639/2021",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "area202110080_1",
+        "area202110080_3",
+        "area202110081_1",
+        "area202110081_3",
+        "dsp20214156ti",
+        "prt2021639tispde"
+      ],
+      "origem": "v2",
+      "nota": ""
+    },
+    {
+      "id": "Q102",
+      "categoria": "fato_sem_ato",
+      "deve_recusar": false,
+      "pergunta": "Qual a capacidade da unidade UG11 da EOL Ventos de Santa Martina 13?",
+      "resposta_curta": "4.200 kW.",
+      "termos": [
+        "4.200|4,2 MW"
+      ],
+      "ato": "DSP - DESPACHO 2079/2021",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "dsp20211958ti",
+        "dsp20212047ti",
+        "dsp20212079ti",
+        "dsp20212186ti",
+        "dsp20212206ti",
+        "dsp20212209ti",
+        "dsp20212239ti",
+        "dsp20212640ti",
+        "dsp20212652ti",
+        "dsp20212685ti",
+        "dsp20212963ti",
+        "dsp20213087ti",
+        "dsp20213157ti",
+        "dsp20213422ti",
+        "dsp2022060ti",
+        "ndsp2022060"
+      ],
+      "origem": "v2",
+      "nota": ""
+    },
+    {
+      "id": "Q103",
+      "categoria": "fato_sem_ato",
+      "deve_recusar": false,
+      "pergunta": "Por que a Laginha Agro Industrial S.A. foi intimada por edital?",
+      "resposta_curta": "Porque estava em lugar incerto e não sabido.",
+      "termos": [
+        "lugar incerto"
+      ],
+      "ato": "EDT - EDITAL/2016",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "edt2016sn10",
+        "edt2016sn104",
+        "edt2016sn119",
+        "edt2016sn120",
+        "edt2016sn146",
+        "edt2016sn171",
+        "edt2016sn173",
+        "edt2016sn197",
+        "edt2016sn202",
+        "edt2016sn203",
+        "edt2016sn215",
+        "edt2016sn225",
+        "edt2016sn240",
+        "edt2016sn249",
+        "edt2016sn43",
+        "edt2016sn44",
+        "edt2016sn54",
+        "edt2016sn60",
+        "edt2016sn68",
+        "edt2016sn74",
+        "edt2016sn79",
+        "edt2016sn88",
+        "edt2016sn90"
+      ],
+      "origem": "v2",
+      "nota": ""
+    },
+    {
+      "id": "Q104",
+      "categoria": "fato_sem_ato",
+      "deve_recusar": false,
+      "pergunta": "Em quais municípios fica a EOL Ventos da Bahia XIV?",
+      "resposta_curta": "Iraquara e Souto Soares, na Bahia.",
+      "termos": [
+        "Iraquara",
+        "Souto Soares"
+      ],
+      "ato": "DSP - DESPACHO 3458/2021",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "dsp20213417ti",
+        "dsp20213458ti",
+        "dsp20213677ti",
+        "dsp20213826ti",
+        "dsp20213859ti",
+        "dsp20213864ti",
+        "dsp20214004ti",
+        "dsp2022199",
+        "dsp2022220ti"
+      ],
+      "origem": "v2",
+      "nota": ""
+    },
+    {
+      "id": "Q105",
+      "categoria": "fato_sem_ato",
+      "deve_recusar": false,
+      "pergunta": "Qual a capacidade total liberada para operação comercial da UFV Francisco Sá 2?",
+      "resposta_curta": "33.000 kW.",
+      "termos": [
+        "33.000|33 MW"
+      ],
+      "ato": "DSP - DESPACHO 928/2022",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "dsp2022494ti",
+        "dsp2022928ti",
+        "prt20221232spde"
+      ],
+      "origem": "v2",
+      "nota": ""
+    },
+    {
+      "id": "Q106",
+      "categoria": "fato_sem_ato",
+      "deve_recusar": false,
+      "pergunta": "Em favor de qual distribuidora foi declarada de utilidade pública a área da Linha de Distribuição Ivaiporã - Manoel Ribas?",
+      "resposta_curta": "Copel Distribuição S.A.",
+      "termos": [
+        "Copel"
+      ],
+      "ato": "REA - RESOLUÇÃO AUTORIZATIVA 12061/2022",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "area202212061_1",
+        "rea202212061ti"
+      ],
+      "origem": "v2",
+      "nota": ""
+    },
+    {
+      "id": "Q107",
+      "categoria": "fato_sem_ato",
+      "deve_recusar": false,
+      "pergunta": "Qual o CNPJ da Enel Green Power Aroeira 06 S.A.?",
+      "resposta_curta": "38.131.056/0001-58.",
+      "termos": [
+        "38.131.056/0001-58"
+      ],
+      "ato": "PRT - PORTARIA 1357/2022",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "prt2021945tispde",
+        "prt20221357tispde",
+        "rea202110018ti"
+      ],
+      "origem": "v2",
+      "nota": ""
+    },
+    {
+      "id": "Q108",
+      "categoria": "ato_inexistente",
+      "deve_recusar": true,
+      "pergunta": "O que estabelece a Resolução Normativa nº 1.150, de 2022?",
+      "resposta_curta": "Deve responder que não encontrou informação suficiente.",
+      "termos": [],
+      "ato": null,
+      "situacao": null,
+      "documentos_esperados": [],
+      "origem": "v2",
+      "nota": ""
+    },
+    {
+      "id": "Q109",
+      "categoria": "dado_ausente",
+      "deve_recusar": true,
+      "pergunta": "Qual o valor da tarifa residencial fixado pela Resolução Normativa nº 1.000, de 2021?",
+      "resposta_curta": "Deve responder que não encontrou informação suficiente.",
+      "termos": [],
+      "ato": null,
+      "situacao": null,
+      "documentos_esperados": [],
+      "origem": "v2",
+      "nota": ""
+    },
+    {
+      "id": "C01",
+      "categoria": "conceitual_sigla",
+      "deve_recusar": false,
+      "pergunta": "O que significa a sigla REIDI?",
+      "resposta_curta": "Regime Especial de Incentivos para o Desenvolvimento da Infraestrutura.",
+      "termos": [
+        "Regime Especial de Incentivos"
+      ],
+      "evidencia": [
+        "Regime Especial de Incentivos para o Desenvolvimento da Infraestrutura"
+      ],
+      "ato": null,
+      "documentos_esperados": [],
+      "origem": "conceitual",
+      "nota": "",
+      "chunks_com_evidencia": 1240
+    },
+    {
+      "id": "C02",
+      "categoria": "conceitual_sigla",
+      "deve_recusar": false,
+      "pergunta": "O que significa DRO nos despachos de geração?",
+      "resposta_curta": "Despacho de Registro do Requerimento de Outorga.",
+      "termos": [
+        "Requerimento de Outorga"
+      ],
+      "evidencia": [
+        "Requerimento de Outorga",
+        "DRO"
+      ],
+      "ato": null,
+      "documentos_esperados": [],
+      "origem": "conceitual",
+      "nota": "",
+      "chunks_com_evidencia": 2452
+    },
+    {
+      "id": "C03",
+      "categoria": "conceitual_sigla",
+      "deve_recusar": false,
+      "pergunta": "O que mede o indicador DEC?",
+      "resposta_curta": "A Duração Equivalente de Interrupção por Unidade Consumidora.",
+      "termos": [
+        "Duração Equivalente de Interrupção"
+      ],
+      "evidencia": [
+        "Duração Equivalente de Interrupção"
+      ],
+      "ato": null,
+      "documentos_esperados": [],
+      "origem": "conceitual",
+      "nota": "",
+      "chunks_com_evidencia": 418
+    },
+    {
+      "id": "C04",
+      "categoria": "conceitual_sigla",
+      "deve_recusar": false,
+      "pergunta": "O que significa a sigla TUSD?",
+      "resposta_curta": "Tarifa de Uso do Sistema de Distribuição.",
+      "termos": [
+        "Uso do Sistema de Distribuição"
+      ],
+      "evidencia": [
+        "de Uso do Sistema de Distribuição"
+      ],
+      "ato": null,
+      "documentos_esperados": [],
+      "origem": "conceitual",
+      "nota": "Evidência mais estrita que no rascunho anterior",
+      "chunks_com_evidencia": 3931
+    },
+    {
+      "id": "C05",
+      "categoria": "conceitual_sigla",
+      "deve_recusar": false,
+      "pergunta": "O que significa a sigla MRE?",
+      "resposta_curta": "Mecanismo de Realocação de Energia.",
+      "termos": [
+        "Mecanismo de Realocação de Energia"
+      ],
+      "evidencia": [
+        "Mecanismo de Realocação de Energia"
+      ],
+      "ato": null,
+      "documentos_esperados": [],
+      "origem": "conceitual",
+      "nota": "",
+      "chunks_com_evidencia": 387
+    },
+    {
+      "id": "C06",
+      "categoria": "conceitual_sigla",
+      "deve_recusar": false,
+      "pergunta": "O que é o PRORET?",
+      "resposta_curta": "Os Procedimentos de Regulação Tarifária.",
+      "termos": [
+        "Procedimentos de Regulação Tarifária"
+      ],
+      "evidencia": [
+        "Procedimentos de Regulação Tarifária"
+      ],
+      "ato": null,
+      "documentos_esperados": [],
+      "origem": "conceitual",
+      "nota": "",
+      "chunks_com_evidencia": 2070
+    },
+    {
+      "id": "C08",
+      "categoria": "conceitual_parafrase",
+      "deve_recusar": false,
+      "pergunta": "Qual o prazo para interpor recurso contra um Auto de Infração da ANEEL?",
+      "resposta_curta": "Dez dias.",
+      "termos": [
+        "dez dias"
+      ],
+      "evidencia": [
+        "prazo para interposição de recurso será de dez dias"
+      ],
+      "ato": null,
+      "documentos_esperados": [],
+      "origem": "conceitual",
+      "nota": "Reescrita: o prazo depende do tipo de recurso",
+      "chunks_com_evidencia": 31
+    },
+    {
+      "id": "C09",
+      "categoria": "conceitual_parafrase",
+      "deve_recusar": false,
+      "pergunta": "Depois da anuência da ANEEL, em quanto tempo uma troca de controle societário precisa ser concluída?",
+      "resposta_curta": "Em até 120 dias da publicação do despacho.",
+      "termos": [
+        "120"
+      ],
+      "evidencia": [
+        "120 (cento e vinte) dias",
+        "implementação da operação"
+      ],
+      "ato": null,
+      "documentos_esperados": [],
+      "origem": "conceitual",
+      "nota": "",
+      "chunks_com_evidencia": 88
+    },
+    {
+      "id": "C10",
+      "categoria": "conceitual_parafrase",
+      "deve_recusar": false,
+      "pergunta": "A agência responde por prejuízos de terceiros quando cancela uma autorização de usina?",
+      "resposta_curta": "Não. A revogação não acarreta responsabilidade por compromissos assumidos com terceiros.",
+      "termos": [
+        "responsabilidade",
+        "terceiros"
+      ],
+      "evidencia": [
+        "revogação da autorização não acarretará"
+      ],
+      "ato": null,
+      "documentos_esperados": [],
+      "origem": "conceitual",
+      "nota": "",
+      "chunks_com_evidencia": 1960
+    },
+    {
+      "id": "C11",
+      "categoria": "conceitual_parafrase",
+      "deve_recusar": false,
+      "pergunta": "Como se chama a remuneração anual das concessionárias de transmissão?",
+      "resposta_curta": "Receita Anual Permitida (RAP).",
+      "termos": [
+        "Receita Anual Permitida"
+      ],
+      "evidencia": [
+        "Receita Anual Permitida"
+      ],
+      "ato": null,
+      "documentos_esperados": [],
+      "origem": "conceitual",
+      "nota": "",
+      "chunks_com_evidencia": 2866
+    },
+    {
+      "id": "C12",
+      "categoria": "conceitual_parafrase",
+      "deve_recusar": false,
+      "pergunta": "Em qual entidade uma empresa autorizada a vender energia precisa atuar?",
+      "resposta_curta": "Na Câmara de Comercialização de Energia Elétrica (CCEE).",
+      "termos": [
+        "Câmara de Comercialização|CCEE"
+      ],
+      "evidencia": [
+        "Agente Comercializador",
+        "Câmara de Comercialização de Energia Elétrica"
+      ],
+      "ato": null,
+      "documentos_esperados": [],
+      "origem": "conceitual",
+      "nota": "",
+      "chunks_com_evidencia": 122
+    },
+    {
+      "id": "C13",
+      "categoria": "conceitual_parafrase",
+      "deve_recusar": false,
+      "pergunta": "Qual norma legal fundamenta as desapropriações por utilidade pública no setor elétrico?",
+      "resposta_curta": "O Decreto-Lei nº 3.365, de 1941.",
+      "termos": [
+        "3.365"
+      ],
+      "evidencia": [
+        "Decreto-Lei nº 3.365"
+      ],
+      "ato": null,
+      "documentos_esperados": [],
+      "origem": "conceitual",
+      "nota": "",
+      "chunks_com_evidencia": 2995
+    },
+    {
+      "id": "C14",
+      "categoria": "conceitual_parafrase",
+      "deve_recusar": false,
+      "pergunta": "Qual lei concede benefício a projetos de infraestrutura considerados prioritários?",
+      "resposta_curta": "A Lei nº 12.431, de 2011.",
+      "termos": [
+        "12.431"
+      ],
+      "evidencia": [
+        "Prioritário",
+        "12.431"
+      ],
+      "ato": null,
+      "documentos_esperados": [],
+      "origem": "conceitual",
+      "nota": "",
+      "chunks_com_evidencia": 794
+    },
+    {
+      "id": "C15",
+      "categoria": "conceitual_parafrase",
+      "deve_recusar": false,
+      "pergunta": "Para que serve a liberação de uma usina para operação em teste?",
+      "resposta_curta": "Para fins de contabilização da sua energia.",
+      "termos": [
+        "contabiliza"
+      ],
+      "evidencia": [
+        "operação em teste",
+        "fins de contabilização"
+      ],
+      "ato": null,
+      "documentos_esperados": [],
+      "origem": "conceitual",
+      "nota": "Reescrita: a versão anterior era vaga",
+      "chunks_com_evidencia": 70
+    },
+    {
+      "id": "C16",
+      "categoria": "conceitual_parafrase",
+      "deve_recusar": false,
+      "pergunta": "Onde uma empresa deve pedir a habilitação no regime de incentivos à infraestrutura?",
+      "resposta_curta": "Na Secretaria da Receita Federal do Brasil.",
+      "termos": [
+        "Receita Federal"
+      ],
+      "evidencia": [
+        "habilitação do projeto no REIDI",
+        "requeridos"
+      ],
+      "ato": null,
+      "documentos_esperados": [],
+      "origem": "conceitual",
+      "nota": "",
+      "chunks_com_evidencia": 1016
+    },
+    {
+      "id": "C17",
+      "categoria": "conceitual_parafrase",
+      "deve_recusar": false,
+      "pergunta": "O que o interessado precisa apresentar para a ANEEL emitir a outorga depois do registro do requerimento?",
+      "resposta_curta": "Os documentos dos Anexos I e II da Resolução Normativa nº 876, de 2020.",
+      "termos": [
+        "Anexos I e II"
+      ],
+      "evidencia": [
+        "depende de apresentação dos documentos",
+        "876"
+      ],
+      "ato": null,
+      "documentos_esperados": [],
+      "origem": "conceitual",
+      "nota": "",
+      "chunks_com_evidencia": 684
+    },
+    {
+      "id": "C18",
+      "categoria": "conceitual_parafrase",
+      "deve_recusar": false,
+      "pergunta": "Quando uma unidade geradora entra em operação comercial, o que deve acontecer com a energia produzida?",
+      "resposta_curta": "Ela deve estar disponível ao sistema.",
+      "termos": [
+        "disponível ao sistema"
+      ],
+      "evidencia": [
+        "operação comercial",
+        "disponível ao sistema"
+      ],
+      "ato": null,
+      "documentos_esperados": [],
+      "origem": "conceitual",
+      "nota": "",
+      "chunks_com_evidencia": 172
+    },
+    {
+      "id": "C19",
+      "categoria": "conceitual_parafrase",
+      "deve_recusar": false,
+      "pergunta": "Por quanto tempo a empresa deve guardar a documentação sobre o uso dos recursos captados?",
+      "resposta_curta": "Até cinco anos após o vencimento.",
+      "termos": [
+        "cinco anos"
+      ],
+      "evidencia": [
+        "utilização dos recursos captados",
+        "cinco anos"
+      ],
+      "ato": null,
+      "documentos_esperados": [],
+      "origem": "conceitual",
+      "nota": "",
+      "chunks_com_evidencia": 422
+    }
+  ]
+}

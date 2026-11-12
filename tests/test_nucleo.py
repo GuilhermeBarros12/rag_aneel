@@ -297,3 +297,63 @@ def test_contexto_respeita_o_teto(acervo, monkeypatch):
     trechos = [nucleo.Trecho(id="dsp20223683ti_chunk2", texto="x", distancia=None, metadata={}),
                nucleo.Trecho(id="prt2022092_chunk1", texto="y", distancia=None, metadata={})]
     assert len(nucleo.expandir_contexto(trechos)) == 1  # mantém só o primeiro
+
+
+# ---------- reranker ----------
+
+
+@pytest.fixture
+def com_reranker(monkeypatch):
+    monkeypatch.setattr(config, "MODO_BUSCA", "lexica")
+    monkeypatch.setattr(config, "RERANKER", "cohere")
+    monkeypatch.setattr(nucleo, "CACHE_RERANK", {})
+    monkeypatch.setattr(nucleo, "FALHAS_RERANK", [])
+
+
+def test_reranker_reordena_e_guarda_em_cache(acervo, com_reranker, monkeypatch):
+    chamadas = []
+
+    def rerank_falso(query, trechos):
+        chamadas.append([t.id for t in trechos])
+        return [t.id for t in reversed(trechos)]
+
+    monkeypatch.setattr(nucleo, "rerank_cohere", rerank_falso)
+    primeira = nucleo.recuperar_trechos("usinas", None, None, top_k=1)
+    segunda = nucleo.recuperar_trechos("usinas", None, None, top_k=1)
+    assert len(chamadas) == 1 and len(chamadas[0]) == 2  # a segunda busca veio do cache
+    assert primeira[0].id == chamadas[0][-1] == segunda[0].id
+
+
+def test_falha_do_reranker_mantem_a_ordem_da_busca(acervo, com_reranker, monkeypatch):
+    def rerank_quebrado(query, trechos):
+        raise ErroDeApi("500 erro", 500)
+
+    monkeypatch.setattr(nucleo, "rerank_cohere", rerank_quebrado)
+    monkeypatch.setattr(config, "RERANKER", "nenhum")
+    esperado = [t.id for t in nucleo.recuperar_trechos("usinas", None, None, top_k=2)]
+    monkeypatch.setattr(config, "RERANKER", "cohere")
+    obtido = [t.id for t in nucleo.recuperar_trechos("usinas", None, None, top_k=2)]
+    assert obtido == esperado
+    assert len(nucleo.FALHAS_RERANK) == 1
+
+
+def test_rerank_cohere_monta_a_chamada_e_espera_no_limite(monkeypatch):
+    import httpx
+
+    respostas = [RespostaHttpFalsa(429, {}), RespostaHttpFalsa(200, {"results": [{"index": 1}, {"index": 0}]})]
+    chamadas = []
+
+    def post_falso(url, headers, json, timeout):
+        chamadas.append((url, json))
+        return respostas.pop(0)
+
+    monkeypatch.setattr(httpx, "post", post_falso)
+    monkeypatch.setattr(nucleo.time, "sleep", lambda s: None)
+    monkeypatch.setenv("COHERE_API_KEY", "chave-de-teste")
+    trechos = [nucleo.Trecho(id="a", texto="texto a", distancia=None, metadata={"titulo": "DSP 1"}),
+               nucleo.Trecho(id="b", texto="texto b", distancia=None, metadata={"titulo": "DSP 2"})]
+    assert nucleo.rerank_cohere("pergunta", trechos) == ["b", "a"]
+    url, corpo = chamadas[1]
+    assert url == "https://api.cohere.com/v2/rerank"
+    assert corpo["model"] == config.COHERE_RERANK_MODELO and corpo["query"] == "pergunta"
+    assert corpo["documents"][0].endswith("texto a")

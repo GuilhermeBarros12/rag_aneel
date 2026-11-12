@@ -197,12 +197,67 @@ def recuperar_trechos(
     excluir = filtro["situacao"]["$ne"] if filtro else None
     lexicos = lexico.buscar(query, candidatos, excluir_situacao=excluir)
 
-    if config.MODO_BUSCA == "lexica":
-        return carregar_trechos(lexicos[:top_k], {})
+    conhecidos: Dict[str, Trecho] = {}
+    ids = lexicos
+    if config.MODO_BUSCA != "lexica":
+        densos = busca_densa(query, colecao, modelo, candidatos, filtro)
+        conhecidos = {t.id: t for t in densos}
+        ids = fundir_rrf([[t.id for t in densos], lexicos], [1.0, config.PESO_LEXICO])
 
-    densos = busca_densa(query, colecao, modelo, candidatos, filtro)
-    ids = fundir_rrf([[t.id for t in densos], lexicos], [1.0, config.PESO_LEXICO])[:top_k]
-    return carregar_trechos(ids, {t.id: t for t in densos})
+    if config.RERANKER == "nenhum":
+        return carregar_trechos(ids[:top_k], conhecidos)
+    trechos = carregar_trechos(ids[:max(top_k, config.RERANK_CANDIDATOS)], conhecidos)
+    return reordenar(query, trechos)[:top_k]
+
+
+# Ordem dada pelo reranker a cada (modelo, pergunta, candidatos): evita pagar duas vezes
+# pela mesma chamada. A medição salva e recarrega este dicionário entre execuções.
+CACHE_RERANK: Dict[str, List[str]] = {}
+FALHAS_RERANK: List[str] = []
+
+
+def chave_rerank(query: str, ids: List[str]) -> str:
+    return " | ".join([config.COHERE_RERANK_MODELO, query, ",".join(ids)])
+
+
+def reordenar(query: str, trechos: List[Trecho]) -> List[Trecho]:
+    """Reordena os trechos com config.RERANKER. Se o reranker falhar, mantém a ordem da busca."""
+    if len(trechos) < 2:
+        return trechos
+    chave = chave_rerank(query, [t.id for t in trechos])
+    if chave not in CACHE_RERANK:
+        try:
+            CACHE_RERANK[chave] = rerank_cohere(query, trechos)
+        except Exception as e:
+            FALHAS_RERANK.append(f"{query[:60]}: {e}")
+            print(f"[AVISO] Reranker falhou, mantida a ordem da busca: {e}")
+            return trechos
+    por_id = {t.id: t for t in trechos}
+    return [por_id[i] for i in CACHE_RERANK[chave] if i in por_id]
+
+
+def rerank_cohere(query: str, trechos: List[Trecho]) -> List[str]:
+    """Chama o rerank da Cohere e devolve os ids do mais para o menos relevante."""
+    import httpx
+
+    chave = os.getenv("COHERE_API_KEY", "")
+    if not chave:
+        raise ValueError("COHERE_API_KEY nao configurada no .env")
+    documentos = [f"{t.titulo}\n{t.texto[:config.MAX_CHARS_TRECHO]}" for t in trechos]
+    for tentativa in range(1, config.RERANK_TENTATIVAS + 1):
+        r = httpx.post(
+            "https://api.cohere.com/v2/rerank",
+            headers={"Authorization": f"Bearer {chave}"},
+            json={"model": config.COHERE_RERANK_MODELO, "query": query, "documents": documentos},
+            timeout=config.TIMEOUT_LLM_S,
+        )
+        if r.status_code == 429 and tentativa < config.RERANK_TENTATIVAS:
+            time.sleep(config.RERANK_ESPERA_S * tentativa)
+            continue
+        if r.status_code != 200:
+            raise ErroDeApi(f"{r.status_code} {r.text[:300]}", status_code=r.status_code)
+        return [trechos[item["index"]].id for item in r.json()["results"]]
+    raise ErroDeApi("limite por minuto", status_code=429)
 
 
 def carregar_trechos(ids: List[str], conhecidos: Dict[str, Trecho]) -> List[Trecho]:
