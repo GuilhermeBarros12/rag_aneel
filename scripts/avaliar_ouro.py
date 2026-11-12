@@ -31,6 +31,8 @@ DELAY_ENTRE_PERGUNTAS = 2  # segundos, para evitar rate limit
 
 def normalizar(texto: str) -> str:
     """Minúsculas, sem acentos, sem ponto de milhar e com espaços simples, para comparar textos."""
+    # hífens e travessões tipográficos (U+2010 a U+2015 e o sinal de menos U+2212) viram "-"
+    texto = re.sub("[‐-―−]", "-", texto)
     texto = re.sub(r"(?<=\d)\.(?=\d{3}(?!\d))", "", texto)  # "1.045" e "1045" passam a ser iguais
     texto = unicodedata.normalize("NFKD", texto).encode("ascii", "ignore").decode()
     return re.sub(r"\s+", " ", texto).lower()
@@ -212,6 +214,8 @@ def escrever_relatorio(caminho: str, dados: dict) -> None:
     for chave, titulo in (("politica", "Recuperação com a política de revogados do sistema"),
                           ("com_filtro", "Recuperação excluindo revogados"),
                           ("sem_filtro", "Recuperação incluindo revogados")):
+        if chave not in dados["recuperacao"]:
+            continue  # resultados antigos não têm o bloco da política
         bloco = dados["recuperacao"][chave]
         m += [f"## {titulo}", "", cab, sep, linha_tabela("Todas com documento esperado", bloco["geral"])]
         m += [linha_tabela(c, v) for c, v in bloco["categorias"].items()] + [""]

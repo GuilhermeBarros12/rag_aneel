@@ -43,6 +43,7 @@ def test_recusa_e_termos():
     assert a.contem_termos("Foi a REN 1045/2022.", ["1.045"])
     assert a.contem_termos("Multa de R$ 25.588.427,00.", ["25.588.427"])
     assert not a.contem_termos("Submódulo 9.12", ["9.2"])
+    assert a.contem_termos("CNPJ 36.957.804/0001‑20", ["36.957.804/0001-20"])  # hífen tipográfico
     assert not a.contem_termos("A usina fica em Natal.", ["Assú"])
 
 
