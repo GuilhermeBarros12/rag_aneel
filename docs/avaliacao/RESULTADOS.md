@@ -126,13 +126,64 @@ Das 153 normas que eram páginas de bloqueio, 152 tinham o PDF real em `dados/pd
 
 No conjunto de ouro, a recuperação não mudou (hit@5 de 0,870 e MRR de 0,815, em [com_normas_recuperadas.md](experimentos/com_normas_recuperadas.md)). Isso era esperado, porque o conjunto não tem perguntas sobre Resoluções Normativas. Em um teste avulso, a pergunta sobre a REN 1.018/2022 recuperou a norma certa, mas a resposta do LLM foi pobre. Medir a qualidade nessas normas exige perguntas novas no conjunto de avaliação.
 
+## Política intermediária de revogados (11/11/2026)
+
+Decisão do dono do projeto: buscar só nos atos vigentes, mas incluir os revogados quando a pergunta cita um ato específico, pergunta sobre vigência ou revogação, ou quando a busca nos vigentes não acha nada. O prompt sempre pede para avisar a situação do ato. É o novo padrão (`POLITICA_REVOGADOS=intermediaria`).
+
+Recuperação no conjunto de ouro v1, busca léxica ([politica_intermediaria.md](experimentos/politica_intermediaria.md)):
+
+| Política | hit@5 | MRR | hit@5 nas 6 perguntas sobre revogados |
+|---|---|---|---|
+| Excluir revogados | 0,870 | 0,815 | 1 de 6 |
+| Intermediária | 0,935 | 0,870 | 4 de 6 |
+| Incluir tudo | 0,978 | 0,913 | 6 de 6 |
+
+As perguntas sobre revogados que continuam perdidas não citam o ato, como "qual empresa foi autorizada a explorar a UFV Paranaíba 10?". É o custo aceito da política: evitar que um ato revogado responda a uma pergunta sobre a regra atual.
+
+## Conjunto de ouro v2 (rascunho, 11/11/2026)
+
+[128 perguntas](conjunto_ouro_v2_rascunho.md), ainda não congeladas. As 56 da versão 1 continuam iguais. Entram 72 novas: 18 sobre Resoluções Normativas citadas pelo número, 3 pelo tema, 6 de regra atual (a norma vigente e a revogada tratam do mesmo tema), 9 sobre atos revogados, 16 de outros atos sorteados, 19 conceituais revisadas e 2 de recusa. Cada resposta foi conferida no texto indexado.
+
+Prévia da recuperação com a política intermediária ([previa_v2_lexica.md](experimentos/previa_v2_lexica.md)): hit@5 de 0,836 nas 116 perguntas com documento ou evidência esperada. Nas 6 de regra atual, o hit@5 foi 1,000: o sistema achou a norma vigente, e não a revogada.
+
+## Comparação de LLMs (11/11/2026)
+
+Conjunto de ouro v1, busca léxica, política intermediária, uma rodada por modelo.
+
+| Métrica | `openai/gpt-oss-120b` (Groq) | `qwen/qwen3.8-27b` (Groq) |
+|---|---|---|
+| Abstenção correta | 1,000 (10 de 10) | 1,000 (10 de 10) |
+| Recusa indevida | 0,174 (8 de 46) | 0,217 (10 de 46) |
+| Termos esperados na resposta | 0,696 (32 de 46) | 0,739 (34 de 46) |
+| Citou um trecho correto | 0,783 (36 de 46) | 0,804 (37 de 46) |
+
+As diferenças são de 1 a 2 perguntas, dentro da variação de uma rodada para outra, então não há vencedor claro. O `gemini-3.8-flash` não pôde ser medido: devolveu erro 503 (alta demanda) em todas as tentativas da noite de 11/11. Detalhes em [llm_gpt_oss_120b.md](experimentos/llm_gpt_oss_120b.md) e [llm_qwen3_8_27b.md](experimentos/llm_qwen3_8_27b.md).
+
+## Modelo de embedding E5 no subconjunto (11/11/2026)
+
+Hipótese: um modelo treinado para busca (`intfloat/multilingual-e5-base`) recupera melhor que o atual, que foi treinado para paráfrase e lê só 128 tokens. Testado com `scripts/exp_embedding.py` em 2.000 documentos (39.153 chunks), busca exata, sem filtro de revogados, nas 116 perguntas do rascunho v2 ([embedding_e5_subconjunto.json](experimentos/embedding_e5_subconjunto.json)). Como o subconjunto é menor que o corpus, só a diferença entre as colunas é comparável.
+
+| Grupo (hit@5) | n | Léxica | Vetorial atual | Vetorial E5 | Híbrida BM25 + E5 |
+|---|---|---|---|---|---|
+| Todas | 116 | 0,888 | 0,328 | 0,724 | **0,914** |
+| Conceitual: paráfrase | 13 | 0,538 | 0,231 | 0,538 | 0,615 |
+| Conceitual: sigla | 6 | 0,500 | 0,333 | 0,833 | 0,667 |
+| Fato, citando o ato | 16 | 0,938 | 0,062 | 0,500 | 0,812 |
+| Fato, sem citar o ato | 29 | 0,931 | 0,517 | 0,966 | 1,000 |
+| Norma citada pelo número | 18 | 0,944 | 0,222 | 0,500 | 1,000 |
+| MRR (todas) | 116 | 0,827 | 0,270 | 0,571 | 0,824 |
+
+O E5 mais que dobra a busca vetorial. Com ele, a busca híbrida passa a superar a léxica no hit@5, mas por 3 perguntas em 116, com o MRR praticamente igual: ganha nas conceituais e perde 2 perguntas de fato citando o ato. É um ganho pequeno, que precisaria ser confirmado no corpus inteiro.
+
+Custo de adotar: reindexar os 517.557 chunks com o E5. Pelo ritmo medido em CPU (39.153 chunks em 56 minutos), isso levaria cerca de 12 horas. Com a placa de vídeo seria bem menos, mas exige instalar o PyTorch com CUDA, e esse tempo não foi medido.
+
 ## Métrica de citação
 
 A partir de 09/11/2026, a medição com LLM também verifica se a resposta citou, pela marcação `[Trecho N]`, um trecho correto para a pergunta. A medição salva o progresso a cada pergunta e pode ser retomada com o mesmo comando se a cota da API acabar.
 
 Em 7 das 46 perguntas, a resposta citou um trecho correto mas não continha os termos esperados. Isso sugere que a verificação por termos é rigorosa demais em alguns casos, e essas respostas ainda não foram revisadas uma a uma.
 
-**Ainda não concluído:** outros tamanhos de chunk, troca do modelo de embedding, revisão e congelamento do conjunto conceitual e repetição das rodadas com LLM para medir a variação.
+**Ainda não concluído:** congelar o conjunto v2 depois da revisão, medir o Gemini, decidir a reindexação com o E5, outros tamanhos de chunk e repetir as rodadas com LLM para medir a variação.
 
 ## Limites desta medição
 
