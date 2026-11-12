@@ -1,0 +1,167 @@
+{
+ "status": "derivado do conjunto_ouro.json congelado",
+ "semente": 2027,
+ "perguntas": [
+  {
+   "id": "Q02",
+   "categoria": "ato_citado",
+   "deve_recusar": false,
+   "pergunta": "O que reconhece o Despacho nº 2.942, de 2022?",
+   "resposta_curta": "O cumprimento ou descumprimento, em 2021, dos critérios de eficiência de qualidade do serviço por CEB-DIS, ETO e Enel GO.",
+   "termos": [
+    "critérios de eficiência",
+    "Enel"
+   ],
+   "ato": "DSP - DESPACHO 2942/2022",
+   "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+   "documentos_esperados": [
+    "adsp20222942_1",
+    "dsp20222942"
+   ]
+  },
+  {
+   "id": "Q08",
+   "categoria": "ato_citado",
+   "deve_recusar": false,
+   "pergunta": "Qual norma é alterada pela Resolução Homologatória nº 2.959, de 2021?",
+   "resposta_curta": "A Resolução Homologatória nº 2.895, de 2021.",
+   "termos": [
+    "2.895"
+   ],
+   "ato": "REH - RESOLUÇÃO HOMOLOGATÓRIA 2959/2021",
+   "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+   "documentos_esperados": [
+    "areh20212959_1",
+    "reh20212959ti"
+   ]
+  },
+  {
+   "id": "Q12",
+   "categoria": "fato_com_ato",
+   "deve_recusar": false,
+   "pergunta": "Qual o valor da multa aplicada pelo Despacho nº 3.350, de 2022?",
+   "resposta_curta": "R$ 25.588.427,00.",
+   "termos": [
+    "25.588.427"
+   ],
+   "ato": "DSP - DESPACHO 3350/2022",
+   "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+   "documentos_esperados": [
+    "dsp20223350",
+    "emdsp20223350"
+   ]
+  },
+  {
+   "id": "Q11",
+   "categoria": "fato_com_ato",
+   "deve_recusar": false,
+   "pergunta": "Segundo o Despacho nº 2.660, de 2022, qual o prazo para implementar a transferência de controle da Companhia Energética Chapecó?",
+   "resposta_curta": "Até 120 dias da publicação.",
+   "termos": [
+    "120"
+   ],
+   "ato": "DSP - DESPACHO 2660/2022",
+   "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+   "documentos_esperados": [
+    "dsp20222660ti"
+   ]
+  },
+  {
+   "id": "Q33",
+   "categoria": "fato_sem_ato",
+   "deve_recusar": false,
+   "pergunta": "Em qual município fica a Central Geradora Eólica Ventos de São Vitor 12?",
+   "resposta_curta": "Xique-Xique, na Bahia.",
+   "termos": [
+    "Xique-Xique"
+   ],
+   "ato": "PRT - PORTARIA 482/2021",
+   "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+   "documentos_esperados": [
+    "dsp20211404ti",
+    "prt2021482tispde"
+   ]
+  },
+  {
+   "id": "Q35",
+   "categoria": "fato_sem_ato",
+   "deve_recusar": false,
+   "pergunta": "Qual o CNPJ da empresa Ventos de Santa Tereza 14 Energias Renováveis S.A.?",
+   "resposta_curta": "36.957.804/0001-20.",
+   "termos": [
+    "36.957.804/0001-20"
+   ],
+   "ato": "PRT - PORTARIA 612/2021",
+   "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+   "documentos_esperados": [
+    "dsp20223519ti",
+    "prt2021548tispde",
+    "prt2021612tispde"
+   ]
+  },
+  {
+   "id": "Q46",
+   "categoria": "revogado",
+   "deve_recusar": false,
+   "pergunta": "Em qual município fica a UFV Olho do Sol 5?",
+   "resposta_curta": "Piripiri, no Piauí.",
+   "termos": [
+    "Piripiri"
+   ],
+   "ato": "REA - RESOLUÇÃO AUTORIZATIVA 12304/2022",
+   "situacao": "Situação:REVOGADA",
+   "documentos_esperados": [
+    "area202212300_1",
+    "area202212301_1",
+    "area202212302_1",
+    "area202212303_1",
+    "area202212304_1",
+    "area202212305_1",
+    "area202212306_1",
+    "area202212307_1",
+    "dsp20212051ti",
+    "rea202212304ti",
+    "rea202212307ti"
+   ]
+  },
+  {
+   "id": "Q42",
+   "categoria": "revogado",
+   "deve_recusar": false,
+   "pergunta": "Para quais anos a Resolução Autorizativa nº 10.230, de 2021, autorizou limites de DEC e FEC da Energisa Nova Friburgo?",
+   "resposta_curta": "De 2022 a 2026.",
+   "termos": [
+    "2022",
+    "2026"
+   ],
+   "ato": "REA - RESOLUÇÃO AUTORIZATIVA 10230/2021",
+   "situacao": "Situação:REVOGADA",
+   "documentos_esperados": [
+    "area202110230_1",
+    "rea202110230ti"
+   ]
+  },
+  {
+   "id": "Q53",
+   "categoria": "fora_do_dominio",
+   "deve_recusar": true,
+   "pergunta": "Qual é a capital da Austrália?",
+   "resposta_curta": "Deve responder que não encontrou informação suficiente.",
+   "termos": [],
+   "ato": null,
+   "situacao": null,
+   "documentos_esperados": []
+  },
+  {
+   "id": "Q49",
+   "categoria": "fora_do_periodo",
+   "deve_recusar": true,
+   "pergunta": "Qual foi o resultado do leilão de transmissão de 2025?",
+   "resposta_curta": "Deve responder que não encontrou informação suficiente.",
+   "termos": [],
+   "ato": null,
+   "situacao": null,
+   "documentos_esperados": []
+  }
+ ]
+}
