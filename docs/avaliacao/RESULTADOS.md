@@ -142,7 +142,7 @@ As perguntas sobre revogados que continuam perdidas não citam o ato, como "qual
 
 ## Conjunto de ouro v2 (congelado em 12/11/2026)
 
-[127 perguntas congeladas](conjunto_ouro_v2.md). O rascunho tinha 128 ([conjunto_ouro_v2_rascunho.md](conjunto_ouro_v2_rascunho.md)); na revisão, a C07 saiu porque a evidência aparece no rodapé de mais de 10 mil chunks, e quatro perguntas passaram a exigir termos mais estritos (C04, C08, C10) ou menos literais (Q082).
+[127 perguntas congeladas](conjunto_ouro_v2.md). O rascunho tinha 128 ([conjunto_ouro_v2_rascunho.md](conjunto_ouro_v2_rascunho.md)); na revisão, a C07 saiu porque a evidência aparece no rodapé de mais de 10 mil chunks, e quatro perguntas passaram a exigir termos mais estritos (C04, C08, C10) ou menos literais (Q082). Antes da primeira medição com LLM, seis perguntas passaram a aceitar formas equivalentes, escritas como `A|B`: "CCEE" na C12, a data numérica na Q098, os valores em MW na Q083, Q102 e Q105, e "art. 33" na Q067, onde o termo "33" sozinho sempre aparecia dentro de "1.033". As métricas de recuperação não mudaram.
 
 As 56 da versão 1 continuam iguais. O rascunho trazia 72 novas: 18 sobre Resoluções Normativas citadas pelo número, 3 pelo tema, 6 de regra atual (a norma vigente e a revogada tratam do mesmo tema), 9 sobre atos revogados, 16 de outros atos sorteados, 19 conceituais revisadas e 2 de recusa. Cada resposta foi conferida no texto indexado.
 

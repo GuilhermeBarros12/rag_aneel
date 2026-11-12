@@ -3,7 +3,7 @@
   "versao": 2,
   "semente_sorteio": 2027,
   "congelado_em": "2026-11-12",
-  "observacao": "Q01 a Q56 são a versão 1, inalterada. Q057 a Q109 e C01 a C19 (sem a C07) são novas.",
+  "observacao": "Q01 a Q56 são a versão 1, inalterada. Q057 a Q109 e C01 a C19 (sem a C07) são novas. Termos com \"|\" aceitam qualquer uma das formas (ajuste de 12/11/2026, antes da primeira medição com LLM).",
   "perguntas": [
     {
       "id": "Q01",
@@ -1217,7 +1217,7 @@
       "pergunta": "Qual artigo a Resolução Normativa nº 1.039, de 2022, revoga?",
       "resposta_curta": "O art. 33 da Resolução Normativa nº 1.033, de 2022.",
       "termos": [
-        "33",
+        "art. 33|artigo 33",
         "1.033"
       ],
       "ato": "REN - RESOLUÇÃO NORMATIVA 1039/2022",
@@ -1507,7 +1507,7 @@
       "pergunta": "Qual a potência instalada da PCH Salto Grande, no rio Pirapó?",
       "resposta_curta": "10.000 kW.",
       "termos": [
-        "10.000"
+        "10.000|10 MW"
       ],
       "ato": "DSP - DESPACHO 2680/2016",
       "situacao": "Situação:REVOGADA",
@@ -1781,7 +1781,7 @@
       "pergunta": "Até quando a Iracema Transmissora de Energia deve adequar a teleproteção das linhas de transmissão de Milagres?",
       "resposta_curta": "Até 4 de junho de 2023.",
       "termos": [
-        "4 de junho de 2023"
+        "4 de junho de 2023|4/06/2023|4/6/2023"
       ],
       "ato": "DSP - DESPACHO 2976/2021",
       "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
@@ -1856,7 +1856,7 @@
       "pergunta": "Qual a capacidade da unidade UG11 da EOL Ventos de Santa Martina 13?",
       "resposta_curta": "4.200 kW.",
       "termos": [
-        "4.200"
+        "4.200|4,2 MW"
       ],
       "ato": "DSP - DESPACHO 2079/2021",
       "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
@@ -1953,7 +1953,7 @@
       "pergunta": "Qual a capacidade total liberada para operação comercial da UFV Francisco Sá 2?",
       "resposta_curta": "33.000 kW.",
       "termos": [
-        "33.000"
+        "33.000|33 MW"
       ],
       "ato": "DSP - DESPACHO 928/2022",
       "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
@@ -2218,7 +2218,7 @@
       "pergunta": "Em qual entidade uma empresa autorizada a vender energia precisa atuar?",
       "resposta_curta": "Na Câmara de Comercialização de Energia Elétrica (CCEE).",
       "termos": [
-        "Câmara de Comercialização"
+        "Câmara de Comercialização|CCEE"
       ],
       "evidencia": [
         "Agente Comercializador",

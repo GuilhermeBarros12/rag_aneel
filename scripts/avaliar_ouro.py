@@ -105,8 +105,9 @@ def recusou(resposta: str) -> bool:
 
 
 def contem_termos(resposta: str, termos: List[str]) -> bool:
+    """Todos os termos aparecem. Um termo "A|B" aceita qualquer uma das formas (por exemplo, "CCEE|Câmara")."""
     texto = normalizar(resposta)
-    return all(normalizar(t) in texto for t in termos)
+    return all(any(normalizar(forma) in texto for forma in t.split("|")) for t in termos)
 
 
 # ============================================================
