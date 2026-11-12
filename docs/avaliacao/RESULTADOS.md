@@ -176,6 +176,28 @@ Os quatro modelos recusaram exatamente as mesmas 4 perguntas. Nelas, o problema 
 
 Conclusão: neste grupo, trocar de LLM quase não muda o resultado. O gargalo é a recuperação do trecho certo. O `qwen3.8-27b` empatou ou superou o modelo atual e foi o mais rápido, mas a diferença é de uma pergunta. O modelo local responde com a mesma qualidade do `gpt-oss-20b` na nuvem, mas é cerca de 75 vezes mais lento nesta máquina, porque o modelo de 12 GB não cabe nos 8 GB da placa de vídeo.
 
+Depois, com a conta gratuita da Cohere, entraram dois modelos feitos para RAG:
+
+| Modelo | Recusa indevida | Termos esperados | Citou trecho correto | Abstenção correta | Segundos por resposta |
+|---|---|---|---|---|---|
+| `command-a-03-2025` (Cohere) | 3 de 8 | 5 de 8 | 6 de 8 | 2 de 2 | 9,7 |
+| `command-a-plus-05-2026` (Cohere) | 4 de 8 | 5 de 8 | 4 de 8 | 2 de 2 | 2,9 |
+
+O padrão se repetiu. A única diferença foi o `command-a-03-2025` na Q02: em vez de recusar, respondeu com informações secundárias dos trechos e não trouxe a resposta esperada, porque o trecho com ela não estava no prompt.
+
+### O gargalo: a busca acha o documento, mas não o trecho
+
+Nas 46 perguntas respondíveis do conjunto v1, com o sistema atual:
+
+| Medida | Resultado |
+|---|---|
+| Documento certo entre os 5 trechos enviados ao LLM | 43 de 46 |
+| Trecho com a resposta entre os 5 enviados | 36 de 46 |
+| Trecho com a resposta entre os 20 primeiros | 38 de 46 |
+| O trecho com a resposta existe no documento certo | 46 de 46 |
+
+Em 7 perguntas o documento certo é encontrado, mas o pedaço dele que responde não chega ao LLM. Aumentar o número de trechos quase não resolve, porque o BM25 favorece os trechos que repetem as palavras da pergunta, como o cabeçalho com o número do ato.
+
 **Correção na medição:** este teste revelou que a conferência de termos não reconhecia hífens tipográficos (‑) que alguns modelos usam em CNPJs. A normalização foi corrigida e os resultados salvos foram recalculados com `scripts/recontar_termos.py`, sem chamar os LLMs de novo. Nas rodadas de citação e de revogados, uma resposta passou a contar como certa, e os números de "termos esperados" acima já estão corrigidos (0,630 para 0,652 e 0,674 para 0,696).
 
 ## Modelo de embedding E5 no subconjunto (11/11/2026)
