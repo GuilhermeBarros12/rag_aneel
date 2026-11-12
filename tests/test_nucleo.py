@@ -213,3 +213,55 @@ def test_politicas_excluir_e_incluir(acervo, monkeypatch):
     assert all(t.metadata["situacao"] != REVOGADA for t in nucleo.recuperar_com_politica(pergunta, None, None, 4))
     monkeypatch.setattr(config, "POLITICA_REVOGADOS", "incluir")
     assert nucleo.recuperar_com_politica("Procedimentos de Rede", None, None, 4)[0].id == "ren2016756_chunk1"
+
+
+# ---------- provedores compatíveis com a API da OpenAI ----------
+
+
+class RespostaHttpFalsa:
+    def __init__(self, status_code, corpo):
+        self.status_code = status_code
+        self._corpo = corpo
+        self.text = str(corpo)
+
+    def json(self):
+        return self._corpo
+
+
+def test_provedor_compativel_monta_a_chamada(monkeypatch):
+    import httpx
+
+    chamadas = []
+
+    def post_falso(url, headers, json, timeout):
+        chamadas.append((url, headers, json))
+        return RespostaHttpFalsa(200, {"choices": [{"message": {"content": "resposta"}}]})
+
+    monkeypatch.setattr(httpx, "post", post_falso)
+    monkeypatch.setenv("MISTRAL_API_KEY", "chave-de-teste")
+    assert nucleo.gerar_com_compativel("mistral", "prompt") == "resposta"
+    url, cabecalhos, corpo = chamadas[0]
+    assert url == "https://api.mistral.ai/v1/chat/completions"
+    assert cabecalhos["Authorization"] == "Bearer chave-de-teste"
+    assert corpo["messages"][0]["content"] == "prompt" and corpo["temperature"] == config.TEMPERATURA
+
+
+def test_provedor_compativel_sem_chave_e_erro_http(monkeypatch):
+    import httpx
+
+    monkeypatch.delenv("COHERE_API_KEY", raising=False)
+    with pytest.raises(ValueError):
+        nucleo.gerar_com_compativel("cohere", "prompt")
+    monkeypatch.setattr(httpx, "post", lambda *a, **k: RespostaHttpFalsa(429, "rate limit"))
+    monkeypatch.setenv("COHERE_API_KEY", "x")
+    with pytest.raises(nucleo.ErroDeApi) as erro:
+        nucleo.gerar_com_compativel("cohere", "prompt")
+    assert nucleo.tipo_de_erro(erro.value) == "temporario"
+
+
+def test_provedor_local_nao_exige_chave(monkeypatch, sem_espera):
+    import httpx
+
+    monkeypatch.setattr(httpx, "post", lambda *a, **k: RespostaHttpFalsa(200, {"choices": [{"message": {"content": "ok"}}]}))
+    g = nucleo.gerar_resposta("prompt", provedores=["local"])
+    assert g.texto == "ok" and g.llm.startswith("local/")

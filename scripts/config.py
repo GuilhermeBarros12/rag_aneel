@@ -101,6 +101,24 @@ RESPOSTA_SEM_TRECHOS = (
 # A medição usa um único LLM, sem fallback, para os números não misturarem modelos
 LLM_AVALIACAO = os.getenv("LLM_AVALIACAO", "groq")
 
+# Provedores que aceitam o formato da API da OpenAI (/chat/completions).
+# Cada um precisa só da chave no .env (e do modelo, que pode ser trocado pela variável indicada).
+# "local" é o servidor do LM Studio no próprio computador, sem chave.
+PROVEDORES_COMPATIVEIS = {
+    "local": {"url": os.getenv("LOCAL_LLM_URL", "http://localhost:1234/v1"), "chave": None,
+              "modelo": os.getenv("LOCAL_MODEL", "openai/gpt-oss-20b")},
+    "cohere": {"url": "https://api.cohere.ai/compatibility/v1", "chave": "COHERE_API_KEY",
+               "modelo": os.getenv("COHERE_MODEL", "command-a-03-2025")},
+    "mistral": {"url": "https://api.mistral.ai/v1", "chave": "MISTRAL_API_KEY",
+                "modelo": os.getenv("MISTRAL_MODEL", "mistral-medium-latest")},
+    "openrouter": {"url": "https://openrouter.ai/api/v1", "chave": "OPENROUTER_API_KEY",
+                   "modelo": os.getenv("OPENROUTER_MODEL", "")},
+    "nvidia": {"url": "https://integrate.api.nvidia.com/v1", "chave": "NVIDIA_API_KEY",
+               "modelo": os.getenv("NVIDIA_MODEL", "")},
+}
+# Modelos locais rodam parte na CPU e podem demorar bem mais que os da nuvem
+TIMEOUT_LOCAL_S = 600
+
 PROMPT_TEMPLATE = """Você é um assistente especializado em regulação do setor elétrico brasileiro.
 Responda à pergunta usando APENAS as informações dos trechos regulatórios abaixo.
 Se a resposta não estiver nos trechos, responda: "Não encontrei informação suficiente nos documentos disponíveis."

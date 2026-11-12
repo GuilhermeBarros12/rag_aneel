@@ -18,7 +18,7 @@ from datetime import datetime, timezone
 from typing import Dict, List, Optional
 
 import config
-from nucleo import carregar_recursos, recuperar_com_politica, recuperar_trechos, responder
+from nucleo import carregar_recursos, nome_do_modelo, recuperar_com_politica, recuperar_trechos, responder
 
 KS = (1, 3, 5, 10)
 FRASE_RECUSA = "nao encontrei informacao suficiente"
@@ -143,7 +143,9 @@ def medir_geracao(perguntas: List[dict], colecao, modelo, caminho_parcial: str, 
         if q["id"] in feitas:
             continue
         print(f"[{i}/{len(perguntas)}] {q['pergunta'][:70]}")
+        inicio = time.time()
         r = responder(q["pergunta"], colecao, modelo, provedores=[config.LLM_AVALIACAO])
+        segundos = round(time.time() - inicio, 1)
         if r.llm is None:
             print(r.resposta)
             raise SystemExit(f"[ERRO] Medicao interrompida em {q['id']}. Progresso salvo; rode o mesmo comando para continuar.")
@@ -159,6 +161,7 @@ def medir_geracao(perguntas: List[dict], colecao, modelo, caminho_parcial: str, 
             "recusou": recusou(r.resposta),
             "termos_ok": contem_termos(r.resposta, q["termos"]) if q["termos"] else None,
             "citou_correto": None if q["deve_recusar"] else any(trecho_correto(t.id, t.texto, q) for t in citados),
+            "segundos": segundos,
         })
         salvar_json(caminho_parcial, {"assinatura": assinatura, "linhas": linhas})
         time.sleep(DELAY_ENTRE_PERGUNTAS)
@@ -186,6 +189,7 @@ def resumir_geracao(linhas: List[dict]) -> Dict[str, float]:
         "recusa_indevida": taxa(responder_, "recusou"),
         "termos_presentes": taxa(responder_, "termos_ok"),
         "citou_trecho_correto": taxa(responder_, "citou_correto"),
+        "segundos_por_resposta": round(sum(l.get("segundos", 0) for l in linhas) / len(linhas), 1) if linhas else None,
     }
 
 
@@ -218,7 +222,8 @@ def escrever_relatorio(caminho: str, dados: dict) -> None:
               f"| Abstenção correta (deve recusar) | {formatar(g['abstencao_correta'])} |",
               f"| Recusa indevida (deve responder) | {formatar(g['recusa_indevida'])} |",
               f"| Termos esperados presentes | {formatar(g['termos_presentes'])} |",
-              f"| Citou um trecho correto | {formatar(g.get('citou_trecho_correto'))} |", ""]
+              f"| Citou um trecho correto | {formatar(g.get('citou_trecho_correto'))} |",
+              f"| Segundos por resposta (média) | {g.get('segundos_por_resposta')} |", ""]
     with open(caminho, "w", encoding="utf-8", newline="\n") as f:
         f.write("\n".join(m))
 
@@ -260,7 +265,7 @@ def main() -> None:
             "politica_revogados": config.POLITICA_REVOGADOS,
             "top_k": config.TOP_K,
             "llm": config.LLM_AVALIACAO,
-            "modelo_llm": config.GEMINI_MODELO if config.LLM_AVALIACAO == "gemini" else config.GROQ_MODELO,
+            "modelo_llm": nome_do_modelo(config.LLM_AVALIACAO),
         }
         linhas = medir_geracao(perguntas, colecao, modelo, caminho_parcial, assinatura)
         dados["geracao"] = {"resumo": resumir_geracao(linhas), "detalhe": linhas}

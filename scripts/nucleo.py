@@ -301,6 +301,50 @@ def gerar_com_groq(prompt: str) -> str:
     return response.choices[0].message.content
 
 
+class ErroDeApi(Exception):
+    """Erro devolvido por um provedor, com o código HTTP (usado por tipo_de_erro)."""
+
+    def __init__(self, mensagem: str, status_code: Optional[int] = None):
+        super().__init__(mensagem)
+        self.status_code = status_code
+
+
+def gerar_com_compativel(provedor: str, prompt: str) -> str:
+    """Chama um provedor compatível com a API da OpenAI (ver config.PROVEDORES_COMPATIVEIS)."""
+    import httpx
+
+    p = config.PROVEDORES_COMPATIVEIS[provedor]
+    cabecalhos = {}
+    if p["chave"]:
+        chave = os.getenv(p["chave"], "")
+        if not chave:
+            raise ValueError(f"{p['chave']} nao configurada no .env")
+        cabecalhos["Authorization"] = f"Bearer {chave}"
+    if not p["modelo"]:
+        raise ValueError(f"defina o modelo do provedor {provedor} no .env")
+
+    espera = config.TIMEOUT_LOCAL_S if provedor == "local" else config.TIMEOUT_LLM_S
+    r = httpx.post(
+        p["url"].rstrip("/") + "/chat/completions",
+        headers=cabecalhos,
+        json={"model": p["modelo"], "temperature": config.TEMPERATURA,
+              "messages": [{"role": "user", "content": prompt}]},
+        timeout=espera,
+    )
+    if r.status_code != 200:
+        raise ErroDeApi(f"{r.status_code} {r.text[:300]}", status_code=r.status_code)
+    return r.json()["choices"][0]["message"]["content"]
+
+
+def nome_do_modelo(provedor: str) -> str:
+    """'groq' vira 'groq/openai/gpt-oss-120b', e assim por diante."""
+    if provedor == "gemini":
+        return f"gemini/{config.GEMINI_MODELO}"
+    if provedor == "groq":
+        return f"groq/{config.GROQ_MODELO}"
+    return f"{provedor}/{config.PROVEDORES_COMPATIVEIS[provedor]['modelo']}"
+
+
 def tipo_de_erro(erro: Exception) -> str:
     """
     Classifica o erro de um LLM:
@@ -327,9 +371,11 @@ def gerar_resposta(prompt: str, provedores: Optional[List[str]] = None) -> Gerac
     """
 
     disponiveis = {
-        "gemini": (f"gemini/{config.GEMINI_MODELO}", gerar_com_gemini),
-        "groq": (f"groq/{config.GROQ_MODELO}", gerar_com_groq),
+        "gemini": (nome_do_modelo("gemini"), gerar_com_gemini),
+        "groq": (nome_do_modelo("groq"), gerar_com_groq),
     }
+    for nome in config.PROVEDORES_COMPATIVEIS:
+        disponiveis[nome] = (nome_do_modelo(nome), lambda prompt, nome=nome: gerar_com_compativel(nome, prompt))
 
     erros: List[str] = []
     for chave in provedores or ["gemini", "groq"]:
