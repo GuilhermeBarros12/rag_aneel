@@ -40,3 +40,6 @@ desktop.ini
 
 #--avaliar.py--
 /avaliacao/
+backup_indice_publicado/
+vectorstore_antigo_local/
+cache_experimentos/

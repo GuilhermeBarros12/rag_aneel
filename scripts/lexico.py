@@ -13,6 +13,7 @@ import json
 import os
 import re
 import sqlite3
+import threading
 import unicodedata
 from typing import Dict, List, Optional, Tuple
 
@@ -31,8 +32,9 @@ STOPWORDS = {
 # Campos que variam de chunk para chunk e por isso não entram na metadata do documento
 CAMPOS_DO_CHUNK = {"chroma:document", "chunk_id", "chunk_total"}
 
-_conexao: Optional[sqlite3.Connection] = None
-_caminho_aberto: Optional[str] = None
+# Uma conexão por thread: o SQLite não deixa uma conexão criada em uma thread ser usada
+# em outra, e servidores web como o da demo atendem cada pergunta em uma thread diferente
+_local = threading.local()
 
 
 def caminho() -> str:
@@ -55,20 +57,19 @@ def documento_do_chunk(chunk_id: str) -> str:
 
 
 def conectar() -> sqlite3.Connection:
-    """Abre o acervo em modo somente leitura e reaproveita a conexão."""
-    global _conexao, _caminho_aberto
-    if _conexao is None or _caminho_aberto != caminho():
+    """Abre o acervo em modo somente leitura e reaproveita a conexão desta thread."""
+    if getattr(_local, "conexao", None) is None or _local.caminho != caminho():
         fechar()
-        _conexao = sqlite3.connect(f"file:{caminho().replace(os.sep, '/')}?mode=ro", uri=True)
-        _caminho_aberto = caminho()
-    return _conexao
+        _local.conexao = sqlite3.connect(f"file:{caminho().replace(os.sep, '/')}?mode=ro", uri=True)
+        _local.caminho = caminho()
+    return _local.conexao
 
 
 def fechar() -> None:
-    global _conexao, _caminho_aberto
-    if _conexao is not None:
-        _conexao.close()
-    _conexao, _caminho_aberto = None, None
+    """Fecha a conexão desta thread, se houver."""
+    if getattr(_local, "conexao", None) is not None:
+        _local.conexao.close()
+    _local.conexao, _local.caminho = None, None
 
 
 def existe() -> bool:

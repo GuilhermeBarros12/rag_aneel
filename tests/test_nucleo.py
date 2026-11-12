@@ -175,3 +175,41 @@ def test_falha_de_todos_os_llms_avisa_sobre_a_cota(acervo, monkeypatch, sem_espe
     provedor(monkeypatch, "groq", [ErroDeApi("Rate limit: tokens per day", 429)])
     r = nucleo.responder("Despacho 3.683", None, None)
     assert r.llm is None and "cota diaria" in r.resposta
+
+
+# ---------- política de atos revogados ----------
+
+
+def test_motivo_para_incluir_revogados():
+    m = nucleo.motivo_para_incluir_revogados
+    assert m("O que determina o Despacho nº 3.683 de 2022?") == "pergunta cita um ato"
+    assert m("Qual a diferença entre o 3.386/2016 e o 3.408/2016?") == "pergunta cita um ato"
+    assert m("Para quais anos a Resolução Autorizativa nº 10.230 fixou limites?") == "pergunta cita um ato"
+    assert m("A Portaria 3.936 ainda está em vigor?") == "pergunta sobre vigência"
+    assert m("Quais resoluções de 2016 foram revogadas?") == "pergunta sobre vigência"
+    assert m("Qual empresa foi autorizada a explorar a UFV Olho do Sol 5?") is None
+    assert m("O que significa a sigla TUSD?") is None
+
+
+def test_politica_intermediaria(acervo, monkeypatch):
+    monkeypatch.setattr(config, "MODO_BUSCA", "lexica")
+    monkeypatch.setattr(config, "POLITICA_REVOGADOS", "intermediaria")
+
+    def ids(pergunta):
+        return [t.id for t in nucleo.recuperar_com_politica(pergunta, None, None, top_k=4)]
+
+    # sem citar o ato, e havendo resultado vigente ("usinas"), a norma revogada fica de fora
+    assert "ren2016756_chunk1" not in ids("Procedimentos de Rede das usinas")
+    # citando o ato, ela entra
+    assert ids("Resolução Normativa nº 756 Procedimentos de Rede")[0] == "ren2016756_chunk1"
+    # quando nada vigente é encontrado, ela também entra
+    assert ids("Aprova a revisão")[0] == "ren2016756_chunk1"
+
+
+def test_politicas_excluir_e_incluir(acervo, monkeypatch):
+    monkeypatch.setattr(config, "MODO_BUSCA", "lexica")
+    pergunta = "Resolução Normativa nº 756 Procedimentos de Rede"
+    monkeypatch.setattr(config, "POLITICA_REVOGADOS", "excluir")
+    assert all(t.metadata["situacao"] != REVOGADA for t in nucleo.recuperar_com_politica(pergunta, None, None, 4))
+    monkeypatch.setattr(config, "POLITICA_REVOGADOS", "incluir")
+    assert nucleo.recuperar_com_politica("Procedimentos de Rede", None, None, 4)[0].id == "ren2016756_chunk1"

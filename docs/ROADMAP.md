@@ -39,22 +39,24 @@ O corpus tem 18.688 atos de 2016, 2021 e 2022, em 26.747 arquivos e 508.156 chun
 
 | Etapa | Situação |
 |---|---|
-| 1.1 Cópia limpa do índice | Feita em `vectorstore_limpo/` (507.850 chunks). Falta o Guilherme decidir a troca do índice oficial e a republicação no Hugging Face |
+| 1.1 Cópia limpa do índice | Feita em 11/11/2026: índice limpo publicado e repositório do Hugging Face recriado, então as versões antigas com o IP não podem mais ser baixadas. Backup local do índice anterior em `backup_indice_publicado/` |
 | 1.2 Recusar páginas de bloqueio | Feita, com testes em `tests/test_validacao.py` |
-| 1.3 Recuperar as Resoluções Normativas | Não iniciada. Depende do download manual |
-| 2.1 Política de revogados | Medida. Incluir revogados melhorou os números. Falta o Guilherme escolher o padrão |
-| 2.2 Perguntas conceituais | Rascunho de 19 perguntas e prévia prontos. Falta a revisão do Guilherme para congelar |
+| 1.3 Recuperar as Resoluções Normativas | Feita e publicada: 152 normas reindexadas a partir dos PDFs. Falta `ren2021912`, sem PDF |
+| 2.1 Política de revogados | Feita: política intermediária adotada como padrão (hit@5 de 0,935 no conjunto v1) |
+| 2.2 Perguntas conceituais | Revisadas e incluídas no rascunho do conjunto v2 (128 perguntas). Falta a revisão do Guilherme para congelar |
 | 2.3 Cabeçalho contextual | Concluída e descartada: não melhorou a busca vetorial |
-| 2.4 Melhorias da busca vetorial | Não iniciada |
+| 2.4 Melhorias da busca vetorial | E5 testado no subconjunto: a híbrida com E5 chegou a 0,914 de hit@5, contra 0,888 da léxica. Falta decidir a reindexação (cerca de 12 h em CPU) |
 | 2.5 Fortalecer a medição | Citação de trecho correto e retomada feitas. Falta repetir rodadas para medir a variação |
 | 3.1 Falhas de LLM | Feita: nova tentativa em erro temporário, cota esgotada vai direto ao fallback, com testes |
 | 3.2 Não carregar o que não é usado | Feita: 113 MB de pico na busca léxica, contra 3,2 GB antes |
-| 3.3 Caminho leve | Feita no código: o acervo léxico (0,6 GB) basta para a busca padrão. Falta o Guilherme publicar o acervo com `upload_vectorstore.py --acervo` |
+| 3.3 Caminho leve | Feita e publicada: o acervo léxico (0,6 GB) está no Hugging Face, e a busca padrão funciona baixando só ele |
 | 3.4 Limpeza de comportamento | Feita: sem criação de pastas ao importar, pergunta sem termos responde sem LLM, aviso de acervo desatualizado, `avaliar.py` marcado como legado |
 | 4.1 Testes | Feita: 42 testes com pytest |
-| 4.2 Lint e CI | Ruff sem erros. Workflow escrito, ainda não executado no GitHub porque a branch não foi enviada |
-| 4.3 Instalação reproduzível | Parcial: `pyproject.toml`, `requirements-dev.txt` e `.gitattributes` criados. A instalação em ambiente limpo será testada pelo CI |
+| 4.2 Lint e CI | Feita: ruff sem erros e CI passando no GitHub |
+| 4.3 Instalação reproduzível | Feita: o CI instala tudo do zero em Linux com Python 3.12 e os testes passam |
 | 4.4 Docker | Revisado, mas não testado: o Docker não está instalado nesta máquina. O README avisa |
+| 5 Demo | Feita: `python scripts/app.py`, testada de ponta a ponta. Falta captura de tela no README e publicação opcional em um Space |
+| Comparação de LLMs | Feita para `gpt-oss-120b` e `qwen3.8-27b`, sem vencedor claro. O Gemini não pôde ser medido (erro 503) |
 
 ## 2. Regras de trabalho
 

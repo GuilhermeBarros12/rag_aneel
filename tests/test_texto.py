@@ -69,5 +69,15 @@ def test_chunks_respeitam_o_tamanho_e_nao_cortam_tabelas():
     assert all(len(c.strip()) >= config.MIN_CHARS for c in chunks)
 
 
+def test_ingestao_processa_o_pdf_antes_do_html_de_mesmo_nome():
+    versoes = [
+        {"tipo": "Texto Integral:", "arquivo": "ren2016756.html"},
+        {"tipo": "Texto Integral:", "arquivo": "ren2016756.pdf"},
+        {"tipo": "Voto:", "arquivo": "aren2016756_1.pdf"},
+    ]
+    ordem = [v["arquivo"] for v in ingestao.ordenar_versoes(versoes)]
+    assert ordem.index("ren2016756.pdf") < ordem.index("ren2016756.html")
+
+
 def test_metadata_para_o_chroma_nao_tem_none():
     assert indexar.limpar_metadata_para_chroma({"a": None, "b": 3}) == {"a": "", "b": "3"}
