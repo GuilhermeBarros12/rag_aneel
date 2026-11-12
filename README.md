@@ -1,11 +1,44 @@
-# RAG ANEEL — Sistema de Perguntas e Respostas sobre Documentos Regulatórios
+# RAG ANEEL — Perguntas e respostas sobre atos regulatórios
 
-Sistema de **Retrieval-Augmented Generation (RAG)** desenvolvido para responder perguntas sobre o corpus regulatório da ANEEL (Agência Nacional de Energia Elétrica), com **18.688 atos de 2016, 2021 e 2022**, que somam **26.747 arquivos indexados** (textos integrais, votos, notas técnicas e anexos) e **508.156 chunks**.
+Sistema de **Retrieval-Augmented Generation (RAG)** que responde perguntas sobre o corpus regulatório da ANEEL (Agência Nacional de Energia Elétrica): **18.688 atos de 2016, 2021 e 2022**, com **26.747 arquivos indexados** (textos integrais, votos, notas técnicas e anexos) e **517.557 chunks**. Cada resposta cita os documentos usados e avisa quando o ato foi revogado.
 
-**Modelo de embeddings:** `paraphrase-multilingual-mpnet-base-v2` (768 dims, PT-BR nativo)  
-**Busca padrão:** léxica, com BM25 em SQLite FTS5  
-**Banco vetorial:** ChromaDB com índice HNSW e similaridade de cosseno, usado nos modos vetorial e híbrido  
-**LLM:** `gemini-3.8-flash` (primário) ou Groq / `openai/gpt-oss-120b` (fallback). Os modelos ficam em [`scripts/config.py`](scripts/config.py)
+O foco do projeto é ser **medido**: toda mudança foi testada contra um conjunto de perguntas com gabarito antes de ser adotada, e as que não melhoraram foram descartadas e registradas.
+
+## Resultados em resumo
+
+Conjunto de ouro v1: 56 perguntas escritas a partir de atos sorteados, 46 com resposta no corpus e 10 que devem ser recusadas. LLM `openai/gpt-oss-120b` no Groq.
+
+| Métrica | Primeira versão (busca vetorial) | Versão atual |
+|---|---|---|
+| Documento certo entre os 5 trechos recuperados (hit@5) | 0,130 | **0,935** |
+| Resposta com os termos esperados | 6 de 46 | **41 de 46** |
+| Recusa indevida (havia resposta e o sistema recusou) | 39 de 46 | **6 de 46** |
+| Recusa correta (a pergunta não tem resposta no corpus) | 10 de 10 | 10 de 10 |
+
+No conjunto v2, com 127 perguntas (inclui Resoluções Normativas, atos revogados e perguntas conceituais sem número de ato), o hit@5 é de 0,835, e de 0,870 com o reranker opcional. As perguntas conceituais são o ponto fraco: hit@5 de 0,500. Metodologia e todas as rodadas em [docs/avaliacao/RESULTADOS.md](docs/avaliacao/RESULTADOS.md); as decisões e o que foi descartado, em [docs/DECISOES.md](docs/DECISOES.md).
+
+## Como funciona
+
+```mermaid
+flowchart LR
+    P[Pergunta] --> B["Busca BM25<br/>SQLite FTS5"]
+    B --> R{"Política de<br/>revogados"}
+    R --> K["Reranker<br/>(opcional)"]
+    K --> E["Expansão de contexto<br/>documento curto inteiro<br/>ou trechos vizinhos"]
+    E --> L["LLM<br/>Gemini, com fallback<br/>para o Groq"]
+    L --> A["Resposta com fontes<br/>e situação do ato"]
+```
+
+- **Busca léxica (BM25):** as perguntas sobre atos citam números, nomes de empresas e de usinas, e a busca por palavras acerta muito mais do que a busca por embeddings (hit@5 de 0,870 contra 0,130). A busca vetorial e a híbrida continuam configuráveis.
+- **Política de revogados:** busca só nos atos vigentes, mas inclui os revogados quando a pergunta cita um ato, pergunta sobre vigência ou quando nada vigente é encontrado.
+- **Expansão de contexto:** a busca costuma achar o documento certo, mas não o trecho com a resposta. Documentos curtos vão inteiros ao LLM; dos longos vão os trechos encontrados e seus vizinhos.
+- **Recusa:** sem evidência nos trechos, o modelo responde que não encontrou a informação, em vez de inventar.
+
+**Stack:** Python, SQLite FTS5, ChromaDB e `sentence-transformers` (modos vetorial e híbrido), Gemini e Groq, Gradio na demo, pytest e ruff no CI do GitHub Actions. O índice fica no Hugging Face e é baixado na primeira execução.
+
+![Demo respondendo sobre a REN 959/2021, com a tabela dos documentos usados e a situação de cada ato](docs/imagens/demo.png)
+
+*Demo em Gradio (`python scripts/app.py`). Neste exemplo, o Gemini não respondeu e o fallback para o Groq entrou em ação.*
 
 ---
 
@@ -125,7 +158,7 @@ Documentos ANEEL (PDFs, HTMLs, XLSXs)
           │                     preservando tabelas e metadados
           ▼
    [3] chunking.py           → divide os .md em chunks de 512 chars
-          │                     com sobreposição de 80 chars → 508.156 chunks
+          │                     com sobreposição de 80 chars → 517.557 chunks
           ▼
    [4] indexar.py            → gera embeddings multilinguais e
           │                     persiste no ChromaDB (HNSW cosine)
@@ -301,7 +334,7 @@ projeto_rag/
 
 `scripts/avaliar.py` é o benchmark antigo, mantido como registro. Ele roda 100 perguntas com o mesmo código do pipeline e salva em `avaliacao/` a resposta, o LLM que respondeu e os documentos usados. Para testar com poucas perguntas, use `--limite`.
 
-Esse benchmark não tem gabarito, então coleta respostas sem dar nota. As métricas vêm de `scripts/avaliar_ouro.py`, em um conjunto de 56 perguntas com documento e resposta esperados. Veja a metodologia e os resultados em [docs/avaliacao/RESULTADOS.md](docs/avaliacao/RESULTADOS.md).
+Esse benchmark não tem gabarito, então coleta respostas sem dar nota. As métricas vêm de `scripts/avaliar_ouro.py`, em dois conjuntos congelados com documento e resposta esperados: o v1, com 56 perguntas, e o v2, com 127. Veja a metodologia e os resultados em [docs/avaliacao/RESULTADOS.md](docs/avaliacao/RESULTADOS.md).
 
 ## Testes
 
@@ -311,14 +344,14 @@ pytest
 ruff check scripts tests
 ```
 
-São 42 testes que rodam sem rede, sem chaves de API e sem o índice real: eles criam um índice minúsculo em uma pasta temporária. Cobrem a leitura da metadata, o chunking, a busca nos três modos, a montagem do prompt, as novas tentativas e o fallback entre LLMs e as métricas. O arquivo `.github/workflows/ci.yml` roda o lint e os testes a cada push.
+São 62 testes que rodam sem rede, sem chaves de API e sem o índice real: eles criam um índice minúsculo em uma pasta temporária. Cobrem a leitura da metadata, o chunking, a busca nos três modos, a política de revogados, a expansão de contexto, o reranker, a montagem do prompt, as novas tentativas e o fallback entre LLMs e as métricas. O arquivo `.github/workflows/ci.yml` roda o lint e os testes a cada push.
 
 ## Limitações conhecidas
 
 - O corpus cobre apenas atos de 2016, 2021 e 2022.
 - O índice publicado foi limpo em 11/11/2026: as 153 páginas de bloqueio do Cloudflare saíram, e 152 dessas Resoluções Normativas foram reindexadas a partir dos PDFs. A `ren2021912` continua faltando, porque não tem PDF.
-- Por padrão, atos com situação REVOGADA não são recuperados, então perguntas sobre eles tendem a ficar sem resposta. Outras situações, como ANULADA e SUSPENSA, continuam sendo recuperadas, e o prompt pede para o modelo avisar a perda de vigência.
-- A busca padrão é léxica porque a vetorial e a híbrida mediram pior no conjunto de ouro. Esse conjunto favorece perguntas com nomes e números específicos, e perguntas conceituais não foram medidas.
+- Pela política intermediária, um ato revogado só é recuperado quando a pergunta o cita, pergunta sobre vigência ou quando nada vigente é encontrado. Perguntas sobre fatos de atos revogados que não citam o ato tendem a ficar sem resposta. Outras situações, como ANULADA e SUSPENSA, continuam sendo recuperadas, e o prompt pede para o modelo avisar a perda de vigência.
+- A busca padrão é léxica porque a vetorial e a híbrida mediram pior no conjunto de ouro. Nas perguntas conceituais, que não citam um ato, ela acerta bem menos: hit@5 de 0,500 no conjunto v2.
 - Os embeddings não incluem título nem número do ato. Na busca vetorial, o documento esperado veio entre os 5 primeiros resultados em 13% das perguntas, contra 87% na busca léxica.
 - O modelo de embeddings considera até 128 tokens. Em uma amostra de 5.000 chunks, 30,2% passam disso e têm o final ignorado na busca vetorial.
 - 34,4% dos chunks são cópias exatas de outros, como cláusulas padrão repetidas entre atos.
