@@ -94,6 +94,10 @@ RERANK_ESPERA_S = 12      # espera vezes o número da tentativa, em erro 429
 # GERAÇÃO
 # ============================================================
 
+# Limite da demo web, somando todos os usuários (0 = sem limite). Protege as cotas gratuitas
+# quando a demo está pública.
+LIMITE_PERGUNTAS_POR_MINUTO = int(os.getenv("LIMITE_PERGUNTAS_POR_MINUTO", "0"))
+
 # Ordem de tentativa dos LLMs nas respostas: o primeiro que responder vence.
 # Os nomes são "groq" ou as chaves de PROVEDORES_COMPATIVEIS, abaixo.
 LLMS = [p for p in os.getenv("LLMS", "cohere,groq,groq_20b").split(",") if p]
