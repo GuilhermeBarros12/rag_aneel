@@ -35,7 +35,7 @@ def test_trechos_numerados_como_no_prompt():
 
 
 def test_descricao_do_llm():
-    assert "fallback" in app.descrever_llm(resposta([], erros=["gemini: 503"]))
+    assert "fallback" in app.descrever_llm(resposta([], erros=["cohere: 503"]))
     assert "Nenhum LLM foi chamado" in app.descrever_llm(resposta([], llm=config.SEM_LLM))
     assert "Nenhum LLM respondeu" in app.descrever_llm(resposta([], llm=None))
 

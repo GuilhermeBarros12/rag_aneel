@@ -13,7 +13,7 @@ O PR #1 foi mergeado em `main`, com as Fases 0 a 2 completas e a Fase 3 parcial.
 | Arquivo | Papel |
 |---|---|
 | `scripts/config.py` | Configuração única: caminhos, modelos, prompt, modo de busca |
-| `scripts/nucleo.py` | Recuperação, montagem do prompt e geração com fallback (Gemini, depois Groq) |
+| `scripts/nucleo.py` | Recuperação, montagem do prompt e geração com fallback (Cohere, depois Groq) |
 | `scripts/lexico.py` | Índice BM25 em SQLite FTS5, criado a partir dos chunks do ChromaDB |
 | `scripts/pipeline.py` | Linha de comando do RAG |
 | `scripts/avaliar_ouro.py` | Métricas no conjunto de ouro: hit@k, MRR, abstenção, recusa indevida, termos |
@@ -44,7 +44,7 @@ O índice publicado tem 517.557 chunks de atos de 2016, 2021 e 2022, já sem as 
 | 1.2 Recusar páginas de bloqueio | Feita, com testes em `tests/test_validacao.py` |
 | 1.3 Recuperar as Resoluções Normativas | Feita e publicada: 152 normas reindexadas a partir dos PDFs. Falta `ren2021912`, sem PDF |
 | 2.1 Política de revogados | Feita: política intermediária adotada como padrão (hit@5 de 0,935 no conjunto v1) |
-| 2.2 Perguntas conceituais | Feita: conjunto v2 revisado e congelado em 12/11/2026, com 127 perguntas. hit@5 de 0,835; nas conceituais, 0,500. Falta a medição com LLM |
+| 2.2 Perguntas conceituais | Feita: conjunto v2 revisado e congelado em 12/11/2026, com 127 perguntas. hit@5 de 0,835; nas conceituais, 0,500. Com LLM, termos esperados em 94 de 115 e abstenção de 12 de 12 |
 | 2.3 Cabeçalho contextual | Concluída e descartada: não melhorou a busca vetorial |
 | 2.4 Melhorias da busca vetorial | E5 testado no subconjunto: a híbrida com E5 chegou a 0,914 de hit@5, contra 0,888 da léxica. Falta decidir a reindexação (cerca de 12 h em CPU) |
 | 2.5 Fortalecer a medição | Citação de trecho correto e retomada feitas. Falta repetir rodadas para medir a variação |
@@ -56,10 +56,12 @@ O índice publicado tem 517.557 chunks de atos de 2016, 2021 e 2022, já sem as 
 | 4.2 Lint e CI | Feita: ruff sem erros e CI passando no GitHub |
 | 4.3 Instalação reproduzível | Feita: o CI instala tudo do zero em Linux com Python 3.12 e os testes passam |
 | 4.4 Docker | Revisado, mas não testado: o Docker não está instalado nesta máquina. O README avisa |
-| 5 Demo | Feita: `python scripts/app.py`, testada de ponta a ponta. Falta captura de tela no README e publicação opcional em um Space |
+| 5 Demo | Feita: `python scripts/app.py`, testada de ponta a ponta, com captura de tela no README. Falta a publicação opcional em um Space |
+| 8 Portfólio | README reescrito com resumo, diagrama e resultados, e página de decisões em `docs/DECISOES.md` |
 | Comparação de LLMs | Feita para `gpt-oss-120b` e `qwen3.8-27b`, sem vencedor claro. O Gemini não pôde ser medido (erro 503) |
 | Expansão de contexto | Feita e adotada: termos esperados de 33 para 41 de 46 no conjunto v1, abstenção mantida |
-| Reranker | Testado com a Cohere no conjunto v2: hit@5 de 0,835 para 0,870 e resposta no contexto de 97 para 103 de 115. Opcional (`RERANKER=cohere`), por causa do limite do plano gratuito |
+| Reranker | Testado com a Cohere no conjunto v2: resposta no contexto de 98 para 104 de 115 sobre a busca com frases. Na prévia com LLM em 10 perguntas, citação correta de 3 para 7 de 8. Opcional (`RERANKER=cohere`), por causa do limite do plano gratuito |
+| Q28 e frases com numeral | Investigada: a busca confundia usinas vizinhas (Chuí II, IV e V). A consulta passou a incluir a frase "chui v"; MRR de 0,734 para 0,755 no conjunto v2 |
 
 ## 2. Regras de trabalho
 

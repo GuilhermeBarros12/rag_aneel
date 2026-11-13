@@ -1,0 +1,291 @@
+{
+ "rotulo": "previa_reranker_nenhum",
+ "executado_em": "2026-11-13T01:52:50.036688+00:00",
+ "conjunto": "conjunto_previa_reranker.json",
+ "reranker": "nenhum",
+ "recuperacao": {
+  "politica": {
+   "geral": {
+    "n": 8,
+    "hit@1": 0.375,
+    "hit@3": 0.375,
+    "hit@5": 0.375,
+    "hit@10": 0.625,
+    "mrr": 0.4027777777777778
+   },
+   "categorias": {
+    "conceitual_sigla": {
+     "n": 1,
+     "hit@1": 0.0,
+     "hit@3": 0.0,
+     "hit@5": 0.0,
+     "hit@10": 1.0,
+     "mrr": 0.1111111111111111
+    },
+    "fato_com_ato": {
+     "n": 1,
+     "hit@1": 0.0,
+     "hit@3": 0.0,
+     "hit@5": 0.0,
+     "hit@10": 0.0,
+     "mrr": 0.0
+    },
+    "fato_sem_ato": {
+     "n": 2,
+     "hit@1": 0.5,
+     "hit@3": 0.5,
+     "hit@5": 0.5,
+     "hit@10": 0.5,
+     "mrr": 0.5
+    },
+    "norma_citada": {
+     "n": 2,
+     "hit@1": 0.0,
+     "hit@3": 0.0,
+     "hit@5": 0.0,
+     "hit@10": 0.5,
+     "mrr": 0.05555555555555555
+    },
+    "norma_por_tema": {
+     "n": 2,
+     "hit@1": 1.0,
+     "hit@3": 1.0,
+     "hit@5": 1.0,
+     "hit@10": 1.0,
+     "mrr": 1.0
+    }
+   },
+   "detalhe": [
+    {
+     "id": "Q062",
+     "categoria": "norma_citada",
+     "posicao": 9,
+     "top3": [
+      "ren20221025_chunk1",
+      "aren20221025_1_chunk2",
+      "aren20221025_1_chunk3"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 5994
+    },
+    {
+     "id": "Q063",
+     "categoria": "norma_citada",
+     "posicao": null,
+     "top3": [
+      "ren2016742_chunk7",
+      "ren2021953_chunk20",
+      "ren2016717_chunk25"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 5639
+    },
+    {
+     "id": "Q085",
+     "categoria": "norma_por_tema",
+     "posicao": 1,
+     "top3": [
+      "aren20221044_1_chunk1",
+      "ren2021916_chunk14",
+      "aprt20216705_2_chunk6"
+     ],
+     "resposta_no_contexto": false,
+     "chars_contexto": 5663
+    },
+    {
+     "id": "Q086",
+     "categoria": "norma_por_tema",
+     "posicao": 1,
+     "top3": [
+      "ren2021917_chunk10",
+      "ren2021917_chunk3",
+      "ren2021917_chunk4"
+     ],
+     "resposta_no_contexto": false,
+     "chars_contexto": 7754
+    },
+    {
+     "id": "Q095",
+     "categoria": "fato_com_ato",
+     "posicao": null,
+     "top3": [
+      "dsp2022908_chunk3",
+      "dsp2022698_chunk3",
+      "dsp2022908_chunk2"
+     ],
+     "resposta_no_contexto": false,
+     "chars_contexto": 5035
+    },
+    {
+     "id": "Q099",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "emdsp20222951_chunk115",
+      "emdsp20222951_chunk105",
+      "adsp20211284_1_chunk33"
+     ],
+     "resposta_no_contexto": false,
+     "chars_contexto": 5454
+    },
+    {
+     "id": "Q100",
+     "categoria": "fato_sem_ato",
+     "posicao": null,
+     "top3": [
+      "dsp20211690_chunk3",
+      "dsp20211690_chunk4",
+      "dsp20211690_chunk1"
+     ],
+     "resposta_no_contexto": false,
+     "chars_contexto": 1408
+    },
+    {
+     "id": "C03",
+     "categoria": "conceitual_sigla",
+     "posicao": 9,
+     "top3": [
+      "aprt20216658_2_chunk197",
+      "area202110990_1_chunk11",
+      "area202110990_1_chunk31"
+     ],
+     "resposta_no_contexto": false,
+     "chars_contexto": 5584
+    }
+   ],
+   "contexto": {
+    "expansao": "documento",
+    "n": 8,
+    "com_resposta": 2,
+    "chars_medio": 5316
+   }
+  }
+ },
+ "geracao": {
+  "resumo": {
+   "llm": [
+    "cohere/command-a-03-2025"
+   ],
+   "respostas_por_llm": {
+    "cohere/command-a-03-2025": 10
+   },
+   "abstencao_correta": 1.0,
+   "recusa_indevida": 0.375,
+   "termos_presentes": 0.625,
+   "citou_trecho_correto": 0.375,
+   "segundos_por_resposta": 4.1
+  },
+  "detalhe": [
+   {
+    "id": "Q062",
+    "categoria": "norma_citada",
+    "deve_recusar": false,
+    "llm": "cohere/command-a-03-2025",
+    "resposta": "A Resolução Normativa nº 1.000, de 2021, estabelece as Regras de Prestação do Serviço Público de Distribuição de Energia Elétrica. (REN - RESOLUÇÃO NORMATIVA 1025/2022 [Trecho 9])",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": false,
+    "segundos": 3.9
+   },
+   {
+    "id": "Q063",
+    "categoria": "norma_citada",
+    "deve_recusar": false,
+    "llm": "cohere/command-a-03-2025",
+    "resposta": "A Resolução Normativa ANEEL nº 414/2010 foi revogada pela Resolução Normativa ANEEL nº 1.000/2021, conforme informado no **DSP - DESPACHO 013/2022 [Trecho 16]**.",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": false,
+    "segundos": 4.0
+   },
+   {
+    "id": "Q085",
+    "categoria": "norma_por_tema",
+    "deve_recusar": false,
+    "llm": "cohere/command-a-03-2025",
+    "resposta": "A Resolução Normativa que regula o compartilhamento de infraestrutura das distribuidoras é a **REN - RESOLUÇÃO NORMATIVA 1044/2022** (REN 1044/2022), conforme mencionado nos trechos 1, 2, 3, 4 e 5. Essa resolução consolida os normativos referentes à pertinência temática \"Compartilhamento de Infraestrutura\", em atendimento ao Decreto nº 10.139/2019 e à Portaria ANEEL nº 6.405/2020. \n\nAlém disso, a **REN 797/2017** também é citada como tratando do compartilhamento da infraestrutura das distribuidoras com agentes cessionários do setor elétrico, de telecomunicações, ou de Petróleo e Gás, entre outros (REN - RESOLUÇÃO NORMATIVA 1044/2022 [Trecho 4]). \n\nAmbas as resoluções estão em vigor, conforme indicado nos trechos recuperados.",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 5.6
+   },
+   {
+    "id": "Q086",
+    "categoria": "norma_por_tema",
+    "deve_recusar": false,
+    "llm": "cohere/command-a-03-2025",
+    "resposta": "A Resolução Normativa que regulamenta o cadastro de inadimplentes com obrigações intrassetoriais é a **REN - RESOLUÇÃO NORMATIVA 917/2021** (REN2021917.pdf), conforme indicado nos trechos 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 e 11. Esta resolução está em vigor, pois **não consta revogação expressa** (REN - RESOLUÇÃO NORMATIVA 917/2021 [Trecho 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]).",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 4.0
+   },
+   {
+    "id": "Q095",
+    "categoria": "fato_com_ato",
+    "deve_recusar": false,
+    "llm": "cohere/command-a-03-2025",
+    "resposta": "Não encontrei informação suficiente nos documentos disponíveis.",
+    "recusou": true,
+    "termos_ok": false,
+    "citou_correto": false,
+    "segundos": 2.7
+   },
+   {
+    "id": "Q099",
+    "categoria": "fato_sem_ato",
+    "deve_recusar": false,
+    "llm": "cohere/command-a-03-2025",
+    "resposta": "Não encontrei informação suficiente nos documentos disponíveis. Os trechos fornecidos mencionam a possibilidade de aplicação de multa e os critérios para seu cálculo (DSP - DESPACHO 2951/2022 [Trecho 10, 11, 12]), mas não especificam o valor da multa aplicada à Nova Guaporé Energética S.A.",
+    "recusou": true,
+    "termos_ok": false,
+    "citou_correto": true,
+    "segundos": 3.1
+   },
+   {
+    "id": "Q100",
+    "categoria": "fato_sem_ato",
+    "deve_recusar": false,
+    "llm": "cohere/command-a-03-2025",
+    "resposta": "Não encontrei informação suficiente nos documentos disponíveis. Os trechos fornecidos do **DSP - DESPACHO 1690/2021** mencionam a Gralha Azul Transmissora de Energia S.A. e a formalização de uma operação anuída, mas não especificam qual alteração estatutária foi anuída pela ANEEL em 2021.",
+    "recusou": true,
+    "termos_ok": false,
+    "citou_correto": false,
+    "segundos": 2.9
+   },
+   {
+    "id": "Q108",
+    "categoria": "ato_inexistente",
+    "deve_recusar": true,
+    "llm": "cohere/command-a-03-2025",
+    "resposta": "Não encontrei informação suficiente nos documentos disponíveis. \n\nOs trechos fornecidos não mencionam a **Resolução Normativa nº 1.150, de 2022**. Os documentos disponíveis referem-se a outras normativas e despachos, como a **Resolução Normativa 1000/2021**, **Despacho 1150/2022** e **Portaria 1150/2022**, mas não há informações sobre a Resolução Normativa nº 1.150, de 2022.",
+    "recusou": true,
+    "termos_ok": null,
+    "citou_correto": null,
+    "segundos": 7.8
+   },
+   {
+    "id": "Q109",
+    "categoria": "dado_ausente",
+    "deve_recusar": true,
+    "llm": "cohere/command-a-03-2025",
+    "resposta": "Não encontrei informação suficiente nos documentos disponíveis.\n\nA Resolução Normativa nº 1.000, de 2021, define o conceito de tarifa (REN - RESOLUÇÃO NORMATIVA 1000/2021 [Trecho 2]) e menciona a tarifa de energia (TE) e a tarifa de uso do sistema de distribuição (TUSD) (REN - RESOLUÇÃO NORMATIVA 1000/2021 [Trecho 2, Trecho 3]), mas não especifica um valor fixo para a tarifa residencial. Os trechos fornecidos não contêm informações sobre o valor da tarifa residencial.",
+    "recusou": true,
+    "termos_ok": null,
+    "citou_correto": null,
+    "segundos": 3.8
+   },
+   {
+    "id": "C03",
+    "categoria": "conceitual_sigla",
+    "deve_recusar": false,
+    "llm": "cohere/command-a-03-2025",
+    "resposta": "O indicador DEC (Duração Equivalente de Interrupção por Unidade Consumidora) mede a duração relativa das interrupções no fornecimento de energia elétrica, sendo um indicador do tipo \"menor-melhor\", ou seja, quanto menor o valor, melhor a qualidade do serviço. Essa informação está presente no **PRT - PORTARIA 6658/2021 [Trecho 2]**, que não consta revogação expressa.",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": false,
+    "segundos": 3.6
+   }
+  ]
+ }
+}

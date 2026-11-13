@@ -205,8 +205,19 @@ def montar_consulta(pergunta: str) -> str:
     """Transforma a pergunta em uma consulta OR do FTS5, sem acentos e sem stopwords."""
     texto = unicodedata.normalize("NFKD", normalizar_numeros(pergunta))
     texto = texto.encode("ascii", "ignore").decode().lower()
-    termos = dict.fromkeys(t for t in re.findall(r"\w+", texto) if t not in STOPWORDS)
+    palavras = re.findall(r"\w+", texto)
+    termos = dict.fromkeys(t for t in palavras if t not in STOPWORDS)
+    if config.FRASES_COM_NUMERAL:
+        # "Chuí V", "Santa Martina 13": a frase distingue a usina das vizinhas (Chuí II, Chuí IV...),
+        # que o termo solto "v" ou "13", comum demais, não distingue
+        for anterior, atual in zip(palavras, palavras[1:]):
+            if anterior not in STOPWORDS and _NUMERAL.fullmatch(atual):
+                termos[f"{anterior} {atual}"] = None
     return " OR ".join(f'"{t}"' for t in termos)
+
+
+# numeral romano até 39 ou número de até 3 dígitos
+_NUMERAL = re.compile(r"x{0,3}(?:ix|iv|v?i{0,3})|\d{1,3}")
 
 
 def buscar(pergunta: str, n: int, excluir_situacao: Optional[str] = None) -> List[str]:

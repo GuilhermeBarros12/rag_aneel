@@ -165,6 +165,71 @@ Recuperação no conjunto congelado, com o sistema padrão: busca léxica, polí
 
 A resposta chega ao LLM em 97 das 115 perguntas, com contexto médio de 6,3 mil caracteres. O ponto fraco são as conceituais: sem citar um ato, a busca léxica acha a sigla ou o tema em milhares de chunks e raramente no que define o termo. A medição com LLM nas 127 perguntas ainda não foi feita.
 
+## Reranker sobre a busca com frases, com prévia de LLM (12/11/2026)
+
+Depois da mudança das frases com numeral, o reranker foi medido de novo no conjunto v2, só na recuperação ([v2_frases_rerank_cohere.md](experimentos/v2_frases_rerank_cohere.md)):
+
+| Métrica (115 perguntas) | Busca com frases | Com reranker |
+|---|---|---|
+| hit@1 | 0,713 | 0,783 |
+| hit@5 | 0,835 | 0,870 |
+| MRR | 0,755 | 0,812 |
+| Resposta presente no contexto enviado | 98 | **104** |
+
+Nenhuma pergunta perdeu a resposta no contexto. A Q28, que piorava com o reranker na busca antiga, agora já vem certa da busca.
+
+**Prévia com LLM.** Como o reranker muda a ordem dos documentos, ele muda o contexto de quase todas as perguntas. Para uma prévia barata, foram escolhidas 10: as 6 em que o reranker faz a resposta chegar ao LLM, as 2 com maior ganho de posição do documento certo e 2 que devem ser recusadas ([conjunto_previa_reranker.json](experimentos/conjunto_previa_reranker.json)). O modelo foi o `command-a-03-2025` da Cohere nas duas rodadas.
+
+| Métrica | Sem reranker | Com reranker |
+|---|---|---|
+| Termos esperados na resposta | 5 de 8 | 7 de 8 |
+| Recusa indevida | 3 de 8 | 1 de 8 |
+| Citou um trecho correto | 3 de 8 | **7 de 8** |
+| Abstenção correta | 2 de 2 | 2 de 2 |
+| Segundos por resposta | 4,1 | 4,5 |
+
+O ganho mais claro está na citação: com o reranker, a resposta passa a se apoiar no trecho certo. Três perguntas (Q085, Q086 e C03) acertaram os termos mesmo sem a resposta no contexto. Provavelmente o modelo já conhecia a resposta, como o significado de DEC, e isso não é mérito da busca. O grupo foi escolhido onde o reranker deveria ajudar, então o resultado mostra o efeito nesses casos e não estima o ganho no conjunto inteiro. A medição completa com LLM e reranker não foi feita.
+
+## Nome seguido de numeral como frase (12/11/2026)
+
+Investigação da Q28 ("para qual empresa foi transferida a autorização da Central Geradora Eólica Chuí V?"), a única pergunta que piorou com a expansão de contexto. O ato certo, a REA 10.536/2021, estava só na posição 34 da busca. Os 5 primeiros trechos eram de atos vizinhos, com texto quase idêntico: Chuí II, Chuí IV, Chuí IX e Minuano I e II, todos transferidos para a Omega Geração. Como o BM25 trata o "V" como uma palavra solta e comum, ele não distingue Chuí II, IV e V.
+
+O gabarito aceita esses atos vizinhos como documento esperado, e o termo "Omega Geração" aparece neles. Por isso a métrica dizia que a resposta estava no contexto, e a recusa do modelo contava como indevida. Na verdade, sem nenhum documento sobre a Chuí V, recusar era o comportamento correto. Na rodada antiga, sem expansão, o modelo tinha respondido com a empresa de outra usina. O conjunto v1 está congelado e não foi alterado, mas este caso mostra que a métrica de recuperação é otimista em grupos de atos quase idênticos.
+
+A correção: quando uma palavra é seguida de um numeral romano ou de um número de até 3 dígitos, a consulta inclui também a frase ("chui v", "martina 13"), além das palavras soltas (`FRASES_COM_NUMERAL=1`, o novo padrão). Conjunto v2, só recuperação ([v2_frases_numeral.md](experimentos/v2_frases_numeral.md)):
+
+| Métrica (115 perguntas) | Antes | Com a frase |
+|---|---|---|
+| hit@1 | 0,678 | 0,713 |
+| hit@5 | 0,835 | 0,835 |
+| MRR | 0,734 | 0,755 |
+| Resposta presente no contexto enviado | 97 | 98 |
+
+Cinco perguntas subiram para a posição 1 (Q23, Q25, Q28, Q066 e Q101), e a Q28 passou a trazer a REA 10.536 em primeiro lugar. Só a Q33 caiu, da posição 1 para a 3, e continuou com a resposta no contexto.
+
+## Conjunto v2 com LLM (12/11/2026)
+
+Conjunto v2 congelado (127 perguntas), busca léxica, política intermediária, expansão de contexto e sem reranker ([v2_llm_gpt_oss_120b.md](experimentos/v2_llm_gpt_oss_120b.md)). O `gpt-oss-120b` esgotou o limite diário de tokens do Groq na pergunta 56. A medição continuou com fallback, registrando o modelo de cada resposta: 58 vieram do `gpt-oss-120b`, 59 do `gpt-oss-20b` e 10 do `qwen3.8-27b`, quando o segundo também esgotou a cota.
+
+| Métrica | Todas | Versão 1 (56) | Novas (71) |
+|---|---|---|---|
+| Termos esperados na resposta | **94 de 115 (0,817)** | 40 de 46 | 54 de 69 |
+| Recusa indevida | 19 de 115 (0,165) | 6 de 46 | 13 de 69 |
+| Citou um trecho correto | 90 de 115 (0,783) | 38 de 46 | 52 de 69 |
+| Abstenção correta | 12 de 12 | 10 de 10 | 2 de 2 |
+
+| Grupo | Termos esperados | Recusa indevida |
+|---|---|---|
+| Ato citado pelo número | 10 de 10 | 0 |
+| Resolução Normativa citada, pelo tema ou regra atual | 27 de 27 | 0 |
+| Ato revogado | 13 de 15 | 1 |
+| Fato específico, citando o ato | 13 de 16 | 4 |
+| Fato específico, sem citar o ato | 22 de 29 | 6 |
+| Conceitual: paráfrase | 7 de 12 | 5 |
+| Conceitual: sigla | 2 de 6 | 3 |
+
+Nas 46 perguntas da versão 1, o resultado (40 de 46) ficou a uma pergunta da rodada com só o `gpt-oss-120b` (41 de 46), dentro da variação esperada. As perguntas conceituais concentram 8 das 19 recusas indevidas, o que confirma a recuperação como ponto fraco. A comparação entre modelos dentro desta rodada não é válida, porque cada um respondeu a um bloco diferente de perguntas.
+
 ## Reranker da Cohere (12/11/2026)
 
 Conjunto v2 congelado, só recuperação, busca léxica, política intermediária e expansão de contexto. O reranker `rerank-v5.0-pro` reordena os 30 primeiros candidatos da busca antes de escolher os 5 ([v2_rerank_cohere.md](experimentos/v2_rerank_cohere.md), comparado com [v2_recuperacao.md](experimentos/v2_recuperacao.md)). Foram 115 chamadas, uma por pergunta, guardadas em cache.

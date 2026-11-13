@@ -16,6 +16,13 @@ def test_montar_consulta_remove_acentos_stopwords_e_repeticoes():
     assert lexico.montar_consulta("usina Usina USINA") == '"usina"'
 
 
+def test_nome_seguido_de_numeral_vira_frase():
+    consulta = lexico.montar_consulta("Usina Eólica Chuí V e UFV Santa Martina 13")
+    assert '"chui v"' in consulta and '"martina 13"' in consulta
+    assert '"v"' in consulta  # as palavras soltas continuam na consulta
+    assert '"usina eolica"' not in consulta  # só quando a segunda palavra é um numeral
+
+
 def test_pergunta_sem_termos_uteis_gera_consulta_vazia(acervo):
     assert lexico.montar_consulta("de da do") == ""
     assert lexico.buscar("de da do", 5) == []

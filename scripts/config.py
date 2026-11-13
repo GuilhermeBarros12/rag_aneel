@@ -76,6 +76,8 @@ CANDIDATOS_FUSAO = 50  # quantos resultados de cada busca entram na fusão
 RRF_K = 60             # constante padrão da Reciprocal Rank Fusion
 PESO_LEXICO = float(os.getenv("PESO_LEXICO", "1"))  # peso do BM25 na fusão (embeddings = 1)
 # Peso de cada coluna no BM25: título, ementa e texto do chunk
+# Busca também a frase "nome numeral" ("chui v"), além das palavras soltas
+FRASES_COM_NUMERAL = os.getenv("FRASES_COM_NUMERAL", "1") == "1"
 PESOS_BM25 = tuple(float(p) for p in os.getenv("PESOS_BM25", "1,1,1").split(","))
 
 # Reranker (busca léxica ou híbrida): reordena os primeiros candidatos antes de escolher os TOP_K.
@@ -92,9 +94,11 @@ RERANK_ESPERA_S = 12      # espera vezes o número da tentativa, em erro 429
 # GERAÇÃO
 # ============================================================
 
-GEMINI_MODELO = os.getenv("GEMINI_MODEL", "gemini-3.8-flash")
+# Ordem de tentativa dos LLMs nas respostas: o primeiro que responder vence.
+# Os nomes são "groq" ou as chaves de PROVEDORES_COMPATIVEIS, abaixo.
+LLMS = [p for p in os.getenv("LLMS", "cohere,groq,groq_20b").split(",") if p]
 GROQ_MODELO   = os.getenv("GROQ_MODEL", "openai/gpt-oss-120b")
-TEMPERATURA   = 0.0  # respostas o mais repetíveis possível, nos dois LLMs
+TEMPERATURA   = 0.0  # respostas o mais repetíveis possível
 MAX_CHARS_TRECHO = 4000  # corta chunks de tabela muito longos ao montar o prompt
 
 # Expansão de contexto: a busca acha o documento certo, mas nem sempre o trecho com a resposta.
@@ -117,8 +121,11 @@ RESPOSTA_SEM_TRECHOS = (
     "Tente citar o número do ato, o nome da empresa ou o tema."
 )
 
-# A medição usa um único LLM, sem fallback, para os números não misturarem modelos
+# A medição usa um LLM principal. LLM_AVALIACAO_FALLBACK (lista separada por vírgulas) entra
+# só quando o principal falha, por exemplo com a cota diária esgotada; o relatório conta
+# quantas respostas vieram de cada modelo.
 LLM_AVALIACAO = os.getenv("LLM_AVALIACAO", "groq")
+LLM_AVALIACAO_FALLBACK = [p for p in os.getenv("LLM_AVALIACAO_FALLBACK", "").split(",") if p]
 
 # Provedores que aceitam o formato da API da OpenAI (/chat/completions).
 # Cada um precisa só da chave no .env (e do modelo, que pode ser trocado pela variável indicada).
@@ -126,6 +133,11 @@ LLM_AVALIACAO = os.getenv("LLM_AVALIACAO", "groq")
 PROVEDORES_COMPATIVEIS = {
     "local": {"url": os.getenv("LOCAL_LLM_URL", "http://localhost:1234/v1"), "chave": None,
               "modelo": os.getenv("LOCAL_MODEL", "openai/gpt-oss-20b")},
+    # outros modelos do Groq, com cota diária própria
+    "groq_20b": {"url": "https://api.groq.com/openai/v1", "chave": "GROQ_API_KEY",
+                 "modelo": os.getenv("GROQ_20B_MODEL", "openai/gpt-oss-20b")},
+    "groq_qwen": {"url": "https://api.groq.com/openai/v1", "chave": "GROQ_API_KEY",
+                  "modelo": os.getenv("GROQ_QWEN_MODEL", "qwen/qwen3.8-27b")},
     "cohere": {"url": "https://api.cohere.ai/compatibility/v1", "chave": "COHERE_API_KEY",
                "modelo": os.getenv("COHERE_MODEL", "command-a-03-2025")},
     "mistral": {"url": "https://api.mistral.ai/v1", "chave": "MISTRAL_API_KEY",

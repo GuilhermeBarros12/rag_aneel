@@ -17,7 +17,7 @@ from datetime import datetime, timezone
 from typing import Dict, List
 
 import config
-from nucleo import carregar_recursos, responder
+from nucleo import carregar_recursos, nome_do_modelo, responder
 
 DELAY_ENTRE_PERGUNTAS = 2  # segundos entre chamadas à API, para evitar rate limit
 
@@ -225,8 +225,7 @@ def main() -> None:
         "configuracao": {
             "executado_em": datetime.now(timezone.utc).isoformat(),
             "modelo_embedding": config.MODELO_EMBEDDING,
-            "gemini": config.GEMINI_MODELO,
-            "groq": config.GROQ_MODELO,
+            "llms": [nome_do_modelo(p) for p in config.LLMS],
             "temperatura": config.TEMPERATURA,
             "top_k": config.TOP_K,
             "politica_revogados": config.POLITICA_REVOGADOS,
