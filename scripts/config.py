@@ -117,8 +117,11 @@ RESPOSTA_SEM_TRECHOS = (
     "Tente citar o número do ato, o nome da empresa ou o tema."
 )
 
-# A medição usa um único LLM, sem fallback, para os números não misturarem modelos
+# A medição usa um LLM principal. LLM_AVALIACAO_FALLBACK (lista separada por vírgulas) entra
+# só quando o principal falha, por exemplo com a cota diária esgotada; o relatório conta
+# quantas respostas vieram de cada modelo.
 LLM_AVALIACAO = os.getenv("LLM_AVALIACAO", "groq")
+LLM_AVALIACAO_FALLBACK = [p for p in os.getenv("LLM_AVALIACAO_FALLBACK", "").split(",") if p]
 
 # Provedores que aceitam o formato da API da OpenAI (/chat/completions).
 # Cada um precisa só da chave no .env (e do modelo, que pode ser trocado pela variável indicada).
@@ -126,6 +129,11 @@ LLM_AVALIACAO = os.getenv("LLM_AVALIACAO", "groq")
 PROVEDORES_COMPATIVEIS = {
     "local": {"url": os.getenv("LOCAL_LLM_URL", "http://localhost:1234/v1"), "chave": None,
               "modelo": os.getenv("LOCAL_MODEL", "openai/gpt-oss-20b")},
+    # outros modelos do Groq, com cota diária própria
+    "groq_20b": {"url": "https://api.groq.com/openai/v1", "chave": "GROQ_API_KEY",
+                 "modelo": os.getenv("GROQ_20B_MODEL", "openai/gpt-oss-20b")},
+    "groq_qwen": {"url": "https://api.groq.com/openai/v1", "chave": "GROQ_API_KEY",
+                  "modelo": os.getenv("GROQ_QWEN_MODEL", "qwen/qwen3.8-27b")},
     "cohere": {"url": "https://api.cohere.ai/compatibility/v1", "chave": "COHERE_API_KEY",
                "modelo": os.getenv("COHERE_MODEL", "command-a-03-2025")},
     "mistral": {"url": "https://api.mistral.ai/v1", "chave": "MISTRAL_API_KEY",

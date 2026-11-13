@@ -151,9 +151,13 @@ def salvar_json(caminho: str, dados) -> None:
         json.dump(dados, f, ensure_ascii=False, indent=1)
 
 
+def sem_fallback(assinatura: dict) -> dict:
+    return {k: v for k, v in assinatura.items() if k != "fallback"}
+
+
 def medir_geracao(perguntas: List[dict], colecao, modelo, caminho_parcial: str, assinatura: dict) -> List[dict]:
     """
-    Usa um único LLM, para os números não misturarem modelos.
+    Usa o LLM principal e, se ele falhar, os de config.LLM_AVALIACAO_FALLBACK; cada linha registra quem respondeu.
     Salva o progresso a cada pergunta: se a cota acabar, basta rodar o mesmo
     comando de novo para continuar de onde parou.
     """
@@ -161,7 +165,8 @@ def medir_geracao(perguntas: List[dict], colecao, modelo, caminho_parcial: str, 
     if os.path.exists(caminho_parcial):
         with open(caminho_parcial, encoding="utf-8") as f:
             parcial = json.load(f)
-        if parcial["assinatura"] != assinatura:
+        # o fallback pode ser acrescentado no meio de uma medição: cada linha registra o LLM que respondeu
+        if sem_fallback(parcial["assinatura"]) != sem_fallback(assinatura):
             raise SystemExit(f"[ERRO] {caminho_parcial} veio de outra configuracao. Apague o arquivo ou use outro --rotulo.")
         linhas = parcial["linhas"]
         print(f"[RETOMADA] {len(linhas)} perguntas ja respondidas.")
@@ -172,7 +177,7 @@ def medir_geracao(perguntas: List[dict], colecao, modelo, caminho_parcial: str, 
             continue
         print(f"[{i}/{len(perguntas)}] {q['pergunta'][:70]}")
         inicio = time.time()
-        r = responder(q["pergunta"], colecao, modelo, provedores=[config.LLM_AVALIACAO])
+        r = responder(q["pergunta"], colecao, modelo, provedores=[config.LLM_AVALIACAO] + config.LLM_AVALIACAO_FALLBACK)
         segundos = round(time.time() - inicio, 1)
         if r.llm is None:
             print(r.resposta)
@@ -213,6 +218,7 @@ def resumir_geracao(linhas: List[dict]) -> Dict[str, float]:
 
     return {
         "llm": sorted({l["llm"] for l in linhas}),
+        "respostas_por_llm": dict(collections.Counter(l["llm"] for l in linhas).most_common()),
         "abstencao_correta": taxa(recusar, "recusou"),
         "recusa_indevida": taxa(responder_, "recusou"),
         "termos_presentes": taxa(responder_, "termos_ok"),
@@ -269,7 +275,7 @@ def escrever_relatorio(caminho: str, dados: dict) -> None:
                   f"{c['com_resposta']} de {c['n']}. Tamanho médio do contexto: {c['chars_medio']} caracteres.", ""]
     if "geracao" in dados:
         g = dados["geracao"]["resumo"]
-        m += ["## Geração", "", f"LLM: `{', '.join(g['llm'])}`.", "",
+        m += ["## Geração", "", f"LLM: {', '.join(f'`{k}` ({v})' for k, v in g.get('respostas_por_llm', {}).items()) or ', '.join(g['llm'])}.", "",
               "| Métrica | Valor |", "|---|---|",
               f"| Abstenção correta (deve recusar) | {formatar(g['abstencao_correta'])} |",
               f"| Recusa indevida (deve responder) | {formatar(g['recusa_indevida'])} |",
@@ -333,6 +339,7 @@ def main() -> None:
             "top_k": config.TOP_K,
             "llm": config.LLM_AVALIACAO,
             "modelo_llm": nome_do_modelo(config.LLM_AVALIACAO),
+            "fallback": [nome_do_modelo(p) for p in config.LLM_AVALIACAO_FALLBACK],
         }
         linhas = medir_geracao(perguntas, colecao, modelo, caminho_parcial, assinatura)
         dados["geracao"] = {"resumo": resumir_geracao(linhas), "detalhe": linhas}
