@@ -44,7 +44,7 @@ O índice publicado tem 517.557 chunks de atos de 2016, 2021 e 2022, já sem as 
 | 1.2 Recusar páginas de bloqueio | Feita, com testes em `tests/test_validacao.py` |
 | 1.3 Recuperar as Resoluções Normativas | Feita e publicada: 152 normas reindexadas a partir dos PDFs. Falta `ren2021912`, sem PDF |
 | 2.1 Política de revogados | Feita: política intermediária adotada como padrão (hit@5 de 0,935 no conjunto v1) |
-| 2.2 Perguntas conceituais | Feita: conjunto v2 revisado e congelado em 12/11/2026, com 127 perguntas. hit@5 de 0,835; nas conceituais, 0,500. Falta a medição com LLM |
+| 2.2 Perguntas conceituais | Feita: conjunto v2 revisado e congelado em 12/11/2026, com 127 perguntas. hit@5 de 0,835; nas conceituais, 0,500. Com LLM, termos esperados em 94 de 115 e abstenção de 12 de 12 |
 | 2.3 Cabeçalho contextual | Concluída e descartada: não melhorou a busca vetorial |
 | 2.4 Melhorias da busca vetorial | E5 testado no subconjunto: a híbrida com E5 chegou a 0,914 de hit@5, contra 0,888 da léxica. Falta decidir a reindexação (cerca de 12 h em CPU) |
 | 2.5 Fortalecer a medição | Citação de trecho correto e retomada feitas. Falta repetir rodadas para medir a variação |

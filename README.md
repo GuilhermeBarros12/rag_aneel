@@ -15,7 +15,7 @@ Conjunto de ouro v1: 56 perguntas escritas a partir de atos sorteados, 46 com re
 | Recusa indevida (havia resposta e o sistema recusou) | 39 de 46 | **6 de 46** |
 | Recusa correta (a pergunta não tem resposta no corpus) | 10 de 10 | 10 de 10 |
 
-No conjunto v2, com 127 perguntas (inclui Resoluções Normativas, atos revogados e perguntas conceituais sem número de ato), o hit@5 é de 0,835, e de 0,870 com o reranker opcional. As perguntas conceituais são o ponto fraco: hit@5 de 0,500. Metodologia e todas as rodadas em [docs/avaliacao/RESULTADOS.md](docs/avaliacao/RESULTADOS.md); as decisões e o que foi descartado, em [docs/DECISOES.md](docs/DECISOES.md).
+No conjunto v2, com 127 perguntas (inclui Resoluções Normativas, atos revogados e perguntas conceituais sem número de ato), o hit@5 é de 0,835, e de 0,870 com o reranker opcional. De ponta a ponta, 94 de 115 respostas trazem os termos esperados, e as 12 perguntas sem resposta foram recusadas. As perguntas conceituais são o ponto fraco: hit@5 de 0,500. Metodologia e todas as rodadas em [docs/avaliacao/RESULTADOS.md](docs/avaliacao/RESULTADOS.md); as decisões e o que foi descartado, em [docs/DECISOES.md](docs/DECISOES.md).
 
 ## Como funciona
 

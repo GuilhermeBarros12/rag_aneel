@@ -165,6 +165,29 @@ Recuperação no conjunto congelado, com o sistema padrão: busca léxica, polí
 
 A resposta chega ao LLM em 97 das 115 perguntas, com contexto médio de 6,3 mil caracteres. O ponto fraco são as conceituais: sem citar um ato, a busca léxica acha a sigla ou o tema em milhares de chunks e raramente no que define o termo. A medição com LLM nas 127 perguntas ainda não foi feita.
 
+## Conjunto v2 com LLM (12/11/2026)
+
+Conjunto v2 congelado (127 perguntas), busca léxica, política intermediária, expansão de contexto e sem reranker ([v2_llm_gpt_oss_120b.md](experimentos/v2_llm_gpt_oss_120b.md)). O `gpt-oss-120b` esgotou o limite diário de tokens do Groq na pergunta 56. A medição continuou com fallback, registrando o modelo de cada resposta: 58 vieram do `gpt-oss-120b`, 59 do `gpt-oss-20b` e 10 do `qwen3.8-27b`, quando o segundo também esgotou a cota.
+
+| Métrica | Todas | Versão 1 (56) | Novas (71) |
+|---|---|---|---|
+| Termos esperados na resposta | **94 de 115 (0,817)** | 40 de 46 | 54 de 69 |
+| Recusa indevida | 19 de 115 (0,165) | 6 de 46 | 13 de 69 |
+| Citou um trecho correto | 90 de 115 (0,783) | 38 de 46 | 52 de 69 |
+| Abstenção correta | 12 de 12 | 10 de 10 | 2 de 2 |
+
+| Grupo | Termos esperados | Recusa indevida |
+|---|---|---|
+| Ato citado pelo número | 10 de 10 | 0 |
+| Resolução Normativa citada, pelo tema ou regra atual | 27 de 27 | 0 |
+| Ato revogado | 13 de 15 | 1 |
+| Fato específico, citando o ato | 13 de 16 | 4 |
+| Fato específico, sem citar o ato | 22 de 29 | 6 |
+| Conceitual: paráfrase | 7 de 12 | 5 |
+| Conceitual: sigla | 2 de 6 | 3 |
+
+Nas 46 perguntas da versão 1, o resultado (40 de 46) ficou a uma pergunta da rodada com só o `gpt-oss-120b` (41 de 46), dentro da variação esperada. As perguntas conceituais concentram 8 das 19 recusas indevidas, o que confirma a recuperação como ponto fraco. A comparação entre modelos dentro desta rodada não é válida, porque cada um respondeu a um bloco diferente de perguntas.
+
 ## Reranker da Cohere (12/11/2026)
 
 Conjunto v2 congelado, só recuperação, busca léxica, política intermediária e expansão de contexto. O reranker `rerank-v5.0-pro` reordena os 30 primeiros candidatos da busca antes de escolher os 5 ([v2_rerank_cohere.md](experimentos/v2_rerank_cohere.md), comparado com [v2_recuperacao.md](experimentos/v2_recuperacao.md)). Foram 115 chamadas, uma por pergunta, guardadas em cache.

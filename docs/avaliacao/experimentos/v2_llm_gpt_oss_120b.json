@@ -1,0 +1,5370 @@
+{
+ "rotulo": "v2_llm_gpt_oss_120b",
+ "executado_em": "2026-11-13T00:19:37.559318+00:00",
+ "conjunto": "conjunto_ouro_v2.json",
+ "reranker": "nenhum",
+ "recuperacao": {
+  "politica": {
+   "geral": {
+    "n": 115,
+    "hit@1": 0.6782608695652174,
+    "hit@3": 0.7565217391304347,
+    "hit@5": 0.8347826086956521,
+    "hit@10": 0.8521739130434782,
+    "mrr": 0.7342512077294685
+   },
+   "categorias": {
+    "ato_citado": {
+     "n": 10,
+     "hit@1": 0.9,
+     "hit@3": 0.9,
+     "hit@5": 1.0,
+     "hit@10": 1.0,
+     "mrr": 0.925
+    },
+    "conceitual_parafrase": {
+     "n": 12,
+     "hit@1": 0.25,
+     "hit@3": 0.3333333333333333,
+     "hit@5": 0.5,
+     "hit@10": 0.5,
+     "mrr": 0.31527777777777777
+    },
+    "conceitual_sigla": {
+     "n": 6,
+     "hit@1": 0.0,
+     "hit@3": 0.16666666666666666,
+     "hit@5": 0.5,
+     "hit@10": 0.6666666666666666,
+     "mrr": 0.17685185185185184
+    },
+    "fato_com_ato": {
+     "n": 16,
+     "hit@1": 0.875,
+     "hit@3": 0.875,
+     "hit@5": 0.875,
+     "hit@10": 0.875,
+     "mrr": 0.875
+    },
+    "fato_sem_ato": {
+     "n": 29,
+     "hit@1": 0.7586206896551724,
+     "hit@3": 0.8620689655172413,
+     "hit@5": 0.896551724137931,
+     "hit@10": 0.896551724137931,
+     "mrr": 0.8189655172413793
+    },
+    "norma_citada": {
+     "n": 18,
+     "hit@1": 0.6111111111111112,
+     "hit@3": 0.7222222222222222,
+     "hit@5": 0.8333333333333334,
+     "hit@10": 0.8888888888888888,
+     "mrr": 0.6858024691358025
+    },
+    "norma_por_tema": {
+     "n": 3,
+     "hit@1": 1.0,
+     "hit@3": 1.0,
+     "hit@5": 1.0,
+     "hit@10": 1.0,
+     "mrr": 1.0
+    },
+    "regra_atual": {
+     "n": 6,
+     "hit@1": 1.0,
+     "hit@3": 1.0,
+     "hit@5": 1.0,
+     "hit@10": 1.0,
+     "mrr": 1.0
+    },
+    "revogado": {
+     "n": 15,
+     "hit@1": 0.6666666666666666,
+     "hit@3": 0.8,
+     "hit@5": 0.8666666666666667,
+     "hit@10": 0.8666666666666667,
+     "mrr": 0.75
+    }
+   },
+   "detalhe": [
+    {
+     "id": "Q01",
+     "categoria": "ato_citado",
+     "posicao": 1,
+     "top3": [
+      "prt20221322tispde_chunk1",
+      "prt20221322tispde_chunk3",
+      "prt20221322tispde_chunk2"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 3271
+    },
+    {
+     "id": "Q02",
+     "categoria": "ato_citado",
+     "posicao": 1,
+     "top3": [
+      "dsp20222942_chunk1",
+      "dsp20212942ti_chunk1",
+      "adsp20222942_1_chunk36"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 5205
+    },
+    {
+     "id": "Q03",
+     "categoria": "ato_citado",
+     "posicao": 1,
+     "top3": [
+      "prt20226715_chunk1",
+      "aprt20226715_1_chunk12",
+      "aprt20226715_1_chunk1"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 9497
+    },
+    {
+     "id": "Q04",
+     "categoria": "ato_citado",
+     "posicao": 1,
+     "top3": [
+      "dsp20161198_chunk1",
+      "adsp20221198_1_chunk11",
+      "dsp20221198_chunk1"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 4017
+    },
+    {
+     "id": "Q05",
+     "categoria": "ato_citado",
+     "posicao": 1,
+     "top3": [
+      "dsp20211604_chunk1",
+      "dsp20211604_chunk3",
+      "dsp20221604ti_chunk1"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 3778
+    },
+    {
+     "id": "Q06",
+     "categoria": "ato_citado",
+     "posicao": 1,
+     "top3": [
+      "dsp20213501ti_chunk1",
+      "dsp20223501ti_chunk1",
+      "dsp20213501ti_chunk3"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 1630
+    },
+    {
+     "id": "Q07",
+     "categoria": "ato_citado",
+     "posicao": 1,
+     "top3": [
+      "prt2021528mme_chunk1",
+      "prt2021528mme_chunk2",
+      "prt2021528mme_chunk8"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 2475
+    },
+    {
+     "id": "Q08",
+     "categoria": "ato_citado",
+     "posicao": 4,
+     "top3": [
+      "area202211324_1_chunk96",
+      "nreh20223067_chunk209",
+      "ndsp20221425_chunk37"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 9588
+    },
+    {
+     "id": "Q09",
+     "categoria": "ato_citado",
+     "posicao": 1,
+     "top3": [
+      "areh20212852_1_chunk17",
+      "areh20212852_1_chunk23",
+      "reh20212852ti_chunk1"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 9941
+    },
+    {
+     "id": "Q10",
+     "categoria": "ato_citado",
+     "posicao": 1,
+     "top3": [
+      "reh20162146ti_chunk1",
+      "nreh20162146_chunk100",
+      "nreh20162146_chunk105"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 5891
+    },
+    {
+     "id": "Q11",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20222660ti_chunk3",
+      "dsp20222660ti_chunk1",
+      "dsp20222660ti_chunk5"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 1317
+    },
+    {
+     "id": "Q12",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "emdsp20223350_chunk95",
+      "emdsp20223350_chunk104",
+      "emdsp20223350_chunk64"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 4827
+    },
+    {
+     "id": "Q13",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20213501ti_chunk1",
+      "dsp20213501ti_chunk3",
+      "dsp20213501ti_chunk2"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 7241
+    },
+    {
+     "id": "Q14",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20161321ti_chunk3",
+      "dsp20161321ti_chunk1",
+      "dsp20161321ti_chunk2"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 5209
+    },
+    {
+     "id": "Q15",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp2021477ti_chunk2",
+      "dsp2021477ti_chunk1",
+      "adsp20223010_chunk14"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 3355
+    },
+    {
+     "id": "Q16",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20162592ti_chunk1",
+      "dsp20212592ti_chunk1",
+      "adsp20222381_1_chunk5"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 5693
+    },
+    {
+     "id": "Q17",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20222159ti_chunk2",
+      "dsp20222159ti_chunk3",
+      "dsp20222159ti_chunk1"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 6360
+    },
+    {
+     "id": "Q18",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20162464ti_chunk3",
+      "dsp20162464ti_chunk1",
+      "dsp20162464ti_chunk2"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 2318
+    },
+    {
+     "id": "Q19",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20221470ti_chunk1",
+      "area202110199_1_chunk18",
+      "area202211798_1_chunk3"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 5195
+    },
+    {
+     "id": "Q20",
+     "categoria": "fato_com_ato",
+     "posicao": null,
+     "top3": [
+      "prt20163825_chunk2",
+      "prt20163839_chunk3",
+      "prt20163907_chunk3"
+     ],
+     "resposta_no_contexto": false,
+     "chars_contexto": 4623
+    },
+    {
+     "id": "Q21",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20214042ti_chunk2",
+      "dsp20214042ti_chunk3",
+      "dsp20214043ti_chunk3"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 6056
+    },
+    {
+     "id": "Q22",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "adsp20212891_1_chunk20",
+      "emdsp20223364_chunk9",
+      "adsp20212891_1_chunk12"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 5571
+    },
+    {
+     "id": "Q23",
+     "categoria": "fato_sem_ato",
+     "posicao": 2,
+     "top3": [
+      "ndsp2021034_chunk645",
+      "area202211250_1_chunk27",
+      "area202211251_1_chunk27"
+     ],
+     "resposta_no_contexto": false,
+     "chars_contexto": 6183
+    },
+    {
+     "id": "Q24",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "area202211617_1_chunk2",
+      "rea202211617ti_chunk1",
+      "area202211617_1_chunk3"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 4042
+    },
+    {
+     "id": "Q25",
+     "categoria": "fato_sem_ato",
+     "posicao": 2,
+     "top3": [
+      "dsp20213830ti_chunk3",
+      "area202110358_1_chunk4",
+      "rea202110358ti_chunk7"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 9707
+    },
+    {
+     "id": "Q26",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "rea202213034ti_chunk1",
+      "rea202213034ti_chunk7",
+      "rea202213034ti_chunk4"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 9746
+    },
+    {
+     "id": "Q27",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "area202212041_1_chunk4",
+      "area202212041_1_chunk48",
+      "area202212041_1_chunk2"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 4633
+    },
+    {
+     "id": "Q28",
+     "categoria": "fato_sem_ato",
+     "posicao": 4,
+     "top3": [
+      "rea202110534ti_chunk6",
+      "rea202110535ti_chunk6",
+      "rea202110550ti_chunk6"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 9928
+    },
+    {
+     "id": "Q29",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "area20165789_1_chunk3",
+      "area202212308_1_chunk6",
+      "area20165789_1_chunk2"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 4370
+    },
+    {
+     "id": "Q30",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20223034ti_chunk2",
+      "dsp20223034ti_chunk4",
+      "dsp20223034ti_chunk1"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 6058
+    },
+    {
+     "id": "Q31",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "area20219658_1_chunk97",
+      "area20219658_1_chunk98",
+      "area20219657_1_chunk97"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 4227
+    },
+    {
+     "id": "Q32",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp2021041ti_chunk3",
+      "dsp20211143_chunk3",
+      "dsp20211012ti_chunk2"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 2667
+    },
+    {
+     "id": "Q33",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "prt2021482tispde_chunk3",
+      "prt20221167tispde_chunk3",
+      "prt20221167tispde_chunk4"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 8805
+    },
+    {
+     "id": "Q34",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "prt20221787tispde_chunk3",
+      "prt20221789tispde_chunk3",
+      "prt20221803tispde_chunk3"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 9939
+    },
+    {
+     "id": "Q35",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "prt2021612tispde_chunk3",
+      "adsp20221411_1_chunk4",
+      "prt2021548tispde_chunk3"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 8714
+    },
+    {
+     "id": "Q36",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20212089ti_chunk3",
+      "dsp20212089ti_chunk2",
+      "dsp20212090ti_chunk3"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 3246
+    },
+    {
+     "id": "Q37",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20211569ti_chunk3",
+      "dsp20211717ti_chunk3",
+      "dsp20212435ti_chunk3"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 9698
+    },
+    {
+     "id": "Q38",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "area202110932_1_chunk14",
+      "rea202110932ti_chunk6",
+      "area202110932_1_chunk9"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 4784
+    },
+    {
+     "id": "Q39",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "area202211313_1_chunk12",
+      "rea202211313ti_chunk1",
+      "area202211313_1_chunk6"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 7514
+    },
+    {
+     "id": "Q40",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "nreh20162093_chunk4",
+      "nreh20212909_chunk27",
+      "nreh20162093_chunk2"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 9863
+    },
+    {
+     "id": "Q41",
+     "categoria": "revogado",
+     "posicao": 1,
+     "top3": [
+      "res2016436ana_chunk1",
+      "dsp2021436_chunk1",
+      "res2016005cj_chunk1"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 9921
+    },
+    {
+     "id": "Q42",
+     "categoria": "revogado",
+     "posicao": 1,
+     "top3": [
+      "rea202110230ti_chunk1",
+      "area202110230_1_chunk2",
+      "area202110230_1_chunk1"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 6693
+    },
+    {
+     "id": "Q43",
+     "categoria": "revogado",
+     "posicao": 1,
+     "top3": [
+      "prt2021919tispde_chunk3",
+      "rea202212016ti_chunk4",
+      "rea202212019ti_chunk4"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 9980
+    },
+    {
+     "id": "Q44",
+     "categoria": "revogado",
+     "posicao": null,
+     "top3": [
+      "dsp20214140ti_chunk5",
+      "adsp20221221_1_chunk3",
+      "adsp20221221_1_chunk11"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 6184
+    },
+    {
+     "id": "Q45",
+     "categoria": "revogado",
+     "posicao": 2,
+     "top3": [
+      "prt2021360_chunk4",
+      "prt2022365_chunk4",
+      "prt2022365_chunk3"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 6897
+    },
+    {
+     "id": "Q46",
+     "categoria": "revogado",
+     "posicao": null,
+     "top3": [
+      "rea202211417ti_chunk9",
+      "rea202211414ti_chunk9",
+      "rea202211415ti_chunk9"
+     ],
+     "resposta_no_contexto": false,
+     "chars_contexto": 9716
+    },
+    {
+     "id": "Q057",
+     "categoria": "norma_citada",
+     "posicao": 1,
+     "top3": [
+      "ren20221009_chunk1",
+      "ren20221018_chunk1",
+      "ren20221015_chunk31"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 8004
+    },
+    {
+     "id": "Q058",
+     "categoria": "norma_citada",
+     "posicao": 1,
+     "top3": [
+      "ren2021959_chunk4",
+      "ren2021959_chunk1",
+      "ren2021959_chunk16"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 4275
+    },
+    {
+     "id": "Q059",
+     "categoria": "norma_citada",
+     "posicao": 5,
+     "top3": [
+      "adsp20221044_chunk32",
+      "adsp2016633_1_chunk41",
+      "adsp2016633_1_chunk20"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 8364
+    },
+    {
+     "id": "Q060",
+     "categoria": "norma_citada",
+     "posicao": 2,
+     "top3": [
+      "acp2022040ti_chunk2",
+      "ren2021954_chunk1",
+      "acp2022040ti_chunk4"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 4242
+    },
+    {
+     "id": "Q061",
+     "categoria": "norma_citada",
+     "posicao": 1,
+     "top3": [
+      "ren20221048_chunk1",
+      "aren20221048_1_chunk54",
+      "aren20221048_1_chunk26"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 4740
+    },
+    {
+     "id": "Q062",
+     "categoria": "norma_citada",
+     "posicao": 9,
+     "top3": [
+      "ren20221025_chunk1",
+      "aren20221025_1_chunk2",
+      "aren20221025_1_chunk3"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 5994
+    },
+    {
+     "id": "Q063",
+     "categoria": "norma_citada",
+     "posicao": null,
+     "top3": [
+      "ren2016742_chunk7",
+      "ren2021953_chunk20",
+      "ren2016717_chunk25"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 5639
+    },
+    {
+     "id": "Q064",
+     "categoria": "norma_citada",
+     "posicao": 1,
+     "top3": [
+      "aren20221022_2_chunk66",
+      "aren20221022_2_1_chunk30",
+      "aren20221022_2_chunk78"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 6695
+    },
+    {
+     "id": "Q065",
+     "categoria": "norma_citada",
+     "posicao": 1,
+     "top3": [
+      "ren2016731_chunk1",
+      "aren2016731_1_chunk65",
+      "aren2016731_1_chunk38"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 4214
+    },
+    {
+     "id": "Q066",
+     "categoria": "norma_citada",
+     "posicao": 5,
+     "top3": [
+      "ren20221050_chunk1",
+      "aren20221050_1_chunk51",
+      "aren20221050_1_chunk49"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 5347
+    },
+    {
+     "id": "Q067",
+     "categoria": "norma_citada",
+     "posicao": 1,
+     "top3": [
+      "ren20221039_chunk1",
+      "ren20221039_chunk2",
+      "aren20221039_1_chunk7"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 7260
+    },
+    {
+     "id": "Q068",
+     "categoria": "norma_citada",
+     "posicao": 1,
+     "top3": [
+      "ren20221034_chunk1",
+      "ren20221034_chunk19",
+      "aren20221034_1_chunk2"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 4886
+    },
+    {
+     "id": "Q069",
+     "categoria": "norma_citada",
+     "posicao": 1,
+     "top3": [
+      "ren2021917_chunk1",
+      "ren2021917_chunk3",
+      "ren2021917_chunk4"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 3436
+    },
+    {
+     "id": "Q070",
+     "categoria": "norma_citada",
+     "posicao": 3,
+     "top3": [
+      "adsp20223049_1_chunk20",
+      "ren2021917_chunk3",
+      "ren2021916_chunk1"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 4845
+    },
+    {
+     "id": "Q071",
+     "categoria": "norma_citada",
+     "posicao": 1,
+     "top3": [
+      "ren20221003_chunk1",
+      "aren20221020_1_chunk49",
+      "ren20221020_chunk7"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 9779
+    },
+    {
+     "id": "Q072",
+     "categoria": "norma_citada",
+     "posicao": 1,
+     "top3": [
+      "ren20221012_chunk1",
+      "aren20221012_1_chunk24",
+      "aren20221012_1_chunk39"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 4724
+    },
+    {
+     "id": "Q073",
+     "categoria": "norma_citada",
+     "posicao": null,
+     "top3": [
+      "ren20221040_chunk1",
+      "aren20221040_1_chunk2",
+      "ren20221040_chunk4"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 9576
+    },
+    {
+     "id": "Q074",
+     "categoria": "norma_citada",
+     "posicao": 1,
+     "top3": [
+      "aren20221045_2_chunk94",
+      "aren20221045_2_chunk84",
+      "aren20221045_2_chunk55"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 8853
+    },
+    {
+     "id": "Q075",
+     "categoria": "revogado",
+     "posicao": 1,
+     "top3": [
+      "ren2016748_chunk1",
+      "adsp2016748_1_chunk7",
+      "aren2016748_1_chunk82"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 4886
+    },
+    {
+     "id": "Q076",
+     "categoria": "revogado",
+     "posicao": 1,
+     "top3": [
+      "ren2021947_chunk1",
+      "ats2022004ti_chunk2",
+      "aren2021947_3_chunk13"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 8791
+    },
+    {
+     "id": "Q077",
+     "categoria": "revogado",
+     "posicao": 1,
+     "top3": [
+      "ren2016700_chunk1",
+      "dsp20163079ti_chunk2",
+      "dsp20162296ti_chunk2"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 3650
+    },
+    {
+     "id": "Q078",
+     "categoria": "revogado",
+     "posicao": 1,
+     "top3": [
+      "ren2016718_chunk1",
+      "aren2016718_1_chunk4",
+      "aren2016718_1_chunk7"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 9665
+    },
+    {
+     "id": "Q079",
+     "categoria": "revogado",
+     "posicao": 4,
+     "top3": [
+      "aren2021944_1_chunk81",
+      "aren2021936_1_chunk47",
+      "ren2021936_chunk4"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 5951
+    },
+    {
+     "id": "Q080",
+     "categoria": "revogado",
+     "posicao": 1,
+     "top3": [
+      "ren20221043_chunk1",
+      "aren20221043_1_chunk2",
+      "aren20221043_1_chunk17"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 5905
+    },
+    {
+     "id": "Q081",
+     "categoria": "revogado",
+     "posicao": 2,
+     "top3": [
+      "aren20221007_1_chunk21",
+      "ren2021960_chunk1",
+      "ren2021960_chunk4"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 4529
+    },
+    {
+     "id": "Q082",
+     "categoria": "revogado",
+     "posicao": 1,
+     "top3": [
+      "ren2021925_chunk1",
+      "ren2021925_chunk3",
+      "aren2021925_1_chunk5"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 4607
+    },
+    {
+     "id": "Q083",
+     "categoria": "revogado",
+     "posicao": 1,
+     "top3": [
+      "ndsp20212424_chunk2",
+      "ndsp20212424_chunk1",
+      "dsp20212424ti_chunk3"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 3653
+    },
+    {
+     "id": "Q084",
+     "categoria": "norma_por_tema",
+     "posicao": 1,
+     "top3": [
+      "aren2021959_1_chunk59",
+      "ren2021959_chunk13",
+      "ren2021959_chunk17"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 4326
+    },
+    {
+     "id": "Q085",
+     "categoria": "norma_por_tema",
+     "posicao": 1,
+     "top3": [
+      "aren20221044_1_chunk1",
+      "ren2021916_chunk14",
+      "aprt20216705_2_chunk6"
+     ],
+     "resposta_no_contexto": false,
+     "chars_contexto": 5663
+    },
+    {
+     "id": "Q086",
+     "categoria": "norma_por_tema",
+     "posicao": 1,
+     "top3": [
+      "ren2021917_chunk10",
+      "ren2021917_chunk3",
+      "ren2021917_chunk4"
+     ],
+     "resposta_no_contexto": false,
+     "chars_contexto": 7754
+    },
+    {
+     "id": "Q087",
+     "categoria": "regra_atual",
+     "posicao": 1,
+     "top3": [
+      "ren2021919_chunk5",
+      "ren2021919_chunk1",
+      "area20219639_1_chunk13"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 8364
+    },
+    {
+     "id": "Q088",
+     "categoria": "regra_atual",
+     "posicao": 1,
+     "top3": [
+      "ren2021948_chunk533",
+      "ren2021948_chunk569",
+      "ren2021948_chunk324"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 9369
+    },
+    {
+     "id": "Q089",
+     "categoria": "regra_atual",
+     "posicao": 1,
+     "top3": [
+      "ren2021957_chunk274",
+      "ren2021957_chunk213",
+      "aren2021957_1_chunk23"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 7656
+    },
+    {
+     "id": "Q090",
+     "categoria": "regra_atual",
+     "posicao": 1,
+     "top3": [
+      "aren2021963_1_chunk14",
+      "ren2021963_chunk4",
+      "ren2021963_chunk117"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 5330
+    },
+    {
+     "id": "Q091",
+     "categoria": "regra_atual",
+     "posicao": 1,
+     "top3": [
+      "ren20221045_chunk1",
+      "aren20221045_2_chunk7",
+      "aren20221045_2_chunk6"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 8165
+    },
+    {
+     "id": "Q092",
+     "categoria": "regra_atual",
+     "posicao": 1,
+     "top3": [
+      "ren2021956_chunk5",
+      "aren20221050_1_chunk31",
+      "ren20221050_chunk1"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 6171
+    },
+    {
+     "id": "Q093",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20221070_chunk1",
+      "dsp20221070_chunk3",
+      "dsp20221070_chunk5"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 3198
+    },
+    {
+     "id": "Q094",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp2021723_chunk3",
+      "dsp20223224ti_chunk3",
+      "dsp2021723_chunk1"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 4662
+    },
+    {
+     "id": "Q095",
+     "categoria": "fato_com_ato",
+     "posicao": null,
+     "top3": [
+      "dsp2022908_chunk3",
+      "dsp2022698_chunk3",
+      "dsp2022908_chunk2"
+     ],
+     "resposta_no_contexto": false,
+     "chars_contexto": 5035
+    },
+    {
+     "id": "Q096",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "prt20226724_chunk1",
+      "aprt20226724_1_chunk54",
+      "prt20226724_chunk3"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 4506
+    },
+    {
+     "id": "Q097",
+     "categoria": "fato_sem_ato",
+     "posicao": null,
+     "top3": [
+      "dsp2016079_chunk3",
+      "dsp2016680_chunk3",
+      "dsp2016079_chunk2"
+     ],
+     "resposta_no_contexto": false,
+     "chars_contexto": 9907
+    },
+    {
+     "id": "Q098",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "adsp20212976_1_chunk1",
+      "adsp20212976_1_chunk3",
+      "adsp20212976_1_chunk2"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 3669
+    },
+    {
+     "id": "Q099",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "emdsp20222951_chunk115",
+      "emdsp20222951_chunk105",
+      "adsp20211284_1_chunk33"
+     ],
+     "resposta_no_contexto": false,
+     "chars_contexto": 5454
+    },
+    {
+     "id": "Q100",
+     "categoria": "fato_sem_ato",
+     "posicao": null,
+     "top3": [
+      "dsp20211690_chunk3",
+      "dsp20211690_chunk4",
+      "dsp20211690_chunk1"
+     ],
+     "resposta_no_contexto": false,
+     "chars_contexto": 1408
+    },
+    {
+     "id": "Q101",
+     "categoria": "fato_sem_ato",
+     "posicao": 2,
+     "top3": [
+      "area202211098_1_chunk8",
+      "area202110081_3_chunk7",
+      "area202110080_3_chunk7"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 9583
+    },
+    {
+     "id": "Q102",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20212079ti_chunk2",
+      "dsp20211874ti_chunk2",
+      "dsp20213321ti_chunk2"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 4367
+    },
+    {
+     "id": "Q103",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "edt2016sn240_chunk2",
+      "edt2021sn37_chunk2",
+      "dsp20213241ti_chunk3"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 9938
+    },
+    {
+     "id": "Q104",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20213417ti_chunk3",
+      "dsp20213458ti_chunk3",
+      "dsp20213677ti_chunk3"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 4204
+    },
+    {
+     "id": "Q105",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp2022928ti_chunk2",
+      "dsp2022928ti_chunk3",
+      "dsp2022927ti_chunk2"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 2550
+    },
+    {
+     "id": "Q106",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "area202212061_1_chunk7",
+      "area202212061_1_chunk2",
+      "rea202212061ti_chunk7"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 8845
+    },
+    {
+     "id": "Q107",
+     "categoria": "fato_sem_ato",
+     "posicao": null,
+     "top3": [
+      "area202110018_1_chunk93",
+      "area202110018_1_chunk12",
+      "area202110018_1_chunk2"
+     ],
+     "resposta_no_contexto": false,
+     "chars_contexto": 4636
+    },
+    {
+     "id": "C01",
+     "categoria": "conceitual_sigla",
+     "posicao": null,
+     "top3": [
+      "adsp20211055_1_chunk108",
+      "adsp20162584_1_chunk67",
+      "alel2021003_1_chunk109"
+     ],
+     "resposta_no_contexto": false,
+     "chars_contexto": 5786
+    },
+    {
+     "id": "C02",
+     "categoria": "conceitual_sigla",
+     "posicao": 2,
+     "top3": [
+      "dsp20214010_chunk3",
+      "area202110000_1_chunk4",
+      "area202110001_1_chunk4"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 7291
+    },
+    {
+     "id": "C03",
+     "categoria": "conceitual_sigla",
+     "posicao": 9,
+     "top3": [
+      "aprt20216658_2_chunk197",
+      "area202110990_1_chunk11",
+      "area202110990_1_chunk31"
+     ],
+     "resposta_no_contexto": false,
+     "chars_contexto": 5584
+    },
+    {
+     "id": "C04",
+     "categoria": "conceitual_sigla",
+     "posicao": null,
+     "top3": [
+      "adsp20211055_1_chunk108",
+      "adsp20162584_1_chunk67",
+      "alel2021003_1_chunk109"
+     ],
+     "resposta_no_contexto": false,
+     "chars_contexto": 6286
+    },
+    {
+     "id": "C05",
+     "categoria": "conceitual_sigla",
+     "posicao": 5,
+     "top3": [
+      "adsp20211055_1_chunk108",
+      "adsp20162584_1_chunk67",
+      "alel2021003_1_chunk109"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 5958
+    },
+    {
+     "id": "C06",
+     "categoria": "conceitual_sigla",
+     "posicao": 4,
+     "top3": [
+      "nreh20223066_chunk251",
+      "aren20221049_1_chunk15",
+      "aprt20216705_1_chunk28"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 7682
+    },
+    {
+     "id": "C08",
+     "categoria": "conceitual_parafrase",
+     "posicao": null,
+     "top3": [
+      "edt2021sn192_chunk4",
+      "adsp20161707_1_chunk12",
+      "adsp20213626_1_chunk10"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 5934
+    },
+    {
+     "id": "C09",
+     "categoria": "conceitual_parafrase",
+     "posicao": null,
+     "top3": [
+      "adsp2021609_1_chunk6",
+      "adsp20221487_chunk9",
+      "adsp20223498_1_chunk28"
+     ],
+     "resposta_no_contexto": false,
+     "chars_contexto": 9773
+    },
+    {
+     "id": "C10",
+     "categoria": "conceitual_parafrase",
+     "posicao": null,
+     "top3": [
+      "adsp2022898_1_chunk20",
+      "adsp20223277_1_chunk88",
+      "area202110313_1_chunk33"
+     ],
+     "resposta_no_contexto": false,
+     "chars_contexto": 4577
+    },
+    {
+     "id": "C11",
+     "categoria": "conceitual_parafrase",
+     "posicao": 5,
+     "top3": [
+      "aprt20163851_1_chunk18",
+      "aprt20163852_1_chunk16",
+      "aprt20163854_1_chunk16"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 4462
+    },
+    {
+     "id": "C12",
+     "categoria": "conceitual_parafrase",
+     "posicao": null,
+     "top3": [
+      "adsp20212904_2_chunk2764",
+      "dsp20211380_chunk2795",
+      "dsp20221352_chunk3"
+     ],
+     "resposta_no_contexto": false,
+     "chars_contexto": 5136
+    },
+    {
+     "id": "C13",
+     "categoria": "conceitual_parafrase",
+     "posicao": 3,
+     "top3": [
+      "adsp20212904_2_chunk1062",
+      "dsp20211380_chunk1033",
+      "rea20165887ti_chunk9"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 9021
+    },
+    {
+     "id": "C14",
+     "categoria": "conceitual_parafrase",
+     "posicao": 4,
+     "top3": [
+      "adsp2021519_1_chunk8",
+      "adsp2021520_1_chunk8",
+      "adsp2021521_1_chunk8"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 9311
+    },
+    {
+     "id": "C15",
+     "categoria": "conceitual_parafrase",
+     "posicao": null,
+     "top3": [
+      "dsp20161481_chunk4",
+      "ndsp20222162_chunk11",
+      "ndsp20222163_chunk11"
+     ],
+     "resposta_no_contexto": false,
+     "chars_contexto": 6333
+    },
+    {
+     "id": "C16",
+     "categoria": "conceitual_parafrase",
+     "posicao": 1,
+     "top3": [
+      "prt2016217spde_chunk6",
+      "prt2021835tispde_chunk6",
+      "prt2021959tispde_chunk6"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 9374
+    },
+    {
+     "id": "C17",
+     "categoria": "conceitual_parafrase",
+     "posicao": null,
+     "top3": [
+      "adsp2016955_1_chunk9",
+      "ndsp2022624_chunk32",
+      "ndsp20213078_chunk23"
+     ],
+     "resposta_no_contexto": false,
+     "chars_contexto": 9966
+    },
+    {
+     "id": "C18",
+     "categoria": "conceitual_parafrase",
+     "posicao": 1,
+     "top3": [
+      "dsp20161977ti_chunk3",
+      "ndsp2022715_chunk11",
+      "dsp20161559ti_chunk4"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 5904
+    },
+    {
+     "id": "C19",
+     "categoria": "conceitual_parafrase",
+     "posicao": 1,
+     "top3": [
+      "prt2016082mme_chunk6",
+      "prt2016100mme_chunk6",
+      "prt20211088tispde_chunk6"
+     ],
+     "resposta_no_contexto": true,
+     "chars_contexto": 9777
+    }
+   ],
+   "contexto": {
+    "expansao": "documento",
+    "n": 115,
+    "com_resposta": 97,
+    "chars_medio": 6278
+   }
+  },
+  "com_filtro": {
+   "geral": {
+    "n": 115,
+    "hit@1": 0.6086956521739131,
+    "hit@3": 0.6695652173913044,
+    "hit@5": 0.7391304347826086,
+    "hit@10": 0.7652173913043478,
+    "mrr": 0.6557004830917874
+   },
+   "categorias": {
+    "ato_citado": {
+     "n": 10,
+     "hit@1": 0.9,
+     "hit@3": 0.9,
+     "hit@5": 1.0,
+     "hit@10": 1.0,
+     "mrr": 0.925
+    },
+    "conceitual_parafrase": {
+     "n": 12,
+     "hit@1": 0.25,
+     "hit@3": 0.3333333333333333,
+     "hit@5": 0.5,
+     "hit@10": 0.5,
+     "mrr": 0.31527777777777777
+    },
+    "conceitual_sigla": {
+     "n": 6,
+     "hit@1": 0.0,
+     "hit@3": 0.16666666666666666,
+     "hit@5": 0.5,
+     "hit@10": 0.6666666666666666,
+     "mrr": 0.17685185185185184
+    },
+    "fato_com_ato": {
+     "n": 16,
+     "hit@1": 0.875,
+     "hit@3": 0.875,
+     "hit@5": 0.875,
+     "hit@10": 0.875,
+     "mrr": 0.875
+    },
+    "fato_sem_ato": {
+     "n": 29,
+     "hit@1": 0.7586206896551724,
+     "hit@3": 0.8620689655172413,
+     "hit@5": 0.896551724137931,
+     "hit@10": 0.896551724137931,
+     "mrr": 0.8189655172413793
+    },
+    "norma_citada": {
+     "n": 18,
+     "hit@1": 0.6111111111111112,
+     "hit@3": 0.7222222222222222,
+     "hit@5": 0.8333333333333334,
+     "hit@10": 0.9444444444444444,
+     "mrr": 0.6978395061728395
+    },
+    "norma_por_tema": {
+     "n": 3,
+     "hit@1": 1.0,
+     "hit@3": 1.0,
+     "hit@5": 1.0,
+     "hit@10": 1.0,
+     "mrr": 1.0
+    },
+    "regra_atual": {
+     "n": 6,
+     "hit@1": 1.0,
+     "hit@3": 1.0,
+     "hit@5": 1.0,
+     "hit@10": 1.0,
+     "mrr": 1.0
+    },
+    "revogado": {
+     "n": 15,
+     "hit@1": 0.13333333333333333,
+     "hit@3": 0.13333333333333333,
+     "hit@5": 0.13333333333333333,
+     "hit@10": 0.13333333333333333,
+     "mrr": 0.13333333333333333
+    }
+   },
+   "detalhe": [
+    {
+     "id": "Q01",
+     "categoria": "ato_citado",
+     "posicao": 1,
+     "top3": [
+      "prt20221322tispde_chunk1",
+      "prt20221322tispde_chunk3",
+      "prt20221322tispde_chunk2"
+     ]
+    },
+    {
+     "id": "Q02",
+     "categoria": "ato_citado",
+     "posicao": 1,
+     "top3": [
+      "dsp20222942_chunk1",
+      "dsp20212942ti_chunk1",
+      "adsp20222942_1_chunk36"
+     ]
+    },
+    {
+     "id": "Q03",
+     "categoria": "ato_citado",
+     "posicao": 1,
+     "top3": [
+      "prt20226715_chunk1",
+      "aprt20226715_1_chunk12",
+      "aprt20226715_1_chunk1"
+     ]
+    },
+    {
+     "id": "Q04",
+     "categoria": "ato_citado",
+     "posicao": 1,
+     "top3": [
+      "dsp20161198_chunk1",
+      "adsp20221198_1_chunk11",
+      "dsp20221198_chunk1"
+     ]
+    },
+    {
+     "id": "Q05",
+     "categoria": "ato_citado",
+     "posicao": 1,
+     "top3": [
+      "dsp20211604_chunk1",
+      "dsp20211604_chunk3",
+      "dsp20221604ti_chunk1"
+     ]
+    },
+    {
+     "id": "Q06",
+     "categoria": "ato_citado",
+     "posicao": 1,
+     "top3": [
+      "dsp20213501ti_chunk1",
+      "dsp20223501ti_chunk1",
+      "dsp20213501ti_chunk3"
+     ]
+    },
+    {
+     "id": "Q07",
+     "categoria": "ato_citado",
+     "posicao": 1,
+     "top3": [
+      "prt2021528mme_chunk1",
+      "prt2021528mme_chunk2",
+      "prt2021528mme_chunk8"
+     ]
+    },
+    {
+     "id": "Q08",
+     "categoria": "ato_citado",
+     "posicao": 4,
+     "top3": [
+      "area202211324_1_chunk96",
+      "nreh20223067_chunk209",
+      "ndsp20221425_chunk37"
+     ]
+    },
+    {
+     "id": "Q09",
+     "categoria": "ato_citado",
+     "posicao": 1,
+     "top3": [
+      "areh20212852_1_chunk17",
+      "areh20212852_1_chunk23",
+      "reh20212852ti_chunk1"
+     ]
+    },
+    {
+     "id": "Q10",
+     "categoria": "ato_citado",
+     "posicao": 1,
+     "top3": [
+      "reh20162146ti_chunk1",
+      "nreh20162146_chunk100",
+      "nreh20162146_chunk105"
+     ]
+    },
+    {
+     "id": "Q11",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20222660ti_chunk3",
+      "dsp20222660ti_chunk1",
+      "dsp20222660ti_chunk5"
+     ]
+    },
+    {
+     "id": "Q12",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "emdsp20223350_chunk95",
+      "emdsp20223350_chunk104",
+      "emdsp20223350_chunk64"
+     ]
+    },
+    {
+     "id": "Q13",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20213501ti_chunk1",
+      "dsp20213501ti_chunk3",
+      "dsp20213501ti_chunk2"
+     ]
+    },
+    {
+     "id": "Q14",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20161321ti_chunk3",
+      "dsp20161321ti_chunk1",
+      "dsp20161321ti_chunk2"
+     ]
+    },
+    {
+     "id": "Q15",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp2021477ti_chunk2",
+      "dsp2021477ti_chunk1",
+      "adsp20223010_chunk14"
+     ]
+    },
+    {
+     "id": "Q16",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20162592ti_chunk1",
+      "adsp20222381_1_chunk5",
+      "dsp20162592ti_chunk2"
+     ]
+    },
+    {
+     "id": "Q17",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20222159ti_chunk2",
+      "dsp20222159ti_chunk3",
+      "dsp20222159ti_chunk1"
+     ]
+    },
+    {
+     "id": "Q18",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20162464ti_chunk3",
+      "dsp20162464ti_chunk1",
+      "dsp20162464ti_chunk2"
+     ]
+    },
+    {
+     "id": "Q19",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20221470ti_chunk1",
+      "area202110199_1_chunk18",
+      "area202211798_1_chunk3"
+     ]
+    },
+    {
+     "id": "Q20",
+     "categoria": "fato_com_ato",
+     "posicao": null,
+     "top3": [
+      "prt20163825_chunk2",
+      "prt20163839_chunk3",
+      "prt20163907_chunk3"
+     ]
+    },
+    {
+     "id": "Q21",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20214042ti_chunk2",
+      "dsp20214042ti_chunk3",
+      "dsp20214043ti_chunk3"
+     ]
+    },
+    {
+     "id": "Q22",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "adsp20212891_1_chunk20",
+      "emdsp20223364_chunk9",
+      "adsp20212891_1_chunk12"
+     ]
+    },
+    {
+     "id": "Q23",
+     "categoria": "fato_sem_ato",
+     "posicao": 2,
+     "top3": [
+      "ndsp2021034_chunk645",
+      "area202211250_1_chunk27",
+      "area202211251_1_chunk27"
+     ]
+    },
+    {
+     "id": "Q24",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "area202211617_1_chunk2",
+      "rea202211617ti_chunk1",
+      "area202211617_1_chunk3"
+     ]
+    },
+    {
+     "id": "Q25",
+     "categoria": "fato_sem_ato",
+     "posicao": 2,
+     "top3": [
+      "dsp20213830ti_chunk3",
+      "area202110358_1_chunk4",
+      "rea202110358ti_chunk7"
+     ]
+    },
+    {
+     "id": "Q26",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "rea202213034ti_chunk1",
+      "rea202213034ti_chunk7",
+      "rea202213034ti_chunk4"
+     ]
+    },
+    {
+     "id": "Q27",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "area202212041_1_chunk4",
+      "area202212041_1_chunk48",
+      "area202212041_1_chunk2"
+     ]
+    },
+    {
+     "id": "Q28",
+     "categoria": "fato_sem_ato",
+     "posicao": 4,
+     "top3": [
+      "rea202110534ti_chunk6",
+      "rea202110535ti_chunk6",
+      "rea202110550ti_chunk6"
+     ]
+    },
+    {
+     "id": "Q29",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "area20165789_1_chunk3",
+      "area202212308_1_chunk6",
+      "area20165789_1_chunk2"
+     ]
+    },
+    {
+     "id": "Q30",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20223034ti_chunk2",
+      "dsp20223034ti_chunk4",
+      "dsp20223034ti_chunk1"
+     ]
+    },
+    {
+     "id": "Q31",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "area20219658_1_chunk97",
+      "area20219658_1_chunk98",
+      "area20219657_1_chunk97"
+     ]
+    },
+    {
+     "id": "Q32",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp2021041ti_chunk3",
+      "dsp20211143_chunk3",
+      "dsp20211012ti_chunk2"
+     ]
+    },
+    {
+     "id": "Q33",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "prt2021482tispde_chunk3",
+      "prt20221167tispde_chunk3",
+      "prt20221167tispde_chunk4"
+     ]
+    },
+    {
+     "id": "Q34",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "prt20221787tispde_chunk3",
+      "prt20221789tispde_chunk3",
+      "prt20221803tispde_chunk3"
+     ]
+    },
+    {
+     "id": "Q35",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "prt2021612tispde_chunk3",
+      "adsp20221411_1_chunk4",
+      "prt2021548tispde_chunk3"
+     ]
+    },
+    {
+     "id": "Q36",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20212089ti_chunk3",
+      "dsp20212089ti_chunk2",
+      "dsp20212090ti_chunk3"
+     ]
+    },
+    {
+     "id": "Q37",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20211569ti_chunk3",
+      "dsp20211717ti_chunk3",
+      "dsp20212435ti_chunk3"
+     ]
+    },
+    {
+     "id": "Q38",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "area202110932_1_chunk14",
+      "rea202110932ti_chunk6",
+      "area202110932_1_chunk9"
+     ]
+    },
+    {
+     "id": "Q39",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "area202211313_1_chunk12",
+      "rea202211313ti_chunk1",
+      "area202211313_1_chunk6"
+     ]
+    },
+    {
+     "id": "Q40",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "nreh20162093_chunk4",
+      "nreh20212909_chunk27",
+      "nreh20162093_chunk2"
+     ]
+    },
+    {
+     "id": "Q41",
+     "categoria": "revogado",
+     "posicao": null,
+     "top3": [
+      "dsp2021436_chunk1",
+      "res2016005cj_chunk1",
+      "res20161047ana_chunk1"
+     ]
+    },
+    {
+     "id": "Q42",
+     "categoria": "revogado",
+     "posicao": null,
+     "top3": [
+      "rea20165909ti_chunk4",
+      "rea20165909ti_chunk1",
+      "aap2016016ti_chunk3"
+     ]
+    },
+    {
+     "id": "Q43",
+     "categoria": "revogado",
+     "posicao": 1,
+     "top3": [
+      "prt2021919tispde_chunk3",
+      "rea202212016ti_chunk4",
+      "rea202212019ti_chunk4"
+     ]
+    },
+    {
+     "id": "Q44",
+     "categoria": "revogado",
+     "posicao": null,
+     "top3": [
+      "dsp20214140ti_chunk5",
+      "adsp20221221_1_chunk3",
+      "adsp20221221_1_chunk11"
+     ]
+    },
+    {
+     "id": "Q45",
+     "categoria": "revogado",
+     "posicao": null,
+     "top3": [
+      "prt2021360_chunk4",
+      "prt2021202_chunk3",
+      "prt2021202_chunk18"
+     ]
+    },
+    {
+     "id": "Q46",
+     "categoria": "revogado",
+     "posicao": null,
+     "top3": [
+      "rea202211417ti_chunk9",
+      "rea202211414ti_chunk9",
+      "rea202211415ti_chunk9"
+     ]
+    },
+    {
+     "id": "Q057",
+     "categoria": "norma_citada",
+     "posicao": 1,
+     "top3": [
+      "ren20221009_chunk1",
+      "ren20221018_chunk1",
+      "ren20221015_chunk31"
+     ]
+    },
+    {
+     "id": "Q058",
+     "categoria": "norma_citada",
+     "posicao": 1,
+     "top3": [
+      "ren2021959_chunk4",
+      "ren2021959_chunk1",
+      "ren2021959_chunk16"
+     ]
+    },
+    {
+     "id": "Q059",
+     "categoria": "norma_citada",
+     "posicao": 4,
+     "top3": [
+      "adsp20221044_chunk32",
+      "adsp2016633_1_chunk41",
+      "adsp2016633_1_chunk20"
+     ]
+    },
+    {
+     "id": "Q060",
+     "categoria": "norma_citada",
+     "posicao": 2,
+     "top3": [
+      "acp2022040ti_chunk2",
+      "ren2021954_chunk1",
+      "acp2022040ti_chunk4"
+     ]
+    },
+    {
+     "id": "Q061",
+     "categoria": "norma_citada",
+     "posicao": 1,
+     "top3": [
+      "ren20221048_chunk1",
+      "aren20221048_1_chunk54",
+      "aren20221048_1_chunk26"
+     ]
+    },
+    {
+     "id": "Q062",
+     "categoria": "norma_citada",
+     "posicao": 9,
+     "top3": [
+      "ren20221025_chunk1",
+      "aren20221025_1_chunk2",
+      "aren20221025_1_chunk3"
+     ]
+    },
+    {
+     "id": "Q063",
+     "categoria": "norma_citada",
+     "posicao": 6,
+     "top3": [
+      "dsp2022013_chunk3",
+      "adsp20222970_1_chunk6",
+      "adsp20222045_chunk3"
+     ]
+    },
+    {
+     "id": "Q064",
+     "categoria": "norma_citada",
+     "posicao": 1,
+     "top3": [
+      "aren20221022_2_chunk66",
+      "aren20221022_2_1_chunk30",
+      "aren20221022_2_chunk78"
+     ]
+    },
+    {
+     "id": "Q065",
+     "categoria": "norma_citada",
+     "posicao": 1,
+     "top3": [
+      "ren2016731_chunk1",
+      "aren2016731_1_chunk65",
+      "aren2016731_1_chunk38"
+     ]
+    },
+    {
+     "id": "Q066",
+     "categoria": "norma_citada",
+     "posicao": 5,
+     "top3": [
+      "ren20221050_chunk1",
+      "aren20221050_1_chunk51",
+      "aren20221050_1_chunk49"
+     ]
+    },
+    {
+     "id": "Q067",
+     "categoria": "norma_citada",
+     "posicao": 1,
+     "top3": [
+      "ren20221039_chunk1",
+      "ren20221039_chunk2",
+      "aren20221039_1_chunk7"
+     ]
+    },
+    {
+     "id": "Q068",
+     "categoria": "norma_citada",
+     "posicao": 1,
+     "top3": [
+      "ren20221034_chunk1",
+      "ren20221034_chunk19",
+      "aren20221034_1_chunk2"
+     ]
+    },
+    {
+     "id": "Q069",
+     "categoria": "norma_citada",
+     "posicao": 1,
+     "top3": [
+      "ren2021917_chunk1",
+      "ren2021917_chunk3",
+      "ren2021917_chunk4"
+     ]
+    },
+    {
+     "id": "Q070",
+     "categoria": "norma_citada",
+     "posicao": 3,
+     "top3": [
+      "adsp20223049_1_chunk20",
+      "ren2021917_chunk3",
+      "ren2021916_chunk1"
+     ]
+    },
+    {
+     "id": "Q071",
+     "categoria": "norma_citada",
+     "posicao": 1,
+     "top3": [
+      "ren20221003_chunk1",
+      "aren20221020_1_chunk49",
+      "ren20221020_chunk7"
+     ]
+    },
+    {
+     "id": "Q072",
+     "categoria": "norma_citada",
+     "posicao": 1,
+     "top3": [
+      "ren20221012_chunk1",
+      "aren20221012_1_chunk24",
+      "aren20221012_1_chunk39"
+     ]
+    },
+    {
+     "id": "Q073",
+     "categoria": "norma_citada",
+     "posicao": null,
+     "top3": [
+      "ren20221040_chunk1",
+      "aren20221040_1_chunk2",
+      "ren20221040_chunk4"
+     ]
+    },
+    {
+     "id": "Q074",
+     "categoria": "norma_citada",
+     "posicao": 1,
+     "top3": [
+      "aren20221045_2_chunk94",
+      "aren20221045_2_chunk84",
+      "aren20221045_2_chunk55"
+     ]
+    },
+    {
+     "id": "Q075",
+     "categoria": "revogado",
+     "posicao": null,
+     "top3": [
+      "adsp2016748_1_chunk7",
+      "area202110064_1_chunk69",
+      "area202110064_1_chunk9"
+     ]
+    },
+    {
+     "id": "Q076",
+     "categoria": "revogado",
+     "posicao": null,
+     "top3": [
+      "ats2022004ti_chunk2",
+      "dsp2021947ti_chunk1",
+      "dsp2022947_chunk1"
+     ]
+    },
+    {
+     "id": "Q077",
+     "categoria": "revogado",
+     "posicao": null,
+     "top3": [
+      "dsp20163079ti_chunk2",
+      "dsp20162296ti_chunk2",
+      "dsp20162632ti_chunk2"
+     ]
+    },
+    {
+     "id": "Q078",
+     "categoria": "revogado",
+     "posicao": null,
+     "top3": [
+      "ren20221003_chunk198",
+      "ren20221003_chunk194",
+      "aren20221020_1_chunk12"
+     ]
+    },
+    {
+     "id": "Q079",
+     "categoria": "revogado",
+     "posicao": null,
+     "top3": [
+      "aren2021964_1_chunk5",
+      "aren2021962_1_chunk21",
+      "aprt2022342_1_chunk11"
+     ]
+    },
+    {
+     "id": "Q080",
+     "categoria": "revogado",
+     "posicao": null,
+     "top3": [
+      "dsp20221043_chunk1",
+      "prt20211043tispde_chunk1",
+      "dsp2021019ti_chunk3"
+     ]
+    },
+    {
+     "id": "Q081",
+     "categoria": "revogado",
+     "posicao": null,
+     "top3": [
+      "ndsp2016960_chunk4",
+      "dsp2021960_chunk1",
+      "prt2021960tispde_chunk1"
+     ]
+    },
+    {
+     "id": "Q082",
+     "categoria": "revogado",
+     "posicao": null,
+     "top3": [
+      "aren2021956_1_chunk13",
+      "ren2021956_chunk8",
+      "adsp20162731_1_chunk2"
+     ]
+    },
+    {
+     "id": "Q083",
+     "categoria": "revogado",
+     "posicao": 1,
+     "top3": [
+      "ndsp20212424_chunk2",
+      "ndsp20212424_chunk1",
+      "dsp20212424ti_chunk3"
+     ]
+    },
+    {
+     "id": "Q084",
+     "categoria": "norma_por_tema",
+     "posicao": 1,
+     "top3": [
+      "aren2021959_1_chunk59",
+      "ren2021959_chunk13",
+      "ren2021959_chunk17"
+     ]
+    },
+    {
+     "id": "Q085",
+     "categoria": "norma_por_tema",
+     "posicao": 1,
+     "top3": [
+      "aren20221044_1_chunk1",
+      "ren2021916_chunk14",
+      "aprt20216705_2_chunk6"
+     ]
+    },
+    {
+     "id": "Q086",
+     "categoria": "norma_por_tema",
+     "posicao": 1,
+     "top3": [
+      "ren2021917_chunk10",
+      "ren2021917_chunk3",
+      "ren2021917_chunk4"
+     ]
+    },
+    {
+     "id": "Q087",
+     "categoria": "regra_atual",
+     "posicao": 1,
+     "top3": [
+      "ren2021919_chunk5",
+      "ren2021919_chunk1",
+      "area20219639_1_chunk13"
+     ]
+    },
+    {
+     "id": "Q088",
+     "categoria": "regra_atual",
+     "posicao": 1,
+     "top3": [
+      "ren2021948_chunk533",
+      "ren2021948_chunk569",
+      "ren2021948_chunk324"
+     ]
+    },
+    {
+     "id": "Q089",
+     "categoria": "regra_atual",
+     "posicao": 1,
+     "top3": [
+      "ren2021957_chunk274",
+      "ren2021957_chunk213",
+      "aren2021957_1_chunk23"
+     ]
+    },
+    {
+     "id": "Q090",
+     "categoria": "regra_atual",
+     "posicao": 1,
+     "top3": [
+      "aren2021963_1_chunk14",
+      "ren2021963_chunk4",
+      "ren2021963_chunk117"
+     ]
+    },
+    {
+     "id": "Q091",
+     "categoria": "regra_atual",
+     "posicao": 1,
+     "top3": [
+      "ren20221045_chunk1",
+      "aren20221045_2_chunk7",
+      "aren20221045_2_chunk6"
+     ]
+    },
+    {
+     "id": "Q092",
+     "categoria": "regra_atual",
+     "posicao": 1,
+     "top3": [
+      "ren2021956_chunk5",
+      "aren20221050_1_chunk31",
+      "ren20221050_chunk1"
+     ]
+    },
+    {
+     "id": "Q093",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20221070_chunk1",
+      "dsp20221070_chunk3",
+      "dsp20221070_chunk5"
+     ]
+    },
+    {
+     "id": "Q094",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp2021723_chunk3",
+      "dsp20223224ti_chunk3",
+      "dsp2021723_chunk1"
+     ]
+    },
+    {
+     "id": "Q095",
+     "categoria": "fato_com_ato",
+     "posicao": null,
+     "top3": [
+      "dsp2022908_chunk3",
+      "dsp2022698_chunk3",
+      "dsp2022908_chunk2"
+     ]
+    },
+    {
+     "id": "Q096",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "prt20226724_chunk1",
+      "aprt20226724_1_chunk54",
+      "prt20226724_chunk3"
+     ]
+    },
+    {
+     "id": "Q097",
+     "categoria": "fato_sem_ato",
+     "posicao": null,
+     "top3": [
+      "dsp2016079_chunk3",
+      "dsp2016680_chunk3",
+      "dsp2016079_chunk2"
+     ]
+    },
+    {
+     "id": "Q098",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "adsp20212976_1_chunk1",
+      "adsp20212976_1_chunk3",
+      "adsp20212976_1_chunk2"
+     ]
+    },
+    {
+     "id": "Q099",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "emdsp20222951_chunk115",
+      "emdsp20222951_chunk105",
+      "adsp20211284_1_chunk33"
+     ]
+    },
+    {
+     "id": "Q100",
+     "categoria": "fato_sem_ato",
+     "posicao": null,
+     "top3": [
+      "dsp20211690_chunk3",
+      "dsp20211690_chunk4",
+      "dsp20211690_chunk1"
+     ]
+    },
+    {
+     "id": "Q101",
+     "categoria": "fato_sem_ato",
+     "posicao": 2,
+     "top3": [
+      "area202211098_1_chunk8",
+      "area202110081_3_chunk7",
+      "area202110080_3_chunk7"
+     ]
+    },
+    {
+     "id": "Q102",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20212079ti_chunk2",
+      "dsp20211874ti_chunk2",
+      "dsp20213321ti_chunk2"
+     ]
+    },
+    {
+     "id": "Q103",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "edt2016sn240_chunk2",
+      "edt2021sn37_chunk2",
+      "dsp20213241ti_chunk3"
+     ]
+    },
+    {
+     "id": "Q104",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20213417ti_chunk3",
+      "dsp20213458ti_chunk3",
+      "dsp20213677ti_chunk3"
+     ]
+    },
+    {
+     "id": "Q105",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp2022928ti_chunk2",
+      "dsp2022928ti_chunk3",
+      "dsp2022927ti_chunk2"
+     ]
+    },
+    {
+     "id": "Q106",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "area202212061_1_chunk7",
+      "area202212061_1_chunk2",
+      "rea202212061ti_chunk7"
+     ]
+    },
+    {
+     "id": "Q107",
+     "categoria": "fato_sem_ato",
+     "posicao": null,
+     "top3": [
+      "area202110018_1_chunk93",
+      "area202110018_1_chunk12",
+      "area202110018_1_chunk2"
+     ]
+    },
+    {
+     "id": "C01",
+     "categoria": "conceitual_sigla",
+     "posicao": null,
+     "top3": [
+      "adsp20211055_1_chunk108",
+      "adsp20162584_1_chunk67",
+      "alel2021003_1_chunk109"
+     ]
+    },
+    {
+     "id": "C02",
+     "categoria": "conceitual_sigla",
+     "posicao": 2,
+     "top3": [
+      "dsp20214010_chunk3",
+      "area202110000_1_chunk4",
+      "area202110001_1_chunk4"
+     ]
+    },
+    {
+     "id": "C03",
+     "categoria": "conceitual_sigla",
+     "posicao": 9,
+     "top3": [
+      "aprt20216658_2_chunk197",
+      "area202110990_1_chunk11",
+      "area202110990_1_chunk31"
+     ]
+    },
+    {
+     "id": "C04",
+     "categoria": "conceitual_sigla",
+     "posicao": null,
+     "top3": [
+      "adsp20211055_1_chunk108",
+      "adsp20162584_1_chunk67",
+      "alel2021003_1_chunk109"
+     ]
+    },
+    {
+     "id": "C05",
+     "categoria": "conceitual_sigla",
+     "posicao": 5,
+     "top3": [
+      "adsp20211055_1_chunk108",
+      "adsp20162584_1_chunk67",
+      "alel2021003_1_chunk109"
+     ]
+    },
+    {
+     "id": "C06",
+     "categoria": "conceitual_sigla",
+     "posicao": 4,
+     "top3": [
+      "nreh20223066_chunk251",
+      "aren20221049_1_chunk15",
+      "aprt20216705_1_chunk28"
+     ]
+    },
+    {
+     "id": "C08",
+     "categoria": "conceitual_parafrase",
+     "posicao": null,
+     "top3": [
+      "edt2021sn192_chunk4",
+      "adsp20161707_1_chunk12",
+      "adsp20213626_1_chunk10"
+     ]
+    },
+    {
+     "id": "C09",
+     "categoria": "conceitual_parafrase",
+     "posicao": null,
+     "top3": [
+      "adsp2021609_1_chunk6",
+      "adsp20221487_chunk9",
+      "adsp20223498_1_chunk28"
+     ]
+    },
+    {
+     "id": "C10",
+     "categoria": "conceitual_parafrase",
+     "posicao": null,
+     "top3": [
+      "adsp2022898_1_chunk20",
+      "adsp20223277_1_chunk88",
+      "area202110313_1_chunk33"
+     ]
+    },
+    {
+     "id": "C11",
+     "categoria": "conceitual_parafrase",
+     "posicao": 5,
+     "top3": [
+      "aprt20163851_1_chunk18",
+      "aprt20163852_1_chunk16",
+      "aprt20163854_1_chunk16"
+     ]
+    },
+    {
+     "id": "C12",
+     "categoria": "conceitual_parafrase",
+     "posicao": null,
+     "top3": [
+      "adsp20212904_2_chunk2764",
+      "dsp20211380_chunk2795",
+      "dsp20221352_chunk3"
+     ]
+    },
+    {
+     "id": "C13",
+     "categoria": "conceitual_parafrase",
+     "posicao": 3,
+     "top3": [
+      "adsp20212904_2_chunk1062",
+      "dsp20211380_chunk1033",
+      "rea20165887ti_chunk9"
+     ]
+    },
+    {
+     "id": "C14",
+     "categoria": "conceitual_parafrase",
+     "posicao": 4,
+     "top3": [
+      "adsp2021519_1_chunk8",
+      "adsp2021520_1_chunk8",
+      "adsp2021521_1_chunk8"
+     ]
+    },
+    {
+     "id": "C15",
+     "categoria": "conceitual_parafrase",
+     "posicao": null,
+     "top3": [
+      "dsp20161481_chunk4",
+      "ndsp20222162_chunk11",
+      "ndsp20222163_chunk11"
+     ]
+    },
+    {
+     "id": "C16",
+     "categoria": "conceitual_parafrase",
+     "posicao": 1,
+     "top3": [
+      "prt2016217spde_chunk6",
+      "prt2021835tispde_chunk6",
+      "prt2021959tispde_chunk6"
+     ]
+    },
+    {
+     "id": "C17",
+     "categoria": "conceitual_parafrase",
+     "posicao": null,
+     "top3": [
+      "adsp2016955_1_chunk9",
+      "ndsp2022624_chunk32",
+      "ndsp20213078_chunk23"
+     ]
+    },
+    {
+     "id": "C18",
+     "categoria": "conceitual_parafrase",
+     "posicao": 1,
+     "top3": [
+      "dsp20161977ti_chunk3",
+      "ndsp2022715_chunk11",
+      "dsp20161559ti_chunk4"
+     ]
+    },
+    {
+     "id": "C19",
+     "categoria": "conceitual_parafrase",
+     "posicao": 1,
+     "top3": [
+      "prt2016082mme_chunk6",
+      "prt2016100mme_chunk6",
+      "prt20211088tispde_chunk6"
+     ]
+    }
+   ]
+  },
+  "sem_filtro": {
+   "geral": {
+    "n": 115,
+    "hit@1": 0.6869565217391305,
+    "hit@3": 0.7739130434782608,
+    "hit@5": 0.8434782608695652,
+    "hit@10": 0.8608695652173913,
+    "mrr": 0.7441545893719808
+   },
+   "categorias": {
+    "ato_citado": {
+     "n": 10,
+     "hit@1": 0.9,
+     "hit@3": 0.9,
+     "hit@5": 1.0,
+     "hit@10": 1.0,
+     "mrr": 0.925
+    },
+    "conceitual_parafrase": {
+     "n": 12,
+     "hit@1": 0.3333333333333333,
+     "hit@3": 0.4166666666666667,
+     "hit@5": 0.5,
+     "hit@10": 0.5,
+     "mrr": 0.37777777777777777
+    },
+    "conceitual_sigla": {
+     "n": 6,
+     "hit@1": 0.0,
+     "hit@3": 0.16666666666666666,
+     "hit@5": 0.3333333333333333,
+     "hit@10": 0.5,
+     "mrr": 0.14444444444444446
+    },
+    "fato_com_ato": {
+     "n": 16,
+     "hit@1": 0.875,
+     "hit@3": 0.875,
+     "hit@5": 0.875,
+     "hit@10": 0.875,
+     "mrr": 0.875
+    },
+    "fato_sem_ato": {
+     "n": 29,
+     "hit@1": 0.7586206896551724,
+     "hit@3": 0.8620689655172413,
+     "hit@5": 0.896551724137931,
+     "hit@10": 0.896551724137931,
+     "mrr": 0.8189655172413793
+    },
+    "norma_citada": {
+     "n": 18,
+     "hit@1": 0.6111111111111112,
+     "hit@3": 0.7222222222222222,
+     "hit@5": 0.8333333333333334,
+     "hit@10": 0.8888888888888888,
+     "mrr": 0.6858024691358025
+    },
+    "norma_por_tema": {
+     "n": 3,
+     "hit@1": 1.0,
+     "hit@3": 1.0,
+     "hit@5": 1.0,
+     "hit@10": 1.0,
+     "mrr": 1.0
+    },
+    "regra_atual": {
+     "n": 6,
+     "hit@1": 0.6666666666666666,
+     "hit@3": 0.8333333333333334,
+     "hit@5": 1.0,
+     "hit@10": 1.0,
+     "mrr": 0.7638888888888888
+    },
+    "revogado": {
+     "n": 15,
+     "hit@1": 0.8,
+     "hit@3": 0.9333333333333333,
+     "hit@5": 1.0,
+     "hit@10": 1.0,
+     "mrr": 0.8833333333333333
+    }
+   },
+   "detalhe": [
+    {
+     "id": "Q01",
+     "categoria": "ato_citado",
+     "posicao": 1,
+     "top3": [
+      "prt20221322tispde_chunk1",
+      "prt20221322tispde_chunk3",
+      "prt20221322tispde_chunk2"
+     ]
+    },
+    {
+     "id": "Q02",
+     "categoria": "ato_citado",
+     "posicao": 1,
+     "top3": [
+      "dsp20222942_chunk1",
+      "dsp20212942ti_chunk1",
+      "adsp20222942_1_chunk36"
+     ]
+    },
+    {
+     "id": "Q03",
+     "categoria": "ato_citado",
+     "posicao": 1,
+     "top3": [
+      "prt20226715_chunk1",
+      "aprt20226715_1_chunk12",
+      "aprt20226715_1_chunk1"
+     ]
+    },
+    {
+     "id": "Q04",
+     "categoria": "ato_citado",
+     "posicao": 1,
+     "top3": [
+      "dsp20161198_chunk1",
+      "adsp20221198_1_chunk11",
+      "dsp20221198_chunk1"
+     ]
+    },
+    {
+     "id": "Q05",
+     "categoria": "ato_citado",
+     "posicao": 1,
+     "top3": [
+      "dsp20211604_chunk1",
+      "dsp20211604_chunk3",
+      "dsp20221604ti_chunk1"
+     ]
+    },
+    {
+     "id": "Q06",
+     "categoria": "ato_citado",
+     "posicao": 1,
+     "top3": [
+      "dsp20213501ti_chunk1",
+      "dsp20223501ti_chunk1",
+      "dsp20213501ti_chunk3"
+     ]
+    },
+    {
+     "id": "Q07",
+     "categoria": "ato_citado",
+     "posicao": 1,
+     "top3": [
+      "prt2021528mme_chunk1",
+      "prt2021528mme_chunk2",
+      "prt2021528mme_chunk8"
+     ]
+    },
+    {
+     "id": "Q08",
+     "categoria": "ato_citado",
+     "posicao": 4,
+     "top3": [
+      "area202211324_1_chunk96",
+      "nreh20223067_chunk209",
+      "ndsp20221425_chunk37"
+     ]
+    },
+    {
+     "id": "Q09",
+     "categoria": "ato_citado",
+     "posicao": 1,
+     "top3": [
+      "areh20212852_1_chunk17",
+      "areh20212852_1_chunk23",
+      "reh20212852ti_chunk1"
+     ]
+    },
+    {
+     "id": "Q10",
+     "categoria": "ato_citado",
+     "posicao": 1,
+     "top3": [
+      "reh20162146ti_chunk1",
+      "nreh20162146_chunk100",
+      "nreh20162146_chunk105"
+     ]
+    },
+    {
+     "id": "Q11",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20222660ti_chunk3",
+      "dsp20222660ti_chunk1",
+      "dsp20222660ti_chunk5"
+     ]
+    },
+    {
+     "id": "Q12",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "emdsp20223350_chunk95",
+      "emdsp20223350_chunk104",
+      "emdsp20223350_chunk64"
+     ]
+    },
+    {
+     "id": "Q13",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20213501ti_chunk1",
+      "dsp20213501ti_chunk3",
+      "dsp20213501ti_chunk2"
+     ]
+    },
+    {
+     "id": "Q14",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20161321ti_chunk3",
+      "dsp20161321ti_chunk1",
+      "dsp20161321ti_chunk2"
+     ]
+    },
+    {
+     "id": "Q15",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp2021477ti_chunk2",
+      "dsp2021477ti_chunk1",
+      "adsp20223010_chunk14"
+     ]
+    },
+    {
+     "id": "Q16",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20162592ti_chunk1",
+      "dsp20212592ti_chunk1",
+      "adsp20222381_1_chunk5"
+     ]
+    },
+    {
+     "id": "Q17",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20222159ti_chunk2",
+      "dsp20222159ti_chunk3",
+      "dsp20222159ti_chunk1"
+     ]
+    },
+    {
+     "id": "Q18",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20162464ti_chunk3",
+      "dsp20162464ti_chunk1",
+      "dsp20162464ti_chunk2"
+     ]
+    },
+    {
+     "id": "Q19",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20221470ti_chunk1",
+      "area202110199_1_chunk18",
+      "area202211798_1_chunk3"
+     ]
+    },
+    {
+     "id": "Q20",
+     "categoria": "fato_com_ato",
+     "posicao": null,
+     "top3": [
+      "prt20163825_chunk2",
+      "prt20163839_chunk3",
+      "prt20163907_chunk3"
+     ]
+    },
+    {
+     "id": "Q21",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20214042ti_chunk2",
+      "dsp20214042ti_chunk3",
+      "dsp20214043ti_chunk3"
+     ]
+    },
+    {
+     "id": "Q22",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "adsp20212891_1_chunk20",
+      "emdsp20223364_chunk9",
+      "adsp20212891_1_chunk12"
+     ]
+    },
+    {
+     "id": "Q23",
+     "categoria": "fato_sem_ato",
+     "posicao": 2,
+     "top3": [
+      "ndsp2021034_chunk645",
+      "area202211250_1_chunk27",
+      "area202211251_1_chunk27"
+     ]
+    },
+    {
+     "id": "Q24",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "area202211617_1_chunk2",
+      "rea202211617ti_chunk1",
+      "area202211617_1_chunk3"
+     ]
+    },
+    {
+     "id": "Q25",
+     "categoria": "fato_sem_ato",
+     "posicao": 2,
+     "top3": [
+      "dsp20213830ti_chunk3",
+      "area202110358_1_chunk4",
+      "rea202110358ti_chunk7"
+     ]
+    },
+    {
+     "id": "Q26",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "rea202213034ti_chunk1",
+      "rea202213034ti_chunk7",
+      "rea202213034ti_chunk4"
+     ]
+    },
+    {
+     "id": "Q27",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "area202212041_1_chunk4",
+      "area202212041_1_chunk48",
+      "area202212041_1_chunk2"
+     ]
+    },
+    {
+     "id": "Q28",
+     "categoria": "fato_sem_ato",
+     "posicao": 4,
+     "top3": [
+      "rea202110534ti_chunk6",
+      "rea202110535ti_chunk6",
+      "rea202110550ti_chunk6"
+     ]
+    },
+    {
+     "id": "Q29",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "area20165789_1_chunk3",
+      "area202212308_1_chunk6",
+      "area20165789_1_chunk2"
+     ]
+    },
+    {
+     "id": "Q30",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20223034ti_chunk2",
+      "dsp20223034ti_chunk4",
+      "dsp20223034ti_chunk1"
+     ]
+    },
+    {
+     "id": "Q31",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "area20219658_1_chunk97",
+      "area20219658_1_chunk98",
+      "area20219657_1_chunk97"
+     ]
+    },
+    {
+     "id": "Q32",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp2021041ti_chunk3",
+      "dsp20211143_chunk3",
+      "dsp20211012ti_chunk2"
+     ]
+    },
+    {
+     "id": "Q33",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "prt2021482tispde_chunk3",
+      "prt20221167tispde_chunk3",
+      "prt20221167tispde_chunk4"
+     ]
+    },
+    {
+     "id": "Q34",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "prt20221787tispde_chunk3",
+      "prt20221789tispde_chunk3",
+      "prt20221803tispde_chunk3"
+     ]
+    },
+    {
+     "id": "Q35",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "prt2021612tispde_chunk3",
+      "adsp20221411_1_chunk4",
+      "prt2021548tispde_chunk3"
+     ]
+    },
+    {
+     "id": "Q36",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20212089ti_chunk3",
+      "dsp20212089ti_chunk2",
+      "dsp20212090ti_chunk3"
+     ]
+    },
+    {
+     "id": "Q37",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20211569ti_chunk3",
+      "dsp20211717ti_chunk3",
+      "dsp20212435ti_chunk3"
+     ]
+    },
+    {
+     "id": "Q38",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "area202110932_1_chunk14",
+      "rea202110932ti_chunk6",
+      "area202110932_1_chunk9"
+     ]
+    },
+    {
+     "id": "Q39",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "area202211313_1_chunk12",
+      "rea202211313ti_chunk1",
+      "area202211313_1_chunk6"
+     ]
+    },
+    {
+     "id": "Q40",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "nreh20162093_chunk4",
+      "nreh20212909_chunk27",
+      "nreh20162093_chunk2"
+     ]
+    },
+    {
+     "id": "Q41",
+     "categoria": "revogado",
+     "posicao": 1,
+     "top3": [
+      "res2016436ana_chunk1",
+      "dsp2021436_chunk1",
+      "res2016005cj_chunk1"
+     ]
+    },
+    {
+     "id": "Q42",
+     "categoria": "revogado",
+     "posicao": 1,
+     "top3": [
+      "rea202110230ti_chunk1",
+      "area202110230_1_chunk2",
+      "area202110230_1_chunk1"
+     ]
+    },
+    {
+     "id": "Q43",
+     "categoria": "revogado",
+     "posicao": 1,
+     "top3": [
+      "rea202110062ti_chunk13",
+      "rea202110062ti_chunk12",
+      "rea202110054ti_chunk13"
+     ]
+    },
+    {
+     "id": "Q44",
+     "categoria": "revogado",
+     "posicao": 1,
+     "top3": [
+      "rea20219796ti_chunk7",
+      "rea20219795ti_chunk7",
+      "rea20219797ti_chunk7"
+     ]
+    },
+    {
+     "id": "Q45",
+     "categoria": "revogado",
+     "posicao": 2,
+     "top3": [
+      "prt2021360_chunk4",
+      "prt2022365_chunk4",
+      "prt2022365_chunk3"
+     ]
+    },
+    {
+     "id": "Q46",
+     "categoria": "revogado",
+     "posicao": 1,
+     "top3": [
+      "area202212304_1_chunk2",
+      "rea202212304ti_chunk8",
+      "rea202212300ti_chunk8"
+     ]
+    },
+    {
+     "id": "Q057",
+     "categoria": "norma_citada",
+     "posicao": 1,
+     "top3": [
+      "ren20221009_chunk1",
+      "ren20221018_chunk1",
+      "ren20221015_chunk31"
+     ]
+    },
+    {
+     "id": "Q058",
+     "categoria": "norma_citada",
+     "posicao": 1,
+     "top3": [
+      "ren2021959_chunk4",
+      "ren2021959_chunk1",
+      "ren2021959_chunk16"
+     ]
+    },
+    {
+     "id": "Q059",
+     "categoria": "norma_citada",
+     "posicao": 5,
+     "top3": [
+      "adsp20221044_chunk32",
+      "adsp2016633_1_chunk41",
+      "adsp2016633_1_chunk20"
+     ]
+    },
+    {
+     "id": "Q060",
+     "categoria": "norma_citada",
+     "posicao": 2,
+     "top3": [
+      "acp2022040ti_chunk2",
+      "ren2021954_chunk1",
+      "acp2022040ti_chunk4"
+     ]
+    },
+    {
+     "id": "Q061",
+     "categoria": "norma_citada",
+     "posicao": 1,
+     "top3": [
+      "ren20221048_chunk1",
+      "aren20221048_1_chunk54",
+      "aren20221048_1_chunk26"
+     ]
+    },
+    {
+     "id": "Q062",
+     "categoria": "norma_citada",
+     "posicao": 9,
+     "top3": [
+      "ren20221025_chunk1",
+      "aren20221025_1_chunk2",
+      "aren20221025_1_chunk3"
+     ]
+    },
+    {
+     "id": "Q063",
+     "categoria": "norma_citada",
+     "posicao": null,
+     "top3": [
+      "ren2016742_chunk7",
+      "ren2021953_chunk20",
+      "ren2016717_chunk25"
+     ]
+    },
+    {
+     "id": "Q064",
+     "categoria": "norma_citada",
+     "posicao": 1,
+     "top3": [
+      "aren20221022_2_chunk66",
+      "aren20221022_2_1_chunk30",
+      "aren20221022_2_chunk78"
+     ]
+    },
+    {
+     "id": "Q065",
+     "categoria": "norma_citada",
+     "posicao": 1,
+     "top3": [
+      "ren2016731_chunk1",
+      "aren2016731_1_chunk65",
+      "aren2016731_1_chunk38"
+     ]
+    },
+    {
+     "id": "Q066",
+     "categoria": "norma_citada",
+     "posicao": 5,
+     "top3": [
+      "ren20221050_chunk1",
+      "aren20221050_1_chunk51",
+      "aren20221050_1_chunk49"
+     ]
+    },
+    {
+     "id": "Q067",
+     "categoria": "norma_citada",
+     "posicao": 1,
+     "top3": [
+      "ren20221039_chunk1",
+      "ren20221039_chunk2",
+      "aren20221039_1_chunk7"
+     ]
+    },
+    {
+     "id": "Q068",
+     "categoria": "norma_citada",
+     "posicao": 1,
+     "top3": [
+      "ren20221034_chunk1",
+      "ren20221034_chunk19",
+      "aren20221034_1_chunk2"
+     ]
+    },
+    {
+     "id": "Q069",
+     "categoria": "norma_citada",
+     "posicao": 1,
+     "top3": [
+      "ren2021917_chunk1",
+      "ren2021917_chunk3",
+      "ren2021917_chunk4"
+     ]
+    },
+    {
+     "id": "Q070",
+     "categoria": "norma_citada",
+     "posicao": 3,
+     "top3": [
+      "adsp20223049_1_chunk20",
+      "ren2021917_chunk3",
+      "ren2021916_chunk1"
+     ]
+    },
+    {
+     "id": "Q071",
+     "categoria": "norma_citada",
+     "posicao": 1,
+     "top3": [
+      "ren20221003_chunk1",
+      "aren20221020_1_chunk49",
+      "ren20221020_chunk7"
+     ]
+    },
+    {
+     "id": "Q072",
+     "categoria": "norma_citada",
+     "posicao": 1,
+     "top3": [
+      "ren20221012_chunk1",
+      "aren20221012_1_chunk24",
+      "aren20221012_1_chunk39"
+     ]
+    },
+    {
+     "id": "Q073",
+     "categoria": "norma_citada",
+     "posicao": null,
+     "top3": [
+      "ren20221040_chunk1",
+      "aren20221040_1_chunk2",
+      "ren20221040_chunk4"
+     ]
+    },
+    {
+     "id": "Q074",
+     "categoria": "norma_citada",
+     "posicao": 1,
+     "top3": [
+      "aren20221045_2_chunk94",
+      "aren20221045_2_chunk84",
+      "aren20221045_2_chunk55"
+     ]
+    },
+    {
+     "id": "Q075",
+     "categoria": "revogado",
+     "posicao": 1,
+     "top3": [
+      "ren2016748_chunk1",
+      "adsp2016748_1_chunk7",
+      "aren2016748_1_chunk82"
+     ]
+    },
+    {
+     "id": "Q076",
+     "categoria": "revogado",
+     "posicao": 1,
+     "top3": [
+      "ren2021947_chunk1",
+      "ats2022004ti_chunk2",
+      "aren2021947_3_chunk13"
+     ]
+    },
+    {
+     "id": "Q077",
+     "categoria": "revogado",
+     "posicao": 1,
+     "top3": [
+      "ren2016700_chunk1",
+      "dsp20163079ti_chunk2",
+      "dsp20162296ti_chunk2"
+     ]
+    },
+    {
+     "id": "Q078",
+     "categoria": "revogado",
+     "posicao": 1,
+     "top3": [
+      "ren2016718_chunk1",
+      "aren2016718_1_chunk4",
+      "aren2016718_1_chunk7"
+     ]
+    },
+    {
+     "id": "Q079",
+     "categoria": "revogado",
+     "posicao": 4,
+     "top3": [
+      "aren2021944_1_chunk81",
+      "aren2021936_1_chunk47",
+      "ren2021936_chunk4"
+     ]
+    },
+    {
+     "id": "Q080",
+     "categoria": "revogado",
+     "posicao": 1,
+     "top3": [
+      "ren20221043_chunk1",
+      "aren20221043_1_chunk2",
+      "aren20221043_1_chunk17"
+     ]
+    },
+    {
+     "id": "Q081",
+     "categoria": "revogado",
+     "posicao": 2,
+     "top3": [
+      "aren20221007_1_chunk21",
+      "ren2021960_chunk1",
+      "ren2021960_chunk4"
+     ]
+    },
+    {
+     "id": "Q082",
+     "categoria": "revogado",
+     "posicao": 1,
+     "top3": [
+      "ren2021925_chunk1",
+      "ren2021925_chunk3",
+      "aren2021925_1_chunk5"
+     ]
+    },
+    {
+     "id": "Q083",
+     "categoria": "revogado",
+     "posicao": 1,
+     "top3": [
+      "ndsp20212424_chunk2",
+      "ndsp20162680_chunk2",
+      "ndsp20212424_chunk1"
+     ]
+    },
+    {
+     "id": "Q084",
+     "categoria": "norma_por_tema",
+     "posicao": 1,
+     "top3": [
+      "aren2021959_1_chunk59",
+      "ren2021959_chunk13",
+      "ren2021959_chunk17"
+     ]
+    },
+    {
+     "id": "Q085",
+     "categoria": "norma_por_tema",
+     "posicao": 1,
+     "top3": [
+      "aren20221044_1_chunk1",
+      "ren2021916_chunk14",
+      "aprt20216705_2_chunk6"
+     ]
+    },
+    {
+     "id": "Q086",
+     "categoria": "norma_por_tema",
+     "posicao": 1,
+     "top3": [
+      "ren2021917_chunk10",
+      "ren2021917_chunk3",
+      "ren2021917_chunk4"
+     ]
+    },
+    {
+     "id": "Q087",
+     "categoria": "regra_atual",
+     "posicao": 4,
+     "top3": [
+      "aren2016740_1_chunk27",
+      "aren2016740_1_chunk23",
+      "ren2016740_chunk1"
+     ]
+    },
+    {
+     "id": "Q088",
+     "categoria": "regra_atual",
+     "posicao": 1,
+     "top3": [
+      "ren2021948_chunk533",
+      "ren2021948_chunk569",
+      "ren2021948_chunk324"
+     ]
+    },
+    {
+     "id": "Q089",
+     "categoria": "regra_atual",
+     "posicao": 1,
+     "top3": [
+      "ren2021957_chunk274",
+      "ren2021957_chunk213",
+      "aren2021957_1_chunk23"
+     ]
+    },
+    {
+     "id": "Q090",
+     "categoria": "regra_atual",
+     "posicao": 1,
+     "top3": [
+      "aren2021963_1_chunk14",
+      "ren2021963_chunk4",
+      "aren2016715_1_chunk2"
+     ]
+    },
+    {
+     "id": "Q091",
+     "categoria": "regra_atual",
+     "posicao": 1,
+     "top3": [
+      "ren20221045_chunk1",
+      "aren20221045_2_chunk7",
+      "aren20221045_2_chunk6"
+     ]
+    },
+    {
+     "id": "Q092",
+     "categoria": "regra_atual",
+     "posicao": 3,
+     "top3": [
+      "aren2021925_1_chunk46",
+      "aren2021925_1_chunk22",
+      "ren2021956_chunk5"
+     ]
+    },
+    {
+     "id": "Q093",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20221070_chunk1",
+      "dsp20221070_chunk3",
+      "dsp20221070_chunk5"
+     ]
+    },
+    {
+     "id": "Q094",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp2021723_chunk3",
+      "dsp20223224ti_chunk3",
+      "dsp2021723_chunk1"
+     ]
+    },
+    {
+     "id": "Q095",
+     "categoria": "fato_com_ato",
+     "posicao": null,
+     "top3": [
+      "dsp2022908_chunk3",
+      "dsp2022698_chunk3",
+      "dsp2022908_chunk2"
+     ]
+    },
+    {
+     "id": "Q096",
+     "categoria": "fato_com_ato",
+     "posicao": 1,
+     "top3": [
+      "prt20226724_chunk1",
+      "aprt20226724_1_chunk54",
+      "prt20226724_chunk3"
+     ]
+    },
+    {
+     "id": "Q097",
+     "categoria": "fato_sem_ato",
+     "posicao": null,
+     "top3": [
+      "dsp2016079_chunk3",
+      "dsp2016680_chunk3",
+      "dsp2016079_chunk2"
+     ]
+    },
+    {
+     "id": "Q098",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "adsp20212976_1_chunk1",
+      "adsp20212976_1_chunk3",
+      "adsp20212976_1_chunk2"
+     ]
+    },
+    {
+     "id": "Q099",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "emdsp20222951_chunk115",
+      "emdsp20222951_chunk105",
+      "adsp20211284_1_chunk33"
+     ]
+    },
+    {
+     "id": "Q100",
+     "categoria": "fato_sem_ato",
+     "posicao": null,
+     "top3": [
+      "dsp20211690_chunk3",
+      "dsp20211690_chunk4",
+      "dsp20211690_chunk1"
+     ]
+    },
+    {
+     "id": "Q101",
+     "categoria": "fato_sem_ato",
+     "posicao": 2,
+     "top3": [
+      "area202211098_1_chunk8",
+      "area202110081_3_chunk7",
+      "area202110080_3_chunk7"
+     ]
+    },
+    {
+     "id": "Q102",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20212079ti_chunk2",
+      "dsp20211874ti_chunk2",
+      "dsp20213321ti_chunk2"
+     ]
+    },
+    {
+     "id": "Q103",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "edt2016sn240_chunk2",
+      "edt2021sn37_chunk2",
+      "dsp20213241ti_chunk3"
+     ]
+    },
+    {
+     "id": "Q104",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp20213417ti_chunk3",
+      "dsp20213458ti_chunk3",
+      "dsp20213677ti_chunk3"
+     ]
+    },
+    {
+     "id": "Q105",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "dsp2022928ti_chunk2",
+      "dsp2022928ti_chunk3",
+      "dsp2022927ti_chunk2"
+     ]
+    },
+    {
+     "id": "Q106",
+     "categoria": "fato_sem_ato",
+     "posicao": 1,
+     "top3": [
+      "area202212061_1_chunk7",
+      "area202212061_1_chunk2",
+      "rea202212061ti_chunk7"
+     ]
+    },
+    {
+     "id": "Q107",
+     "categoria": "fato_sem_ato",
+     "posicao": null,
+     "top3": [
+      "area202110018_1_chunk93",
+      "area202110018_1_chunk12",
+      "area202110018_1_chunk2"
+     ]
+    },
+    {
+     "id": "C01",
+     "categoria": "conceitual_sigla",
+     "posicao": null,
+     "top3": [
+      "adsp20211055_1_chunk108",
+      "adsp20162584_1_chunk67",
+      "alel2021003_1_chunk109"
+     ]
+    },
+    {
+     "id": "C02",
+     "categoria": "conceitual_sigla",
+     "posicao": 2,
+     "top3": [
+      "dsp20214010_chunk3",
+      "area202110000_1_chunk4",
+      "area202110001_1_chunk4"
+     ]
+    },
+    {
+     "id": "C03",
+     "categoria": "conceitual_sigla",
+     "posicao": null,
+     "top3": [
+      "aren2016728_2_chunk210",
+      "aren2016728_2_chunk209",
+      "aprt20216658_2_chunk197"
+     ]
+    },
+    {
+     "id": "C04",
+     "categoria": "conceitual_sigla",
+     "posicao": null,
+     "top3": [
+      "adsp20211055_1_chunk108",
+      "adsp20162584_1_chunk67",
+      "alel2021003_1_chunk109"
+     ]
+    },
+    {
+     "id": "C05",
+     "categoria": "conceitual_sigla",
+     "posicao": 5,
+     "top3": [
+      "adsp20211055_1_chunk108",
+      "adsp20162584_1_chunk67",
+      "alel2021003_1_chunk109"
+     ]
+    },
+    {
+     "id": "C06",
+     "categoria": "conceitual_sigla",
+     "posicao": 6,
+     "top3": [
+      "nreh20223066_chunk251",
+      "aren2021912_2_chunk11",
+      "aren20221049_1_chunk15"
+     ]
+    },
+    {
+     "id": "C08",
+     "categoria": "conceitual_parafrase",
+     "posicao": null,
+     "top3": [
+      "edt2021sn192_chunk4",
+      "adsp20161707_1_chunk12",
+      "adsp20213626_1_chunk10"
+     ]
+    },
+    {
+     "id": "C09",
+     "categoria": "conceitual_parafrase",
+     "posicao": null,
+     "top3": [
+      "adsp2021609_1_chunk6",
+      "adsp20221487_chunk9",
+      "adsp20223498_1_chunk28"
+     ]
+    },
+    {
+     "id": "C10",
+     "categoria": "conceitual_parafrase",
+     "posicao": null,
+     "top3": [
+      "adsp2022898_1_chunk20",
+      "adsp20223277_1_chunk88",
+      "area202110313_1_chunk33"
+     ]
+    },
+    {
+     "id": "C11",
+     "categoria": "conceitual_parafrase",
+     "posicao": 5,
+     "top3": [
+      "aprt20163851_1_chunk18",
+      "aprt20163852_1_chunk16",
+      "aprt20163854_1_chunk16"
+     ]
+    },
+    {
+     "id": "C12",
+     "categoria": "conceitual_parafrase",
+     "posicao": null,
+     "top3": [
+      "adsp20212904_2_chunk2764",
+      "dsp20211380_chunk2795",
+      "dsp20221352_chunk3"
+     ]
+    },
+    {
+     "id": "C13",
+     "categoria": "conceitual_parafrase",
+     "posicao": 3,
+     "top3": [
+      "adsp20212904_2_chunk1062",
+      "dsp20211380_chunk1033",
+      "rea20165887ti_chunk9"
+     ]
+    },
+    {
+     "id": "C14",
+     "categoria": "conceitual_parafrase",
+     "posicao": 1,
+     "top3": [
+      "prt2016281mme_chunk7",
+      "prt2016281mme_chunk6",
+      "prt2016610mme_chunk4"
+     ]
+    },
+    {
+     "id": "C15",
+     "categoria": "conceitual_parafrase",
+     "posicao": null,
+     "top3": [
+      "dsp20161481_chunk4",
+      "ndsp20222162_chunk11",
+      "ndsp20222163_chunk11"
+     ]
+    },
+    {
+     "id": "C16",
+     "categoria": "conceitual_parafrase",
+     "posicao": 1,
+     "top3": [
+      "prt2016217spde_chunk6",
+      "prt2021835tispde_chunk6",
+      "prt2021959tispde_chunk6"
+     ]
+    },
+    {
+     "id": "C17",
+     "categoria": "conceitual_parafrase",
+     "posicao": null,
+     "top3": [
+      "adsp2016955_1_chunk9",
+      "ndsp2022624_chunk32",
+      "ndsp20213078_chunk23"
+     ]
+    },
+    {
+     "id": "C18",
+     "categoria": "conceitual_parafrase",
+     "posicao": 1,
+     "top3": [
+      "dsp20161977ti_chunk3",
+      "ndsp2022715_chunk11",
+      "dsp20161559ti_chunk4"
+     ]
+    },
+    {
+     "id": "C19",
+     "categoria": "conceitual_parafrase",
+     "posicao": 1,
+     "top3": [
+      "prt2016082mme_chunk6",
+      "prt2016100mme_chunk6",
+      "prt20211088tispde_chunk6"
+     ]
+    }
+   ]
+  }
+ },
+ "geracao": {
+  "resumo": {
+   "llm": [
+    "groq/openai/gpt-oss-120b",
+    "groq_20b/openai/gpt-oss-20b",
+    "groq_qwen/qwen/qwen3.8-27b"
+   ],
+   "respostas_por_llm": {
+    "groq_20b/openai/gpt-oss-20b": 59,
+    "groq/openai/gpt-oss-120b": 58,
+    "groq_qwen/qwen/qwen3.8-27b": 10
+   },
+   "abstencao_correta": 1.0,
+   "recusa_indevida": 0.16521739130434782,
+   "termos_presentes": 0.8173913043478261,
+   "citou_trecho_correto": 0.782608695652174,
+   "segundos_por_resposta": 5.6
+  },
+  "detalhe": [
+   {
+    "id": "Q01",
+    "categoria": "ato_citado",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "A Portaria nº 1.322/SPE/MME, de 2 de maio de 2022, **aprova o enquadramento no Regime Especial de Incentivos para o Desenvolvimento da Infraestrutura (REIDI) do projeto de transmissão de energia elétrica correspondente ao Lote 05 do Leilão 02/2021‑ANEEL, de titularidade da Energisa Amapá Transmissora de Energia S.A.**【Trecho 4】.  \n\nA situação da portaria indica que **não consta revogação expressa**, portanto está em vigor.",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 3.5
+   },
+   {
+    "id": "Q02",
+    "categoria": "ato_citado",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "O Despacho nº 2.942, de 2022, **reconhece, para o exercício de 2021**, o cumprimento ou o descumprimento, por parte das concessionárias de distribuição, dos critérios de eficiência e dos parâmetros de gestão econômico‑financeira previstos em seus contratos de concessão:\n\n* **Cumprimento** – reconhece que a Neoenergia Distribuição Brasília S.A. (CEB‑DIS) e a Energisa Tocantins Distribuidora de Energia S.A. atenderam aos critérios de eficiência relativos à qualidade do serviço prestado (Trecho 2).  \n* **Cumprimento** – reconhece ainda que a Enel Distribuição Goiás (Enel GO), a CEB‑DIS e a ETO cumpriram os critérios de eficiência relativos à qualidade do serviço (DECi) (Trecho 3) e os critérios de eficiência relativos à gestão econômico‑financeira (Trecho 4).  \n* **Descumprimento** – reconhece que a Enel GO não cumpriu o critério de eficiência relativo à Duração Equivalente de Interrupção de Origem Interna por Unidade Consumidora (DECi) (Trecho 3) e não atingiu o parâmetro mínimo de sustentabilidade econômico‑financeira (Trecho 4).\n\n**Fonte:** DSP – DESPACHO 2942/2022, trechos 2, 3 e 4 (situação: NÃO CONSTA REVOGAÇÃO EXPRESSA).",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 3.6
+   },
+   {
+    "id": "Q03",
+    "categoria": "ato_citado",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "A Portaria nº 6.715, de 24 de janeiro de 2022, **autoriza a implementação do Programa de Gestão no âmbito da Superintendência de Recursos Humanos (SRH)**, com base na Instrução Normativa nº 65/2020 do Ministério da Economia, na Norma Organizacional ANEEL nº 51/2021 e nas diretrizes próprias da Portaria【Trecho 2】.  \n\nAlém disso, a Portaria **aprova os Procedimentos Gerais do Programa de Gestão** na SRH【Trecho 1】.  \n\n*Situação da Portaria:* não consta revogação expressa.",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 4.2
+   },
+   {
+    "id": "Q04",
+    "categoria": "ato_citado",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "O Despacho nº 1.198, de 10 de maio de 2016, decidiu **conhecer e, no mérito, negar provimento ao recurso administrativo interposto pela WZPAR contra o Despacho SGH nº 1.325/2014**, mantendo a hierarquização estabelecida no referido despacho 【Trecho 2】.  \n\n*Situação do documento:* não consta revogação expressa.",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 3.1
+   },
+   {
+    "id": "Q05",
+    "categoria": "ato_citado",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "O Despacho nº 1.604, de 2 de junho de 2021 decide **extinguir e arquivar o Processo Administrativo nº 48500.002634/2020‑44**, por ter expirado o prazo para interposição de recurso e não ter havido manifestação das partes, nos termos do art. 14, § 1º, do Anexo da Resolução Normativa nº 273/2007.  \n\n- **Fonte:** DSP – DESPACHO 1604/2021, Trecho 3 (e reiterado nos Trechos 12 e 13).  \n\nNão há indicação de revogação, anulação ou suspensão desse despacho nos documentos disponíveis.",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 3.0
+   },
+   {
+    "id": "Q06",
+    "categoria": "ato_citado",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "O Despacho nº 3.501, de 3 de novembro de 2021, **homologa o empréstimo** realizado em 10 de novembro de 2021, do **Fundo da Reserva Global de Reversão (RGR) à Companhia de Eletricidade do Amapá – CEA**, destinado à prestação temporária do serviço público de distribuição de energia elétrica, no valor de **R$ 5.821.551,62**【Trecho 2】【Trecho 3】.  \n\n*Documento:* **DSP – DESPACHO 3501/2021** – situação “NÃO CONSTA REVOGAÇÃO EXPRESSA”.",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 2.8
+   },
+   {
+    "id": "Q07",
+    "categoria": "ato_citado",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "A Portaria nº 528, de 2021, **reconhece a necessidade de contratação de locação de geração termelétrica, de forma excepcional e temporária, no montante de 14 MW (quatorze megawatts), no Município de Manicoré, Estado do Amazonas, por até cento e oitenta dias ou prazo inferior**【Trecho 4】.  \n\n*Documento:* **PORTARIA 528/2021** – situação “NÃO CONSTA REVOGAÇÃO EXPRESSA”.",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 2.1
+   },
+   {
+    "id": "Q08",
+    "categoria": "ato_citado",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "A Resolução Homologatória nº 2.959, de 5 de outubro de 2021, **altera a Resolução Homologatória nº 2.895, de 13 de julho de 2021**【Trecho 13】.  \n\n*(A Resolução nº 2.959/2021 não apresenta situação de revogação, anulação ou suspensão nos trechos consultados.)*",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 3.3
+   },
+   {
+    "id": "Q09",
+    "categoria": "ato_citado",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "A Resolução Homologatória nº 2.852, de 22 de abril de 2021, **altera a Resolução Homologatória nº 2.712, de 30 de junho de 2020**, que homologa o resultado da revisão periódica da Receita Anual Permitida – RAP associada ao Contrato de Concessão nº 006/1997 da Cemig Geração e Transmissão S.A. – Cemig‑GT【Trecho 7】.",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 3.4
+   },
+   {
+    "id": "Q10",
+    "categoria": "ato_citado",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "A Resolução Homologatória nº 2.146, de 27 de setembro de 2016, homologa a revisão tarifária da **Cooperativa de Eletrificação Anita Garibaldi Ltda – Cergal**【Trecho 1】.",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 2.7
+   },
+   {
+    "id": "Q11",
+    "categoria": "fato_com_ato",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "O prazo para a implementação da transferência de controle societário da Companhia Energética Chapecó é de **até 120 (cento e vinte) dias**, contados a partir da data de publicação do Despacho.\n\n- **Documento:** DSP – DESPACHO 2660/2022  \n- **Trecho:** “O prazo para implementação da operação é de até 120 (cento e vinte) dias a contar da data de publicação deste Despacho…”【Trecho 4】.  \n\nA situação do despacho indica que **não consta revogação expressa**.",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 2.2
+   },
+   {
+    "id": "Q12",
+    "categoria": "fato_com_ato",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "Não encontrei informação suficiente nos documentos disponíveis. (Os trechos apresentam apenas a metodologia para cálculo da multa – percentual sobre o investimento e valor mínimo – e o valor do investimento declarado (R$ 255.884.270,00), mas não especificam o valor efetivamente aplicado.)",
+    "recusou": true,
+    "termos_ok": true,
+    "citou_correto": false,
+    "segundos": 2.1
+   },
+   {
+    "id": "Q13",
+    "categoria": "fato_com_ato",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "O Despacho nº 3.501, de 2021, homologou um empréstimo no valor de **R$ 5 821 551,62** (cinco milhões, oitocentos e vinte‑e‑um mil, quinhentos e cinquenta‑e‑um reais e sessenta e dois centavos) ao Fundo da Reserva Global de Reversão (RGR) para a Companhia de Eletricidade do Amapá – CEA【Trecho 3】.  \n\n*Documento:* **DSP – DESPACHO 3501/2021** (situação: não consta revogação expressa).",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 3.0
+   },
+   {
+    "id": "Q14",
+    "categoria": "fato_com_ato",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "Cada uma das onze unidades geradoras da EOL Ventos de Santa Edwiges tem potência de **2.700 kW** (2,7 MW) por unidade【Trecho 3】.  \n\n*Documento:* **DSP – DESPACHO 1321/2016** – situação “NÃO CONSTA REVOGAÇÃO EXPRESSA”.",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 2.5
+   },
+   {
+    "id": "Q15",
+    "categoria": "fato_com_ato",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "A capacidade da unidade geradora **UG6** liberada pelo Despacho nº 477, de 2021, é **4.200 kW** de capacidade instalada【DSP - DESPACHO 477/2021 [Trecho 2]】.  \n\n*Situação do documento: não consta revogação expressa.*",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 2.5
+   },
+   {
+    "id": "Q16",
+    "categoria": "fato_com_ato",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "A capacidade total liberada foi **6.600 kW** (2.200 kW em cada uma das três unidades UG4, UG5 e UG6, totalizando 6.600 kW).  \n\n- **Documento:** DSP – DESPACHO 2592/2016  \n- **Trecho:** “...liberar as unidades geradoras UG4 a UG6, de 2.200 kW cada uma, totalizando 6.600 kW de capacidade instalada...”【Trecho 2】.  \n\nO despacho encontra‑se sem registro de revogação.",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 3.3
+   },
+   {
+    "id": "Q17",
+    "categoria": "fato_com_ato",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "A capacidade total liberada foi **55 000 kW** (55 MW) – resultante da soma das unidades UG1 (31 766 kW) e UG2 (23 234 kW) 【DSP - DESPACHO 2159/2022 [Trecho 2]】.  \n\n*O documento não apresenta indicação de revogação, anulação ou suspensão.*",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 2.9
+   },
+   {
+    "id": "Q18",
+    "categoria": "fato_com_ato",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "A UFV RES Russas IX tem **24.000 kW de potência instalada** no Despacho nº 2.464/2016【Trecho 3】.  \n\n*Documento:* **DSP – DESPACHO 2464/2016** – situação “NÃO CONSTA REVOGAÇÃO EXPRESSA”.",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 2.2
+   },
+   {
+    "id": "Q19",
+    "categoria": "fato_com_ato",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "Não encontrei informação suficiente nos documentos disponíveis.",
+    "recusou": true,
+    "termos_ok": false,
+    "citou_correto": false,
+    "segundos": 3.2
+   },
+   {
+    "id": "Q20",
+    "categoria": "fato_com_ato",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "Não encontrei informação suficiente nos documentos disponíveis.",
+    "recusou": true,
+    "termos_ok": false,
+    "citou_correto": false,
+    "segundos": 3.2
+   },
+   {
+    "id": "Q21",
+    "categoria": "fato_com_ato",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "O Despacho nº 4.042, de 16 de dezembro de 2021, renovou a validade do registro da Central Geradora Eólica – EOL Delta 9 I **até 24 de dezembro de 2022**【DSP - DESPACHO 4042/2021 [Trecho 2]】.  \n\n*Situação do documento: não consta revogação expressa.*",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 3.1
+   },
+   {
+    "id": "Q22",
+    "categoria": "fato_com_ato",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "O Despacho nº 2.891 (2021) indeferiu o **pleito de reconhecimento de excludente de responsabilidade pelo atraso das obras de implantação da PCH Ponte Branca**【DSP - DESPACHO 3364/2022 | Trecho 14】.  \n\n*Obs.: o trecho indica que a Diretoria colegiada da ANEEL acatou integralmente a recomendação das áreas técnicas para indeferir esse pleito, conforme o Despacho nº 2.891.*",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": false,
+    "segundos": 3.4
+   },
+   {
+    "id": "Q23",
+    "categoria": "fato_sem_ato",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "Não encontrei informação suficiente nos documentos disponíveis.",
+    "recusou": true,
+    "termos_ok": false,
+    "citou_correto": false,
+    "segundos": 3.1
+   },
+   {
+    "id": "Q24",
+    "categoria": "fato_sem_ato",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "A Central Geradora Eólica Ventos de São Zacarias 06 está localizada no **município de Simões**, no estado do Piauí【Trecho 8】.  \n\n*(Documento: REA – RESOLUÇÃO AUTORIZATIVA 11617/2022 – situação “NÃO CONSTA REVOGAÇÃO EXPRESSA”.)*",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 3.1
+   },
+   {
+    "id": "Q25",
+    "categoria": "fato_sem_ato",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "A Central Geradora Eólica **Assuruá 4 IV** está localizada no **município de Gentio do Ouro**, no estado da Bahia【Trecho 10】 (RESOLUÇÃO AUTORIZATIVA Nº 10.358/2021 – “Autoriza a Omega Desenvolvimento de Energia 6 S.A. a implantar e explorar a Central Geradora Eólica Assuruá 4 IV, … localizada no município de Gentio do Ouro, no estado da Bahia”).  \n\n*Situação do documento:* não consta revogação expressa.",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 3.3
+   },
+   {
+    "id": "Q26",
+    "categoria": "fato_sem_ato",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "A Central Geradora Fotovoltaica **Humaita Solar III** está localizada no **município de Juazeiro, Estado da Bahia**【Trecho 1】 (RESOLUÇÃO AUTORIZATIVA 13034/2022 – situação: não consta revogação expressa).",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 2.7
+   },
+   {
+    "id": "Q27",
+    "categoria": "fato_sem_ato",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "A autorização da Central Geradora Eólica Oeste Seridó IX foi transferida para a **Central Geradora Eólica Seridó IX S.A.**  \n\n- **Documento:** REA – RESOLUÇÃO AUTORIZATIVA 12041/2022  \n- **Trechos:** Trecho 4 (lista de transferências … Seridó IX S.A.) e Trecho 10 (confirma a transferência da titularidade da Seridó IX para Central Geradora Eólica Seridó IX S.A.).  \n\n*Situação do documento:* não consta revogação expressa.",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 3.4
+   },
+   {
+    "id": "Q28",
+    "categoria": "fato_sem_ato",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "Não encontrei informação suficiente nos documentos disponíveis.",
+    "recusou": true,
+    "termos_ok": false,
+    "citou_correto": false,
+    "segundos": 15.8
+   },
+   {
+    "id": "Q29",
+    "categoria": "fato_sem_ato",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "A autorização da PCH Salto Forqueta foi transferida para a **Cooperativa de Distribuição de Energia Teutônia – Certel Energia** (também referida como Cooperativa Regional de Desenvolvimento Teutônia – Certel).  \n\n- **REA – RESOLUÇÃO AUTORIZATIVA 5789/2016**, assunto da transferência – Trecho 2.  \n- **REA – RESOLUÇÃO AUTORIZATIVA 12308/2022**, que descreve a transferência final para a Certel Energia – Trecho 9.  \n- **REA – RESOLUÇÃO AUTORIZATIVA 12308/2022**, que trata da solicitação de transferência da Cooperativa de Distribuição de Energia Teutônia – Certel Energia – Trecho 12.  \n\n*Observação:* Todos os documentos citados constam como “Situação: NÃO CONSTA REVOGAÇÃO EXPRESSA”, portanto permanecem vigentes.",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 3.1
+   },
+   {
+    "id": "Q30",
+    "categoria": "fato_sem_ato",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "A UFV Nutrata está localizada no **município de Xaxim, estado de Santa Catarina**【Trecho 2】. (O despacho não apresenta situação de revogação, anulação ou suspensão.)",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 2.5
+   },
+   {
+    "id": "Q31",
+    "categoria": "fato_sem_ato",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "A UFV Solar Salgueiro III está localizada no **município de Terra Nova, estado de Pernambuco**【REA - RESOLUÇÃO AUTORIZATIVA 9658/2021 – Trecho 1】.",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 2.8
+   },
+   {
+    "id": "Q32",
+    "categoria": "fato_sem_ato",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "A EOL Serrote I está localizada **no município de Trairi, estado do Ceará**【DSP - DESPACHO 041/2021 [Trecho 2]】.  \n\n*Observação:* o documento não apresenta indicação de revogação, anulação ou suspensão.",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 2.5
+   },
+   {
+    "id": "Q33",
+    "categoria": "fato_sem_ato",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "A Central Geradora Eólica Ventos de São Vitor 12 está localizada no **município de Xique‑Xique, Estado da Bahia**【Trecho 9】.  \n\n*Documento:* **PORTARIA 482/2021** – situação “NÃO CONSTA REVOGAÇÃO EXPRESSA”.",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 2.5
+   },
+   {
+    "id": "Q34",
+    "categoria": "fato_sem_ato",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "A empresa titular da Central Geradora Fotovoltaica **Morro Preto 9** é a **Solatio Energy Gestão de Projetos Solares Ltda.**【Trecho 3】 da **PORTARIA Nº 1.787/SPE/MME, de 17 de novembro de 2022** (situação: NÃO CONSTA REVOGAÇÃO EXPRESSA).",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 10.0
+   },
+   {
+    "id": "Q35",
+    "categoria": "fato_sem_ato",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "O CNPJ da empresa **Ventos de Santa Tereza 14 Energias Renováveis S.A.** é **36.957.804/0001‑20**.\n\n- **PORTARIA 612/2021 – Art. 1º** (aprovação do projeto) – Trecho 3.  \n- **PORTARIA 548/2021 – Caput** (enquadramento no REIDI) – Trecho 18.  \n\n*Observação:* Ambos os documentos constam como “NÃO CONSTA REVOGAÇÃO EXPRESSA”, portanto permanecem vigentes.",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 13.1
+   },
+   {
+    "id": "Q36",
+    "categoria": "fato_sem_ato",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "O CNPJ da **Delta Fund V Comercializadora de Energia S.A.** é **40.594.268/0001-13**【Trecho 3】 (DSP – DESPACHO 2089/2021 – situação: não consta revogação expressa).",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 2.9
+   },
+   {
+    "id": "Q37",
+    "categoria": "fato_sem_ato",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "As usinas fotovoltaicas da **Vila Energia Renovável Ltda.** estão localizadas no **município de Bom Jesus da Lapa, Estado da Bahia**.\n\n- **DESPACHO 1569/2021** – “localizadas no município de Bom Jesus da Lapa, estado da Bahia, em favor da empresa Vila Energia Renovável Ltda.”【Trecho 2】  \n- **DESPACHO 1717/2021** – “localizadas no município de Bom Jesus da Lapa, estado da Bahia, em favor da empresa Vila Energia Renovável Ltda.”【Trecho 8】  \n- **DESPACHO 2435/2021** – “localizadas no município de Bom Jesus da Lapa, no estado da Bahia, em favor da empresa Vila Energia Renovável Ltda.”【Trecho 13】\n\nNenhum dos documentos apresenta situação de revogação, anulação ou suspensão.",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 9.0
+   },
+   {
+    "id": "Q38",
+    "categoria": "fato_sem_ato",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "A área da derivação da Linha de Distribuição 138 kV CGR – UHE MIM foi declarada de utilidade pública **em favor da Energisa Mato Grosso do Sul – Distribuidora de Energia S.A.**【REA - RESOLUÇÃO AUTORIZATIVA 10932/2021 [Trecho 2]】【REA - RESOLUÇÃO AUTORIZATIVA 10932/2021 [Trecho 12]】.  \n\n*Observação:* o documento não apresenta indicação de revogação, anulação, suspensão ou outra perda de vigência.",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 2.7
+   },
+   {
+    "id": "Q39",
+    "categoria": "fato_sem_ato",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "A área da Linha de Distribuição 69 kV Pacatuba – Distrito Industrial de Fortaleza 02P2 foi declarada de utilidade pública **em favor da Enel Distribuição Ceará**【Trecho 2】.",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 10.1
+   },
+   {
+    "id": "Q40",
+    "categoria": "fato_sem_ato",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "O número do Contrato de Permissão de Distribuição da Cooperluz é **32/2010**【REH - RESOLUÇÃO HOMOLOGATÓRIA 2093/2016 [Trecho 4]】. (O mesmo número também consta em 【REH - RESOLUÇÃO HOMOLOGATÓRIA 2093/2016 [Trecho 2]】).  \n\n*Situação do documento: não consta revogação expressa.*",
+    "recusou": false,
+    "termos_ok": false,
+    "citou_correto": true,
+    "segundos": 22.1
+   },
+   {
+    "id": "Q41",
+    "categoria": "revogado",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "A Resolução nº 436, de 25 de abril de 2016, da Agência Nacional de Águas (ANA) estabelecia que:\n\n* O titular de concessões ou autorizações de empreendimentos hidrelétricos em operação comercial em cursos d’água de domínio da União, que **não possuísse outorga de direito de uso de recursos hídricos emitida pela ANA** e cujas concessões ou autorizações tivessem sido emitidas até a edição da Resolução ANA nº 131/2003, deveria, além de atender ao disposto no § 3º do Art. 2º da Resolução Conjunta ANA/ANEEL nº 1305/2015, **solicitar à ANA a outorga de direito de uso de recursos hídricos** conforme o cronograma previsto no caput do referido artigo【Trecho 2】【Trecho 3】.  \n\n* O parágrafo único excluía do caput os empreendimentos enquadrados no Art. 4º da Resolução Conjunta nº 1305/2015, que deveriam observar os prazos específicos estabelecidos nesse artigo【Trecho 4】.  \n\n* A resolução entrava em vigor na data de sua publicação【Trecho 4】.  \n\n**Situação atual:** a Resolução nº 436/2016 foi **revogada** pela Resolução ANA nº 1.047, de 5 de setembro de 2016【Trecho 5】.  \n\n*Fonte:* RESOLUÇÃO OUTRAS 436/2016 – trechos citados acima (situação: **REVOGADA**).",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 27.4
+   },
+   {
+    "id": "Q42",
+    "categoria": "revogado",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "A Resolução Autorizativa nº 10.230/2021 estabeleceu os limites de **DEC** e **FEC** da Energisa Nova Friburgo para o período **2022 a 2026**【Trecho 5】.  \n\nEssa informação também consta na descrição do assunto da própria resolução, que indica a definição dos limites para o período de 2022 a 2026【Trecho 7】.  \n\n**Observação:** a REA 10230/2021 encontra‑se com situação **REVOGADA**.",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 3.4
+   },
+   {
+    "id": "Q43",
+    "categoria": "revogado",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "A empresa **Paranaíba I Projetos de Energia Solar Ltda.** foi a titular da Central Geradora Fotovoltaica Paranaíba 10, conforme autorizado na Portaria Nº 919/2021.\n\n- **Portaria 919/2021 – Art. 1º**: “aprovar o enquadramento … da Central Geradora Fotovoltaica denominada Paranaíba 10 … de titularidade da empresa **Paranaíba I Projetos de Energia Solar Ltda.**, inscrita no CNPJ 32.267.709/0001‑44”【Trecho 3】.  \n\nA Portaria não apresenta indicação de revogação, anulação ou suspensão.",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 14.3
+   },
+   {
+    "id": "Q44",
+    "categoria": "revogado",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "A empresa autorizada a implantar e explorar a Central Geradora Fotovoltaica **Celeo Barreiras II** foi a **Celeo Redes Brasil S.A.**  \n\n- **Documento:** DSP – DESPACHO 1221/2022  \n- **Trecho:** “as Resoluções Autorizativas listadas no Quadro 1 autorizaram a **Celeo Redes Brasil S.A.** a implantar e explorar as Centrais Geradoras Fotovoltaicas (UFV) Celeo Barreiras I a X” (Trecho 7).  \n\n*Situação do documento:* Não consta revogação expressa.",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": false,
+    "segundos": 5.9
+   },
+   {
+    "id": "Q45",
+    "categoria": "revogado",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "A servidora **Andréia Dal Pizzol**, matrícula nº 1964525, foi designada gestora do Contrato nº 24/2022‑ANEEL (Processo nº 48500.000600/2022‑87)【PRT - PORTARIA 365/2022 [Trecho 9]】.\n\n**Observação:** A Portaria 365/2022 que contém essa designação encontra‑se **revogada**【PRT - PORTARIA 365/2022 [Trecho 6]】.",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 8.5
+   },
+   {
+    "id": "Q46",
+    "categoria": "revogado",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "Não encontrei informação suficiente nos documentos disponíveis.",
+    "recusou": true,
+    "termos_ok": false,
+    "citou_correto": false,
+    "segundos": 17.5
+   },
+   {
+    "id": "Q47",
+    "categoria": "ato_inexistente",
+    "deve_recusar": true,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "Não encontrei informação suficiente nos documentos disponíveis.",
+    "recusou": true,
+    "termos_ok": null,
+    "citou_correto": null,
+    "segundos": 2.6
+   },
+   {
+    "id": "Q48",
+    "categoria": "ato_inexistente",
+    "deve_recusar": true,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "Não encontrei informação suficiente nos documentos disponíveis.",
+    "recusou": true,
+    "termos_ok": null,
+    "citou_correto": null,
+    "segundos": 3.5
+   },
+   {
+    "id": "Q49",
+    "categoria": "fora_do_periodo",
+    "deve_recusar": true,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "Não encontrei informação suficiente nos documentos disponíveis.",
+    "recusou": true,
+    "termos_ok": null,
+    "citou_correto": null,
+    "segundos": 2.7
+   },
+   {
+    "id": "Q50",
+    "categoria": "fora_do_periodo",
+    "deve_recusar": true,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "Não encontrei informação suficiente nos documentos disponíveis.",
+    "recusou": true,
+    "termos_ok": null,
+    "citou_correto": null,
+    "segundos": 2.6
+   },
+   {
+    "id": "Q51",
+    "categoria": "fora_do_periodo",
+    "deve_recusar": true,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "Não encontrei informação suficiente nos documentos disponíveis.",
+    "recusou": true,
+    "termos_ok": null,
+    "citou_correto": null,
+    "segundos": 2.2
+   },
+   {
+    "id": "Q52",
+    "categoria": "fora_do_periodo",
+    "deve_recusar": true,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "Não encontrei informação suficiente nos documentos disponíveis.",
+    "recusou": true,
+    "termos_ok": null,
+    "citou_correto": null,
+    "segundos": 3.1
+   },
+   {
+    "id": "Q53",
+    "categoria": "fora_do_dominio",
+    "deve_recusar": true,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "Não encontrei informação suficiente nos documentos disponíveis.",
+    "recusou": true,
+    "termos_ok": null,
+    "citou_correto": null,
+    "segundos": 1.6
+   },
+   {
+    "id": "Q54",
+    "categoria": "fora_do_dominio",
+    "deve_recusar": true,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "Não encontrei informação suficiente nos documentos disponíveis.",
+    "recusou": true,
+    "termos_ok": null,
+    "citou_correto": null,
+    "segundos": 1.8
+   },
+   {
+    "id": "Q55",
+    "categoria": "dado_ausente",
+    "deve_recusar": true,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "Não encontrei informação suficiente nos documentos disponíveis.",
+    "recusou": true,
+    "termos_ok": null,
+    "citou_correto": null,
+    "segundos": 2.5
+   },
+   {
+    "id": "Q56",
+    "categoria": "dado_ausente",
+    "deve_recusar": true,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "Não encontrei informação suficiente nos documentos disponíveis.",
+    "recusou": true,
+    "termos_ok": null,
+    "citou_correto": null,
+    "segundos": 3.2
+   },
+   {
+    "id": "Q057",
+    "categoria": "norma_citada",
+    "deve_recusar": false,
+    "llm": "groq_20b/openai/gpt-oss-20b",
+    "resposta": "A Resolução Normativa nº 1.009, de 22 de março de 2022, estabelece as regras atinentes à contratação de energia pelos agentes nos ambientes de contratação regulado e livre.  \n\n*Fonte:* REN – RESOLUÇÃO NORMATIVA 1009/2022 [Trecho 1] – situação: NÃO CONSTA REVOGAÇÃO EXPRESSA.",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 3.3
+   },
+   {
+    "id": "Q058",
+    "categoria": "norma_citada",
+    "deve_recusar": false,
+    "llm": "groq_20b/openai/gpt-oss-20b",
+    "resposta": "A Resolução Normativa ANEEL nº 959, de 7 de dezembro de 2021, dispõe sobre os procedimentos técnicos e contábeis para a transferência dos ativos de iluminação pública registrados no Ativo Imobilizado em Serviço (AIS) das concessionárias e permissionárias de serviço público de distribuição de energia elétrica aos municípios e ao Distrito Federal.  \nAlém disso, revoga o art. 218 da Resolução Normativa nº 414/2010 e as Resoluções Normativas nº 480/2012 e nº 587/2013.  \n\n**Citações**  \n- Trecho 4: “Art. 1º Esta Resolução Normativa dispõe sobre os procedimentos técnicos e contábeis para a transferência aos Municípios e ao Distrito Federal dos ativos de iluminação pública registrados no Ativo Imobilizado em Serviço – AIS…”  \n- Trecho 5: Definição de AIS.  \n- Trecho 6: “Ficam revogados: I – o art. 218 da Resolução Normativa ANEEL nº 414, de 9 de setembro de 2010; II – a Resolução Normativa ANEEL nº 480, de 3 de abril de 2012; III – a Resolução Normativa ANEEL nº 587, de 10 de dezembro de 2013.”  \n\nA resolução entrou em vigor em 3 de janeiro de 2022 e não apresenta revogação expressa.",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 3.2
+   },
+   {
+    "id": "Q059",
+    "categoria": "norma_citada",
+    "deve_recusar": false,
+    "llm": "groq_20b/openai/gpt-oss-20b",
+    "resposta": "A Resolução Normativa nº 1.044, de 27 de setembro de 2022, **estabelece os procedimentos para compartilhamento de infraestrutura de concessionárias e permissionárias de energia elétrica** e revoga as Resoluções Normativas nº 375 (de 25 de agosto de 2009) e nº 797 (de 12 de dezembro de 2017).  \n\n*Documento citado:* **REN - RESOLUÇÃO NORMATIVA 1044/2022 [Trecho 22]**.  \nA resolução não está revogada; sua situação é “NÃO CONSTA REVOGAÇÃO EXPRESSA”.",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 3.8
+   },
+   {
+    "id": "Q060",
+    "categoria": "norma_citada",
+    "deve_recusar": false,
+    "llm": "groq_20b/openai/gpt-oss-20b",
+    "resposta": "A Resolução Normativa nº 954, de 30 de novembro de 2021, estabelece tratamento regulatório para a implantação de **Central Geradora Híbrida (UGH) e centrais geradoras associadas**.  \n\n- REN - RESOLUÇÃO NORMATIVA 954/2021 [Trecho 5]  \n- REN - RESOLUÇÃO NORMATIVA 954/2021 [Trecho 6]",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 3.5
+   },
+   {
+    "id": "Q061",
+    "categoria": "norma_citada",
+    "deve_recusar": false,
+    "llm": "groq_20b/openai/gpt-oss-20b",
+    "resposta": "A Resolução Normativa nº 1.048, de 22 de novembro de 2022, incorpora a **Lei nº 14.299, de 5 de janeiro de 2022** aos Procedimentos de Regulação Tarifária (PRORET).  \n\n- **Fonte:** REN – RESOLUÇÃO NORMATIVA 1048/2022 – Art. 1º, que dispõe sobre a regulação da Lei nº 14.299/2022 [Trecho 3].  \n- **Fonte adicional:** REN – RESOLUÇÃO NORMATIVA 1048/2022 – Anexo Submódulo 7.3, que cita a Lei 14.299 [Trecho 2].  \n\nA resolução está em vigor desde a sua publicação (22 de novembro de 2022) e não apresenta revogação expressa.",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 3.4
+   },
+   {
+    "id": "Q062",
+    "categoria": "norma_citada",
+    "deve_recusar": false,
+    "llm": "groq_20b/openai/gpt-oss-20b",
+    "resposta": "A Resolução Normativa nº 1.000, de 7 de dezembro de 2021, **consolida as Regras de Prestação do Serviço Público de Distribuição de Energia Elétrica**.  \nEntre os pontos estabelecidos, a norma:\n\n* **Define os procedimentos para a instrução de processos de defeito na medição e de irregularidade** (art. 257 e art. 598, que são incorporados ao art. 668 da REN 1000) – garantindo ao consumidor o direito ao contraditório e à ampla defesa na apuração de débitos (Trecho 12).  \n* **Estabelece o direito do consumidor à informação** sobre esses processos, assegurando que ele possa solicitar e receber as informações pertinentes (Trecho 16).  \n\nEsses dispositivos foram posteriormente alterados pela Resolução Normativa nº 1.025, de 5 de julho de 2022, mas a REN 1000 permanece em vigor (não há revogação expressa).  \n\n**Referências**  \n- REN – RESOLUÇÃO NORMATIVA 1000/2021 (Trecho 9)  \n- REN – RESOLUÇÃO NORMATIVA 1000/2021 (Trecho 12)  \n- REN – RESOLUÇÃO NORMATIVA 1000/2021 (Trecho 16)",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": false,
+    "segundos": 3.8
+   },
+   {
+    "id": "Q063",
+    "categoria": "norma_citada",
+    "deve_recusar": false,
+    "llm": "groq_20b/openai/gpt-oss-20b",
+    "resposta": "A Resolução Normativa ANEEL nº **414/2010** foi revogada pela Resolução Normativa nº 1.000, de 2021.  \n*Fonte: DSP – DESPACHO 013/2022 [Trecho 15] e [Trecho 16]*.",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": false,
+    "segundos": 4.4
+   },
+   {
+    "id": "Q064",
+    "categoria": "norma_citada",
+    "deve_recusar": false,
+    "llm": "groq_20b/openai/gpt-oss-20b",
+    "resposta": "Os submódulos do PRORET que foram atualizados pela Resolução Normativa 1.022/2022 são:\n\n- **Submódulo 9.1 – Revisão Periódica das Receitas das Concessionárias Existentes** (versão 4.1, vigência a partir de 01/07/2022) – *Trecho 14* e *Trecho 16*  \n- **Submódulo 9.2 – Revisão Periódica das Receitas das Concessionárias Licitadas** (versão 4.1, vigência a partir de 01/07/2022) – *Trecho 15* e *Trecho 16*  \n\nNão há indicação de revogação ou perda de vigência desses submódulos nos trechos disponíveis.",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 4.5
+   },
+   {
+    "id": "Q065",
+    "categoria": "norma_citada",
+    "deve_recusar": false,
+    "llm": "groq_20b/openai/gpt-oss-20b",
+    "resposta": "A Resolução Normativa nº 731, de 23 de agosto de 2016, **define a metodologia de cálculo da depreciação acumulada das usinas de geração hidrelétrica e termelétrica de energia elétrica, excetuada a aplicada aos investimentos no projeto básico, para fins de indenização ou reconhecimento na base tarifária**.  \n\n*Fonte: REN – RESOLUÇÃO NORMATIVA 731/2016 [Trecho 1]*.  \n\nA resolução ainda está em vigor (não há revogação expressa).",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 3.0
+   },
+   {
+    "id": "Q066",
+    "categoria": "norma_citada",
+    "deve_recusar": false,
+    "llm": "groq_20b/openai/gpt-oss-20b",
+    "resposta": "Módulo 1 dos Procedimentos de Distribuição de Energia Elétrica (PRODIST) é o **Anexo I – Glossário de Termos Técnicos do PRODIST**.  \n*Fonte: REN – RESOLUÇÃO NORMATIVA 956/2021 – Art. 1º, § 1º (Trecho 13) e Anexo I (Trecho 14).*",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 3.6
+   },
+   {
+    "id": "Q067",
+    "categoria": "norma_citada",
+    "deve_recusar": false,
+    "llm": "groq_20b/openai/gpt-oss-20b",
+    "resposta": "A Resolução Normativa nº 1.039, de 23 de agosto de 2022, revoga o **artigo 33** da Resolução Normativa nº 1.033, de 26 de julho de 2022.  \n\n- REN - RESOLUÇÃO NORMATIVA 1039/2022 [Trecho 5]  \n- REN - RESOLUÇÃO NORMATIVA 1039/2022 [Trecho 2]",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 2.9
+   },
+   {
+    "id": "Q068",
+    "categoria": "norma_citada",
+    "deve_recusar": false,
+    "llm": "groq_20b/openai/gpt-oss-20b",
+    "resposta": "**O que estabelece a Resolução Normativa nº 1.034, de 2022?**  \n\n- **Estabelece prazos e condições para a sazonalização e modulação da garantia física de usinas de geração de energia elétrica** e, especificamente, para a sazonalização da energia vinculada à Usina Hidrelétrica – UHE Itaipu.  \n  - *Fonte: REN – RESOLUÇÃO NORMATIVA 1034/2022 [Trecho 1]*  \n\n- **Revoga** expressamente a Resolução Normativa nº 899/2020 (arts. 1º e 2º), a Resolução Normativa nº 638/2014 e a Resolução Normativa nº 584/2013.  \n  - *Fonte: REN – RESOLUÇÃO NORMATIVA 1034/2022 [Trecho 6]*  \n\n- **Entra em vigor em 1º de setembro de 2022.**  \n  - *Fonte: REN – RESOLUÇÃO NORMATIVA 1034/2022 [Trecho 7]*  \n\nNão há indicação de revogação, anulação ou suspensão da própria Resolução nº 1.034/2022.",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 3.3
+   },
+   {
+    "id": "Q069",
+    "categoria": "norma_citada",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "A Resolução Normativa nº 917/2021 regulamenta o **Cadastro de Inadimplentes com Obrigações Intrassetoriais**【Trecho 3】.  \n\n(Documento: **REN – RESOLUÇÃO NORMATIVA 917/2021**, situação “NÃO CONSTA REVOGAÇÃO EXPRESSA”).",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 26.3
+   },
+   {
+    "id": "Q070",
+    "categoria": "norma_citada",
+    "deve_recusar": false,
+    "llm": "groq_20b/openai/gpt-oss-20b",
+    "resposta": "A Resolução Normativa nº 916, de 23 de fevereiro de 2021, **estabelece as condições gerais para a incorporação das Demais Instalações de Transmissão – DIT no Ativo Imobilizado das concessionárias do serviço público de distribuição de energia elétrica** e revoga as Resoluções Normativas nº 758 (7 de fevereiro de 2017), nº 781 (22 de agosto de 2017) e nº 810 (17 de abril de 2018).  \n\n*Fonte: REN - RESOLUÇÃO NORMATIVA 916/2021 [Trecho 8]*",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 3.9
+   },
+   {
+    "id": "Q071",
+    "categoria": "norma_citada",
+    "deve_recusar": false,
+    "llm": "groq_20b/openai/gpt-oss-20b",
+    "resposta": "A Resolução Normativa nº 1.003, de 1º de fevereiro de 2022, **aprova a estrutura e os Submódulos dos Procedimentos de Regulação Tarifária – PRORET** e **consolida a regulamentação acerca dos processos tarifários aplicáveis a concessionárias e permissionários de serviços públicos de distribuição, transmissão e geração de energia elétrica**. Ela também **revoga as Resoluções Normativas nº 435 (24 de maio de 2011), nº 457 (8 de novembro de 2011) e nº 478 (3 de abril de 2012)**, além de estabelecer outras providências.  \n\n*Fonte: REN – RESOLUÇÃO NORMATIVA 1003/2022 [Trecho 2]*.",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 3.8
+   },
+   {
+    "id": "Q072",
+    "categoria": "norma_citada",
+    "deve_recusar": false,
+    "llm": "groq_20b/openai/gpt-oss-20b",
+    "resposta": "A Resolução Normativa nº 1.012, de 29 de março de 2022, **aprova a estrutura e os Submódulos dos Procedimentos de Comercialização** e dá outras providências.  \n*Fonte: REN – RESOLUÇÃO NORMATIVA 1012/2022 [Trecho 1]*",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 3.1
+   },
+   {
+    "id": "Q073",
+    "categoria": "norma_citada",
+    "deve_recusar": false,
+    "llm": "groq_20b/openai/gpt-oss-20b",
+    "resposta": "O programa consolidado pela Resolução Normativa nº 1.030, de 26 de julho de 2022, é o **Programa de Resposta da Demanda** (Demand‑Response Program).  \n\nReferência: REN – RESOLUÇÃO NORMATIVA 1040/2022, Art. 3º – “Este Título estabelece os critérios e as condições do programa estrutural de Resposta da Demanda, que vigorará a partir de 1º de outubro de 2022.” (Trecho 4)",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": false,
+    "segundos": 4.7
+   },
+   {
+    "id": "Q074",
+    "categoria": "norma_citada",
+    "deve_recusar": false,
+    "llm": "groq_20b/openai/gpt-oss-20b",
+    "resposta": "O programa é o **Programa de Pesquisa, Desenvolvimento e Inovação (PROPDI)**.  \n- REN - RESOLUÇÃO NORMATIVA 1045/2022 [Trecho 13]  \n- REN - RESOLUÇÃO NORMATIVA 1045/2022 [Trecho 15]",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 13.6
+   },
+   {
+    "id": "Q075",
+    "categoria": "revogado",
+    "deve_recusar": false,
+    "llm": "groq_20b/openai/gpt-oss-20b",
+    "resposta": "A Resolução Normativa nº 748, de 29 de novembro de 2016, dispõe sobre os termos e condições para a prestação do serviço público de distribuição de energia elétrica por uma **Distribuidora Designada**, nos termos do art. 9º da Lei 12.783/2013 e da Portaria MME 388/2016, e traz outras providências relativas a esse regime.  \n\n**Documento citado:** REN - RESOLUÇÃO NORMATIVA 748/2016 [Trecho 1] (Situação: REVOGADA).",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 3.1
+   },
+   {
+    "id": "Q076",
+    "categoria": "revogado",
+    "deve_recusar": false,
+    "llm": "groq_20b/openai/gpt-oss-20b",
+    "resposta": "A Resolução Normativa nº 947, de 2021, altera a **Resolução Normativa nº 614, de 3 de junho de 2014** (REN – RESOLUÇÃO NORMATIVA 947/2021 [Trecho 1]).  \n\nObs.: A própria Resolução nº 947/2021 está revogada (Situação: REVOGADA).",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 3.8
+   },
+   {
+    "id": "Q077",
+    "categoria": "revogado",
+    "deve_recusar": false,
+    "llm": "groq_20b/openai/gpt-oss-20b",
+    "resposta": "O Submódulo 6.8 do PRORET trata das **Bandeiras Tarifárias** (definição, aplicação e regras de uso das bandeiras verde, amarela e vermelha).  \n\n> **REN - RESOLUÇÃO NORMATIVA 700/2016** [Trecho 1]  \n> “Aprova a versão 1.3 do Submódulo 6.8 dos Procedimentos de Regulação Tarifária – PRORET, que trata das Bandeiras Tarifárias.”  \n\n> **Situação:** REVOGADA.",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 3.5
+   },
+   {
+    "id": "Q078",
+    "categoria": "revogado",
+    "deve_recusar": false,
+    "llm": "groq_20b/openai/gpt-oss-20b",
+    "resposta": "**Procedimentos alterados pela Resolução Normativa nº 718, de 2016**\n\n- Os procedimentos relativos ao **Sistema de Medição para Faturamento (SMF)**, aplicáveis a unidades consumidoras e a centrais geradoras conectadas a distribuidoras.  \n\n> *Fonte:* REN – RESOLUÇÃO NORMATIVA 718/2016 [Trecho 1] e [Trecho 2].\n\n> **Situação:** A resolução foi **revogada** (Situação: REVOGADA).",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 14.1
+   },
+   {
+    "id": "Q079",
+    "categoria": "revogado",
+    "deve_recusar": false,
+    "llm": "groq_20b/openai/gpt-oss-20b",
+    "resposta": "O objetivo da Resolução Normativa nº 928, de 2021, era “estabelecer medidas excepcionais e temporárias de enfrentamento da pandemia do Covid‑19, com destaque para ações que protegem os consumidores mais vulneráveis, tais como a proibição da suspensão do fornecimento dos consumidores de baixa renda por inadimplência, e da ação de repercussão cadastral de cancelamento da Tarifa Social de Energia Elétrica” (REN – RESOLUÇÃO NORMATIVA 928/2021 [Trecho 14]).\n\n> **Situação**: REVOGADA.",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 3.8
+   },
+   {
+    "id": "Q080",
+    "categoria": "revogado",
+    "deve_recusar": false,
+    "llm": "groq_20b/openai/gpt-oss-20b",
+    "resposta": "A Resolução Normativa nº 1.043, de 19 de setembro de 2022, **altera o Regimento Interno da ANEEL** aprovado pela Portaria MME nº 349, de 28 de novembro de 1997, acrescentando os §§ 1º e 2º ao Art. 14‑D do Regimento Interno, que detalham as competências da Secretaria Executiva de Leilões (SEL) – entre elas a elaboração de minutas de editais, análise de contribuições, gestão de garantias de proposta e aplicação de penalidades.  \n\n> **Situação**: a resolução foi **revogada** (REN - RESOLUÇÃO NORMATIVA 1043/2022 [Trecho 1]).  \n> **Alteração**: acrescenta §§ 1º e 2º ao Art. 14‑D (REN - RESOLUÇÃO NORMATIVA 1043/2022 [Trecho 3] e [Trecho 4]).",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 3.1
+   },
+   {
+    "id": "Q081",
+    "categoria": "revogado",
+    "deve_recusar": false,
+    "llm": "groq_20b/openai/gpt-oss-20b",
+    "resposta": "A Resolução Normativa nº 960, de 14 de dezembro de 2021, aprovou as **Regras de Comercialização de Energia Elétrica aplicáveis ao Sistema de Contabilização e Liquidação – SCL**.  \n\n*Documento:* REN - RESOLUÇÃO NORMATIVA 960/2021 [Trecho 4] e [Trecho 6].  \n\n*Situação:* Revogada pela REN ANEEL 1.007, de 15 de março de 2022.",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 3.3
+   },
+   {
+    "id": "Q082",
+    "categoria": "revogado",
+    "deve_recusar": false,
+    "llm": "groq_20b/openai/gpt-oss-20b",
+    "resposta": "Os módulos do PRODIST revisados pela Resolução Normativa nº 925, de 2021, são:\n\n- **Módulo 1**  \n- **Módulo 6**  \n- **Módulo 8**  \n\n*Observação:* A Resolução Normativa nº 925/2021 está **revogada** (Situação: REVOGADA).  \nReferência: REN - RESOLUÇÃO NORMATIVA 925/2021 [Trecho 1] e [Trecho 3].",
+    "recusou": false,
+    "termos_ok": false,
+    "citou_correto": true,
+    "segundos": 3.0
+   },
+   {
+    "id": "Q083",
+    "categoria": "revogado",
+    "deve_recusar": false,
+    "llm": "groq_20b/openai/gpt-oss-20b",
+    "resposta": "A potência instalada da PCH Salto Grande, localizada no rio Pirapó, é de **10.000 kW**.  \n\n- DSP - DESPACHO 2424/2021 [Trecho 4]  \n- DSP - DESPACHO 2424/2021 [Trecho 8]",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 2.7
+   },
+   {
+    "id": "Q084",
+    "categoria": "norma_por_tema",
+    "deve_recusar": false,
+    "llm": "groq_20b/openai/gpt-oss-20b",
+    "resposta": "A Resolução Normativa que trata da transferência dos ativos de iluminação pública aos municípios é a **REN – RESOLUÇÃO NORMATIVA 959/2021**.\n\n- **Art. 8º** – “A transferência das instalações de iluminação pública deverá ser efetivada observando os procedimentos estabelecidos nesta Resolução e no Manual de Contabilidade do Setor Elétrico – MCSE.” (Trecho 7)  \n- **Art. 9º** – “A distribuidora deve identificar nos ativos de iluminação pública constantes do AIS, por município, os valores contábeis, o valor da depreciação acumulada e o valor residual contábil.” (Trecho 8)\n\nA resolução está em vigor (não há revogação expressa) e entrou em vigor em 3 de janeiro de 2022 (Trecho 10).",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 2.8
+   },
+   {
+    "id": "Q085",
+    "categoria": "norma_por_tema",
+    "deve_recusar": false,
+    "llm": "groq_20b/openai/gpt-oss-20b",
+    "resposta": "A Resolução Normativa que regula o compartilhamento de infraestrutura das distribuidoras é a **REN nº 797/2017**.  \n\n> **Trecho 4** – “Já a REN nº 797/2017 trata do compartilhamento da infraestrutura das distribuidoras com agentes cessionários do setor elétrico, de telecomunicações, ou de Petróleo e Gás, além da Administração Pública direta ou indireta e demais interessados.”  \n\nA REN 1044/2022 (Trecho 1‑3) consolida os atos normativos sobre o tema, mas a norma original que estabelece as regras de compartilhamento é a REN 797/2017.  \n\nNenhum dos documentos citados apresenta revogação ou perda de vigência.",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 3.8
+   },
+   {
+    "id": "Q086",
+    "categoria": "norma_por_tema",
+    "deve_recusar": false,
+    "llm": "groq_20b/openai/gpt-oss-20b",
+    "resposta": "A Resolução Normativa que regulamenta o cadastro de inadimplentes com obrigações intrassetoriais é a **REN - RESOLUÇÃO NORMATIVA 917/2021**.  \n\n- **Documento**: REN - RESOLUÇÃO NORMATIVA 917/2021  \n- **Trecho**: Art. 1º – “Esta Resolução Normativa estabelece procedimentos relativos ao Cadastro de Inadimplentes com Obrigações Intrassetoriais, bem como disciplina a solicitação e a emissão eletrônica do Certificado de Adimplemento.” (Trecho 2)  \n\nA resolução está em vigor e não apresenta revogação expressa.",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 2.4
+   },
+   {
+    "id": "Q087",
+    "categoria": "regra_atual",
+    "deve_recusar": false,
+    "llm": "groq_20b/openai/gpt-oss-20b",
+    "resposta": "A norma que atualmente estabelece os procedimentos para requerer a Declaração de Utilidade Pública (DUP) de áreas de terra necessárias à implantação de instalações de geração e de transporte de energia elétrica é a **Resolução Normativa ANEEL nº 919, de 23 de fevereiro de 2021**.\n\n> **REN - RESOLUÇÃO NORMATIVA 919/2021 [Trecho 4]**  \n> “Art. 1º Esta Resolução Normativa estabelece os procedimentos gerais para requerimento de Declaração de Utilidade Pública – DUP, de áreas de terra necessárias à implantação de instalações de geração e de Transporte de Energia Elétrica, por concessionários, permissionários e autorizados.”\n\n> **REN - RESOLUÇÃO NORMATIVA 919/2021 [Trecho 5]**  \n> “§ 2º Sobre bens privados, a DUP caracteriza interesse público e fundamenta a intervenção na propriedade, permitindo a instituição de servidão administrativa ou desapropriação.”\n\nA Resolução nº 919 revoga a Resolução Normativa nº 740 (de 11 de outubro de 2016) e permanece em vigor, sem indicação de revogação ou suspensão.",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 3.6
+   },
+   {
+    "id": "Q088",
+    "categoria": "regra_atual",
+    "deve_recusar": false,
+    "llm": "groq_20b/openai/gpt-oss-20b",
+    "resposta": "A Regulação Econômico‑Financeira das concessionárias de energia elétrica é aprovada pela **REN – RESOLUÇÃO NORMATIVA 948/2021** (publicada em 18/11/2021).  \nEsta norma contém os Módulos VII (Avaliação da Qualidade dos Sistemas de Governança) e VIII (Acompanhamento da Eficiência em Relação ao Fornecimento e à Gestão Econômico‑Financeira), entre outros, e não apresenta revogação expressa.  \n\n- **Documento**: REN – RESOLUÇÃO NORMATIVA 948/2021  \n- **Trechos relevantes**:  \n  - [Trecho 1] – Art. 7º e parágrafo único, que tratam da responsabilidade das concessionárias na gestão financeira.  \n  - [Trecho 12] – Art. 1º e Art. 2º do Módulo VIII, que estabelecem os critérios de eficiência e a aplicação da norma a todas as concessionárias.  \n\nNão encontrei informação de revogação ou suspensão da norma nos trechos disponíveis.",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 2.9
+   },
+   {
+    "id": "Q089",
+    "categoria": "regra_atual",
+    "deve_recusar": false,
+    "llm": "groq_20b/openai/gpt-oss-20b",
+    "resposta": "A Convenção de Comercialização de Energia Elétrica é instituída pela **Resolução Normativa ANEEL nº 957, de 7 de dezembro de 2021**.  \n*Documento citado: REN - RESOLUÇÃO NORMATIVA 957/2021 [Trecho 1]*.  \n\nA norma ainda está em vigor (não há revogação expressa).",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 13.2
+   },
+   {
+    "id": "Q090",
+    "categoria": "regra_atual",
+    "deve_recusar": false,
+    "llm": "groq_20b/openai/gpt-oss-20b",
+    "resposta": "A norma que estabelece hoje as condições gerais dos Conselhos de Consumidores de Energia Elétrica é a **REN – RESOLUÇÃO NORMATIVA ANEEL Nº 963, DE 14 DE DEZEMBRO DE 2021**.  \n\n> *“Esta Resolução Normativa estabelece as condições gerais para a criação, organização e a atuação dos Conselhos de Consumidores de Energia Elétrica, instituídos pelas concessionárias de serviço público de distribuição de energia elétrica.”* (REN – RESOLUÇÃO NORMATIVA 963/2021 [Trecho 10])\n\nEsta resolução revoga as Resoluções Normativas nº 451 (2011), nº 715 (2016) e nº 820 (2018), consolidando as regras atuais. (REN – RESOLUÇÃO NORMATIVA 963/2021 [Trecho 7])",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 2.9
+   },
+   {
+    "id": "Q091",
+    "categoria": "regra_atual",
+    "deve_recusar": false,
+    "llm": "groq_20b/openai/gpt-oss-20b",
+    "resposta": "A norma que atualmente estabelece os procedimentos do programa de pesquisa e desenvolvimento do setor elétrico é a **Resolução Normativa ANEEL nº 1.045, de 4 de outubro de 2022**.  \n\n> *“Estabelece os Procedimentos do Programa de Pesquisa, Desenvolvimento e Inovação – PROPDI do setor elétrico.”*  \n> (REN – RESOLUÇÃO NORMATIVA 1045/2022 [Trecho 1]; Trecho 3)  \n\nEsta resolução está em vigor (não há revogação expressa) e revoga a Resolução Normativa nº 754, de 13 de dezembro de 2016.",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 3.5
+   },
+   {
+    "id": "Q092",
+    "categoria": "regra_atual",
+    "deve_recusar": false,
+    "llm": "groq_20b/openai/gpt-oss-20b",
+    "resposta": "A norma que estabelece os Procedimentos de Distribuição de Energia Elétrica (PRODIST) é a **Resolução Normativa nº 956, de 7 de dezembro de 2021**.  \nEla define o PRODIST e seus módulos (art. 1º, § 1º) – “Estabelecer, na forma desta Resolução Normativa, os Procedimentos de Distribuição de Energia Elétrica no Sistema Elétrico Nacional – PRODIST, dispostos em módulos, conforme anexos de I a XI” (REN – RESOLUÇÃO NORMATIVA 956/2021 [Trecho 2]).\n\nA norma foi alterada pelo **Anexo V** pela **Resolução Normativa nº 1.050, de 29 de novembro de 2022**, que atualiza os procedimentos de medição e leitura (REN – RESOLUÇÃO NORMATIVA 1050/2022 [Trecho 10]).\n\nPortanto, a norma vigente que estabelece o PRODIST é a RN 956/2021, com as alterações introduzidas pela RN 1050/2022.",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 3.8
+   },
+   {
+    "id": "Q093",
+    "categoria": "fato_com_ato",
+    "deve_recusar": false,
+    "llm": "groq_20b/openai/gpt-oss-20b",
+    "resposta": "A exigência de envio dos documentos comprobatórios foi considerada atendida pela **Goyaz Transmissão de Energia S.A.**  \n*Fonte: DSP - DESPACHO 1070/2022 [Trecho 3]*.",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 2.9
+   },
+   {
+    "id": "Q094",
+    "categoria": "fato_com_ato",
+    "deve_recusar": false,
+    "llm": "groq_20b/openai/gpt-oss-20b",
+    "resposta": "A empresa contratada no 4º Termo Aditivo anuído pelo Despacho nº 723, de 2021, foi a **Ativas Data Center S.A.**  \n*Fonte: DSP – DESPACHO 723/2021, trecho 2 (e 3) – “e a Ativas Data Center S.A, contratada”*",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 3.8
+   },
+   {
+    "id": "Q095",
+    "categoria": "fato_com_ato",
+    "deve_recusar": false,
+    "llm": "groq_20b/openai/gpt-oss-20b",
+    "resposta": "Não encontrei informação suficiente nos documentos disponíveis.",
+    "recusou": true,
+    "termos_ok": false,
+    "citou_correto": false,
+    "segundos": 3.1
+   },
+   {
+    "id": "Q096",
+    "categoria": "fato_com_ato",
+    "deve_recusar": false,
+    "llm": "groq_20b/openai/gpt-oss-20b",
+    "resposta": "A Portaria nº 6.724, de 14 de fevereiro de 2022, aprova a revisão da Cadeia de Valor da ANEEL.  \n**Fonte:** PRT – PORTARIA 6724/2022 [Trecho 3] – “Art. 1º Aprovar, na forma do Anexo, a revisão da Cadeia de Valor da ANEEL.”  \n\nNão há indicação de revogação, anulação ou suspensão da portaria.",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 2.7
+   },
+   {
+    "id": "Q097",
+    "categoria": "fato_sem_ato",
+    "deve_recusar": false,
+    "llm": "groq_20b/openai/gpt-oss-20b",
+    "resposta": "Não encontrei informação suficiente nos documentos disponíveis.",
+    "recusou": true,
+    "termos_ok": false,
+    "citou_correto": false,
+    "segundos": 13.9
+   },
+   {
+    "id": "Q098",
+    "categoria": "fato_sem_ato",
+    "deve_recusar": false,
+    "llm": "groq_20b/openai/gpt-oss-20b",
+    "resposta": "A Iracema Transmissora de Energia deve adequar a teleproteção das linhas de transmissão de Milagres **até 4 de junho de 2023** – conforme indicado no DSP – DESPACHO 2976/2021 [Trecho 10].  \n\nO despacho não apresenta revogação expressa, portanto permanece em vigor.",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 2.9
+   },
+   {
+    "id": "Q099",
+    "categoria": "fato_sem_ato",
+    "deve_recusar": false,
+    "llm": "groq_20b/openai/gpt-oss-20b",
+    "resposta": "Não encontrei informação suficiente nos documentos disponíveis.",
+    "recusou": true,
+    "termos_ok": false,
+    "citou_correto": false,
+    "segundos": 3.2
+   },
+   {
+    "id": "Q100",
+    "categoria": "fato_sem_ato",
+    "deve_recusar": false,
+    "llm": "groq/openai/gpt-oss-120b",
+    "resposta": "Não encontrei informação suficiente nos documentos disponíveis.",
+    "recusou": true,
+    "termos_ok": false,
+    "citou_correto": false,
+    "segundos": 3.1
+   },
+   {
+    "id": "Q101",
+    "categoria": "fato_sem_ato",
+    "deve_recusar": false,
+    "llm": "groq_20b/openai/gpt-oss-20b",
+    "resposta": "A Central Geradora Fotovoltaica AC XXIII é titular da empresa **Vale S.A.**  \n- PRT – PORTARIA 639/2021 [Trecho 12]  \n- DSP – DESPACHO 4156/2021 [Trecho 20]",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 4.8
+   },
+   {
+    "id": "Q102",
+    "categoria": "fato_sem_ato",
+    "deve_recusar": false,
+    "llm": "groq_20b/openai/gpt-oss-20b",
+    "resposta": "A unidade **UG11** da EOL Ventos de Santa Martina 13 tem **capacidade instalada de 4.200,00 kW**.  \n\n*Fonte:* DSP – DESPACHO 2079/2021 [Trecho 2] (e [Trecho 3] e [Trecho 14] confirmam o mesmo valor).  \nO despacho não apresenta revogação expressa, portanto permanece em vigor.",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 4.4
+   },
+   {
+    "id": "Q103",
+    "categoria": "fato_sem_ato",
+    "deve_recusar": false,
+    "llm": "groq_20b/openai/gpt-oss-20b",
+    "resposta": "A Laginha Agro Industrial S.A. foi intimada por edital porque a Agência Nacional de Energia Elétrica (ANEEL) constatou que a empresa estava inadimplente com a **Taxa de Fiscalização de Serviços de Energia Elétrica (TFSEE)**, referente aos exercícios de 2014 e 2015. Em razão dessa inadimplência, foi lavrado o **Auto de Infração nº 0042/2016‑SFF** (valor da multa de R$ 80 471,64), e a ANEEL precisou notificar a empresa, que se encontrava em “lugar incerto e não sabido”, para que regularizasse o débito e evitasse sanções adicionais (ex.: inclusão no CADIN e Dívida Ativa).  \n\n**Citações dos trechos regulatórios:**\n\n- **Trecho 4** – descreve a imposição da multa e a necessidade de pagamento (ANEEL, Edital de Notificação de 13 de Outubro de 2016).  \n- **Trecho 8** – indica que a ausência de recolhimento implicará inclusão no Sistema de Inadimplentes da ANEEL e no CADIN (ANEEL, Edital de Notificação de 13 de Outubro de 2016).  \n- **Trecho 9** – reforça a consequência de não pagamento (ANEEL, Edital de Notificação de 13 de Outubro de 2016).  \n- **Trecho 3** – menciona que a notificação foi feita porque o agente estava em “lugar incerto e não sabido” (ANEEL, Edital de Notificação de 13 de Outubro de 2016).  \n\nO edital não está revogado nem anulado; ele permanece em vigor conforme os trechos citados.",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 4.4
+   },
+   {
+    "id": "Q104",
+    "categoria": "fato_sem_ato",
+    "deve_recusar": false,
+    "llm": "groq_20b/openai/gpt-oss-20b",
+    "resposta": "Isto está previsto nos despachos da ANEEL:\n\n- **DSP – DESPACHO 3417/2021** – “localizada nos municípios de **Iraquara e Souto Soares**” (Trecho 2 e Trecho 3).  \n- **DSP – DESPACHO 3458/2021** – “localizada nos municípios de **Iraquara e Souto Soares**” (Trecho 5 e Trecho 6).  \n- **DSP – DESPACHO 3677/2021** – “localizada nos municípios de **Iraquara e Souto Soares**” (Trecho 8 e Trecho 9).  \n- **DSP – DESPACHO 3826/2021** – “localizada nos municípios de **Iraquara e Souto Soares**” (Trecho 11 e Trecho 12).  \n- **DSP – DESPACHO 4004/2021** – “localizada nos municípios de **Iraquara e Souto Soares**” (Trecho 14 e Trecho 15).\n\nPortanto, a EOL Ventos da Bahia XIV está localizada nos municípios de **Iraquara e Souto Soares**, Bahia.",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 4.9
+   },
+   {
+    "id": "Q105",
+    "categoria": "fato_sem_ato",
+    "deve_recusar": false,
+    "llm": "groq_20b/openai/gpt-oss-20b",
+    "resposta": "A capacidade total liberada para operação comercial da UFV Francisco Sá 2 é de **33.000,00 kW**.  \n*Fonte: DSP – DESPACHO 928/2022, trecho 2 (e 3) – “liberar as unidades geradoras UG1 a UG200, de 165,00 kW cada, totalizando 33.000,00 kW de capacidade instalada”.*",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 3.8
+   },
+   {
+    "id": "Q106",
+    "categoria": "fato_sem_ato",
+    "deve_recusar": false,
+    "llm": "groq_20b/openai/gpt-oss-20b",
+    "resposta": "A área da Linha de Distribuição Ivaiporã – Manoel Ribas foi declarada de utilidade pública em favor da **Copel Distribuição S.A.**  \n*Documento: REA – RESOLUÇÃO AUTORIZATIVA 12.061/2022 – Art. 1º, Trecho 14.*  \n\n> “Declarar de utilidade pública, para instituição de servidão administrativa, em favor da Copel Distribuição S.A.” (REA – RESOLUÇÃO AUTORIZATIVA 12.061/2022 [Trecho 14])  \n\nA resolução não apresenta revogação, anulação ou suspensão; portanto, permanece em vigor.",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 3.6
+   },
+   {
+    "id": "Q107",
+    "categoria": "fato_sem_ato",
+    "deve_recusar": false,
+    "llm": "groq_20b/openai/gpt-oss-20b",
+    "resposta": "Não encontrei informação suficiente nos documentos disponíveis.",
+    "recusou": true,
+    "termos_ok": false,
+    "citou_correto": false,
+    "segundos": 2.4
+   },
+   {
+    "id": "Q108",
+    "categoria": "ato_inexistente",
+    "deve_recusar": true,
+    "llm": "groq_20b/openai/gpt-oss-20b",
+    "resposta": "Não encontrei informação suficiente nos documentos disponíveis.",
+    "recusou": true,
+    "termos_ok": null,
+    "citou_correto": null,
+    "segundos": 3.6
+   },
+   {
+    "id": "Q109",
+    "categoria": "dado_ausente",
+    "deve_recusar": true,
+    "llm": "groq_20b/openai/gpt-oss-20b",
+    "resposta": "Não encontrei informação suficiente nos documentos disponíveis.",
+    "recusou": true,
+    "termos_ok": null,
+    "citou_correto": null,
+    "segundos": 2.6
+   },
+   {
+    "id": "C01",
+    "categoria": "conceitual_sigla",
+    "deve_recusar": false,
+    "llm": "groq_20b/openai/gpt-oss-20b",
+    "resposta": "Não encontrei informação suficiente nos documentos disponíveis.",
+    "recusou": true,
+    "termos_ok": false,
+    "citou_correto": false,
+    "segundos": 2.9
+   },
+   {
+    "id": "C02",
+    "categoria": "conceitual_sigla",
+    "deve_recusar": false,
+    "llm": "groq_20b/openai/gpt-oss-20b",
+    "resposta": "O termo **DRO** nos despachos de geração significa **“Despacho de Registro do Requerimento de Outorga”** – o ato que registra o requerimento de outorga de uma central geradora.  \n- Referência: REA – RESOLUÇÃO AUTORIZATIVA 10000/2021, Trecho 6 e Trecho 7.  \n- Referência: REA – RESOLUÇÃO AUTORIZATIVA 10001/2021, Trecho 9 e Trecho 10.  \n- Referência: REA – RESOLUÇÃO AUTORIZATIVA 10002/2021, Trecho 12 e Trecho 13.  \n- Referência: REA – RESOLUÇÃO AUTORIZATIVA 10003/2021, Trecho 15 e Trecho 16.  \n\nNenhum dos documentos citados apresenta revogação expressa; portanto, a definição permanece vigente.",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 13.7
+   },
+   {
+    "id": "C03",
+    "categoria": "conceitual_sigla",
+    "deve_recusar": false,
+    "llm": "groq_20b/openai/gpt-oss-20b",
+    "resposta": "O indicador **DEC** (Duração de Interrupção de Energia) mede a **duração relativa das interrupções de energia elétrica** em cada distribuidora, expressa em horas. Ele é comparado aos limites regulatórios estabelecidos pela ANEEL e faz parte do conjunto de indicadores que compõem o **Indicador de Qualidade do Serviço** (IQS) para fins tarifários.\n\n- **PRT - PORTARIA 6658/2021 [Trecho 2]**: “O indicador 2.3e – DEC Brasil registrou duração relativa de 11,48 horas, ficando abaixo do limite regulatório estabelecido para 2020.”  \n- **REA - RESOLUÇÃO AUTORIZATIVA 10990/2021 [Trecho 4]**: “o DEC apurado se manteve acima dos limites estabelecidos pela ANEEL.”  \n- **REH - RESOLUÇÃO HOMOLOGATÓRIA 2028/2016 [Trecho 10]**: “Para definição do Indicador de Qualidade do Serviço de cada distribuidora são comparados, a cada ano civil, os indicadores apurados DEC e FEC, contra os limites definidos pela ANEEL.”  \n\nAssim, o DEC avalia a qualidade do fornecimento de energia elétrica medindo quanto tempo, em média, ocorrem interrupções de energia em cada distribuidora.",
+    "recusou": false,
+    "termos_ok": false,
+    "citou_correto": false,
+    "segundos": 3.7
+   },
+   {
+    "id": "C04",
+    "categoria": "conceitual_sigla",
+    "deve_recusar": false,
+    "llm": "groq_20b/openai/gpt-oss-20b",
+    "resposta": "Não encontrei informação suficiente nos documentos disponíveis.",
+    "recusou": true,
+    "termos_ok": false,
+    "citou_correto": false,
+    "segundos": 3.3
+   },
+   {
+    "id": "C05",
+    "categoria": "conceitual_sigla",
+    "deve_recusar": false,
+    "llm": "groq_20b/openai/gpt-oss-20b",
+    "resposta": "MRE significa **“Mecanismo de Realocação de Energia.”**  \n- DSP - DESPACHO 1198/2022 [Trecho 14]  \n- DSP - DESPACHO 1198/2022 [Trecho 13]",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 2.9
+   },
+   {
+    "id": "C06",
+    "categoria": "conceitual_sigla",
+    "deve_recusar": false,
+    "llm": "groq_20b/openai/gpt-oss-20b",
+    "resposta": "Não encontrei informação suficiente nos documentos disponíveis.",
+    "recusou": true,
+    "termos_ok": false,
+    "citou_correto": false,
+    "segundos": 3.4
+   },
+   {
+    "id": "C08",
+    "categoria": "conceitual_parafrase",
+    "deve_recusar": false,
+    "llm": "groq_20b/openai/gpt-oss-20b",
+    "resposta": "O prazo para interpor recurso contra um Auto de Infração da ANEEL é de **10 dias úteis**, contados a partir do recebimento do Auto de Referência (AR).  \n\n- **DSP - DESPACHO 1707/2016** [Trecho 6] – “o prazo para interposição de recurso será de dez dias, contado do recebimento do AR”.  \n- **DSP - DESPACHO 1707/2016** [Trecho 7] – “o prazo para solicitação de TAC era, no limite, o mesmo fixado para a interposição de recurso administrativo contra autos de infração, ou seja, 10 dias”.  \n- **DSP - DESPACHO 1707/2016** [Trecho 8] – “o prazo recursal iniciou em 20/5 e terminou em 29/5/2014”, confirmando os 10 dias.  \n- **DSP - DESPACHO 116/2016** [Trecho 16] – “art. 33[2] da Resolução n 63, de 2004, estabelece 10 dias de prazo para recurso contra auto de infração”.  \n\nNenhum dos documentos citados apresenta revogação, anulação ou suspensão, portanto a regra permanece vigente.",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 4.6
+   },
+   {
+    "id": "C09",
+    "categoria": "conceitual_parafrase",
+    "deve_recusar": false,
+    "llm": "groq_20b/openai/gpt-oss-20b",
+    "resposta": "Não encontrei informação suficiente nos documentos disponíveis.",
+    "recusou": true,
+    "termos_ok": false,
+    "citou_correto": false,
+    "segundos": 35.2
+   },
+   {
+    "id": "C10",
+    "categoria": "conceitual_parafrase",
+    "deve_recusar": false,
+    "llm": "groq_qwen/qwen/qwen3.8-27b",
+    "resposta": "Não encontrei informação suficiente nos documentos disponíveis.",
+    "recusou": true,
+    "termos_ok": false,
+    "citou_correto": false,
+    "segundos": 4.4
+   },
+   {
+    "id": "C11",
+    "categoria": "conceitual_parafrase",
+    "deve_recusar": false,
+    "llm": "groq_qwen/qwen/qwen3.8-27b",
+    "resposta": "Com base nos trechos fornecidos, não há menção explícita ao termo \"remuneração anual das concessionárias de transmissão\" como um nome próprio ou conceito específico distinto da \"remuneração do capital\" ou do \"Custo Anual dos Ativos\".\n\nOs documentos disponíveis tratam da **remuneração do capital** e do **Custo Anual dos Ativos (CAA)** no contexto da revisão periódica da receita anual permitida das transmissoras, mas não definem um nome específico para a \"remuneração anual\" como um todo, limitando-se a descrever seus componentes (retorno do capital/depreciação e retorno sobre o capital/rentabilidade).\n\nPortanto, **Não encontrei informação suficiente nos documentos disponíveis** para responder especificamente como se chama a \"remuneração anual das concessionárias de transmissão\" de forma distinta dos termos técnicos de custo e remuneração do capital apresentados.\n\n*Nota: Os trechos [Trecho 11] e [Trecho 12] da REN - RESOLUÇÃO NORMATIVA 1022/2022 [Trecho 11] e [Trecho 12] descrevem a composição da remuneração do capital e do Custo Anual dos Ativos (CAA), mas não atribuem um nome específico à \"remuneração anual\" como um conceito isolado.*",
+    "recusou": true,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 4.3
+   },
+   {
+    "id": "C12",
+    "categoria": "conceitual_parafrase",
+    "deve_recusar": false,
+    "llm": "groq_qwen/qwen/qwen3.8-27b",
+    "resposta": "Não encontrei informação suficiente nos documentos disponíveis.",
+    "recusou": true,
+    "termos_ok": false,
+    "citou_correto": false,
+    "segundos": 4.7
+   },
+   {
+    "id": "C13",
+    "categoria": "conceitual_parafrase",
+    "deve_recusar": false,
+    "llm": "groq_qwen/qwen/qwen3.8-27b",
+    "resposta": "Com base nos trechos fornecidos, a norma legal que fundamenta as desapropriações por utilidade pública no setor elétrico é o **Decreto-Lei nº 3.365, de 21 de junho de 1941**, alterado pela **Lei nº 2.786, de 21 de maio de 1956**.\n\nEssa fundamentação é citada especificamente no contexto da autorização para a Santo Antônio Energia S.A. promover desapropriações de domínio, podendo invocar o caráter de urgência para fins de imissão provisória na posse dos bens, nos termos do art. 15 do referido Decreto-Lei.\n\n**Fonte:**\n*   REA - RESOLUÇÃO AUTORIZATIVA 5887/2016 [Trecho 18]\n*   REA - RESOLUÇÃO AUTORIZATIVA 5887/2016 [Trecho 19]\n\n*Nota: A situação do documento é \"NÃO CONSTA REVOGAÇÃO EXPRESSA\".*",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 4.2
+   },
+   {
+    "id": "C14",
+    "categoria": "conceitual_parafrase",
+    "deve_recusar": false,
+    "llm": "groq_qwen/qwen/qwen3.8-27b",
+    "resposta": "A **Lei nº 12.431, de 2011** é a legislação que concede benefícios a projetos de infraestrutura considerados prioritários.\n\nEssa informação é citada nos trechos que regulamentam a aprovação e o acompanhamento desses projetos:\n*   **PRT - PORTARIA 247/2016 [Trecho 11]**: O Art. 5º menciona que alterações nos projetos não ensejam nova portaria \"para os fins do art. 2º da Lei nº 12.431, de 2011\".\n*   **PRT - PORTARIA 203/2016 [Trecho 14]**: O Art. 5º também referencia \"os fins do art. 2º da Lei nº 12.431, de 2011\".\n\nOs documentos citados estão com a situação **\"NÃO CONSTA REVOGAÇÃO EXPRESSA\"**.",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 4.6
+   },
+   {
+    "id": "C15",
+    "categoria": "conceitual_parafrase",
+    "deve_recusar": false,
+    "llm": "groq_qwen/qwen/qwen3.8-27b",
+    "resposta": "Com base nos trechos fornecidos, a liberação para operação em teste visa exclusivamente ao atendimento das próprias necessidades de ajustes de equipamentos e verificação do comportamento da unidade geradora do ponto de vista sistêmico, bem como ao atendimento de consumo próprio.\n\nFonte: DSP - DESPACHO 1481/2016 [Trecho 3].",
+    "recusou": false,
+    "termos_ok": false,
+    "citou_correto": false,
+    "segundos": 4.2
+   },
+   {
+    "id": "C16",
+    "categoria": "conceitual_parafrase",
+    "deve_recusar": false,
+    "llm": "groq_qwen/qwen/qwen3.8-27b",
+    "resposta": "A empresa deve requerer a habilitação no Regime Especial de Incentivos para o Desenvolvimento da Infraestrutura (REIDI) à **Secretaria da Receita Federal do Brasil**.\n\nEssa informação consta nos seguintes documentos:\n*   PRT - PORTARIA 217/2016 [Trecho 6]\n*   PRT - PORTARIA 835/2021 [Trecho 14]\n*   PRT - PORTARIA 959/2021 [Trecho 22]\n\nNenhum dos documentos citados possui situação de revogação, anulação ou suspensão.",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 34.7
+   },
+   {
+    "id": "C17",
+    "categoria": "conceitual_parafrase",
+    "deve_recusar": false,
+    "llm": "groq_qwen/qwen/qwen3.8-27b",
+    "resposta": "Não encontrei informação suficiente nos documentos disponíveis.",
+    "recusou": true,
+    "termos_ok": false,
+    "citou_correto": false,
+    "segundos": 14.7
+   },
+   {
+    "id": "C18",
+    "categoria": "conceitual_parafrase",
+    "deve_recusar": false,
+    "llm": "groq_qwen/qwen/qwen3.8-27b",
+    "resposta": "Quando uma unidade geradora entra em operação comercial, a energia produzida pela unidade geradora deve estar disponível ao sistema.\n\nEssa exigência está presente em diversos despachos citados:\n*   **DSP - DESPACHO 1977/2016 [Trecho 3]**: Estabelece que, a partir do início da operação comercial, \"a energia produzida pela unidade geradora deverá estar disponível ao sistema\".\n*   **DSP - DESPACHO 1559/2016 [Trecho 12]**: Dispõe que, a partir do início da operação comercial, \"a energia produzida pela unidade geradora deverá estar disponível ao sistema\".\n*   **DSP - DESPACHO 503/2016 [Trecho 16]**: Determina que, a partir do início da operação comercial, \"a energia produzida pela unidade geradora deverá estar disponível ao sistema\".\n\nAlém disso, a definição de operação comercial reforça esse conceito:\n*   **DSP - DESPACHO 715/2022 [Trecho 7]**: Define operação comercial como a \"situação operacional em que a energia produzida pela unidade geradora está disponibilizada ao sistema\".\n\nNenhum dos documentos citados possui situação de revogação, anulação ou suspensão.",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 4.6
+   },
+   {
+    "id": "C19",
+    "categoria": "conceitual_parafrase",
+    "deve_recusar": false,
+    "llm": "groq_qwen/qwen/qwen3.8-27b",
+    "resposta": "A empresa deve manter a documentação relativa à utilização dos recursos captados por **cinco anos após o vencimento das debêntures emitidas**.\n\nEssa obrigação está prevista nos seguintes documentos:\n*   **PRT - PORTARIA 082/2016 [Trecho 6]**: \"manter a documentação relativa à utilização dos recursos captados, até cinco anos após o vencimento das debêntures emitidas, para consulta e fiscalização pelos Órgãos de Controle\".\n*   **PRT - PORTARIA 100/2016 [Trecho 17]**: \"manter a documentação relativa à utilização dos recursos captados, até cinco anos após o vencimento das debêntures emitidas, para consulta e fiscalização pelos Órgãos de Controle\".\n*   **PRT - PORTARIA 1088/2021 [Trecho 28]**: \"manter a documentação relativa à utilização dos recursos captados, até cinco anos após o vencimento das debêntures emitidas, para consulta e fiscalização pelos Órgãos de Controle e Receita Federal do Brasil\".\n\nNenhum dos documentos citados possui situação de revogação expressa.",
+    "recusou": false,
+    "termos_ok": true,
+    "citou_correto": true,
+    "segundos": 34.7
+   }
+  ]
+ }
+}
