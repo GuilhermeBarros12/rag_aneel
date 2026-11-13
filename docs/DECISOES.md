@@ -30,6 +30,10 @@ Testar seis LLMs em 10 perguntas mostrou que todos recusavam as mesmas perguntas
 
 A solução foi enviar ao LLM o documento inteiro, quando curto, ou os trechos encontrados e seus vizinhos, quando longo. A resposta passou a chegar ao prompt em 43 de 46, e as respostas com os termos esperados subiram de 33 para 41 de 46, sem perder nenhuma recusa correta. O custo é um contexto cerca de 3 vezes maior.
 
+### Nome seguido de numeral como frase
+
+Investigar a Q28, que piorou com a expansão de contexto, mostrou que a busca confundia usinas vizinhas como Chuí II, IV e V: para o BM25, o "V" é uma palavra solta e comum. Agora a consulta inclui também a frase "chui v". O MRR no conjunto v2 subiu de 0,734 para 0,755, e o ato certo da Q28 passou da posição 34 para a 1. A investigação também mostrou um limite do gabarito: ele aceitava os atos vizinhos como corretos, e por isso a recusa do modelo, que estava certa, contava como erro.
+
 ### Cohere como LLM principal
 
 No teste com 10 perguntas, o `command-a-03-2025` da Cohere, feito para RAG, teve o melhor resultado: recusou indevidamente 3 de 8 perguntas, contra 4 de 8 dos demais, e citou o trecho correto em 6 de 8. A diferença é de uma pergunta, então a escolha pesa também o fato de o modelo ser feito para responder com base em documentos. O custo é a latência: 9,7 s por resposta, contra cerca de 2 s no Groq. Se a Cohere falhar ou a cota acabar, o sistema passa para o `gpt-oss-120b` e o `gpt-oss-20b` no Groq, cada um com cota diária própria (`LLMS=cohere,groq,groq_20b`).

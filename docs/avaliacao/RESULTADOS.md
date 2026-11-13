@@ -165,6 +165,23 @@ Recuperação no conjunto congelado, com o sistema padrão: busca léxica, polí
 
 A resposta chega ao LLM em 97 das 115 perguntas, com contexto médio de 6,3 mil caracteres. O ponto fraco são as conceituais: sem citar um ato, a busca léxica acha a sigla ou o tema em milhares de chunks e raramente no que define o termo. A medição com LLM nas 127 perguntas ainda não foi feita.
 
+## Nome seguido de numeral como frase (12/11/2026)
+
+Investigação da Q28 ("para qual empresa foi transferida a autorização da Central Geradora Eólica Chuí V?"), a única pergunta que piorou com a expansão de contexto. O ato certo, a REA 10.536/2021, estava só na posição 34 da busca. Os 5 primeiros trechos eram de atos vizinhos, com texto quase idêntico: Chuí II, Chuí IV, Chuí IX e Minuano I e II, todos transferidos para a Omega Geração. Como o BM25 trata o "V" como uma palavra solta e comum, ele não distingue Chuí II, IV e V.
+
+O gabarito aceita esses atos vizinhos como documento esperado, e o termo "Omega Geração" aparece neles. Por isso a métrica dizia que a resposta estava no contexto, e a recusa do modelo contava como indevida. Na verdade, sem nenhum documento sobre a Chuí V, recusar era o comportamento correto. Na rodada antiga, sem expansão, o modelo tinha respondido com a empresa de outra usina. O conjunto v1 está congelado e não foi alterado, mas este caso mostra que a métrica de recuperação é otimista em grupos de atos quase idênticos.
+
+A correção: quando uma palavra é seguida de um numeral romano ou de um número de até 3 dígitos, a consulta inclui também a frase ("chui v", "martina 13"), além das palavras soltas (`FRASES_COM_NUMERAL=1`, o novo padrão). Conjunto v2, só recuperação ([v2_frases_numeral.md](experimentos/v2_frases_numeral.md)):
+
+| Métrica (115 perguntas) | Antes | Com a frase |
+|---|---|---|
+| hit@1 | 0,678 | 0,713 |
+| hit@5 | 0,835 | 0,835 |
+| MRR | 0,734 | 0,755 |
+| Resposta presente no contexto enviado | 97 | 98 |
+
+Cinco perguntas subiram para a posição 1 (Q23, Q25, Q28, Q066 e Q101), e a Q28 passou a trazer a REA 10.536 em primeiro lugar. Só a Q33 caiu, da posição 1 para a 3, e continuou com a resposta no contexto.
+
 ## Conjunto v2 com LLM (12/11/2026)
 
 Conjunto v2 congelado (127 perguntas), busca léxica, política intermediária, expansão de contexto e sem reranker ([v2_llm_gpt_oss_120b.md](experimentos/v2_llm_gpt_oss_120b.md)). O `gpt-oss-120b` esgotou o limite diário de tokens do Groq na pergunta 56. A medição continuou com fallback, registrando o modelo de cada resposta: 58 vieram do `gpt-oss-120b`, 59 do `gpt-oss-20b` e 10 do `qwen3.8-27b`, quando o segundo também esgotou a cota.

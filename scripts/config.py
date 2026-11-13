@@ -76,6 +76,8 @@ CANDIDATOS_FUSAO = 50  # quantos resultados de cada busca entram na fusão
 RRF_K = 60             # constante padrão da Reciprocal Rank Fusion
 PESO_LEXICO = float(os.getenv("PESO_LEXICO", "1"))  # peso do BM25 na fusão (embeddings = 1)
 # Peso de cada coluna no BM25: título, ementa e texto do chunk
+# Busca também a frase "nome numeral" ("chui v"), além das palavras soltas
+FRASES_COM_NUMERAL = os.getenv("FRASES_COM_NUMERAL", "1") == "1"
 PESOS_BM25 = tuple(float(p) for p in os.getenv("PESOS_BM25", "1,1,1").split(","))
 
 # Reranker (busca léxica ou híbrida): reordena os primeiros candidatos antes de escolher os TOP_K.

@@ -373,6 +373,7 @@ Todos ficam em [`scripts/config.py`](scripts/config.py).
 | `MODO_BUSCA`    | `lexica`              | `lexica`, `densa` ou `hibrida`         |
 | `POLITICA_REVOGADOS` | `intermediaria`   | `intermediaria`, `excluir` ou `incluir` |
 | `EXPANSAO_CONTEXTO` | `documento`        | Envia documentos curtos inteiros e vizinhos dos trechos longos |
+| `FRASES_COM_NUMERAL` | `1`               | Busca também a frase "nome numeral" ("chui v"), além das palavras soltas |
 | `RERANKER`          | `nenhum`           | `cohere` reordena os 30 primeiros candidatos com o rerank da Cohere (precisa de `COHERE_API_KEY`) |
 
 ---
