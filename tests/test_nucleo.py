@@ -34,8 +34,22 @@ def provedor(monkeypatch, nome, respostas):
             raise item
         return item
 
-    monkeypatch.setattr(nucleo, f"gerar_com_{nome}", falso)
+    if nome == "groq":
+        monkeypatch.setattr(nucleo, "gerar_com_groq", falso)
+    else:
+        anterior = nucleo.gerar_com_compativel
+
+        def compativel(p, prompt):
+            return falso(prompt) if p == nome else anterior(p, prompt)
+
+        monkeypatch.setattr(nucleo, "gerar_com_compativel", compativel)
     return chamadas
+
+
+@pytest.fixture(autouse=True)
+def ordem_dos_llms(monkeypatch):
+    """Os testes de geração usam só dois provedores falsos: Cohere e Groq."""
+    monkeypatch.setattr(config, "LLMS", ["cohere", "groq"])
 
 
 # ---------- fusão e prompt ----------
@@ -105,45 +119,45 @@ def test_tipo_de_erro():
 
 
 def test_primeiro_provedor_responde(monkeypatch, sem_espera):
-    provedor(monkeypatch, "gemini", ["resposta do gemini"])
+    provedor(monkeypatch, "cohere", ["resposta da cohere"])
     groq = provedor(monkeypatch, "groq", ["resposta do groq"])
     g = nucleo.gerar_resposta("prompt")
-    assert g.texto == "resposta do gemini" and g.llm.startswith("gemini/")
+    assert g.texto == "resposta da cohere" and g.llm.startswith("cohere/")
     assert groq == [] and g.erros == []
 
 
 def test_erro_temporario_ganha_nova_tentativa(monkeypatch, sem_espera):
-    gemini = provedor(monkeypatch, "gemini", [ErroDeApi("503 UNAVAILABLE", 503), "agora foi"])
+    cohere = provedor(monkeypatch, "cohere", [ErroDeApi("503 UNAVAILABLE", 503), "agora foi"])
     g = nucleo.gerar_resposta("prompt")
-    assert g.texto == "agora foi" and len(gemini) == 2 and len(sem_espera) == 1
+    assert g.texto == "agora foi" and len(cohere) == 2 and len(sem_espera) == 1
     assert "(temporario)" in g.erros[0]
 
 
 def test_cota_esgotada_vai_direto_para_o_fallback(monkeypatch, sem_espera):
-    gemini = provedor(monkeypatch, "gemini", [ErroDeApi("quota exceeded: tokens per day", 429)])
+    cohere = provedor(monkeypatch, "cohere", [ErroDeApi("quota exceeded: tokens per day", 429)])
     provedor(monkeypatch, "groq", ["resposta do groq"])
     g = nucleo.gerar_resposta("prompt")
-    assert g.llm.startswith("groq/") and len(gemini) == 1 and sem_espera == []
+    assert g.llm.startswith("groq/") and len(cohere) == 1 and sem_espera == []
 
 
 def test_resposta_vazia_conta_como_falha(monkeypatch, sem_espera):
-    provedor(monkeypatch, "gemini", ["   "])
+    provedor(monkeypatch, "cohere", ["   "])
     provedor(monkeypatch, "groq", ["resposta do groq"])
     assert nucleo.gerar_resposta("prompt").llm.startswith("groq/")
 
 
 def test_todos_falham(monkeypatch, sem_espera):
-    provedor(monkeypatch, "gemini", [ErroDeApi("model not found", 404)])
+    provedor(monkeypatch, "cohere", [ErroDeApi("model not found", 404)])
     provedor(monkeypatch, "groq", [ErroDeApi("Rate limit: tokens per day", 429)])
     g = nucleo.gerar_resposta("prompt")
     assert g.texto is None and g.llm is None and len(g.erros) == 2
 
 
 def test_lista_de_provedores_restringe_a_um_llm(monkeypatch, sem_espera):
-    gemini = provedor(monkeypatch, "gemini", ["resposta do gemini"])
+    cohere = provedor(monkeypatch, "cohere", ["resposta da cohere"])
     provedor(monkeypatch, "groq", ["resposta do groq"])
     assert nucleo.gerar_resposta("prompt", provedores=["groq"]).llm.startswith("groq/")
-    assert gemini == []
+    assert cohere == []
 
 
 # ---------- pipeline completo ----------
@@ -151,9 +165,9 @@ def test_lista_de_provedores_restringe_a_um_llm(monkeypatch, sem_espera):
 
 def test_responder_registra_llm_e_documentos(acervo, monkeypatch, sem_espera):
     monkeypatch.setattr(config, "MODO_BUSCA", "lexica")
-    chamadas = provedor(monkeypatch, "gemini", ["Altera coordenadas [Trecho 1]."])
+    chamadas = provedor(monkeypatch, "cohere", ["Altera coordenadas [Trecho 1]."])
     r = nucleo.responder("O que determina o Despacho 3.683 de 2022?", None, None)
-    assert r.llm.startswith("gemini/")
+    assert r.llm.startswith("cohere/")
     assert r.documentos[0]["titulo"] == "DSP - DESPACHO 3683/2022"
     assert "DSP - DESPACHO 3683/2022" in chamadas[0]  # o título foi para o prompt
     assert set(r.para_dict()) == {"pergunta", "resposta", "llm", "erros", "documentos", "trechos"}
@@ -161,7 +175,7 @@ def test_responder_registra_llm_e_documentos(acervo, monkeypatch, sem_espera):
 
 def test_busca_sem_resultado_nao_chama_llm(acervo, monkeypatch):
     monkeypatch.setattr(config, "MODO_BUSCA", "lexica")
-    chamadas = provedor(monkeypatch, "gemini", ["não deveria ser chamado"])
+    chamadas = provedor(monkeypatch, "cohere", ["não deveria ser chamado"])
     for pergunta in ("", "   ", "de da do"):
         r = nucleo.responder(pergunta, None, None)
         assert r.llm == config.SEM_LLM and r.trechos == []
@@ -171,7 +185,7 @@ def test_busca_sem_resultado_nao_chama_llm(acervo, monkeypatch):
 
 def test_falha_de_todos_os_llms_avisa_sobre_a_cota(acervo, monkeypatch, sem_espera):
     monkeypatch.setattr(config, "MODO_BUSCA", "lexica")
-    provedor(monkeypatch, "gemini", [ErroDeApi("model not found", 404)])
+    provedor(monkeypatch, "cohere", [ErroDeApi("model not found", 404)])
     provedor(monkeypatch, "groq", [ErroDeApi("Rate limit: tokens per day", 429)])
     r = nucleo.responder("Despacho 3.683", None, None)
     assert r.llm is None and "cota diaria" in r.resposta

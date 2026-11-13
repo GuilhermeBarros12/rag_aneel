@@ -92,9 +92,11 @@ RERANK_ESPERA_S = 12      # espera vezes o número da tentativa, em erro 429
 # GERAÇÃO
 # ============================================================
 
-GEMINI_MODELO = os.getenv("GEMINI_MODEL", "gemini-3.8-flash")
+# Ordem de tentativa dos LLMs nas respostas: o primeiro que responder vence.
+# Os nomes são "groq" ou as chaves de PROVEDORES_COMPATIVEIS, abaixo.
+LLMS = [p for p in os.getenv("LLMS", "cohere,groq,groq_20b").split(",") if p]
 GROQ_MODELO   = os.getenv("GROQ_MODEL", "openai/gpt-oss-120b")
-TEMPERATURA   = 0.0  # respostas o mais repetíveis possível, nos dois LLMs
+TEMPERATURA   = 0.0  # respostas o mais repetíveis possível
 MAX_CHARS_TRECHO = 4000  # corta chunks de tabela muito longos ao montar o prompt
 
 # Expansão de contexto: a busca acha o documento certo, mas nem sempre o trecho com a resposta.

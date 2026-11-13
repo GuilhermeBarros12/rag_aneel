@@ -26,8 +26,7 @@ sentence-transformers==5.4.1
 chromadb==1.5.8
 
 # ── LLM (geração de respostas) ──────────────────────────────────
-# google-genai: cliente oficial da API Gemini
-google-genai==1.73.1
+# Cohere (LLM principal) e os demais provedores compatíveis com a API da OpenAI são chamados via httpx
 # groq: cliente oficial da Groq API, usado como fallback
 groq==1.2.0
 

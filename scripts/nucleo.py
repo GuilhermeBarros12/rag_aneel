@@ -319,27 +319,6 @@ def montar_prompt(query: str, trechos: List[Trecho]) -> str:
     return config.PROMPT_TEMPLATE.format(contexto=contexto, query=query)
 
 
-def gerar_com_gemini(prompt: str) -> str:
-    from google import genai
-    from google.genai import types
-
-    api_key = os.getenv("GEMINI_API_KEY", "")
-    if not api_key:
-        raise ValueError("GEMINI_API_KEY nao configurada no .env")
-
-    # O cliente precisa ficar em uma variável: sem isso ele é fechado antes da chamada
-    client = genai.Client(
-        api_key=api_key,
-        http_options=types.HttpOptions(timeout=config.TIMEOUT_LLM_S * 1000),  # em ms
-    )
-    response = client.models.generate_content(
-        model=config.GEMINI_MODELO,
-        contents=prompt,
-        config=types.GenerateContentConfig(temperature=config.TEMPERATURA),
-    )
-    return response.text
-
-
 def gerar_com_groq(prompt: str) -> str:
     from groq import Groq
 
@@ -393,8 +372,6 @@ def gerar_com_compativel(provedor: str, prompt: str) -> str:
 
 def nome_do_modelo(provedor: str) -> str:
     """'groq' vira 'groq/openai/gpt-oss-120b', e assim por diante."""
-    if provedor == "gemini":
-        return f"gemini/{config.GEMINI_MODELO}"
     if provedor == "groq":
         return f"groq/{config.GROQ_MODELO}"
     return f"{provedor}/{config.PROVEDORES_COMPATIVEIS[provedor]['modelo']}"
@@ -422,18 +399,17 @@ def tipo_de_erro(erro: Exception) -> str:
 def gerar_resposta(prompt: str, provedores: Optional[List[str]] = None) -> Geracao:
     """
     Tenta os provedores em ordem e guarda os erros de quem falhou.
-    Sem a lista, usa Gemini e depois Groq. Erros temporários ganham nova tentativa.
+    Sem a lista, usa config.LLMS (Cohere, depois Groq). Erros temporários ganham nova tentativa.
     """
 
     disponiveis = {
-        "gemini": (nome_do_modelo("gemini"), gerar_com_gemini),
         "groq": (nome_do_modelo("groq"), gerar_com_groq),
     }
     for nome in config.PROVEDORES_COMPATIVEIS:
         disponiveis[nome] = (nome_do_modelo(nome), lambda prompt, nome=nome: gerar_com_compativel(nome, prompt))
 
     erros: List[str] = []
-    for chave in provedores or ["gemini", "groq"]:
+    for chave in provedores or config.LLMS:
         nome, gerar = disponiveis[chave]
         for tentativa in range(1, config.TENTATIVAS_LLM + 1):
             try:

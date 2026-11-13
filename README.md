@@ -25,7 +25,7 @@ flowchart LR
     B --> R{"Política de<br/>revogados"}
     R --> K["Reranker<br/>(opcional)"]
     K --> E["Expansão de contexto<br/>documento curto inteiro<br/>ou trechos vizinhos"]
-    E --> L["LLM<br/>Gemini, com fallback<br/>para o Groq"]
+    E --> L["LLM<br/>Cohere, com fallback<br/>para o Groq"]
     L --> A["Resposta com fontes<br/>e situação do ato"]
 ```
 
@@ -34,11 +34,11 @@ flowchart LR
 - **Expansão de contexto:** a busca costuma achar o documento certo, mas não o trecho com a resposta. Documentos curtos vão inteiros ao LLM; dos longos vão os trechos encontrados e seus vizinhos.
 - **Recusa:** sem evidência nos trechos, o modelo responde que não encontrou a informação, em vez de inventar.
 
-**Stack:** Python, SQLite FTS5, ChromaDB e `sentence-transformers` (modos vetorial e híbrido), Gemini e Groq, Gradio na demo, pytest e ruff no CI do GitHub Actions. O índice fica no Hugging Face e é baixado na primeira execução.
+**Stack:** Python, SQLite FTS5, ChromaDB e `sentence-transformers` (modos vetorial e híbrido), Cohere e Groq, Gradio na demo, pytest e ruff no CI do GitHub Actions. O índice fica no Hugging Face e é baixado na primeira execução.
 
 ![Demo respondendo sobre a REN 959/2021, com a tabela dos documentos usados e a situação de cada ato](docs/imagens/demo.png)
 
-*Demo em Gradio (`python scripts/app.py`). Neste exemplo, o Gemini não respondeu e o fallback para o Groq entrou em ação.*
+*Demo em Gradio (`python scripts/app.py`): a resposta cita o trecho usado, e a tabela mostra os documentos e a situação de cada ato.*
 
 ---
 
@@ -54,7 +54,7 @@ flowchart LR
 | ------------------- | ------------------------------------------------------------------------------ |
 | Git                 | [Download](https://git-scm.com/downloads) (ou baixe o repositório como .ZIP)   |
 | Python 3.11+        | Testado em 3.14.3. [Download](https://www.python.org/downloads/)               |
-| Chave de API Gemini | Crie em [aistudio.google.com](https://aistudio.google.com/app/apikey)          |
+| Chave de API Cohere | Crie em [dashboard.cohere.com](https://dashboard.cohere.com/api-keys) — LLM principal |
 | Chave de API Groq   | Crie em [console.groq.com](https://console.groq.com) — usado como fallback     |
 | Espaço em disco     | ~0,6 GB com o acervo léxico pronto; ~5 GB se ele for criado localmente         |
 | RAM                 | Pico medido de 113 MB na busca léxica e de 3,2 GB na vetorial                  |
@@ -92,7 +92,7 @@ chmod +x setup.sh && ./setup.sh
 Abra o arquivo `.env` criado pelo setup e preencha(OBS: Caso tenha feito o processo manual, copie o arquivo .env.example para um novo arquivo chamado .env e preencha com suas chaves: )
 
 ```env
-GEMINI_API_KEY=sua_chave_aqui    # https://aistudio.google.com/app/apikey
+COHERE_API_KEY=sua_chave_aqui    # https://dashboard.cohere.com/api-keys
 GROQ_API_KEY=sua_chave_aqui      # https://console.groq.com (fallback)
 HF_REPO_ID=guilhermebarros/rag-aneel-vectorstore  # já preenchido
 HF_TOKEN=                        # deixe vazio: só é necessário para enviar o índice
@@ -167,7 +167,7 @@ Documentos ANEEL (PDFs, HTMLs, XLSXs)
           │                     a partir dos chunks do ChromaDB
           ▼
    [5] pipeline.py           → recebe query → recupera chunks →
-          │                     gera resposta com LLM (Gemini → Groq)
+          │                     gera resposta com LLM (Cohere → Groq)
           ▼
    [6] avaliar.py            → roda 100 perguntas com o mesmo código
                                 do pipeline e salva as respostas
@@ -368,7 +368,7 @@ Todos ficam em [`scripts/config.py`](scripts/config.py).
 | `CHUNK_OVERLAP` | 80                    | Sobreposição entre chunks consecutivos |
 | `BATCH_SIZE`    | 64                    | Chunks por lote de embedding           |
 | `TOP_K`         | 5                     | Chunks retornados por pergunta         |
-| `GEMINI_MODELO` | `gemini-3.8-flash`    | LLM primário                           |
+| `LLMS`          | `cohere,groq,groq_20b` | Ordem de tentativa dos LLMs           |
 | `GROQ_MODELO`   | `openai/gpt-oss-120b` | LLM de fallback                        |
 | `MODO_BUSCA`    | `lexica`              | `lexica`, `densa` ou `hibrida`         |
 | `POLITICA_REVOGADOS` | `intermediaria`   | `intermediaria`, `excluir` ou `incluir` |

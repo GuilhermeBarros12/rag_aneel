@@ -30,6 +30,10 @@ Testar seis LLMs em 10 perguntas mostrou que todos recusavam as mesmas perguntas
 
 A solução foi enviar ao LLM o documento inteiro, quando curto, ou os trechos encontrados e seus vizinhos, quando longo. A resposta passou a chegar ao prompt em 43 de 46, e as respostas com os termos esperados subiram de 33 para 41 de 46, sem perder nenhuma recusa correta. O custo é um contexto cerca de 3 vezes maior.
 
+### Cohere como LLM principal
+
+No teste com 10 perguntas, o `command-a-03-2025` da Cohere, feito para RAG, teve o melhor resultado: recusou indevidamente 3 de 8 perguntas, contra 4 de 8 dos demais, e citou o trecho correto em 6 de 8. A diferença é de uma pergunta, então a escolha pesa também o fato de o modelo ser feito para responder com base em documentos. O custo é a latência: 9,7 s por resposta, contra cerca de 2 s no Groq. Se a Cohere falhar ou a cota acabar, o sistema passa para o `gpt-oss-120b` e o `gpt-oss-20b` no Groq, cada um com cota diária própria (`LLMS=cohere,groq,groq_20b`).
+
 ### Reranker opcional
 
 O `rerank-v5.0-pro` da Cohere reordena os 30 primeiros candidatos da busca. No conjunto v2, o hit@5 subiu de 0,835 para 0,870, e a resposta passou a chegar ao LLM em 103 de 115 perguntas, contra 97. Ficou desligado por padrão porque depende de um serviço externo, e o plano gratuito permite 1.000 chamadas por mês.
@@ -42,7 +46,7 @@ O `rerank-v5.0-pro` da Cohere reordena os 30 primeiros candidatos da busca. No c
 | Mais peso no título no BM25 | hit@5 de 0,848 | Abaixo da léxica com pesos iguais |
 | Título e ementa no texto embedado | Nenhuma variante melhorou o hit@5 ou o MRR em um subconjunto de 3.000 documentos | Provavelmente porque o modelo lê só 128 tokens, e o cabeçalho ocupa esse espaço |
 | Trocar o LLM | Seis modelos (Groq, Cohere e um local) recusaram as mesmas perguntas | O gargalo era a recuperação, não o modelo |
-| Gemini na medição | Erro 503 (alta demanda) em todas as tentativas | Não foi possível medir |
+| Gemini como LLM principal | Erro 503 (alta demanda) em todas as tentativas da medição, e uma resposta que levou 233 s | Removido. Cada falha custava até 30 s de novas tentativas antes do fallback |
 
 ## Em aberto
 

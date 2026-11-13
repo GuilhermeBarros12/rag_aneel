@@ -13,7 +13,7 @@ O PR #1 foi mergeado em `main`, com as Fases 0 a 2 completas e a Fase 3 parcial.
 | Arquivo | Papel |
 |---|---|
 | `scripts/config.py` | Configuração única: caminhos, modelos, prompt, modo de busca |
-| `scripts/nucleo.py` | Recuperação, montagem do prompt e geração com fallback (Gemini, depois Groq) |
+| `scripts/nucleo.py` | Recuperação, montagem do prompt e geração com fallback (Cohere, depois Groq) |
 | `scripts/lexico.py` | Índice BM25 em SQLite FTS5, criado a partir dos chunks do ChromaDB |
 | `scripts/pipeline.py` | Linha de comando do RAG |
 | `scripts/avaliar_ouro.py` | Métricas no conjunto de ouro: hit@k, MRR, abstenção, recusa indevida, termos |
