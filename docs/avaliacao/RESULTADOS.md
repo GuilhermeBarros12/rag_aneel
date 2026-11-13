@@ -165,6 +165,31 @@ Recuperação no conjunto congelado, com o sistema padrão: busca léxica, polí
 
 A resposta chega ao LLM em 97 das 115 perguntas, com contexto médio de 6,3 mil caracteres. O ponto fraco são as conceituais: sem citar um ato, a busca léxica acha a sigla ou o tema em milhares de chunks e raramente no que define o termo. A medição com LLM nas 127 perguntas ainda não foi feita.
 
+## Reranker sobre a busca com frases, com prévia de LLM (12/11/2026)
+
+Depois da mudança das frases com numeral, o reranker foi medido de novo no conjunto v2, só na recuperação ([v2_frases_rerank_cohere.md](experimentos/v2_frases_rerank_cohere.md)):
+
+| Métrica (115 perguntas) | Busca com frases | Com reranker |
+|---|---|---|
+| hit@1 | 0,713 | 0,783 |
+| hit@5 | 0,835 | 0,870 |
+| MRR | 0,755 | 0,812 |
+| Resposta presente no contexto enviado | 98 | **104** |
+
+Nenhuma pergunta perdeu a resposta no contexto. A Q28, que piorava com o reranker na busca antiga, agora já vem certa da busca.
+
+**Prévia com LLM.** Como o reranker muda a ordem dos documentos, ele muda o contexto de quase todas as perguntas. Para uma prévia barata, foram escolhidas 10: as 6 em que o reranker faz a resposta chegar ao LLM, as 2 com maior ganho de posição do documento certo e 2 que devem ser recusadas ([conjunto_previa_reranker.json](experimentos/conjunto_previa_reranker.json)). O modelo foi o `command-a-03-2025` da Cohere nas duas rodadas.
+
+| Métrica | Sem reranker | Com reranker |
+|---|---|---|
+| Termos esperados na resposta | 5 de 8 | 7 de 8 |
+| Recusa indevida | 3 de 8 | 1 de 8 |
+| Citou um trecho correto | 3 de 8 | **7 de 8** |
+| Abstenção correta | 2 de 2 | 2 de 2 |
+| Segundos por resposta | 4,1 | 4,5 |
+
+O ganho mais claro está na citação: com o reranker, a resposta passa a se apoiar no trecho certo. Três perguntas (Q085, Q086 e C03) acertaram os termos mesmo sem a resposta no contexto. Provavelmente o modelo já conhecia a resposta, como o significado de DEC, e isso não é mérito da busca. O grupo foi escolhido onde o reranker deveria ajudar, então o resultado mostra o efeito nesses casos e não estima o ganho no conjunto inteiro. A medição completa com LLM e reranker não foi feita.
+
 ## Nome seguido de numeral como frase (12/11/2026)
 
 Investigação da Q28 ("para qual empresa foi transferida a autorização da Central Geradora Eólica Chuí V?"), a única pergunta que piorou com a expansão de contexto. O ato certo, a REA 10.536/2021, estava só na posição 34 da busca. Os 5 primeiros trechos eram de atos vizinhos, com texto quase idêntico: Chuí II, Chuí IV, Chuí IX e Minuano I e II, todos transferidos para a Omega Geração. Como o BM25 trata o "V" como uma palavra solta e comum, ele não distingue Chuí II, IV e V.

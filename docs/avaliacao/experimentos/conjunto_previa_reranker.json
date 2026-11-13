@@ -1,0 +1,174 @@
+{
+  "status": "experimento",
+  "observacao": "Perguntas do conjunto v2 em que o reranker muda se a resposta chega ao LLM, as duas com maior ganho de posicao e duas que devem ser recusadas.",
+  "perguntas": [
+    {
+      "id": "Q062",
+      "categoria": "norma_citada",
+      "deve_recusar": false,
+      "pergunta": "O que estabelece a Resolução Normativa nº 1.000, de 2021?",
+      "resposta_curta": "As Regras de Prestação do Serviço Público de Distribuição de Energia Elétrica.",
+      "termos": [
+        "Prestação do Serviço Público de Distribuição"
+      ],
+      "ato": "REN - RESOLUÇÃO NORMATIVA 1000/2021",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "aren20211000_1",
+        "ren20211000"
+      ],
+      "origem": "v2",
+      "nota": ""
+    },
+    {
+      "id": "Q063",
+      "categoria": "norma_citada",
+      "deve_recusar": false,
+      "pergunta": "Qual resolução de 2010 foi revogada pela Resolução Normativa nº 1.000, de 2021?",
+      "resposta_curta": "A Resolução Normativa nº 414, de 2010.",
+      "termos": [
+        "414"
+      ],
+      "ato": "REN - RESOLUÇÃO NORMATIVA 1000/2021",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "aren20211000_1",
+        "ren20211000"
+      ],
+      "origem": "v2",
+      "nota": ""
+    },
+    {
+      "id": "Q085",
+      "categoria": "norma_por_tema",
+      "deve_recusar": false,
+      "pergunta": "Qual Resolução Normativa regula o compartilhamento de infraestrutura das distribuidoras?",
+      "resposta_curta": "A Resolução Normativa nº 1.044, de 2022.",
+      "termos": [
+        "1.044"
+      ],
+      "ato": "REN - RESOLUÇÃO NORMATIVA 1044/2022",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "aren20221044_1",
+        "ren20221044"
+      ],
+      "origem": "v2",
+      "nota": ""
+    },
+    {
+      "id": "Q086",
+      "categoria": "norma_por_tema",
+      "deve_recusar": false,
+      "pergunta": "Qual Resolução Normativa regulamenta o cadastro de inadimplentes com obrigações intrassetoriais?",
+      "resposta_curta": "A Resolução Normativa nº 917, de 2021.",
+      "termos": [
+        "917"
+      ],
+      "ato": "REN - RESOLUÇÃO NORMATIVA 917/2021",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "aren2021917_1",
+        "ren2021917"
+      ],
+      "origem": "v2",
+      "nota": ""
+    },
+    {
+      "id": "Q095",
+      "categoria": "fato_com_ato",
+      "deve_recusar": false,
+      "pergunta": "Em qual leilão o Despacho nº 24, de 2022, habilitou as proponentes vendedoras?",
+      "resposta_curta": "No Leilão de Energia Existente A-1 de 2021 (Leilão nº 9/2021-ANEEL).",
+      "termos": [
+        "Energia Existente"
+      ],
+      "ato": "DSP - DESPACHO 024/2022",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "dsp2022024"
+      ],
+      "origem": "v2",
+      "nota": ""
+    },
+    {
+      "id": "Q099",
+      "categoria": "fato_sem_ato",
+      "deve_recusar": false,
+      "pergunta": "Qual o valor da multa aplicada à Nova Guaporé Energética S.A.?",
+      "resposta_curta": "R$ 983.474,29.",
+      "termos": [
+        "983.474,29"
+      ],
+      "ato": "DSP - DESPACHO 2951/2022",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "dsp20222951ti",
+        "emdsp20222951"
+      ],
+      "origem": "v2",
+      "nota": ""
+    },
+    {
+      "id": "Q100",
+      "categoria": "fato_sem_ato",
+      "deve_recusar": false,
+      "pergunta": "Que alteração estatutária da Gralha Azul Transmissão de Energia foi anuída pela ANEEL em 2021?",
+      "resposta_curta": "A redução do seu Capital Social.",
+      "termos": [
+        "Capital Social"
+      ],
+      "ato": "DSP - DESPACHO 3622/2021",
+      "situacao": "Situação:NÃO CONSTA REVOGAÇÃO EXPRESSA",
+      "documentos_esperados": [
+        "dsp20213622"
+      ],
+      "origem": "v2",
+      "nota": ""
+    },
+    {
+      "id": "Q108",
+      "categoria": "ato_inexistente",
+      "deve_recusar": true,
+      "pergunta": "O que estabelece a Resolução Normativa nº 1.150, de 2022?",
+      "resposta_curta": "Deve responder que não encontrou informação suficiente.",
+      "termos": [],
+      "ato": null,
+      "situacao": null,
+      "documentos_esperados": [],
+      "origem": "v2",
+      "nota": ""
+    },
+    {
+      "id": "Q109",
+      "categoria": "dado_ausente",
+      "deve_recusar": true,
+      "pergunta": "Qual o valor da tarifa residencial fixado pela Resolução Normativa nº 1.000, de 2021?",
+      "resposta_curta": "Deve responder que não encontrou informação suficiente.",
+      "termos": [],
+      "ato": null,
+      "situacao": null,
+      "documentos_esperados": [],
+      "origem": "v2",
+      "nota": ""
+    },
+    {
+      "id": "C03",
+      "categoria": "conceitual_sigla",
+      "deve_recusar": false,
+      "pergunta": "O que mede o indicador DEC?",
+      "resposta_curta": "A Duração Equivalente de Interrupção por Unidade Consumidora.",
+      "termos": [
+        "Duração Equivalente de Interrupção"
+      ],
+      "evidencia": [
+        "Duração Equivalente de Interrupção"
+      ],
+      "ato": null,
+      "documentos_esperados": [],
+      "origem": "conceitual",
+      "nota": "",
+      "chunks_com_evidencia": 418
+    }
+  ]
+}

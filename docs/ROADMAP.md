@@ -60,7 +60,8 @@ O índice publicado tem 517.557 chunks de atos de 2016, 2021 e 2022, já sem as 
 | 8 Portfólio | README reescrito com resumo, diagrama e resultados, e página de decisões em `docs/DECISOES.md` |
 | Comparação de LLMs | Feita para `gpt-oss-120b` e `qwen3.8-27b`, sem vencedor claro. O Gemini não pôde ser medido (erro 503) |
 | Expansão de contexto | Feita e adotada: termos esperados de 33 para 41 de 46 no conjunto v1, abstenção mantida |
-| Reranker | Testado com a Cohere no conjunto v2: hit@5 de 0,835 para 0,870 e resposta no contexto de 97 para 103 de 115. Opcional (`RERANKER=cohere`), por causa do limite do plano gratuito |
+| Reranker | Testado com a Cohere no conjunto v2: resposta no contexto de 98 para 104 de 115 sobre a busca com frases. Na prévia com LLM em 10 perguntas, citação correta de 3 para 7 de 8. Opcional (`RERANKER=cohere`), por causa do limite do plano gratuito |
+| Q28 e frases com numeral | Investigada: a busca confundia usinas vizinhas (Chuí II, IV e V). A consulta passou a incluir a frase "chui v"; MRR de 0,734 para 0,755 no conjunto v2 |
 
 ## 2. Regras de trabalho
 
