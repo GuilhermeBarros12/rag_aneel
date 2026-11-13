@@ -40,6 +40,14 @@ flowchart LR
 
 *Demo em Gradio (`python scripts/app.py`): a resposta cita o trecho usado, e a tabela mostra os documentos e a situação de cada ato.*
 
+### Publicar a demo no Render
+
+O arquivo [`render.yaml`](render.yaml) configura a demo como um serviço web gratuito no [Render](https://render.com). O acervo léxico é baixado durante o build, e a demo aceita no máximo 10 perguntas por minuto, somando todos os usuários, para proteger as cotas gratuitas dos LLMs. Medido localmente nessa configuração: cerca de 175 MB de memória, dentro dos 512 MB do plano gratuito.
+
+1. No Render, escolha **New > Blueprint** e conecte este repositório.
+2. Preencha `COHERE_API_KEY` e `GROQ_API_KEY` quando o Render pedir. As chaves ficam só no painel do Render.
+3. Aguarde o build. No plano gratuito, o serviço dorme depois de 15 minutos sem uso, e a primeira pergunta depois disso leva cerca de 1 minuto.
+
 ### Exemplos
 
 Respostas reais da demo, com o `command-a-03-2025` da Cohere (clique para abrir).

@@ -5,8 +5,10 @@ Mostra a resposta, o LLM que respondeu, os documentos usados (com a situação d
 cada ato) e os trechos enviados ao modelo. Usa o mesmo núcleo do pipeline.
 
 Uso: python scripts/app.py   (abre em http://127.0.0.1:7860)
+No Render, o render.yaml define HOST, PORT e o limite de perguntas.
 """
 
+import os
 import threading
 import time
 from collections import deque
@@ -129,7 +131,11 @@ def criar_app(colecao, modelo) -> gr.Blocks:
 
 def main() -> None:
     colecao, modelo = carregar_recursos()
-    criar_app(colecao, modelo).launch(server_name="127.0.0.1", server_port=7860)
+    # Em um servidor (como o Render), HOST=0.0.0.0 e PORT vêm do ambiente
+    criar_app(colecao, modelo).launch(
+        server_name=os.getenv("HOST", "127.0.0.1"),
+        server_port=int(os.getenv("PORT", "7860")),
+    )
 
 
 if __name__ == "__main__":
