@@ -42,3 +42,11 @@ def test_descricao_do_llm():
 
 def test_app_monta_sem_abrir_servidor():
     assert app.criar_app(None, None) is not None
+
+
+def test_limite_de_perguntas_por_minuto():
+    limite = app.LimiteDePerguntas(2)
+    assert limite.permitir(0) and limite.permitir(10)
+    assert not limite.permitir(20)  # terceira pergunta no mesmo minuto
+    assert limite.permitir(61)  # a primeira saiu da janela de 60 s
+    assert app.LimiteDePerguntas(0).permitir(0)  # 0 desliga o limite

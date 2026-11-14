@@ -1,0 +1,22 @@
+# Demo pública no Render (plano gratuito). Veja a seção "Demo online" do README.
+services:
+  - type: web
+    name: rag-aneel
+    runtime: python
+    plan: free
+    # O acervo léxico (0,6 GB) é baixado no build, para não baixar de novo a cada vez que o serviço acorda
+    buildCommand: pip install -r requirements-demo.txt && python -c "import sys; sys.path.insert(0, 'scripts'); import nucleo; nucleo.garantir_lexico()"
+    startCommand: python scripts/app.py
+    healthCheckPath: /
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.7
+      - key: HOST
+        value: 0.0.0.0
+      - key: LIMITE_PERGUNTAS_POR_MINUTO
+        value: "10"
+      # Chaves preenchidas no painel do Render, nunca no repositório
+      - key: COHERE_API_KEY
+        sync: false
+      - key: GROQ_API_KEY
+        sync: false

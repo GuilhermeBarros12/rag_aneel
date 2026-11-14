@@ -5,8 +5,13 @@ Mostra a resposta, o LLM que respondeu, os documentos usados (com a situação d
 cada ato) e os trechos enviados ao modelo. Usa o mesmo núcleo do pipeline.
 
 Uso: python scripts/app.py   (abre em http://127.0.0.1:7860)
+No Render, o render.yaml define HOST, PORT e o limite de perguntas.
 """
 
+import os
+import threading
+import time
+from collections import deque
 from typing import List
 
 import gradio as gr
@@ -24,8 +29,32 @@ EXEMPLOS = [
 SOBRE = (
     "Perguntas sobre atos da ANEEL de 2016, 2021 e 2022. "
     f"Busca: `{config.MODO_BUSCA}`. "
-    "As respostas citam os trechos usados. Confira sempre o documento original antes de usar a informação."
+    "As respostas citam os trechos usados. Confira sempre o documento original antes de usar a informação. "
+    "Código e avaliação: [github.com/GuilhermeBarros12/rag_aneel](https://github.com/GuilhermeBarros12/rag_aneel)."
 )
+
+AVISO_LIMITE = "Muitas perguntas no último minuto. Aguarde alguns segundos e tente de novo."
+
+
+class LimiteDePerguntas:
+    """Aceita no máximo `por_minuto` perguntas em 60 s, somando todos os usuários (0 desliga o limite)."""
+
+    def __init__(self, por_minuto: int):
+        self.por_minuto = por_minuto
+        self.horarios: deque = deque()
+        self.trava = threading.Lock()
+
+    def permitir(self, agora: float = None) -> bool:
+        if self.por_minuto <= 0:
+            return True
+        agora = time.monotonic() if agora is None else agora
+        with self.trava:
+            while self.horarios and agora - self.horarios[0] >= 60:
+                self.horarios.popleft()
+            if len(self.horarios) >= self.por_minuto:
+                return False
+            self.horarios.append(agora)
+            return True
 
 
 def sem_prefixo(valor: str) -> str:
@@ -70,7 +99,11 @@ def descrever_llm(r: RespostaRAG) -> str:
 
 
 def criar_app(colecao, modelo) -> gr.Blocks:
+    limite = LimiteDePerguntas(config.LIMITE_PERGUNTAS_POR_MINUTO)
+
     def perguntar(pergunta: str):
+        if not limite.permitir():
+            return AVISO_LIMITE, "", [], ""
         r = responder(pergunta, colecao, modelo)
         return r.resposta, descrever_llm(r), linhas_de_documentos(r), texto_dos_trechos(r)
 
@@ -98,7 +131,11 @@ def criar_app(colecao, modelo) -> gr.Blocks:
 
 def main() -> None:
     colecao, modelo = carregar_recursos()
-    criar_app(colecao, modelo).launch(server_name="127.0.0.1", server_port=7860)
+    # Em um servidor (como o Render), HOST=0.0.0.0 e PORT vêm do ambiente
+    criar_app(colecao, modelo).launch(
+        server_name=os.getenv("HOST", "127.0.0.1"),
+        server_port=int(os.getenv("PORT", "7860")),
+    )
 
 
 if __name__ == "__main__":

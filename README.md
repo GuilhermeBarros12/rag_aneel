@@ -40,6 +40,50 @@ flowchart LR
 
 *Demo em Gradio (`python scripts/app.py`): a resposta cita o trecho usado, e a tabela mostra os documentos e a situação de cada ato.*
 
+### Publicar a demo no Render
+
+O arquivo [`render.yaml`](render.yaml) configura a demo como um serviço web gratuito no [Render](https://render.com). O acervo léxico é baixado durante o build, e a demo aceita no máximo 10 perguntas por minuto, somando todos os usuários, para proteger as cotas gratuitas dos LLMs. Medido localmente nessa configuração: cerca de 175 MB de memória, dentro dos 512 MB do plano gratuito.
+
+1. No Render, escolha **New > Blueprint** e conecte este repositório.
+2. Preencha `COHERE_API_KEY` e `GROQ_API_KEY` quando o Render pedir. As chaves ficam só no painel do Render.
+3. Aguarde o build. No plano gratuito, o serviço dorme depois de 15 minutos sem uso, e a primeira pergunta depois disso leva cerca de 1 minuto.
+
+### Exemplos
+
+Respostas reais da demo, com o `command-a-03-2025` da Cohere (clique para abrir).
+
+<details>
+<summary><b>Usinas com nomes quase iguais:</b> "Para qual empresa foi transferida a autorização da Central Geradora Eólica Chuí V?"</summary>
+
+A busca precisa separar a Chuí V das vizinhas Chuí II, IV e IX, que têm atos quase idênticos. A resposta traz a empresa do ato e também a transferência posterior, registrada em nota no próprio documento.
+
+![Resposta sobre a Chuí V, com a REA 10.536/2021 em primeiro lugar entre os documentos](docs/imagens/exemplo_usina.png)
+</details>
+
+<details>
+<summary><b>Ato revogado:</b> "Qual era o objetivo da Resolução Normativa nº 928, de 2021?"</summary>
+
+A pergunta cita o ato, então a política de revogados o inclui na busca, e a resposta avisa que ele foi revogado.
+
+![Resposta sobre a REN 928/2021 marcada como revogada](docs/imagens/exemplo_revogado.png)
+</details>
+
+<details>
+<summary><b>Recusa:</b> "O que estabelece a Resolução Normativa nº 1.150, de 2022?" (ato que não existe)</summary>
+
+A busca encontra outros atos com o número 1.150, como despachos e portarias, mas nenhuma Resolução Normativa. O modelo recusa em vez de inventar.
+
+![Recusa para uma resolução inexistente](docs/imagens/exemplo_recusa_inexistente.png)
+</details>
+
+<details>
+<summary><b>Trechos enviados ao modelo:</b> "Qual a capacidade total liberada da UFV Francisco Sá 2?"</summary>
+
+A seção "Trechos enviados ao modelo" mostra exatamente o que o LLM leu, para conferir a resposta. Aqui, a capacidade de 33.000 kW está no Trecho 2.
+
+![Resposta com os trechos enviados ao modelo abertos](docs/imagens/exemplo_trechos.png)
+</details>
+
 ---
 
 ## Quick Start — Usar o sistema (recomendado)

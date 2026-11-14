@@ -1,0 +1,7 @@
+# Dependências mínimas da demo com busca léxica (usadas no Render).
+# A instalação completa, com busca vetorial e indexação, está em requirements.txt.
+gradio==6.31.0
+huggingface_hub==1.33.0
+python-dotenv==1.2.2
+groq==1.2.0
+httpx==0.28.1
