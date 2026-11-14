@@ -56,7 +56,7 @@ O índice publicado tem 517.557 chunks de atos de 2016, 2021 e 2022, já sem as 
 | 4.2 Lint e CI | Feita: ruff sem erros e CI passando no GitHub |
 | 4.3 Instalação reproduzível | Feita: o CI instala tudo do zero em Linux com Python 3.12 e os testes passam |
 | 4.4 Docker | Revisado, mas não testado: o Docker não está instalado nesta máquina. O README avisa |
-| 5 Demo | Feita: `python scripts/app.py`, testada de ponta a ponta, com captura de tela no README. Falta a publicação opcional em um Space |
+| 5 Demo | Feita: `python scripts/app.py`, testada de ponta a ponta, com captura de tela no README. Publicada em 14/11/2026 no plano gratuito do Render: https://rag-aneel.onrender.com |
 | 8 Portfólio | README reescrito com resumo, diagrama e resultados, e página de decisões em `docs/DECISOES.md` |
 | Comparação de LLMs | Feita para `gpt-oss-120b` e `qwen3.8-27b`, sem vencedor claro. O Gemini não pôde ser medido (erro 503) |
 | Expansão de contexto | Feita e adotada: termos esperados de 33 para 41 de 46 no conjunto v1, abstenção mantida |

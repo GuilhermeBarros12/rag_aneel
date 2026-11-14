@@ -4,6 +4,8 @@ Sistema de **Retrieval-Augmented Generation (RAG)** que responde perguntas sobre
 
 O foco do projeto é ser **medido**: toda mudança foi testada contra um conjunto de perguntas com gabarito antes de ser adotada, e as que não melhoraram foram descartadas e registradas.
 
+**Demo online:** [rag-aneel.onrender.com](https://rag-aneel.onrender.com). O serviço gratuito dorme depois de 15 minutos sem uso, então a primeira visita pode levar cerca de 1 minuto para abrir. Cada resposta leva de 10 a 20 segundos.
+
 ## Resultados em resumo
 
 Conjunto de ouro v1: 56 perguntas escritas a partir de atos sorteados, 46 com resposta no corpus e 10 que devem ser recusadas. LLM `openai/gpt-oss-120b` no Groq.
@@ -42,7 +44,7 @@ flowchart LR
 
 ### Publicar a demo no Render
 
-O arquivo [`render.yaml`](render.yaml) configura a demo como um serviço web gratuito no [Render](https://render.com). O acervo léxico é baixado durante o build, e a demo aceita no máximo 10 perguntas por minuto, somando todos os usuários, para proteger as cotas gratuitas dos LLMs. Medido localmente nessa configuração: cerca de 175 MB de memória, dentro dos 512 MB do plano gratuito.
+A demo publicada em [rag-aneel.onrender.com](https://rag-aneel.onrender.com) usa esta configuração. O arquivo [`render.yaml`](render.yaml) configura a demo como um serviço web gratuito no [Render](https://render.com). O acervo léxico é baixado durante o build, e a demo aceita no máximo 10 perguntas por minuto, somando todos os usuários, para proteger as cotas gratuitas dos LLMs. Medido localmente nessa configuração: cerca de 175 MB de memória, dentro dos 512 MB do plano gratuito.
 
 1. No Render, escolha **New > Blueprint** e conecte este repositório.
 2. Preencha `COHERE_API_KEY` e `GROQ_API_KEY` quando o Render pedir. As chaves ficam só no painel do Render.
